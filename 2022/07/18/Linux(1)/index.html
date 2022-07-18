@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux（1）, Uanu&#39;s blog">
-    <meta name="description" content="">
+    <meta name="keywords" content="Linux(1)--shell语法, Uanu&#39;s blog">
+    <meta name="description" content="简介shell是我们通过命令行与操作系统沟通的语言。shell脚本可以直接在命令行中执行，同时方便复用。因此，终端中的命令行可以看成是一个“shell脚本在逐行执行”。Linux中常见的shell脚本有很多种，常见的有：
+
+  Bourne">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +30,7 @@
     </style>
 
 
-    <title>Linux（1） | Uanu&#39;s blog</title>
+    <title>Linux(1)--shell语法 | Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -260,7 +262,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux（1）</h1>
+                    <h1 class="description center-align post-title">Linux(1)--shell语法</h1>
                 </div>
             </div>
         </div>
@@ -429,7 +431,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>shell是我们通过命令行与操作系统沟通的语言。shell脚本可以直接在命令行中执行，同时方便复用。<br>因此，终端中的命令行可以看成是一个“shell脚本在逐行执行”。Linux中常见的shell脚本有很多种，常见的有：</p>
+<blockquote>
+<p>  Bourne Shell(<code>/usr/bin/sh``或``/bin/sh</code>)<br>  Bourne Again Shell(<code>/bin/bash</code>)<br>  C Shell(<code>/usr/bin/csh</code>)<br>  K Shell(<code>/usr/bin/ksh</code>)<br>  …</p>
+</blockquote>
+<p>在编写脚本时需要制定脚本解释器，例如bash脚本需要再文件开头写<code>#! /bin/bash</code>。</p>
+<h2 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h2><p>作为可执行文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:~$ <span class="token function">chmod</span> +x test.sh  <span class="token comment">#chmod +x使得脚本具有可执行权限</span>
+:~$ ./test.sh <span class="token comment">#在当前路径下执行脚本</span>
+:~$ /home/uanu/test.sh <span class="token comment">#在绝对路径下执行脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用解释器执行（不需要执行权限）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:~$ <span class="token function">bash</span> test.sh <span class="token comment">#在当前目录下用解释器执行脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1>
                 
             </div>
             <hr/>
@@ -555,9 +570,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux（1）">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux(1)--shell语法">
                         
-                        <span class="card-title">Linux（1）</span>
+                        <span class="card-title">Linux(1)--shell语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
