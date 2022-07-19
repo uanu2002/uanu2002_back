@@ -444,7 +444,122 @@
 <p>使用解释器执行（不需要执行权限）</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:~$ <span class="token function">bash</span> test.sh <span class="token comment">#在当前目录下用解释器执行脚本</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><h2 id="单行注释"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 单行注释</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"Uanu's blog"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:<span class="token operator">&lt;&lt;</span><span class="token string">str
+第一行注释
+第二行注释
+第三行注释
+str</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>str可以为任意字符串</p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h2><p>无需声明类型，类似python。变量本质都是字符串。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">var1</span><span class="token operator">=</span><span class="token string">'Uanu'</span> <span class="token comment"># 单引号定义字符串</span>
+<span class="token assign-left variable">var2</span><span class="token operator">=</span><span class="token string">"Uanu"</span> <span class="token comment"># 双引号定义字符串</span>
+<span class="token assign-left variable">var3</span><span class="token operator">=</span>Uanu   <span class="token comment"># 不加引号也可以定义字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="定义只读变量"><a href="#定义只读变量" class="headerlink" title="定义只读变量"></a>定义只读变量</h3><p>变量前加上<code>readonly</code>或者<code>declare</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">var</span><span class="token operator">=</span>Uanu
+<span class="token builtin class-name">readonly</span> name <span class="token comment"># 定义只读变量</span>
+<span class="token builtin class-name">declare</span> -r name <span class="token comment"># 定义只读变量</span>
+
+<span class="token assign-left variable">var</span><span class="token operator">=</span>blog <span class="token comment"># 此时会报错，因为var为只读变量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h2><p>使用变量需要在变量名前加上<code>$</code>符号或者<code>$&#123;&#125;</code>,<code>$</code>可以看做获取变量的值，其中<code>&#123;&#125;</code>是可选的，用于帮助解释器识别变量边界。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">var</span><span class="token operator">=</span><span class="token string">"Uanu"</span> <span class="token comment"># 定义变量</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$name</span> <span class="token comment"># 输出：Uanu</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$name</span> blog <span class="token comment"># 输出：Uanu blog</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h2><p>使用<code>unset</code>删除变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">var</span><span class="token operator">=</span>Uanu
+<span class="token builtin class-name">unset</span> var <span class="token comment"># 删除变量var</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$var</span> <span class="token comment"># 输出：空行</span>
+<span class="token comment"># ps：未定义变量输出时为空行</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><table>
+<thead>
+<tr>
+<th>自定义变量（局部变量）</th>
+<th>环境变量（全局变量）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>子进程不能访问</td>
+<td>子进程可以访问</td>
+</tr>
+</tbody></table>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>自定义变量转环境变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">var</span><span class="token operator">=</span>Uanu
+<span class="token comment"># 第一种方法</span>
+<span class="token builtin class-name">export</span> var
+<span class="token comment"># 第二种方法</span>
+<span class="token builtin class-name">declare</span> -x var<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>环境变量转自定义变量</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">var</span><span class="token operator">=</span>Uanu <span class="token comment"># 定义环境变量</span>
+<span class="token builtin class-name">declare</span> +x var <span class="token comment"># 转自定义变量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="默认变量"><a href="#默认变量" class="headerlink" title="默认变量"></a>默认变量</h2><p>执行shell脚本时，可以向脚本传递参数，<code>$1</code>是第一个参数，<code>$2</code>是第二个参数，以此类推。**<code>$0</code>是文件名**（包含路径）。</p>
+<h2 id="其他变量"><a href="#其他变量" class="headerlink" title="其他变量"></a>其他变量</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$#</td>
+<td>代表文件传入的参数个数</td>
+</tr>
+<tr>
+<td>$*</td>
+<td>由所有参数构成的用空格隔开的字符串，如<code>&quot;$1 $2&quot;</code></td>
+</tr>
+<tr>
+<td>$@</td>
+<td>每个参数分别用双引号括起来的字符串，如<code>&quot;$1&quot; &quot;$2&quot;</code></td>
+</tr>
+<tr>
+<td>$$</td>
+<td>脚本当前运行的进程ID</td>
+</tr>
+<tr>
+<td>$?</td>
+<td>上一条命令的退出状态（注意不是stdout，而是<strong>exit code</strong>）。0表示正常退出，其他值表示错误</td>
+</tr>
+<tr>
+<td>$(command)</td>
+<td>返回<code>command</code>的<strong>stdout</strong>（可嵌套）</td>
+</tr>
+<tr>
+<td>`command&#96;</td>
+<td>返回<code>command</code>的<strong>stdout</strong>（不可嵌套）</td>
+</tr>
+</tbody></table>
+<h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>单引号与双引号区别</p>
+<blockquote>
+<p>  单引号中内容会原样输出，不会执行其中的语句，不会获得变量的值。</p>
+<p>  双引号中语句会执行，会获得变量的值。</p>
+  <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">var</span><span class="token operator">=</span>Uanu
+<span class="token builtin class-name">echo</span> <span class="token string">'$var blog'</span> <span class="token comment">#输出：$var blog</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$var</span> blog"</span> <span class="token comment">#输出：Uanu blog</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<p>获取字符串长度</p>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span>var<span class="token operator">=</span>Uanu
+<span class="token operator">></span>echo <span class="token variable">$&#123;<span class="token operator">#</span>name&#125;</span> <span class="token comment"># 输出：3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>#常用于长度相关</p>
+</blockquote>
+</blockquote>
+<p>提取子串</p>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span>var<span class="token operator">=</span><span class="token string">"Uanu's blog"</span>
+<span class="token operator">></span>echo <span class="token variable">$&#123;var<span class="token operator">:</span>0<span class="token operator">:</span>5&#125;</span> <span class="token comment">#输出：Uanu'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</blockquote>
+
                 
             </div>
             <hr/>
