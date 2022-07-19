@@ -5,8 +5,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Linux(2)--ssh使用, Uanu&#39;s blog">
-    <meta name="description" content="TO Do
-">
+    <meta name="description" content="ssh登录基本用法远程登录服务器：
+ssh user@hostname
+
+
+user：用户名
+hostname：IP地址或域名
+
+第一次登录会提示：
+The authenticity of host &#39;你的IP(你的IP)&#39; can&#39;t b">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -438,7 +445,67 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>TO Do</p>
+                <h1 id="ssh登录"><a href="#ssh登录" class="headerlink" title="ssh登录"></a>ssh登录</h1><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>远程登录服务器：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> user@hostname<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><code>user</code>：用户名</li>
+<li><code>hostname</code>：IP地址或域名</li>
+</ul>
+<p>第一次登录会提示：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">The authenticity of <span class="token function">host</span> <span class="token string">'你的IP(你的IP)'</span> can't be established.
+ECDSA key fingerprint is SHA256:iy237yysfCe013/l+kpDGfEG9xxHxm0dnxnAbJTPpG8.
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>输入<code>yes</code>，然后回车。</p>
+<p>这样服务器的信息就会记录在~&#x2F;.ssh&#x2F;known_hosts文件中。</p>
+<p>最后输入密码即可。</p>
+<p>默认登录端口号为22，如果需要登录特定端口：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> user@hostname -p <span class="token number">22</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>创建文件 <code>~/.ssh/config</code>。</p>
+<p>然后在文件中输入：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host myserver1
+    HostName IP地址或域名
+    User 用户名
+
+Host myserver2
+    HostName IP地址或域名
+    User 用户名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后再使用服务器时，可以直接使用别名myserver1、myserver2。</p>
+<h2 id="密钥登录"><a href="#密钥登录" class="headerlink" title="密钥登录"></a>密钥登录</h2><p>创建密钥：</p>
+<pre class="line-numbers language-none"><code class="language-none">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后一直回车即可。</p>
+<p>执行结束后，<code>~/.ssh/</code>目录下会多两个文件：</p>
+<ul>
+<li><code>id_rsa</code>：私钥</li>
+<li><code>id_rsa.pub</code>：公钥<br>之后想免密码登录哪个服务器，就将公钥传给哪个服务器即可。</li>
+</ul>
+<p>例如，想免密登录<code>myserver</code>服务器。则将公钥中的内容，复制到<code>myserver</code>中的<code>~/.ssh/authorized_keys</code>文件里即可。</p>
+<p>也可以使用如下命令一键添加公钥：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-copy-id myserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="执行命令"><a href="#执行命令" class="headerlink" title="执行命令"></a>执行命令</h2><p>格式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> user@hostname <span class="token builtin class-name">command</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 单引号中的$i可以求值</span>
+<span class="token function">ssh</span> myserver <span class="token string">'for ((i = 0; i &lt; 10; i ++ )) do echo $i; done'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h1 id="scp传文件"><a href="#scp传文件" class="headerlink" title="scp传文件"></a>scp传文件</h1><h2 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h2><p>格式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> <span class="token builtin class-name">source</span> destination <span class="token comment"># 将source路径下的文件复制到destination中</span>
+<span class="token function">scp</span> source1 source2 destination <span class="token comment"># 一次复制多个文件</span>
+<span class="token function">scp</span> -r ~/tmp myserver:/home/Uanu/ <span class="token comment"># 复制文件夹</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>指定服务器的端口号：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> -P <span class="token number">22</span> source1 source2 destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注：<code>scp</code>的<code>-r -p</code>等参数尽量加在<code>source</code>和<code>destination</code>之前。</p>
+<p>使用scp配置其他服务器的vim和tmux：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> ~/.vimrc ~/.tmux.conf myserver:<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
