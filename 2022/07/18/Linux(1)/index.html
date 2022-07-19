@@ -731,7 +731,484 @@ Hi Uanu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 My name is yxc
 <span class="token number">2</span> * <span class="token number">3</span> <span class="token operator">=</span> <span class="token number">6</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h1><h2 id="test命令"><a href="#test命令" class="headerlink" title="test命令"></a>test命令</h2><h3 id="逻辑运算符-amp-amp-和"><a href="#逻辑运算符-amp-amp-和" class="headerlink" title="逻辑运算符&amp;&amp;和||"></a>逻辑运算符&amp;&amp;和||</h3>
+<h1 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h1><h2 id="逻辑运算符-amp-amp-和"><a href="#逻辑运算符-amp-amp-和" class="headerlink" title="逻辑运算符&amp;&amp;和||"></a>逻辑运算符&amp;&amp;和||</h2><ul>
+<li><p><code>&amp;&amp;</code>表示与，<code>||</code>表示或</p>
+</li>
+<li><p>二者都具有短路原则</p>
+<p><code>expr1 &amp;&amp; expr2</code>：当<code>expr1</code>为假时，直接忽略<code>expr2</code></p>
+<p><code>expr1 || expr2</code>：当<code>expr1</code>为真时，直接忽略<code>expr2</code></p>
+</li>
+</ul>
+<p><strong>逻辑运算符很多时候可以起到判断语句的作用</strong>。</p>
+<h2 id="test命令"><a href="#test命令" class="headerlink" title="test命令"></a>test命令</h2><p>ps：可用查询命令用法</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">man</span> <span class="token builtin class-name">command</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>test</code>命令用于判断文件类型和变量比较</p>
+<p><strong><code>test</code>命令用<code>exit code</code>返回结果。</strong></p>
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">test</span> <span class="token number">2</span> -lt <span class="token number">3</span>  <span class="token comment"># 为真，返回值为0</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$?</span>  <span class="token comment"># 输出上个命令的返回值，输出0</span>
+<span class="token builtin class-name">test</span> -e test.sh <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"exist"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Not exist"</span>
+exist  <span class="token comment"># test.sh 文件存在</span>
+<span class="token builtin class-name">test</span> -e test2.sh <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"exist"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Not exist"</span>
+Not exist  <span class="token comment"># testh2.sh 文件不存在</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>类型判断参数</th>
+<th>代表意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-e</td>
+<td>文件是否存在</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>是否为文件</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>是否为目录</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>权限判断参数</th>
+<th>代表意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-r</td>
+<td>文件是否可读</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>文件是否可写</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>文件是否可执行</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>是否为空文件</td>
+</tr>
+</tbody></table>
+<p>格式：</p>
+<pre class="line-numbers language-none"><code class="language-none">test -参数 filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>整数比较参数</th>
+<th>代表意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-eq</td>
+<td>（前者）是否等于（后者）</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>是否不等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>是否大于</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>是否小于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>是否大于等于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>是否小于等于</td>
+</tr>
+</tbody></table>
+<p>格式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">test</span> <span class="token variable">$a</span> -eq <span class="token variable">$b</span>  <span class="token comment"># a是否等于b</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<table>
+<thead>
+<tr>
+<th>字符串比较参数</th>
+<th>代表意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>test -z STRING</td>
+<td>判断STRING是否为空，如果为空，则返回true</td>
+</tr>
+<tr>
+<td>test -n STRING</td>
+<td>判断STRING是否非空，如果非空，则返回true（-n可以省略）</td>
+</tr>
+<tr>
+<td>test str1 &#x3D;&#x3D; str2</td>
+<td>判断str1是否等于str2</td>
+</tr>
+<tr>
+<td>test str1 !&#x3D; str2</td>
+<td>判断str1是否不等于str2</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>多重判断参数</th>
+<th>代表意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>是否同时成立</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>是否至少一个成立</td>
+</tr>
+<tr>
+<td>！</td>
+<td>取反</td>
+</tr>
+</tbody></table>
+<p>格式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">test</span> -r filename -a -x filename<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="判断符号"><a href="#判断符号" class="headerlink" title="判断符号[]"></a>判断符号[]</h2><p><code>[]</code>与<code>test</code>用法几乎一样，常用于<code>if</code>语句中，另外<code>[[]]</code>是<code>[]</code>的加强版，支持更多特性。</p>
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span> <span class="token number">2</span> -lt <span class="token number">3</span> <span class="token punctuation">]</span>  <span class="token comment"># 为真，返回值为0</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">$?</span>  <span class="token comment"># 输出上个命令的返回值，输出0</span>
+<span class="token punctuation">[</span> -e test.sh <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"exist"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Not exist"</span>
+exist  <span class="token comment"># test.sh 文件存在</span>
+<span class="token punctuation">[</span> -e test2.sh <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"exist"</span> <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"Not exist"</span>
+Not exist  <span class="token comment"># testh2.sh 文件不存在</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注：</p>
+<blockquote>
+<ul>
+<li><code>[]</code>每一项都要用空格隔开</li>
+<li>变量最好用双引号括起来</li>
+<li>常数最好用单或双引号括起来</li>
+</ul>
+</blockquote>
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token string">"Uanu blog"</span>
+<span class="token punctuation">[</span> <span class="token variable">$name</span> <span class="token operator">==</span> <span class="token string">"Uanu blog"</span> <span class="token punctuation">]</span>  <span class="token comment"># 错误，等价于 [ Uanu blog == "Uanu blog" ]，会报错：参数太多</span>
+<span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$name</span>"</span> <span class="token operator">==</span> <span class="token string">"Uanu blog"</span> <span class="token punctuation">]</span>  <span class="token comment"># 正确</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h1><h2 id="单层if"><a href="#单层if" class="headerlink" title="单层if"></a>单层if</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> condition
+<span class="token keyword">then</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">3</span>
+<span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">4</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$a</span>"</span> -lt <span class="token string">"<span class="token variable">$b</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$a</span>"</span> -gt <span class="token number">2</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>在范围内
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="单层if-else"><a href="#单层if-else" class="headerlink" title="单层if-else"></a>单层if-else</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> condition
+<span class="token keyword">then</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">else</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">3</span>
+<span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">4</span>
+
+<span class="token keyword">if</span> <span class="token operator">!</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$a</span>"</span> -lt <span class="token string">"<span class="token variable">$b</span>"</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>不小于<span class="token variable">$&#123;b&#125;</span>
+<span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>小于<span class="token variable">$&#123;b&#125;</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>多层if-elif-elif-else</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> condition
+<span class="token keyword">then</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">elif</span> condition
+<span class="token keyword">then</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">elif</span> condition
+<span class="token keyword">then</span>
+    语句1
+    语句2
+<span class="token keyword">else</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">4</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$a</span> -eq <span class="token number">1</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>等于1
+<span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token variable">$a</span> -eq <span class="token number">2</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>等于2
+<span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token variable">$a</span> -eq <span class="token number">3</span> <span class="token punctuation">]</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>等于3
+<span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> 其他
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="case…ease形式"><a href="#case…ease形式" class="headerlink" title="case…ease形式"></a>case…ease形式</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">case</span> $变量名称 <span class="token keyword">in</span>
+    值1<span class="token punctuation">)</span>
+        语句1
+        语句2
+        <span class="token punctuation">..</span>.
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>  <span class="token comment"># 类似于C/C++中的break</span>
+    值2<span class="token punctuation">)</span>
+        语句1
+        语句2
+        <span class="token punctuation">..</span>.
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+    *<span class="token punctuation">)</span>  <span class="token comment"># 类似于C/C++中的default</span>
+        语句1
+        语句2
+        <span class="token punctuation">..</span>.
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">4</span>
+
+<span class="token keyword">case</span> <span class="token variable">$a</span> <span class="token keyword">in</span>
+    <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>等于1
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+    <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>等于2
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+    <span class="token number">3</span><span class="token punctuation">)</span>                                                
+        <span class="token builtin class-name">echo</span> <span class="token variable">$&#123;a&#125;</span>等于3
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+    *<span class="token punctuation">)</span> <span class="token comment"># 表示其他情况。类似C语言的default</span>
+        <span class="token builtin class-name">echo</span> 其他
+        <span class="token punctuation">;</span><span class="token punctuation">;</span>  
+<span class="token keyword">esac</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="for…in…do…done"><a href="#for…in…do…done" class="headerlink" title="for…in…do…done"></a>for…in…do…done</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">var</span> <span class="token keyword">in</span> val1 val2 val3
+<span class="token keyword">do</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> a <span class="token number">2</span> cc
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+<span class="token keyword">done</span>
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">file</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">`</span><span class="token function">ls</span><span class="token variable">`</span></span> <span class="token comment"># 即把ls返回的结果作为参数</span>
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$file</span>
+<span class="token keyword">done</span>
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">seq</span> <span class="token number">1</span> <span class="token number">10</span><span class="token variable">)</span></span> <span class="token comment"># $(seq 1 10)会返回1-10的序列</span>
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+<span class="token keyword">done</span>
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">&#123;</span>a<span class="token punctuation">..</span>z<span class="token punctuation">&#125;</span> <span class="token comment"># 返回a到z的序列，数字也可，倒序也可。</span>
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="for-…-…-…-do…done"><a href="#for-…-…-…-do…done" class="headerlink" title="for ((…;…;…)) do…done"></a>for ((…;…;…)) do…done</h2><p>类似C语言的for循环</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>expression<span class="token punctuation">;</span> condition<span class="token punctuation">;</span> expression<span class="token punctuation">))</span></span>
+<span class="token keyword">do</span>
+    语句1
+    语句2
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span>
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$i</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="while…do…done循环"><a href="#while…do…done循环" class="headerlink" title="while…do…done循环"></a>while…do…done循环</h2><p><strong>为假时结束循环</strong>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">while</span> condition
+<span class="token keyword">do</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">while</span> <span class="token builtin class-name">read</span> name <span class="token comment">#当读到文件结束符``ctrl+d``，返回0</span>
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">echo</span> <span class="token variable">$name</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="until…do…done循环"><a href="#until…do…done循环" class="headerlink" title="until…do…done循环"></a>until…do…done循环</h2><p><strong>为真时结束循环</strong>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">until</span> condition
+<span class="token keyword">do</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">until</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;word&#125;</span>"</span> <span class="token operator">==</span> <span class="token string">"yes"</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;word&#125;</span>"</span> <span class="token operator">==</span> <span class="token string">"YES"</span> <span class="token punctuation">]</span>
+<span class="token keyword">do</span>
+    <span class="token builtin class-name">read</span> -p <span class="token string">"Please input yes/YES to stop this program: "</span> word
+<span class="token keyword">done</span>
+<span class="token comment"># 输入yes或YES时结束</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="break命令"><a href="#break命令" class="headerlink" title="break命令"></a>break命令</h2><p>同C语言，跳出当前一层循环。</p>
+<h2 id="continue命令"><a href="#continue命令" class="headerlink" title="continue命令"></a>continue命令</h2><p>同C语言，进入下一轮循环。</p>
+<h2 id="死循环处理！"><a href="#死循环处理！" class="headerlink" title="死循环处理！"></a>死循环处理！</h2><ul>
+<li><p>当前页面运行的程序可以通过<code>ctrl+c</code>关闭</p>
+</li>
+<li><p>其他情况可以通过关闭进程</p>
+<p>1.使用<code>top</code>命令找到该进程的PID</p>
+<p>2.使用<code>kill -9 PID</code>关闭该进程</p>
+</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>类似C语言中的函数，返回的<code>exit code</code>默认是0,0表示正常结束，其余均为不正常。获取输出结果和返回值方法参照变量中的其他变量部分。</p>
+<h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>function<span class="token punctuation">]</span> <span class="token function-name function">func_name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  <span class="token comment"># function关键字可以省略</span>
+    语句1
+    语句2
+    <span class="token punctuation">..</span>.
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><p><code>$1</code>表示第一个输入参数，依次类推，但<code>$0</code><strong>仍然为文件名</strong>（同上）。</p>
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>  <span class="token comment"># 递归计算 $1 + ($1 - 1) + ($1 - 2) + ... + 0</span>
+    <span class="token assign-left variable">word</span><span class="token operator">=</span><span class="token string">""</span>
+    <span class="token keyword">while</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;word&#125;</span>"</span> <span class="token operator">!=</span> <span class="token string">'y'</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$&#123;word&#125;</span>"</span> <span class="token operator">!=</span> <span class="token string">'n'</span> <span class="token punctuation">]</span>
+    <span class="token keyword">do</span>
+        <span class="token builtin class-name">read</span> -p <span class="token string">"要进入func(<span class="token variable">$1</span>)函数吗？请输入y/n："</span> word
+    <span class="token keyword">done</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$word</span>"</span> <span class="token operator">==</span> <span class="token string">'n'</span> <span class="token punctuation">]</span>
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token number">0</span>
+        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+    <span class="token keyword">fi</span>  
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$1</span> -le <span class="token number">0</span> <span class="token punctuation">]</span> 
+    <span class="token keyword">then</span>
+        <span class="token builtin class-name">echo</span> <span class="token number">0</span>
+        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+    <span class="token keyword">fi</span>  
+
+    <span class="token assign-left variable">sum</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>func <span class="token punctuation">$(</span>expr $1 - <span class="token number">1</span><span class="token punctuation">)</span><span class="token variable">)</span></span>
+    <span class="token builtin class-name">echo</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">expr</span> $sum + $1<span class="token variable">)</span></span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable"><span class="token variable">$(</span>func <span class="token number">10</span><span class="token variable">)</span></span> <span class="token comment"># 传入参数10</span>
+<span class="token comment"># 输出：55</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>可以在函数内部定义局部变量。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">local</span> 变量名<span class="token operator">=</span>变量值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="exit命令"><a href="#exit命令" class="headerlink" title="exit命令"></a>exit命令</h1><p><code>exit</code>命令用于退出当前的shell进程，并返回一个退出状态<code>exit code</code>。</p>
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$#</span> -ne <span class="token number">1</span> <span class="token punctuation">]</span>  <span class="token comment"># 如果传入参数个数等于1，则正常退出；否则非正常退出。</span>
+<span class="token keyword">then</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"arguments not valid"</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">1</span> <span class="token comment"># 不正常返回</span>
+<span class="token keyword">else</span>
+    <span class="token builtin class-name">echo</span> <span class="token string">"arguments valid"</span>
+    <span class="token builtin class-name">exit</span> <span class="token number">0</span> <span class="token comment"># 正常返回</span>
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="文件重定向"><a href="#文件重定向" class="headerlink" title="文件重定向"></a>文件重定向</h1><p>每个进程都会默认打开3个文件描述符：</p>
+<ul>
+<li><code>stdin</code>标准输入，从命令行读取数据，文件描述符为0。</li>
+<li><code>stdout</code>标准输出，向命令行输出数据，文件描述符为1。</li>
+<li><code>stderr</code>标准错误输出，向命令行输出数据，文件描述符为2。</li>
+</ul>
+<p>可以通过文件重定向将这三个文件重定向到其他文件中。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command &gt; file</td>
+<td>将stdout重定向到file中</td>
+</tr>
+<tr>
+<td>command &lt; file</td>
+<td>将stdin重定向到file中</td>
+</tr>
+<tr>
+<td>command &gt;&gt; file</td>
+<td>将stdout以追加方式重定向到file中</td>
+</tr>
+<tr>
+<td>command n&gt; file</td>
+<td>将文件描述符n重定向到file中</td>
+</tr>
+<tr>
+<td>command n&gt;&gt; file</td>
+<td>将文件描述符n以追加方式重定向到file中</td>
+</tr>
+</tbody></table>
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> -e <span class="token string">"Hello <span class="token entity" title="\c">\c</span>"</span> <span class="token operator">></span> output.txt  <span class="token comment"># 将stdout重定向到output.txt中</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"World"</span> <span class="token operator">>></span> output.txt  <span class="token comment"># 将字符串追加到output.txt中</span>
+
+<span class="token builtin class-name">read</span> str <span class="token operator">&lt;</span> output.txt  <span class="token comment"># 从output.txt中读取字符串</span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$str</span>  <span class="token comment"># 输出结果：Hello World</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>同时重定向stdin和stdout</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./test.sh <span class="token operator">&lt;</span> input.txt <span class="token operator">></span> output.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="引入外部脚本"><a href="#引入外部脚本" class="headerlink" title="引入外部脚本"></a>引入外部脚本</h1><p>类似C语言的#include &lt;filename&gt;</p>
+<p>格式：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">.</span> filename  <span class="token comment"># 注意点和文件名之间有一个空格</span>
+或
+<span class="token builtin class-name">source</span> filename<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#! /bin/bash</span>
+
+<span class="token builtin class-name">source</span> test1.sh <span class="token comment"># 或 . test1.sh</span>
+
+<span class="token builtin class-name">echo</span> My name is: <span class="token variable">$name</span>  <span class="token comment"># 可以使用test1.sh中的变量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>终于写完了，哇酷哇酷！</p>
+
                 
             </div>
             <hr/>
