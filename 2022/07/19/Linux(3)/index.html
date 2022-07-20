@@ -5,8 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Linux(3)--git使用, Uanu&#39;s blog">
-    <meta name="description" content="To Do
-">
+    <meta name="description" content="git使用基本概念
+工作区：仓库的目录。工作区是独立于各个分支的。
+暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于各个分支的。
+版本库：存放所有已经提交到本地仓库的代码版本。
+版本结构：树结构，树中每个节点代表">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -438,7 +441,95 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>To Do</p>
+                <h1 id="git使用"><a href="#git使用" class="headerlink" title="git使用"></a>git使用</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
+<li>工作区：仓库的目录。工作区是独立于各个分支的。</li>
+<li>暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于各个分支的。</li>
+<li>版本库：存放所有已经提交到本地仓库的代码版本。</li>
+<li>版本结构：树结构，树中每个节点代表一个代码版本。</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
+<li><p><code>git config --global user.name xxx</code>：设置全局用户名，信息记录在<code>~/.gitconfig</code>文件中</p>
+</li>
+<li><p><code>git config --global user.email xxx@xxx.com</code>：设置全局邮箱地址，信息记录在<code>~/.gitconfig</code>文件中</p>
+</li>
+<li><p><code>git init</code>：将当前目录配置成git仓库，信息记录在隐藏的.git文件夹中</p>
+</li>
+<li><p><code>git add XX</code>：将XX文件添加到暂存区</p>
+<ul>
+<li><code>git add .</code>：将所有待加入暂存区的文件加入暂存区</li>
+</ul>
+</li>
+<li><p><code>git rm --cached XX</code>：将文件从仓库索引目录中删掉</p>
+</li>
+<li><p><code>git commit -m &quot;给自己看的备注信息&quot;</code>：将暂存区的内容提交到当前分支</p>
+</li>
+<li><p><code>git status</code>：查看仓库状态</p>
+</li>
+<li><p><code>git diff XX</code>：查看XX文件相对于暂存区修改了哪些内容</p>
+</li>
+<li><p><code>git log</code>：查看当前分支的所有版本</p>
+</li>
+<li><p><code>git reflog</code>：查看HEAD指针的移动历史（包括被回滚的版本）</p>
+</li>
+<li><p><code>git reset --hard HEAD^</code> 或 <code>git reset --hard HEAD~</code>：将代码库回滚到上一个版本</p>
+<ul>
+<li><p><code>git reset --hard HEAD^^</code>：往上回滚两次，以此类推</p>
+</li>
+<li><p><code>git reset --hard HEAD~100</code>：往上回滚100个版本</p>
+</li>
+<li><p><code>git reset --hard</code> 版本号：回滚到某一特定版本</p>
+</li>
+</ul>
+</li>
+<li><p><code>git checkout — XX</code>或<code>git restore XX</code>：将XX文件尚未加入暂存区的修改全部撤销</p>
+</li>
+<li><p><code>git remote add origin git@git.uanu2002.com:xxx/XXX.git</code>：将本地仓库关联到远程仓库</p>
+</li>
+<li><p><code>git push -u</code> (第一次需要-u以后不需要)：将当前分支推送到远程仓库</p>
+<ul>
+<li><code>git push origin branch_name</code>：将本地的某个分支推送到远程仓库</li>
+</ul>
+</li>
+<li><p><code>git clone git@git.uanu2002.com:xxx/XXX.git</code>：将远程仓库XXX下载到当前目录下</p>
+</li>
+<li><p><code>git checkout -b branch_name</code>：创建并切换到<code>branch_name</code>这个分支</p>
+</li>
+<li><p><code>git branch</code>：查看所有分支和当前所处分支</p>
+</li>
+<li><p><code>git checkout branch_name</code>：切换到<code>branch_name</code>这个分支</p>
+</li>
+<li><p><code>git merge branch_name</code>：将分支<code>branch_name</code>合并到当前分支上</p>
+</li>
+<li><p><code>git branch -d branch_name</code>：删除本地仓库的<code>branch_name</code>分支</p>
+</li>
+<li><p><code>git branch branch_name</code>：创建新分支</p>
+</li>
+<li><p><code>git push --set-upstream origin branch_name</code>：设置本地的<code>branch_name</code>分支对应远程仓库的<code>branch_name</code>分支</p>
+</li>
+<li><p><code>git push -d origin branch_name</code>：删除远程仓库的<code>branch_name</code>分支</p>
+</li>
+<li><p><code>git pull</code>：将远程仓库的当前分支与本地仓库的当前分支合并</p>
+<ul>
+<li><code>git pull origin branch_name</code>：将远程仓库的<code>branch_name</code>分支与本地仓库的当前分支合并</li>
+</ul>
+</li>
+<li><p><code>git branch --set-upstream-to=origin/branch_name1 branch_name2</code>：将远程<code>branch_name1</code>分支与本地的<code>branch_name2</code>分支对应</p>
+</li>
+<li><p><code>git checkout -t origin/branch_name</code> 将远程的<code>branch_name</code>分支拉取到本地</p>
+</li>
+<li><p><code>git stash</code>：将工作区和暂存区中尚未提交的修改存入栈中</p>
+</li>
+<li><p><code>git stash apply</code>：将栈顶存储的修改恢复到当前分支，但不删除栈顶元素</p>
+</li>
+<li><p><code>git stash drop</code>：删除栈顶存储的修改</p>
+</li>
+<li><p><code>git stash pop</code>：将栈顶存储的修改恢复到当前分支，同时删除栈顶元素</p>
+</li>
+<li><p><code>git stash list</code>：查看栈中所有元素</p>
+</li>
+</ol>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220720093332104.png" alt="image-20220720093332104"></p>
+<p><img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220720093506913.png" alt="image-20220720093506913"></p>
 
                 
             </div>
