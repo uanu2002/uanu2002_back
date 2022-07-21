@@ -4,12 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux(3)--git使用, Uanu&#39;s blog">
-    <meta name="description" content="git使用基本概念
-工作区：仓库的目录。工作区是独立于各个分支的。
-暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于各个分支的。
-版本库：存放所有已经提交到本地仓库的代码版本。
-版本结构：树结构，树中每个节点代表">
+    <meta name="keywords" content="抽象代数(1)--子群, Uanu&#39;s blog">
+    <meta name="description" content="子群的定义定义1设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G，也称H为G的真子群，记为H$\lt$G.
+
+  例1  设G是一个群。则{e}$\le$G，G$\">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -32,7 +30,7 @@
     </style>
 
 
-    <title>Linux(3)--git使用 | Uanu&#39;s blog</title>
+    <title>抽象代数(1)--子群 | Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -259,12 +257,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux(3)--git使用</h1>
+                    <h1 class="description center-align post-title">抽象代数(1)--子群</h1>
                 </div>
             </div>
         </div>
@@ -380,16 +378,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                <span class="chip bg-color">数学</span>
                             </a>
                         
-                            <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                <span class="chip bg-color">操作系统</span>
+                            <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
+                                <span class="chip bg-color">抽象代数</span>
                             </a>
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/%E5%AD%90%E7%BE%A4/">
+                                <span class="chip bg-color">子群</span>
                             </a>
                         
                     </div>
@@ -400,12 +398,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                数学
                             </a>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                工具
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" class="post-category">
+                                抽象代数
                             </a>
                         
                     </div>
@@ -417,7 +415,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-19
+                    2022-07-21
                 </div>
                 
 
@@ -441,95 +439,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="git使用"><a href="#git使用" class="headerlink" title="git使用"></a>git使用</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ul>
-<li>工作区：仓库的目录。工作区是独立于各个分支的。</li>
-<li>暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于各个分支的。</li>
-<li>版本库：存放所有已经提交到本地仓库的代码版本。</li>
-<li>版本结构：树结构，树中每个节点代表一个代码版本。</li>
-</ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
-<li><p><code>git config --global user.name xxx</code>：设置全局用户名，信息记录在<code>~/.gitconfig</code>文件中</p>
-</li>
-<li><p><code>git config --global user.email xxx@xxx.com</code>：设置全局邮箱地址，信息记录在<code>~/.gitconfig</code>文件中</p>
-</li>
-<li><p><code>git init</code>：将当前目录配置成git仓库，信息记录在隐藏的.git文件夹中</p>
-</li>
-<li><p><code>git add XX</code>：将XX文件添加到暂存区</p>
-<ul>
-<li><code>git add .</code>：将所有待加入暂存区的文件加入暂存区</li>
-</ul>
-</li>
-<li><p><code>git rm --cached XX</code>：将文件从仓库索引目录中删掉</p>
-</li>
-<li><p><code>git commit -m &quot;给自己看的备注信息&quot;</code>：将暂存区的内容提交到当前分支</p>
-</li>
-<li><p><code>git status</code>：查看仓库状态</p>
-</li>
-<li><p><code>git diff XX</code>：查看XX文件相对于暂存区修改了哪些内容</p>
-</li>
-<li><p><code>git log</code>：查看当前分支的所有版本</p>
-</li>
-<li><p><code>git reflog</code>：查看HEAD指针的移动历史（包括被回滚的版本）</p>
-</li>
-<li><p><code>git reset --hard HEAD^</code> 或 <code>git reset --hard HEAD~</code>：将代码库回滚到上一个版本</p>
-<ul>
-<li><p><code>git reset --hard HEAD^^</code>：往上回滚两次，以此类推</p>
-</li>
-<li><p><code>git reset --hard HEAD~100</code>：往上回滚100个版本</p>
-</li>
-<li><p><code>git reset --hard</code> 版本号：回滚到某一特定版本</p>
-</li>
-</ul>
-</li>
-<li><p><code>git checkout — XX</code>或<code>git restore XX</code>：将XX文件尚未加入暂存区的修改全部撤销</p>
-</li>
-<li><p><code>git remote add origin git@git.uanu2002.com:xxx/XXX.git</code>：将本地仓库关联到远程仓库</p>
-</li>
-<li><p><code>git push -u</code> (第一次需要-u以后不需要)：将当前分支推送到远程仓库</p>
-<ul>
-<li><code>git push origin branch_name</code>：将本地的某个分支推送到远程仓库</li>
-</ul>
-</li>
-<li><p><code>git clone git@git.uanu2002.com:xxx/XXX.git</code>：将远程仓库XXX下载到当前目录下</p>
-</li>
-<li><p><code>git checkout -b branch_name</code>：创建并切换到<code>branch_name</code>这个分支</p>
-</li>
-<li><p><code>git branch</code>：查看所有分支和当前所处分支</p>
-</li>
-<li><p><code>git checkout branch_name</code>：切换到<code>branch_name</code>这个分支</p>
-</li>
-<li><p><code>git merge branch_name</code>：将分支<code>branch_name</code>合并到当前分支上</p>
-</li>
-<li><p><code>git branch -d branch_name</code>：删除本地仓库的<code>branch_name</code>分支</p>
-</li>
-<li><p><code>git branch branch_name</code>：创建新分支</p>
-</li>
-<li><p><code>git push --set-upstream origin branch_name</code>：设置本地的<code>branch_name</code>分支对应远程仓库的<code>branch_name</code>分支</p>
-</li>
-<li><p><code>git push -d origin branch_name</code>：删除远程仓库的<code>branch_name</code>分支</p>
-</li>
-<li><p><code>git pull</code>：将远程仓库的当前分支与本地仓库的当前分支合并</p>
-<ul>
-<li><code>git pull origin branch_name</code>：将远程仓库的<code>branch_name</code>分支与本地仓库的当前分支合并</li>
-</ul>
-</li>
-<li><p><code>git branch --set-upstream-to=origin/branch_name1 branch_name2</code>：将远程<code>branch_name1</code>分支与本地的<code>branch_name2</code>分支对应</p>
-</li>
-<li><p><code>git checkout -t origin/branch_name</code> 将远程的<code>branch_name</code>分支拉取到本地</p>
-</li>
-<li><p><code>git stash</code>：将工作区和暂存区中尚未提交的修改存入栈中</p>
-</li>
-<li><p><code>git stash apply</code>：将栈顶存储的修改恢复到当前分支，但不删除栈顶元素</p>
-</li>
-<li><p><code>git stash drop</code>：删除栈顶存储的修改</p>
-</li>
-<li><p><code>git stash pop</code>：将栈顶存储的修改恢复到当前分支，同时删除栈顶元素</p>
-</li>
-<li><p><code>git stash list</code>：查看栈中所有元素</p>
-</li>
-</ol>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2022/07/19/Linux(3)/1.png" alt="image-20220720093332104"></p>
-<p><img src="/2022/07/19/Linux(3)/2.png" alt="image-20220720093506913"></p>
+                <h2 id="子群的定义"><a href="#子群的定义" class="headerlink" title="子群的定义"></a>子群的定义</h2><p>定义1<br>设<em>G</em>是一个群，<em>H</em>是<em>G</em>的一个<strong>非空</strong>子集合，如果关于<em>G</em>的乘法也能作成群，则称<em>H</em>是<em>G</em>的<strong>子群</strong>，记为<em>H</em>$\le$<em>G</em>.如果子群<em>H</em>真包含于<em>G</em>，也称<em>H</em>为<em>G</em>的<strong>真子群</strong>，记为<em>H</em>$\lt$<em>G</em>.</p>
+<blockquote>
+<p>  例1<br>  设<em>G</em>是一个群。则{<em>e</em>}$\le$<em>G</em>，<em>G</em>$\le$<em>G</em>.</p>
+</blockquote>
+<p>定理1（子群第一判定定理）<br>设<em>G</em>是一个群，<em>H</em>是<em>G</em>的一个非空子集，则<em>H</em>$\le$<em>G</em>当且仅当<br>（1）<em>a, b</em>$\in$<em>H</em>，都有<em>ab</em>$\in$<em>H</em><br>（2）<em>a</em>$\in$<em>H</em>，有$a^{-1}\in H$</p>
+<p>推论<br>设$H\le G$，则$e_H&#x3D;e_G$，$e_H^{-1}&#x3D;e_G^{-1}$.</p>
+<p>定理2（子群第二判定定理）<br>设$G$是一个群，$H$是$G$的一个<strong>非空</strong>子集，则$H\le G$当且仅当$a,b\in H$，有$ab^{-1}\in H$.</p>
+<p>定理3（子群第三判定定理）<br>设$G$是一个群，$H$是$G$的一个非空<strong>有限</strong>子集，则$H\le G$当且仅当$a,b\in H$，有$ab\in H$.</p>
+<p>推论<br>设$G$是一个有限群，$H$是$G$的一个非空子集，则$H\le G$当且仅当$a,b\in H$，有$ab\in H$.</p>
+<blockquote>
+<p>  例<br>  $A_n\le S_n$.（称$A_n$为$n$次交错群）</p>
+</blockquote>
+<p>定理4<br>设$G$是一个群，$S$是$G$的一个非空子集，则$(S)&#x3D;\left {\underbrace{a^{m}b^{n}\cdots c^{k}}_{有限个}|a,b,…,c\in S,m,n,…,k\in \mathbb{Z}\right }$是$G$的一个子群，且是包含$S$的最小子群.（称为$S$的<strong>生成子群</strong>）</p>
 
                 
             </div>
@@ -556,7 +478,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/07/19/Linux(3)/">http://example.com/2022/07/19/Linux(3)/</a>
+                    <a href="http://example.com/2022/07/21/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(1)/">http://example.com/2022/07/21/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(1)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -594,16 +516,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                    <span class="chip bg-color">数学</span>
                                 </a>
                             
-                                <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                                    <span class="chip bg-color">操作系统</span>
+                                <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
+                                    <span class="chip bg-color">抽象代数</span>
                                 </a>
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/%E5%AD%90%E7%BE%A4/">
+                                    <span class="chip bg-color">子群</span>
                                 </a>
                             
                         </div>
@@ -651,9 +573,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/07/21/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(1)/">
                     <div class="card-image">
@@ -671,9 +594,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -690,6 +613,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -716,13 +640,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/19/Linux(2)/">
+                <a href="/2022/07/19/Linux(3)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Linux(2)--ssh使用">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux(3)--git使用">
                         
-                        <span class="card-title">Linux(2)--ssh使用</span>
+                        <span class="card-title">Linux(3)--git使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -762,8 +686,8 @@
                         <span class="chip bg-color">操作系统</span>
                     </a>
                     
-                    <a href="/tags/ssh/">
-                        <span class="chip bg-color">ssh</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
