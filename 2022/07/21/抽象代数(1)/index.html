@@ -460,16 +460,35 @@
 <p>  例<br>  子群的交还是子群。</p>
 </blockquote>
 <h2 id="子群的陪集"><a href="#子群的陪集" class="headerlink" title="子群的陪集"></a>子群的陪集</h2><p>定义1<br>设$H\le G，a\in G$，称$aH&#x3D; {ah|h\in H }$   $(Ha&#x3D;{ha| h\in H})$为子群H的<strong>左陪集（右陪集）</strong>.如果$aH&#x3D;Ha$，则称它们为子群$H$的<strong>陪集</strong>.</p>
-<p>定理1<br>设$H\le G,a,b\in G$，则<br>（1）$a\in aH$  ($a\in Ha$)<br>（2）$a\in bH \leftrightarrow aH&#x3D;bH \leftrightarrow a^{-1}b \in H$  ($a\in Hb \leftrightarrow Ha&#x3D;Hb \leftrightarrow ab^{-1} \in H$)   (证循环)<br>（3）$\left |aH \right |&#x3D;\left |Ha \right |&#x3D;\left |H \right |$  (证存在双射)</p>
+<p>定理1<br>设$H\le G,a,b\in G$，则<br>（1）$a\in aH$  ($a\in Ha$)<br><strong>（2）</strong>$a\in bH \leftrightarrow aH&#x3D;bH \leftrightarrow a^{-1}b \in H$  ($a\in Hb \leftrightarrow Ha&#x3D;Hb \leftrightarrow ab^{-1} \in H$)   (证循环)<br>（3）$\left |aH \right |&#x3D;\left |Ha \right |&#x3D;\left |H \right |$  (证存在双射)</p>
 <p>定理2<br>设$S_l,S_r$分别是群$G$关于子群$H$的左，右陪集分解，则$\left |S_l \right |&#x3D;\left |S_r \right |$.</p>
 <p>定义2<br>设$H\le G,S_l,S_r$分别是$G$关于$H$的左，右陪集分解，称$\left |S_l \right |&#x3D;\left |S_r \right |$为$H$在$G$中的<strong>指数</strong>，记为$[G:H]$.</p>
-<p>定理3<br>设$G$是一个有限群，$H\le G$，则$[G:H]&#x3D;|G|&#x2F;|H|$.</p>
+<p>定理3（拉格朗日定理）<br>设$G$是一个有限群，$H\le G$，则$[G:H]&#x3D;|G|&#x2F;|H|$.</p>
 <p>推论<br>设$G$是一个有限群，$a\in G$，则$|a|$整除$|G|$.</p>
 <blockquote>
 <p>  例<br>  素数阶群必定是循环群。<br>  一个有限非交换群至少有六个元素。</p>
 </blockquote>
 <p>命题<br>设$G$是一个群，$e$是单位元，$a\in G,m,n,k$都是正整数，则<br>（1）若$|a|&#x3D;k,a^{m}&#x3D;e,则k|m$.<br>（2）若$m|k,n|k,(m,n)&#x3D;1,则mn|k$.<br>（3）若$m|kn,(m,n)&#x3D;1,则m|k$.</p>
-<h2 id="不变子群和商群"><a href="#不变子群和商群" class="headerlink" title="不变子群和商群"></a>不变子群和商群</h2>
+<h2 id="不变子群和商群"><a href="#不变子群和商群" class="headerlink" title="不变子群和商群"></a>不变子群和商群</h2><p>定义1<br>设$N\le G$，如果对于任意的$a\in G$，都有$aN&#x3D;Na$，则称$N$是群$G$的<strong>不变子群</strong>(或<strong>正规子群</strong>)，记为$N\lhd G$.$N$的一个左陪集(也是右陪集)称为$N$的一个<strong>陪集</strong>.</p>
+<blockquote>
+<p>注<br>$aN&#x3D;Na$并不是说$a$可以和$N$中每一个元交换。而仅仅是作为集合它们是相等的。</p>
+</blockquote>
+<blockquote>
+<p>  例<br>  <strong>交换群的任意子群都是不变子群。</strong></p>
+</blockquote>
+<p>推论<br>（1）循环群的子群都是不变子群（因为循环群都是交换群）<br>（2）素数阶群的任意子群都是不变子群（因为素数阶子群都是循环群）<br>（3）平凡子群都是不变子群（平凡子群是单位子群和群本身）</p>
+<p>定义2<br>设$S_1,S_2,\cdots,S_m\subseteq G$，称$S_1S_2\cdots S_m&#x3D;{ s_1s_2\cdots s_m|s_i\in S_i }$为G的子集$S_1,S_2,\cdots, S_m$的<strong>乘积</strong>.</p>
+<p>命题<br>群中子集的乘积满足<strong>结合律</strong>，即$(S_1S_2)S_3&#x3D;S_1(S_2S_3)$.</p>
+<p>定理1（不变子群的第一判定定理）<br>设$N\le G$，则$N\lhd G$当且仅当对任意的$a\in G$，有$aNa^{-1}&#x3D;N$.</p>
+<p>定理2（不变子群的第二判定定理）<br>设$N\le G$，则$N\lhd G$当且仅当对任意的$a\in G$和任意的$n\in N$，有$ana^{-1}\in N$.</p>
+<p>定理3<br>设$N\lhd G,G&#x2F;N&#x3D;{ aN,bN,\cdots }$是群G关于其不变子群$N$的一个陪集分解，对于任意的$xN,yN\in S$，定义$xN\cdot yN&#x3D;(xy)N$.则$G&#x2F;N$关于上述法则作成一个群，称之为群$G$关于不变子群$N$的<strong>商群</strong>.</p>
+<p>注<br>商群中的单位元是$eN$.</p>
+<p>推论<br>设$G$是有限群，$N\lhd G$，则$|G&#x2F;N|&#x3D;|G|&#x2F;|N|$.</p>
+<blockquote>
+<p>  例<br>  子群的乘积不一定是子群。</p>
+</blockquote>
+<p>推论<br>（1）两子群中一个为<strong>不变</strong>子群，则乘积仍为子群。<br>（2）不变子群的乘积仍为不变子群。<br>（3）子群关系具有传递性：$H\le G,K\le H,则K\le G$.<br>（4）不变子群关系不能传递。<br>（5）两个不变子群的交集还是不变子群。<br>（6）指数是2的子群一定是不变子群。</p>
+
                 
             </div>
             <hr/>
