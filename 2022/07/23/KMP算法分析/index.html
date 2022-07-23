@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="抽象代数(1)--子群, Uanu&#39;s blog">
-    <meta name="description" content="子群的定义定义1设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G，也称H为G的真子群，记为H$\lt$G.
-
-  例  设G是一个群。则{e}$\le$G，G$\l">
+    <meta name="keywords" content="算法分析(1)--KMP, Uanu&#39;s blog">
+    <meta name="description" content="KMP算法简介KMP是三位大牛提出的一种字符串匹配算法。简单来说就是给定一个目标字符串，下称模式串（pattern string）；再给定一个待搜索的字符串，下称主串（main string），KMP就是在主串中定位模式串出现的位置。
+算法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,7 +29,7 @@
     </style>
 
 
-    <title>抽象代数(1)--子群 | Uanu&#39;s blog</title>
+    <title>算法分析(1)--KMP | Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -257,12 +256,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">抽象代数(1)--子群</h1>
+                    <h1 class="description center-align post-title">算法分析(1)--KMP</h1>
                 </div>
             </div>
         </div>
@@ -378,16 +377,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                                <span class="chip bg-color">数学</span>
+                            <a href="/tags/KMP/">
+                                <span class="chip bg-color">KMP</span>
                             </a>
                         
-                            <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
-                                <span class="chip bg-color">抽象代数</span>
+                            <a href="/tags/kmp/">
+                                <span class="chip bg-color">kmp</span>
                             </a>
                         
-                            <a href="/tags/%E5%AD%90%E7%BE%A4/">
-                                <span class="chip bg-color">子群</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -398,12 +397,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                数学
-                            </a>
-                        
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" class="post-category">
-                                抽象代数
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -415,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-21
+                    2022-07-23
                 </div>
                 
 
@@ -439,55 +434,54 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="子群的定义"><a href="#子群的定义" class="headerlink" title="子群的定义"></a>子群的定义</h2><p>定义1<br>设<em>G</em>是一个群，<em>H</em>是<em>G</em>的一个<strong>非空</strong>子集合，如果关于<em>G</em>的乘法也能作成群，则称<em>H</em>是<em>G</em>的<strong>子群</strong>，记为<em>H</em>$\le$<em>G</em>.如果子群<em>H</em>真包含于<em>G</em>，也称<em>H</em>为<em>G</em>的<strong>真子群</strong>，记为<em>H</em>$\lt$<em>G</em>.</p>
-<blockquote>
-<p>  例<br>  设<em>G</em>是一个群。则{<em>e</em>}$\le$<em>G</em>，<em>G</em>$\le$<em>G</em>.</p>
-</blockquote>
-<p>定理1（子群第一判定定理）<br>设<em>G</em>是一个群，<em>H</em>是<em>G</em>的一个非空子集，则<em>H</em>$\le$<em>G</em>当且仅当<br>（1）<em>a, b</em>$\in$<em>H</em>，都有<em>ab</em>$\in$<em>H</em><br>（2）<em>a</em>$\in$<em>H</em>，有$a^{-1}\in H$</p>
-<p>推论<br>设$H\le G$，则$e_H&#x3D;e_G$，$e_H^{-1}&#x3D;e_G^{-1}$.</p>
-<p>定理2（子群第二判定定理）<br>设$G$是一个群，$H$是$G$的一个<strong>非空</strong>子集，则$H\le G$当且仅当$a,b\in H$，有$ab^{-1}\in H$.</p>
-<p>定理3（子群第三判定定理）<br>设$G$是一个群，$H$是$G$的一个非空<strong>有限</strong>子集，则$H\le G$当且仅当$a,b\in H$，有$ab\in H$.</p>
-<p>推论<br>设$G$是一个有限群，$H$是$G$的一个非空子集，则$H\le G$当且仅当$a,b\in H$，有$ab\in H$.</p>
-<blockquote>
-<p>  例<br>  $A_n\le S_n$.（称$A_n$为$n$次交错群）</p>
-</blockquote>
-<p>定理4<br>设$G$是一个群，$S$是$G$的一个非空子集，则$(S)&#x3D;{\underbrace{a^{m}b^{n}\cdots c^{k} }_{有限个}|a,b,…,c\in S,m,n,…,k\in \mathbb{Z}}$是$G$的一个子群，且是包含$S$的最小子群.（称为$S$的<strong>生成子群</strong>）</p>
-<blockquote>
-<p>  例<br>  循环群的子群就是循环群。（进而可以计算有限循环群（模n剩余类）的子群。</p>
-</blockquote>
-<p>子群图<br>每层的子群阶相等，下层是上层的真子群，有子群关系的用线连接，最上为原群，最下方子群只含单位元。</p>
-<blockquote>
-<p>  例<br>  子群的交还是子群。</p>
-</blockquote>
-<h2 id="子群的陪集"><a href="#子群的陪集" class="headerlink" title="子群的陪集"></a>子群的陪集</h2><p>定义1<br>设$H\le G，a\in G$，称$aH&#x3D; {ah|h\in H }$   $(Ha&#x3D;{ha| h\in H})$为子群H的<strong>左陪集（右陪集）</strong>.如果$aH&#x3D;Ha$，则称它们为子群$H$的<strong>陪集</strong>.</p>
-<p>定理1<br>设$H\le G,a,b\in G$，则<br>（1）$a\in aH$  ($a\in Ha$)<br><strong>（2）</strong>$a\in bH \leftrightarrow aH&#x3D;bH \leftrightarrow a^{-1}b \in H$  ($a\in Hb \leftrightarrow Ha&#x3D;Hb \leftrightarrow ab^{-1} \in H$)   (证循环)<br>（3）$\left |aH \right |&#x3D;\left |Ha \right |&#x3D;\left |H \right |$  (证存在双射)</p>
-<p>定理2<br>设$S_l,S_r$分别是群$G$关于子群$H$的左，右陪集分解，则$\left |S_l \right |&#x3D;\left |S_r \right |$.</p>
-<p>定义2<br>设$H\le G,S_l,S_r$分别是$G$关于$H$的左，右陪集分解，称$\left |S_l \right |&#x3D;\left |S_r \right |$为$H$在$G$中的<strong>指数</strong>，记为$[G:H]$.</p>
-<p>定理3（拉格朗日定理）<br>设$G$是一个有限群，$H\le G$，则$[G:H]&#x3D;|G|&#x2F;|H|$.</p>
-<p>推论<br>设$G$是一个有限群，$a\in G$，则$|a|$整除$|G|$.</p>
-<blockquote>
-<p>  例<br>  素数阶群必定是循环群。<br>  一个有限非交换群至少有六个元素。</p>
-</blockquote>
-<p>命题<br>设$G$是一个群，$e$是单位元，$a\in G,m,n,k$都是正整数，则<br>（1）若$|a|&#x3D;k,a^{m}&#x3D;e,则k|m$.<br>（2）若$m|k,n|k,(m,n)&#x3D;1,则mn|k$.<br>（3）若$m|kn,(m,n)&#x3D;1,则m|k$.</p>
-<h2 id="不变子群和商群"><a href="#不变子群和商群" class="headerlink" title="不变子群和商群"></a>不变子群和商群</h2><p>定义1<br>设$N\le G$，如果对于任意的$a\in G$，都有$aN&#x3D;Na$，则称$N$是群$G$的<strong>不变子群</strong>(或<strong>正规子群</strong>)，记为$N\lhd G$.$N$的一个左陪集(也是右陪集)称为$N$的一个<strong>陪集</strong>.</p>
-<blockquote>
-<p>注<br>$aN&#x3D;Na$并不是说$a$可以和$N$中每一个元交换。而仅仅是作为集合它们是相等的。</p>
-</blockquote>
-<blockquote>
-<p>  例<br>  <strong>交换群的任意子群都是不变子群。</strong></p>
-</blockquote>
-<p>推论<br>（1）循环群的子群都是不变子群（因为循环群都是交换群）<br>（2）素数阶群的任意子群都是不变子群（因为素数阶子群都是循环群）<br>（3）平凡子群都是不变子群（平凡子群是单位子群和群本身）</p>
-<p>定义2<br>设$S_1,S_2,\cdots,S_m\subseteq G$，称$S_1S_2\cdots S_m&#x3D;{ s_1s_2\cdots s_m|s_i\in S_i }$为G的子集$S_1,S_2,\cdots, S_m$的<strong>乘积</strong>.</p>
-<p>命题<br>群中子集的乘积满足<strong>结合律</strong>，即$(S_1S_2)S_3&#x3D;S_1(S_2S_3)$.</p>
-<p>定理1（不变子群的第一判定定理）<br>设$N\le G$，则$N\lhd G$当且仅当对任意的$a\in G$，有$aNa^{-1}&#x3D;N$.</p>
-<p>定理2（不变子群的第二判定定理）<br>设$N\le G$，则$N\lhd G$当且仅当对任意的$a\in G$和任意的$n\in N$，有$ana^{-1}\in N$.</p>
-<p>定理3<br>设$N\lhd G,G&#x2F;N&#x3D;{ aN,bN,\cdots }$是群G关于其不变子群$N$的一个陪集分解，对于任意的$xN,yN\in S$，定义$xN\cdot yN&#x3D;(xy)N$.则$G&#x2F;N$关于上述法则作成一个群，称之为群$G$关于不变子群$N$的<strong>商群</strong>.</p>
-<p>注<br>商群中的单位元是$eN$.</p>
-<p>推论<br>设$G$是有限群，$N\lhd G$，则$|G&#x2F;N|&#x3D;|G|&#x2F;|N|$.</p>
-<blockquote>
-<p>  例<br>  子群的乘积不一定是子群。</p>
-</blockquote>
-<p>推论<br>（1）两子群中一个为<strong>不变</strong>子群，则乘积仍为子群。<br>（2）不变子群的乘积仍为不变子群。<br>（3）子群关系具有传递性：$H\le G,K\le H,则K\le G$.<br>（4）不变子群关系不能传递。<br>（5）两个不变子群的交集还是不变子群。<br>（6）指数是2的子群一定是不变子群。</p>
+                <h2 id="KMP算法简介"><a href="#KMP算法简介" class="headerlink" title="KMP算法简介"></a>KMP算法简介</h2><p>KMP是三位大牛提出的一种字符串匹配算法。简单来说就是给定一个目标字符串，下称<strong>模式串</strong>（pattern string）；再给定一个待搜索的字符串，下称<strong>主串</strong>（main string），KMP就是在主串中定位模式串出现的位置。</p>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>KMP算法的核心是不重复扫描主串，进而实现$O(n)$的时间复杂度。而要实现不重复扫描就必须准确得到每次模式串回溯的长度。下面将结合例子来推导回溯距离的计算。</p>
+<p>先看一个简单的例子。<br><img src="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/1.png" style="zoom: 38%;"></p>
+<p>此时C和D匹配失败，如果使用朴素算法，需要将i回退1，j回退到0，但这种情况匹配肯定失败，因为在主串2位上A与模式串1位A对齐前，由于中间不存在A，因此不可能匹配成功。因此模式串从2位A到0位A的比较过程可以省去，即i不动，j移动至模式串0位。如下图。<br><img src="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/2.png" alt="2" style="zoom:38%;"></p>
+<p>我们似乎可以得到一个结论，当发生匹配失败（简称失配）时，我们可以保持主串i不动，将j移动至与失配前一位相同且距离最近的位置，然后j再加1；如果不存在则移至0。</p>
+<p>接着我们看下面两种情况。<br><img src="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/3.png" style="zoom:38%;"></p>
+<p>第一种情况：和最开始一样分析，模式串和子串的4为匹配失败，由于模式串1位B和3位B间不存在B，所以可以直接将j移至1位B，然后加1。</p>
+<img src="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/desktop\blog\source\_posts\KMP算法分析\4.png" style="zoom:38%;"> 
+
+<p>第二种情况：此时如果按之前分析的方法，会出现如下图的情况，即主串2位的A与子串0位的C匹配失败，这是因为我们没有考虑与失配前两位相同且距离最近的位置。<br><img src="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/5.png" style="zoom:38%;"></p>
+<p>综上考虑两种情况我们发现最开始得到的结论是错误的，事实上我们需要在确定j位置后，还需要验证是否直到模式串开始的部分都相同，因此我们需要修改<strong>结论</strong>为当发生匹配失败（简称失配）时，我们可以保持主串i不动，将j移动至<strong>模式串前n位</strong>与<strong>失配前n位</strong>相同且距离最近的位置，然后j再加1；如果不存在则移至0。</p>
+<p>在得到结论后，我们下一步就要分析如何基于结论计算每个位置如果发生失配应该移动的距离，即求出next[i]数组。</p>
+<h2 id="计算next数组"><a href="#计算next数组" class="headerlink" title="计算next数组"></a>计算next数组</h2><p>计算next数组可以看做是模式串和模式串自身进行匹配，因此当发生失配时，我们可以直接使用前面计算好next进行移动。代码如下。</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void Next(char*T)&#123;
+    int i&#x3D;1, j&#x3D;0;
+    while (i&lt;strlen(T)) &#123;
+        if (j&#x3D;&#x3D;0||T[i]&#x3D;&#x3D;T[j]) &#123;
+            i++,j++;
+            next[i]&#x3D;j;
+        &#125;else
+            j&#x3D;next[j]; &#x2F;&#x2F; i,j失配，用next[j]与i继续匹配
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="next数组优化"><a href="#next数组优化" class="headerlink" title="next数组优化"></a>next数组优化</h2><p>考虑如下情况。<br><img src="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/6.png" style="zoom:38%;"></p>
+<p>根据上述分析计算，出现失配后，j应该移动至1位的B，但由于失配的也是B，所以移动后必定失配，所以需要在求next数组时特别考虑<code>p[j] == p[next[j]]</code>的情况，即跳过相等情况的位置，优化后代码如下。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">Next</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span>T<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i<span class="token operator">&lt;</span><span class="token function">strlen</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j<span class="token operator">==</span><span class="token number">0</span><span class="token operator">||</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span>T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            i<span class="token operator">++</span><span class="token punctuation">,</span>j<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                next<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                next<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 跳过相同的位置</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span>
+            j<span class="token operator">=</span>next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="注"><a href="#注" class="headerlink" title="注"></a>注</h2><p>上述的next数组均指失配位置的next数组，如果求的是失配前一位的next数组（例如下面代码），则无法使用常数优化。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> m<span class="token punctuation">;</span> i <span class="token operator">++</span> <span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&amp;&amp;</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> p<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">=</span> ne<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> p<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> j <span class="token operator">++</span> <span class="token punctuation">;</span>
+    ne<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -514,7 +508,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/07/21/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(1)/">http://example.com/2022/07/21/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(1)/</a>
+                    <a href="http://example.com/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">http://example.com/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,16 +546,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                                    <span class="chip bg-color">数学</span>
+                                <a href="/tags/KMP/">
+                                    <span class="chip bg-color">KMP</span>
                                 </a>
                             
-                                <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
-                                    <span class="chip bg-color">抽象代数</span>
+                                <a href="/tags/kmp/">
+                                    <span class="chip bg-color">kmp</span>
                                 </a>
                             
-                                <a href="/tags/%E5%AD%90%E7%BE%A4/">
-                                    <span class="chip bg-color">子群</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -609,9 +603,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">
                     <div class="card-image">
@@ -629,9 +624,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -644,6 +639,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -670,13 +666,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/19/Linux(3)/">
+                <a href="/2022/07/21/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux(3)--git使用">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="抽象代数(1)--子群">
                         
-                        <span class="card-title">Linux(3)--git使用</span>
+                        <span class="card-title">抽象代数(1)--子群</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -687,18 +683,18 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                    数学
                                 </a>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" class="post-category">
+                                    抽象代数
                                 </a>
                             
                             
@@ -708,16 +704,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="chip bg-color">数学</span>
                     </a>
                     
-                    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-                        <span class="chip bg-color">操作系统</span>
+                    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
+                        <span class="chip bg-color">抽象代数</span>
                     </a>
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/%E5%AD%90%E7%BE%A4/">
+                        <span class="chip bg-color">子群</span>
                     </a>
                     
                 </div>
@@ -841,13 +837,6 @@
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 
