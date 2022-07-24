@@ -488,6 +488,19 @@
 <p>  例<br>  子群的乘积不一定是子群。</p>
 </blockquote>
 <p>推论<br>（1）两子群中一个为<strong>不变</strong>子群，则乘积仍为子群。<br>（2）不变子群的乘积仍为不变子群。<br>（3）子群关系具有传递性：$H\le G,K\le H,则K\le G$.<br>（4）不变子群关系不能传递。<br>（5）两个不变子群的交集还是不变子群。<br>（6）指数是2的子群一定是不变子群。</p>
+<h2 id="同态和不变子群"><a href="#同态和不变子群" class="headerlink" title="同态和不变子群"></a>同态和不变子群</h2><p>定理1<br>一个群$G$同它的每一个商群$G&#x2F;N$同态。</p>
+<p>推论<br>交换群的每一个商群都是交换群。</p>
+<p>定义1<br>设$G,\bar{G}$都是群，$\phi :G\to\bar{G}$是一个满同态，则称$ker\phi&#x3D;{ a\in G|\phi(a)&#x3D;\bar{e} }$为满同态$\phi$的<strong>核</strong>。</p>
+<p>定理2（同态基本定理）<br>设$G,\bar{G}$都是群，$\phi$：$G\to\bar{G}$是一个满同态，则$N&#x3D;ker\phi \lhd G$，且$G&#x2F;N\cong \bar{G}$.</p>
+<blockquote>
+<p>  例<br>  $SL(n,\mathbb{R})\lhd GL(n,\mathbb{R})$<br>  $SL(n,\mathbb{R})$和$GL(n,\mathbb{R})$分别为实数域$\mathbb{R}$上的特殊线性群和一般线性群（即全体行列式等于1的$n$阶实矩阵的关于矩阵乘法作成的群和全体行列式不等于0的$n$阶实矩阵的关于矩阵乘法作成的群。）</p>
+</blockquote>
+<p>定义2<br>设$\phi :A\to\bar{A}$是一个满射。<br>（1）如果$S\subseteq A$，则称$\phi(S)&#x3D;{ \phi(a)|a\in S }$为$S$在$\phi$下的<strong>象</strong>。<br>（2）如果$\bar{S}\subseteq \bar{A}$，则称$\phi(\bar{S})&#x3D;{ \phi^{-1}(\bar{a})|\bar{a}\in\bar{S} }$为$\bar{S}$在$\phi$下的<strong>逆象</strong>，或<strong>原象</strong>。</p>
+<p>定理3<br>设$G,\bar{G}$都是群，$\phi :G\to \bar{G}$是一个满同态，则<br>（1）若$H\le G,则\phi(H)\le \bar{G}$.<br>（2）若$N\lhd G,则\phi(N)\lhd \bar{G}$.</p>
+<p>定理4<br>设$G,\bar{G}$都是群，$\phi :G\to \bar{G}$是一个满同态，则<br>（1）若$\bar{H}\le \bar{G},则\phi^{-1}(\bar{H})\le G$.<br>（2）若$\bar{N}\lhd \bar{G},则\phi^{-1}(\bar{N})\lhd G$.</p>
+<blockquote>
+<p>  例1<br>  设$G$是一个循环群，$N$是$G$的一个子群。则$G&#x2F;N$也是循环群。<br>  例2<br>  设$G$与$\bar{G}$是两个有限循环群，它们的阶各是$m$和$n$，则$G$与$\bar{G}$同态当且仅当$n|m$.</p>
+</blockquote>
 
                 
             </div>
