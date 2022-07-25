@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="抽象代数(2)--环, Uanu&#39;s blog">
-    <meta name="description" content="环的定义定义1设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果（1）$(R,+)$是加群（即交换群）（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立（3）左右分配率 $c(a+b)&amp;#x3">
+    <meta name="description" content="环的定义定义1设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果（1）$(R,+)$是加群（即交换群）（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立（3）左右律 $c(a+b)&amp;#x3D;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -437,11 +437,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="环的定义"><a href="#环的定义" class="headerlink" title="环的定义"></a>环的定义</h2><p>定义1<br>设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果<br>（1）$(R,+)$是加群（即交换群）<br>（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立<br>（3）左右分配率 $c(a+b)&#x3D;ca+cb,(a+b)c&#x3D;ac+bc$成立<br>则称$R$关于$+,\cdot$作成一个<strong>环</strong>，记为$(R,+,\cdot)$.加群中的单位元改称<strong>零元</strong>，记为$0$.元素$a$在加群中的逆元改称<strong>负元</strong>，记为$-a$. （乘法中的仍称单位元和逆元。）$a+(-b)$简写为$a-b$，读作$a$减$b$.</p>
+                <h2 id="环的定义"><a href="#环的定义" class="headerlink" title="环的定义"></a>环的定义</h2><p>定义1<br>设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果<br>（1）$(R,+)$是加群（即交换群）<br>（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立<br>（3）左右律 $c(a+b)&#x3D;ca+cb,(a+b)c&#x3D;ac+bc$成立<br>则称$R$关于$+,\cdot$作成一个<strong>环</strong>，记为$(R,+,\cdot)$.加群中的单位元改称<strong>零元</strong>，记为$0$.元素$a$在加群中的逆元改称<strong>负元</strong>，记为$-a$. （乘法中的仍称单位元和逆元。）$a+(-b)$简写为$a-b$，读作$a$减$b$.</p>
 <blockquote>
 <p>例（<strong>有理数环</strong>）<br>有理数集$\mathbb{Q}$关于普通数的加法和乘法作成一个环。</p>
 </blockquote>
-<p>定义（域）<br>把所有非零元关于乘法能作成交换群的环叫做<strong>域</strong>。</p>
+<p>定义（域）<br>把所有非零元关于乘法能作成<strong>交换群</strong>的环叫做<strong>域</strong>。</p>
 <blockquote>
 <p>例1<br>有理数环即<strong>有理数域</strong>。实数域。复数域。</p>
 <p>例2<br><strong>模$p$剩余类域</strong>，也称为<strong>有限域</strong>（不止包含模$p$剩余类域）。</p>
@@ -452,7 +452,32 @@
 <p>定理2<br>设$(R,+,\cdot)$是一个环，$a\in R,n\in \mathbb{Z}_+$，则$(-n)a&#x3D;n(-a)&#x3D;-(na)$.</p>
 <p>定理3<br>即定理1中（6）</p>
 <p>定理4<br>即定理1（7）（8）（9）（10）（11）（12）（13）（14）</p>
-<h2 id="零因子环和环的分类"><a href="#零因子环和环的分类" class="headerlink" title="零因子环和环的分类"></a>零因子环和环的分类</h2>
+<h2 id="零因子环和环的分类"><a href="#零因子环和环的分类" class="headerlink" title="零因子环和环的分类"></a>零因子环和环的分类</h2><p>定义1<br>设$R$是一个环，$a,b$是$R$中的两个非零元，如果$ab&#x3D;0$，则称$a$是$R$的一个<strong>左零因子</strong>，$b$是$R$的一个<strong>右零因子</strong>。如果一个元素既是左零因子又是右零因子，则称它为一个<strong>零因子</strong>。</p>
+<p>定理1<br>在一个<strong>无零因子</strong>的环中，乘法消去律成立：<br>（1）$a\ne0, ab&#x3D;ac \Rightarrow b&#x3D;c$<br>（2）$a\ne0,ba&#x3D;ca\Rightarrow b&#x3D;c$<br>反过来，在一个环里，如果有<strong>一个</strong>消去律成立，那么这个环没有零因子。</p>
+<p>推论<br>在一个环中，如果有一个消去律成立，那么另一个消去律也成立。</p>
+<p>定义2<br>设$R$是一个环<br>（1）如果$R$的乘法适合交换律，则称$R$是<strong>交换环</strong>。<br>（2）如果$R$有乘法单位元，则称$R$是<strong>含幺环</strong>。<br>（3）如果$R$不含任何零因子，则称$R$是<strong>无零因子环</strong>。<br>（4）同时满足（1）（2）（3）条件的环，称为<strong>整环</strong>。</p>
+<p>定理3<br>设$R$是一个环，如果<br>（1）$R$中至少包含一个非零元<br>（2）$R$中有乘法单位元<br>（3）$R$的每一个非零元都有逆元<br>则称$R$是一个<strong>除环</strong>，<strong>交换除环</strong>称为<strong>域</strong>。</p>
+<blockquote>
+<p>  例1<br>  设$R&#x3D;{0 }$，则$(R,+,\cdot)$作成一个环，称为<strong>零环</strong>。（易得零环不是除环，也不是域，是无零因子环）</p>
+<p>  例2<br>  数集$\mathbb{Q,C,R}$关于普通数的加法和乘法，都作成域。</p>
+<p>  例3<br>  非交换除环：<strong>哈密顿四元数体</strong></p>
+<p>  例4<br>  一个至少有两个元且没有零因子的有限环是一个除环</p>
+</blockquote>
+<h2 id="除环和域"><a href="#除环和域" class="headerlink" title="除环和域"></a>除环和域</h2><p>命题1<br>除环是无零因子环（即证只要$ab&#x3D;0$，就有$a&#x3D;0$或$b&#x3D;0$）</p>
+<p>命题2<br>设$(R,+,\cdot)$是一个除环，$R^{<em>}&#x3D;R-{ 0 }$，则$(R^{</em>},\cdot)$作成一个群，将$R^{<em>}$称为*<em>除环R的乘群</em></em>.</p>
+<p>定义1（域的第二定义）<br>设非空集合$F$上定义有两种法则$+,\cdot$，如果$(F,+),(F^{<em>},\cdot)$都是交换群，且$+,\cdot$适合分配律，则称$F$是一个*<em>域</em></em>.</p>
+<blockquote>
+<p>  例<br>  模$p$的剩余类$(\mathbb{Z}_p,+,\cdot)(p是素数)$关于剩余类的加法和乘法作成域。</p>
+</blockquote>
+<p>定义2<br>在域$F$中，$a\in F,b\in F^{*}$，则称$\frac{a}{b}&#x3D;ab^{-1}&#x3D;b^{-1}a$，为一个<strong>分数</strong>，读作$b$分之$a$，或$a$比$b$.</p>
+<p>定理1<br>在一个域$F$中，$a,b,c,d\in F$，则<br>（1）$\frac{a}{b}&#x3D;\frac{c}{d}\Leftrightarrow ad&#x3D;bc$<br>（2）$\frac{a}{b}+\frac{c}{d}&#x3D;\frac{ad+bc}{bd}$<br>（3）$\frac{a}{b}\cdot \frac{c}{d}&#x3D;\frac{ac}{bd}$</p>
+<h2 id="无零因子环的特征"><a href="#无零因子环的特征" class="headerlink" title="无零因子环的特征"></a>无零因子环的特征</h2><p>规则1<br>$\forall a\ne0,\forall m\in \mathbb{Z}<em>+,ma&#x3D;\underbrace{a+a+\cdots+a}</em>{m个}\ne0$.即<strong>非零元的加法阶都是无限大</strong>。</p>
+<p>定理1<br>设$R$是一个无零因子环，则$R$中所有非零元对于加法来说阶都相同。</p>
+<p>定义1<br>一个无零因子环$R$的非零元的相同的（对于加法来说）阶叫做环$R$的<strong>特征</strong>。（如果特征是有限数，那么规则（1）永远不对；特征是无限大，那么规则（1）永远对。</p>
+<p>定理2<br>如果无零因子环$R$的特征是有限整数$n$，那么$n$是素数。</p>
+<p>推论<br>整环，除环以及域的特征或是无限大，或是一个素数$p$.</p>
+<p>命题<br>在一个特征是$p$的交换群里，有$(a+b)^p&#x3D;a^p+b^p$.</p>
+<h2 id="子环与环的同态"><a href="#子环与环的同态" class="headerlink" title="子环与环的同态"></a>子环与环的同态</h2>
                 
             </div>
             <hr/>
