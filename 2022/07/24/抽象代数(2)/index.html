@@ -477,7 +477,25 @@
 <p>定理2<br>如果无零因子环$R$的特征是有限整数$n$，那么$n$是素数。</p>
 <p>推论<br>整环，除环以及域的特征或是无限大，或是一个素数$p$.</p>
 <p>命题<br>在一个特征是$p$的交换群里，有$(a+b)^p&#x3D;a^p+b^p$.</p>
-<h2 id="子环与环的同态"><a href="#子环与环的同态" class="headerlink" title="子环与环的同态"></a>子环与环的同态</h2>
+<h2 id="子环与环的同态"><a href="#子环与环的同态" class="headerlink" title="子环与环的同态"></a>子环与环的同态</h2><p>定义1<br>设$(R,+,\cdot)$是一个环，$\emptyset \ne S\subseteq R$，如果$(S,+,\cdot)$也是一个环，则称$S$是环$R$的子环，记作$S\le R$.</p>
+<p>定理1<br>（1）设$R$是环，则$\emptyset \ne S \subseteq R$是$R$的子环<strong>当且仅当</strong>对于任意的$a,b\in S,a-b\in S,ab\in S$<br>（2）设$R$是除环（域），则$\emptyset \ne S\subseteq R$是$R$的子除环（子域）当且仅当对于任意的$a,b\in S,a-b\in S$，且任意的$a,b\in S,b\ne0,ab^{-1}\in S$.</p>
+<blockquote>
+<p>  例1<br>  $R\le R,{ 0 }\le R$.（平凡子环）</p>
+<p>  例2<br>  $\mathbb{Q\le R,R\le C}$.</p>
+</blockquote>
+<p>定义（环的中心）<br>设$R$是一个环，$S&#x3D;{ x\in R|xa&#x3D;ax,\forall a\in R }$是$R$的交换子环，称$S$为环$R$的中心。</p>
+<p>定理2<br>设$R$是环，$\emptyset \ne \bar{R}$上有两种代数运算：$+,\cdot$.如果存在满射$\phi:R\rightarrow \bar{R}$，使得$\phi$对于一对加法和一对乘法都是同态映射，则$\bar{R}$也是一个环。</p>
+<p>定理3<br>设$R,\bar{R}$是两个环，且$\phi:R\rightarrow \bar{R}$是满同态（对两种运算），则<br>（1）零元的同态像是零元<br>（2）负元的同态像是负元<br>（3）单位元的同态像是单位元<br>（4）$R$是交换环，则$\bar{R}$也是交换环</p>
+<p>注<br>一个环没有零因子的性质经过满同态映射不一定能保持。</p>
+<p>定理4<br>假定$R,\bar{R}$是两个环，且$R\cong \bar{R}$，那么<br>（1）若$R$是整环，则$\bar{R}$也是整环<br>（2）若$R$是除环，则$\bar{R}$也是除环<br>（3）若$R$是域，则$\bar{R}$也是域</p>
+<p>定理5<br>设$A,\bar{A}$是两个非空集合，$\phi:A\rightarrow \bar{A}$是一一映射，如果$A$有加法$+$和乘法$\cdot$，那么适当地为$\bar{A}$规定加法和乘法，可以使得$A\cong \bar{A}$.</p>
+<p>定理6（补足定理）<br>设$R,\bar{S}$都是环，$S\le R,(R-S)\cap\bar{S}&#x3D;\emptyset ,S\cong \bar{S}$，则存在环$\bar{R}$与$R$同构，且$\bar{S}\le \bar{R}$.</p>
+<blockquote>
+<p>  例<br>  一个除环的中心是一个域。</p>
+</blockquote>
+<h2 id="多项式环"><a href="#多项式环" class="headerlink" title="多项式环"></a>多项式环</h2><p>定理1</p>
+<p>设$F$是一个域，则关于数域上的行列式理论，多项式理论，线性方程组理论，矩阵运算理论，线性空间和线性变换理论在域$F$上都成立。（唯一有问题的是二次型理论）</p>
+
                 
             </div>
             <hr/>
