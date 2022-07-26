@@ -480,7 +480,7 @@
 <h2 id="子环与环的同态"><a href="#子环与环的同态" class="headerlink" title="子环与环的同态"></a>子环与环的同态</h2><p>定义1<br>设$(R,+,\cdot)$是一个环，$\emptyset \ne S\subseteq R$，如果$(S,+,\cdot)$也是一个环，则称$S$是环$R$的子环，记作$S\le R$.</p>
 <p>定理1<br>（1）设$R$是环，则$\emptyset \ne S \subseteq R$是$R$的子环<strong>当且仅当</strong>对于任意的$a,b\in S,a-b\in S,ab\in S$<br>（2）设$R$是除环（域），则$\emptyset \ne S\subseteq R$是$R$的子除环（子域）当且仅当对于任意的$a,b\in S,a-b\in S$，且任意的$a,b\in S,b\ne0,ab^{-1}\in S$.</p>
 <blockquote>
-<p>  例1<br>  $R\le R,{ 0 }\le R$.（平凡子环）</p>
+<p>  例1<br>  $R\le R,{ 0 }\le R$.（合称<strong>平凡子环</strong>）</p>
 <p>  例2<br>  $\mathbb{Q\le R,R\le C}$.</p>
 </blockquote>
 <p>定义（环的中心）<br>设$R$是一个环，$S&#x3D;{ x\in R|xa&#x3D;ax,\forall a\in R }$是$R$的交换子环，称$S$为环$R$的中心。</p>
@@ -493,8 +493,26 @@
 <blockquote>
 <p>  例<br>  一个除环的中心是一个域。</p>
 </blockquote>
-<h2 id="多项式环"><a href="#多项式环" class="headerlink" title="多项式环"></a>多项式环</h2><p>定理1</p>
-<p>设$F$是一个域，则关于数域上的行列式理论，多项式理论，线性方程组理论，矩阵运算理论，线性空间和线性变换理论在域$F$上都成立。（唯一有问题的是二次型理论）</p>
+<h2 id="多项式环"><a href="#多项式环" class="headerlink" title="多项式环"></a>多项式环</h2><p>定理1<br>设$F$是一个域，则关于数域上的行列式理论，多项式理论，线性方程组理论，矩阵运算理论，线性空间和线性变换理论在域$F$上都成立。（唯一有问题的是二次型理论）</p>
+<p>定义1<br>设$R_0$是一个有单位元的交换环，$R\le R_0$，且$R$包含$R_0$的<strong>单位元</strong>，$\alpha\in R_0$，则称$a_0+a_1\alpha+\cdots+a_n\alpha^n(a_i\in R)$为$R$上的$\alpha$的一个<strong>多项式</strong>，$a_i$叫做<strong>多项式的系数</strong>。</p>
+<p>定理2<br>$R[a]&#x3D;{ f(a)&#x3D;a_0+a_1\alpha+\cdots+a_n\alpha^n|a_i\in R.\alpha\in R_0,n是非负整数 }$是$R_0$的包含$R$和$\alpha$的最小子环。（称$R[a]$为$R$上的<strong>多项式环</strong>）</p>
+<p>推论<br>多项式环是有单位元的交换环。</p>
+<p>定义2<br>设$x\in R_0$，如果不存在不全为零的元$a_9,a_1,\cdots,a_n$，使得$a_0+a_1x+\cdots+a_nx^n&#x3D;0$，则称$x$为$R$上的一个<strong>未定元</strong>。（类比线性无关）</p>
+<p>命题<br>$x\in R_0$为$R$上的一个未定元当且仅当若$R$上$x$的多项式$a_0+a_1x+\cdots+a_nx^n&#x3D;0$，则系数$a_0&#x3D;a_1&#x3D;a_2&#x3D;\cdots&#x3D;a_n&#x3D;0$.（即零多项式的表示法唯一）</p>
+<p>命题<br>环$R$上未定元$x$的多项式$f(x)$的表示法唯一。</p>
+<p>定义3<br>设$a_0+a_1x+\cdots+a_nx^n,a_n\ne0$是环$R$上的一个一元多项式，那么非负整数$n$叫做这个多项式的<strong>次数</strong>，规定多项式$0$没有次数。</p>
+<p>定理3（多项式环存在定理）<br>设$R$是一个含幺交换环，则$R$上必定存在未定元$x$，因此也就有$R$上的多项式环$R[x]$存在。</p>
+<p>定义4<br>形如$\sum_{i_1,i_2,\cdots,i_n}a_{i_1,i_2,\cdots,i_n}\alpha^{i_1}\alpha^{i_2}\cdots\alpha^{i_n}$的元叫做$R$上的元$\alpha_1,\alpha_2,\cdots,\alpha_n$的一个<strong>多项式</strong>，$a_{i_1,i_2,\cdots,i_n}$叫做<strong>多项式的系数</strong>。（这里的$a_{i_1,i_2,\cdots,i_n}\in R$，但只有有限个$a_{i_1,i_2,\cdots,i_n}\ne0$.）环$R[\alpha_1,\alpha_2,\cdots,\alpha_n]&#x3D;R[\alpha_1][\alpha_2]\cdots[\alpha_n]$叫做$R$上的$\alpha_1,\alpha_2,\cdots,\alpha_n$的<strong>多项式环</strong>。</p>
+<p>命题<br>多项式环$R[\alpha_1,\alpha_2]$中，$\alpha_1\alpha_2&#x3D;\alpha_2\alpha_1$.</p>
+<p>定义5<br>设$n$个元$x_1,x_2,\cdots,x_n\in R_0$，如果任何一个$R$上的$x_1,x_2,\cdots,x_n$的多项式都不会等于0，除非这个多项式的所有系数都等于零，那么则称$x_1,x_2,\cdots,x_n$为$R$上的<strong>无关未定元</strong>。</p>
+<p>定理4<br>设$R$是一个含幺交换环，$n\in \mathbb{Z_+}$，则$R$上无关未定元$x_1,x_2,\cdots,x_n$必定存在，$R$上的多项式环也一定存在。</p>
+<p>定理5<br>设$R[x_1,x_2,\cdots,x_n]$和$R[\alpha_1.\alpha_2,\cdots,\alpha_n]$都是由单位元的交换环$R$上的多项式环，$x_1,x_2,\cdots,x_n$是$R$上的无关未定元，$\alpha_1,\alpha_2,\cdots,\alpha_n$是$R$上的任意元，那么$R[x_1,x_2,\cdots,x_n]\sim R[\alpha_1.\alpha_2,\cdots,\alpha_n]$.</p>
+<h2 id="理想"><a href="#理想" class="headerlink" title="理想"></a>理想</h2><p>定义1<br>设$\emptyset\ne \mathscr{U}\subseteq$环$R$，如果<br>（1）对于任意的$a,b\in \mathscr{U}$，都有$a-b\in \mathscr{U}$<br>（2）对于任意的$a\in\mathscr{U},r\in R$，都有$ra,ar\in \mathscr{U}$<br>则称$\mathscr{U}$是环$R$的<strong>理想子环</strong>，简称<strong>理想</strong>，记作$\mathscr{U}\lhd R$（类比于不变子群）（证明时先说明是非空子集）</p>
+<p>定理1<br>理想必定是子环。（子环未必是理想）</p>
+<blockquote>
+<p>  例<br>  设$R$是环，则${0}\lhd R,R\lhd R$，${0}$称为<strong>零理想</strong>，$R$称为<strong>单位理想</strong>，合称<strong>平凡理想</strong>。</p>
+</blockquote>
+<p>定理2<br>除环和域只有平凡理想。</p>
 
                 
             </div>
