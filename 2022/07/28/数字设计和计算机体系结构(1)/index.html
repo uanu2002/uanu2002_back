@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="抽象代数(2)--环, Uanu&#39;s blog">
-    <meta name="description" content="环的定义定义1设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果（1）$(R,+)$是加群（即交换群）（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立（3）左右律 $c(a+b)&amp;#x3D;">
+    <meta name="keywords" content="数字设计和计算机体系结构(1)--二进制, Uanu&#39;s blog">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>抽象代数(2)--环 | Uanu&#39;s blog</title>
+    <title>数字设计和计算机体系结构(1)--二进制 | Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">抽象代数(2)--环</h1>
+                    <h1 class="description center-align post-title">数字设计和计算机体系结构(1)--二进制</h1>
                 </div>
             </div>
         </div>
@@ -376,16 +376,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                                <span class="chip bg-color">数学</span>
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                                <span class="chip bg-color">计算机组成</span>
                             </a>
                         
-                            <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
-                                <span class="chip bg-color">抽象代数</span>
+                            <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">数字设计</span>
                             </a>
                         
-                            <a href="/tags/%E7%8E%AF/">
-                                <span class="chip bg-color">环</span>
+                            <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">体系结构</span>
                             </a>
                         
                     </div>
@@ -396,12 +396,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
-                                数学
-                            </a>
-                        
-                            <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" class="post-category">
-                                抽象代数
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
+                                计算机组成
                             </a>
                         
                     </div>
@@ -413,7 +409,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-07-24
+                    2022-07-28
                 </div>
                 
 
@@ -437,116 +433,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="环的定义"><a href="#环的定义" class="headerlink" title="环的定义"></a>环的定义</h2><p>定义1<br>设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果<br>（1）$(R,+)$是加群（即交换群）<br>（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立<br>（3）左右律 $c(a+b)&#x3D;ca+cb,(a+b)c&#x3D;ac+bc$成立<br>则称$R$关于$+,\cdot$作成一个<strong>环</strong>，记为$(R,+,\cdot)$.加群中的单位元改称<strong>零元</strong>，记为$0$.元素$a$在加群中的逆元改称<strong>负元</strong>，记为$-a$. （乘法中的仍称单位元和逆元。）$a+(-b)$简写为$a-b$，读作$a$减$b$.</p>
-<blockquote>
-<p>例（<strong>有理数环</strong>）<br>有理数集$\mathbb{Q}$关于普通数的加法和乘法作成一个环。</p>
-</blockquote>
-<p>定义（域）<br>把所有非零元关于乘法能作成<strong>交换群</strong>的环叫做<strong>域</strong>。</p>
-<blockquote>
-<p>例1<br>有理数环即<strong>有理数域</strong>。实数域。复数域。</p>
-<p>例2<br><strong>模$p$剩余类域</strong>，也称为<strong>有限域</strong>（不止包含模$p$剩余类域）。</p>
-</blockquote>
-<p>定理1<br>环$(R,+,\cdot)$具有下列性质<br>（1）$0+a&#x3D;a+0&#x3D;a$<br>（2）$-a+a&#x3D;a-a&#x3D;0$<br>（3）$-(-a)&#x3D;a$<br>（4）$a+c&#x3D;b$等价于$c&#x3D;b-a$<br>（5）$-(a+b)&#x3D;-a-b,-(a-b)&#x3D;-a+b$<br>（6）$ma+na&#x3D;(m+n)a, m\cdot na&#x3D;mn\cdot a, n(a+b)&#x3D;na+nb$<br>（7）$(a-b)c&#x3D;ac-bc, c(a-b)&#x3D;ca-cb$<br>（8）$0a&#x3D;a0&#x3D;0$   ($0$是指零元)<br>（9）$(-a)b&#x3D;a(-b)&#x3D;-ab$<br>（10）$(-a)(-b)&#x3D;ab$<br>（11）$a(b_1+b_2+\cdots +b_n)&#x3D;ab_1+ab_2+\cdots +ab_n, (b_1+b_2+\cdots +b_n)a&#x3D;b_1a+b_2a+\cdots +b_na$<br>（12）$(a_1+a_2+\cdots +a_m)(b_1+b_2+\cdots +b_n)&#x3D;a_1b_1+\cdots+a_1b_n+\cdots+a_mb_1+\cdots +a_mb_n$<br>（13）$(na)b&#x3D;a(nb)&#x3D;n(ab)$<br>（14）$a^ma^n&#x3D;a^{m+n}, (a^m)^n&#x3D;a^{mn}.$($m,n$是任意正整数)</p>
-<p>定义2<br>设$(R,+,\cdot)$是一个环，$n\in \mathbb{Z}<em>+$，称$na&#x3D;\underbrace{a+a+\cdots +a}</em>{n个}$为$a$的$n$倍，简称$n$倍$a$.</p>
-<p>定义3<br>设$(R,+,\cdot)$是一个环，$n\in \mathbb{Z}<em>{_}$，规定：$0a&#x3D;0,na&#x3D;\underbrace{(-a)+(-a)+\cdots +(-a)}</em>{-n个}&#x3D;(-n)(-a)$</p>
-<p>定理2<br>设$(R,+,\cdot)$是一个环，$a\in R,n\in \mathbb{Z}_+$，则$(-n)a&#x3D;n(-a)&#x3D;-(na)$.</p>
-<p>定理3<br>即定理1中（6）</p>
-<p>定理4<br>即定理1（7）（8）（9）（10）（11）（12）（13）（14）</p>
-<h2 id="零因子环和环的分类"><a href="#零因子环和环的分类" class="headerlink" title="零因子环和环的分类"></a>零因子环和环的分类</h2><p>定义1<br>设$R$是一个环，$a,b$是$R$中的两个非零元，如果$ab&#x3D;0$，则称$a$是$R$的一个<strong>左零因子</strong>，$b$是$R$的一个<strong>右零因子</strong>。如果一个元素既是左零因子又是右零因子，则称它为一个<strong>零因子</strong>。</p>
-<p>定理1<br>在一个<strong>无零因子</strong>的环中，乘法消去律成立：<br>（1）$a\ne0, ab&#x3D;ac \Rightarrow b&#x3D;c$<br>（2）$a\ne0,ba&#x3D;ca\Rightarrow b&#x3D;c$<br>反过来，在一个环里，如果有<strong>一个</strong>消去律成立，那么这个环没有零因子。</p>
-<p>推论<br>在一个环中，如果有一个消去律成立，那么另一个消去律也成立。</p>
-<p>定义2<br>设$R$是一个环<br>（1）如果$R$的乘法适合交换律，则称$R$是<strong>交换环</strong>。<br>（2）如果$R$有乘法单位元，则称$R$是<strong>含幺环</strong>。<br>（3）如果$R$不含任何零因子，则称$R$是<strong>无零因子环</strong>。<br>（4）同时满足（1）（2）（3）条件的环，称为<strong>整环</strong>。</p>
-<p>定理3<br>设$R$是一个环，如果<br>（1）$R$中至少包含一个非零元<br>（2）$R$中有乘法单位元<br>（3）$R$的每一个非零元都有逆元<br>则称$R$是一个<strong>除环</strong>，<strong>交换除环</strong>称为<strong>域</strong>。</p>
-<blockquote>
-<p>  例1<br>  设$R&#x3D;{0 }$，则$(R,+,\cdot)$作成一个环，称为<strong>零环</strong>。（易得零环不是除环，也不是域，是无零因子环）</p>
-<p>  例2<br>  数集$\mathbb{Q,C,R}$关于普通数的加法和乘法，都作成域。</p>
-<p>  例3<br>  非交换除环：<strong>哈密顿四元数体</strong></p>
-<p>  例4<br>  一个至少有两个元且没有零因子的有限环是一个除环</p>
-</blockquote>
-<h2 id="除环和域"><a href="#除环和域" class="headerlink" title="除环和域"></a>除环和域</h2><p>命题1<br>除环是无零因子环（即证只要$ab&#x3D;0$，就有$a&#x3D;0$或$b&#x3D;0$）</p>
-<p>命题2<br>设$(R,+,\cdot)$是一个除环，$R^{<em>}&#x3D;R-{ 0 }$，则$(R^{</em>},\cdot)$作成一个群，将$R^{<em>}$称为*<em>除环R的乘群</em></em>.</p>
-<p>定义1（域的第二定义）<br>设非空集合$F$上定义有两种法则$+,\cdot$，如果$(F,+),(F^{<em>},\cdot)$都是交换群，且$+,\cdot$适合分配律，则称$F$是一个*<em>域</em></em>.</p>
-<blockquote>
-<p>  例<br>  模$p$的剩余类$(\mathbb{Z}_p,+,\cdot)(p是素数)$关于剩余类的加法和乘法作成域。</p>
-</blockquote>
-<p>定义2<br>在域$F$中，$a\in F,b\in F^{*}$，则称$\frac{a}{b}&#x3D;ab^{-1}&#x3D;b^{-1}a$，为一个<strong>分数</strong>，读作$b$分之$a$，或$a$比$b$.</p>
-<p>定理1<br>在一个域$F$中，$a,b,c,d\in F$，则<br>（1）$\frac{a}{b}&#x3D;\frac{c}{d}\Leftrightarrow ad&#x3D;bc$<br>（2）$\frac{a}{b}+\frac{c}{d}&#x3D;\frac{ad+bc}{bd}$<br>（3）$\frac{a}{b}\cdot \frac{c}{d}&#x3D;\frac{ac}{bd}$</p>
-<h2 id="无零因子环的特征"><a href="#无零因子环的特征" class="headerlink" title="无零因子环的特征"></a>无零因子环的特征</h2><p>规则1<br>$\forall a\ne0,\forall m\in \mathbb{Z}<em>+,ma&#x3D;\underbrace{a+a+\cdots+a}</em>{m个}\ne0$.即<strong>非零元的加法阶都是无限大</strong>。</p>
-<p>定理1<br>设$R$是一个无零因子环，则$R$中所有非零元对于加法来说阶都相同。</p>
-<p>定义1<br>一个无零因子环$R$的非零元的相同的（对于加法来说）阶叫做环$R$的<strong>特征</strong>。（如果特征是有限数，那么规则（1）永远不对；特征是无限大，那么规则（1）永远对。</p>
-<p>定理2<br>如果无零因子环$R$的特征是有限整数$n$，那么$n$是素数。</p>
-<p>推论<br>整环，除环以及域的特征或是无限大，或是一个素数$p$.</p>
-<p>命题<br>在一个特征是$p$的交换群里，有$(a+b)^p&#x3D;a^p+b^p$.</p>
-<h2 id="子环与环的同态"><a href="#子环与环的同态" class="headerlink" title="子环与环的同态"></a>子环与环的同态</h2><p>定义1<br>设$(R,+,\cdot)$是一个环，$\emptyset \ne S\subseteq R$，如果$(S,+,\cdot)$也是一个环，则称$S$是环$R$的子环，记作$S\le R$.</p>
-<p>定理1<br>（1）设$R$是环，则$\emptyset \ne S \subseteq R$是$R$的子环<strong>当且仅当</strong>对于任意的$a,b\in S,a-b\in S,ab\in S$<br>（2）设$R$是除环（域），则$\emptyset \ne S\subseteq R$是$R$的子除环（子域）当且仅当对于任意的$a,b\in S,a-b\in S$，且任意的$a,b\in S,b\ne0,ab^{-1}\in S$.</p>
-<blockquote>
-<p>  例1<br>  $R\le R,{ 0 }\le R$.（合称<strong>平凡子环</strong>）</p>
-<p>  例2<br>  $\mathbb{Q\le R,R\le C}$.</p>
-</blockquote>
-<p>定义（环的中心）<br>设$R$是一个环，$S&#x3D;{ x\in R|xa&#x3D;ax,\forall a\in R }$是$R$的交换子环，称$S$为环$R$的中心。</p>
-<p>定理2<br>设$R$是环，$\emptyset \ne \bar{R}$上有两种代数运算：$+,\cdot$.如果存在满射$\phi:R\rightarrow \bar{R}$，使得$\phi$对于一对加法和一对乘法都是同态映射，则$\bar{R}$也是一个环。</p>
-<p>定理3<br>设$R,\bar{R}$是两个环，且$\phi:R\rightarrow \bar{R}$是满同态（对两种运算），则<br>（1）零元的同态像是零元<br>（2）负元的同态像是负元<br>（3）单位元的同态像是单位元<br>（4）$R$是交换环，则$\bar{R}$也是交换环</p>
-<p>注<br>一个环没有零因子的性质经过满同态映射不一定能保持。</p>
-<p>定理4<br>假定$R,\bar{R}$是两个环，且$R\cong \bar{R}$，那么<br>（1）若$R$是整环，则$\bar{R}$也是整环<br>（2）若$R$是除环，则$\bar{R}$也是除环<br>（3）若$R$是域，则$\bar{R}$也是域</p>
-<p>定理5<br>设$A,\bar{A}$是两个非空集合，$\phi:A\rightarrow \bar{A}$是一一映射，如果$A$有加法$+$和乘法$\cdot$，那么适当地为$\bar{A}$规定加法和乘法，可以使得$A\cong \bar{A}$.</p>
-<p>定理6（补足定理）<br>设$R,\bar{S}$都是环，$S\le R,(R-S)\cap\bar{S}&#x3D;\emptyset ,S\cong \bar{S}$，则存在环$\bar{R}$与$R$同构，且$\bar{S}\le \bar{R}$.</p>
-<blockquote>
-<p>  例<br>  一个除环的中心是一个域。</p>
-</blockquote>
-<h2 id="多项式环"><a href="#多项式环" class="headerlink" title="多项式环"></a>多项式环</h2><p>定理1<br>设$F$是一个域，则关于数域上的行列式理论，多项式理论，线性方程组理论，矩阵运算理论，线性空间和线性变换理论在域$F$上都成立。（唯一有问题的是二次型理论）</p>
-<p>定义1<br>设$R_0$是一个有单位元的交换环，$R\le R_0$，且$R$包含$R_0$的<strong>单位元</strong>，$\alpha\in R_0$，则称$a_0+a_1\alpha+\cdots+a_n\alpha^n(a_i\in R)$为$R$上的$\alpha$的一个<strong>多项式</strong>，$a_i$叫做<strong>多项式的系数</strong>。</p>
-<p>定理2<br>$R[a]&#x3D;{ f(a)&#x3D;a_0+a_1\alpha+\cdots+a_n\alpha^n|a_i\in R.\alpha\in R_0,n是非负整数 }$是$R_0$的包含$R$和$\alpha$的最小子环。（称$R[a]$为$R$上的<strong>多项式环</strong>）</p>
-<p>推论<br>多项式环是有单位元的交换环。</p>
-<p>定义2<br>设$x\in R_0$，如果不存在不全为零的元$a_9,a_1,\cdots,a_n$，使得$a_0+a_1x+\cdots+a_nx^n&#x3D;0$，则称$x$为$R$上的一个<strong>未定元</strong>。（类比线性无关）</p>
-<p>命题<br>$x\in R_0$为$R$上的一个未定元当且仅当若$R$上$x$的多项式$a_0+a_1x+\cdots+a_nx^n&#x3D;0$，则系数$a_0&#x3D;a_1&#x3D;a_2&#x3D;\cdots&#x3D;a_n&#x3D;0$.（即零多项式的表示法唯一）</p>
-<p>命题<br>环$R$上未定元$x$的多项式$f(x)$的表示法唯一。</p>
-<p>定义3<br>设$a_0+a_1x+\cdots+a_nx^n,a_n\ne0$是环$R$上的一个一元多项式，那么非负整数$n$叫做这个多项式的<strong>次数</strong>，规定多项式$0$没有次数。</p>
-<p>定理3（多项式环存在定理）<br>设$R$是一个含幺交换环，则$R$上必定存在未定元$x$，因此也就有$R$上的多项式环$R[x]$存在。</p>
-<p>定义4<br>形如$\sum_{i_1,i_2,\cdots,i_n}a_{i_1,i_2,\cdots,i_n}\alpha^{i_1}\alpha^{i_2}\cdots\alpha^{i_n}$的元叫做$R$上的元$\alpha_1,\alpha_2,\cdots,\alpha_n$的一个<strong>多项式</strong>，$a_{i_1,i_2,\cdots,i_n}$叫做<strong>多项式的系数</strong>。（这里的$a_{i_1,i_2,\cdots,i_n}\in R$，但只有有限个$a_{i_1,i_2,\cdots,i_n}\ne0$.）环$R[\alpha_1,\alpha_2,\cdots,\alpha_n]&#x3D;R[\alpha_1][\alpha_2]\cdots[\alpha_n]$叫做$R$上的$\alpha_1,\alpha_2,\cdots,\alpha_n$的<strong>多项式环</strong>。</p>
-<p>命题<br>多项式环$R[\alpha_1,\alpha_2]$中，$\alpha_1\alpha_2&#x3D;\alpha_2\alpha_1$.</p>
-<p>定义5<br>设$n$个元$x_1,x_2,\cdots,x_n\in R_0$，如果任何一个$R$上的$x_1,x_2,\cdots,x_n$的多项式都不会等于0，除非这个多项式的所有系数都等于零，那么则称$x_1,x_2,\cdots,x_n$为$R$上的<strong>无关未定元</strong>。</p>
-<p>定理4<br>设$R$是一个含幺交换环，$n\in \mathbb{Z_+}$，则$R$上无关未定元$x_1,x_2,\cdots,x_n$必定存在，$R$上的多项式环也一定存在。</p>
-<p>定理5<br>设$R[x_1,x_2,\cdots,x_n]$和$R[\alpha_1.\alpha_2,\cdots,\alpha_n]$都是由单位元的交换环$R$上的多项式环，$x_1,x_2,\cdots,x_n$是$R$上的无关未定元，$\alpha_1,\alpha_2,\cdots,\alpha_n$是$R$上的任意元，那么$R[x_1,x_2,\cdots,x_n]\sim R[\alpha_1.\alpha_2,\cdots,\alpha_n]$.</p>
-<h2 id="理想"><a href="#理想" class="headerlink" title="理想"></a>理想</h2><p>定义1<br>设$\emptyset\ne \mathscr{U}\subseteq$环$R$，如果<br>（1）对于任意的$a,b\in \mathscr{U}$，都有$a-b\in \mathscr{U}$<br>（2）对于任意的$a\in\mathscr{U},r\in R$，都有$ra,ar\in \mathscr{U}$<br>则称$\mathscr{U}$是环$R$的<strong>理想子环</strong>，简称<strong>理想</strong>，记作$\mathscr{U}\lhd R$（类比于不变子群）（证明时先说明是非空子集）</p>
-<p>定理1<br>理想必定是子环。（子环未必是理想）</p>
-<blockquote>
-<p>  例<br>  设$R$是环，则${0}\lhd R,R\lhd R$，${0}$称为<strong>零理想</strong>，$R$称为<strong>单位理想</strong>，合称<strong>平凡理想</strong>。</p>
-</blockquote>
-<p>定理2<br>除环和域只有平凡理想。</p>
-<blockquote>
-<p>  例1<br>  两个理想的交集还是一个理想。</p>
-<p>  例2<br>  两个理想的并集未必是理想。</p>
-<p>  例3<br>  理想的和还是理想。<br>  设$\mathscr{U,B}$是环$R$的两个理想，则${a+b|a\in\mathscr{U},b\in\mathscr{B} }$是$R$的包含$\mathscr{U}$和$\mathscr{B}$的最小理想，称之为理想$\mathscr{U}$和$\mathscr{B}$的<strong>和理想</strong>，记为$\mathscr{U+B}$.</p>
-<p>  例4<br>  设$\mathscr{U,B}$是环$R$的两个理想，则${一切有限和\sum^n_{i&#x3D;1}x_iy_i|x_i\in\mathscr{U},y_i\in\mathscr{B},n是正整数}$是$R$的一个理想，称之为理想$\mathscr{U}$和$\mathscr{B}$的<strong>积理想</strong>，记为$\mathscr{UB}$.</p>
-</blockquote>
-<p>定理3<br>设$R$是一个环，$a\in R$，则$\mathscr{U}&#x3D;{ (\sum^m_{i&#x3D;1}x_iay_i)+sa+at+na|x_i,y_i,s,t\in R,n\in\mathbb{Z} }$是$R$的包含$a$的最小的理想，记为$(a)$，称为$R$的元$a$生成的<strong>主理想</strong>。</p>
-<p>推论<br>设$R$是一个环，$a\in R$，则<br>（1）若$R$是交换环，则$(a)&#x3D;{ ra+na|r\in R,n\in \mathbb{Z} }$<br>（2）若$R$是含幺环，则$(a)&#x3D;{ (\sum^m_{i&#x3D;1}x_iay_i)|x_i,y_i\in R}$<br>（3）若$R$是有单位元的交换环，则$(a)&#x3D;{ ra|r\in R }$</p>
-<p>推论<br>整数环$\mathbb{Z}$的每一个理想$\mathscr{U}$是它的主理想。（类比循环群的子群是它的生成子群。）</p>
-<p>定理4<br>$\mathbb{Z}$的理想都是主理想，并且$\mathbb{Z}$的理想个数等于$n$的正因子的个数。</p>
-<p>命题<br>设$R$是一个环，$a_1,a_2,\cdots,a_m\in R,\mathscr{U}&#x3D;{ s_1+s_2+\cdots+s_m|s_i\in(a_i) }$，则$\mathscr{U}$是$R$的包含$a_1,a_2,\cdots,a_m$的最小理想。称$\mathscr{U}$为$R$的由$a_1,a_2,\cdots,a_m$确定的<strong>生成理想</strong>，记为$(a_1,a_2,\cdots,a_m)$.（当$m&#x3D;1$时为主理想）</p>
-<p>推论<br>整数环中，生成理想$(k,l)$等于主理想$(a)$，并且$a$是$k,l$的最大公因数。</p>
-<h2 id="剩余类环（商环）、同态和理想"><a href="#剩余类环（商环）、同态和理想" class="headerlink" title="剩余类环（商环）、同态和理想"></a>剩余类环（商环）、同态和理想</h2><p>命题<br>设$A$是环$R$的理想，则$(A,+)$是$(R,+)$的不变子群。</p>
-<p>定理1<br>设$R$是环，$A\lhd R$，在商群$(R,+)&#x2F;(A,+)&#x3D;{ [x]|x\in R }&#x3D;{ x+A|x\in R }$中再规定：$[x]\cdot[y]&#x3D;[xy],\forall [x],[y]\in R&#x2F;A$，则$(R&#x2F;A,+,\cdot)$是一个环。（$R&#x2F;A$称为$R$关于理想$A$的<strong>商环</strong>或<strong>剩余类环</strong>，$[x]&#x3D;x+A$称为$R$模$A$的<strong>剩余类</strong>。）</p>
-<p>命题<br>（1）若$R$是交换环，则$R&#x2F;A$也是交换环<br>（2）若R是有单位元$1$的环，则$R&#x2F;A$也有单位元$[1]$.</p>
-<p>定理2<br>一个环$R$与它的每一个商环$R&#x2F;A$同态。</p>
-<p>注<br>同态映射$\pi:\pi(x)&#x3D;[x]$称为环$R$到它的商环$R&#x2F;A$的<strong>自然同态</strong>。（$ker\pi &#x3D;A$）</p>
-<p>定义1<br>设$f$是环$R$到环$\bar{R}$的同态映射，$\bar{0}$是$\bar{R}$的零元，则称$kerf&#x3D;{ x\in R|f(x)&#x3D;\bar{0} }$是同态映射$f$的<strong>核</strong>。（类比群间同态映射的核）</p>
-<p>定理3（环的同态基本定理）<br>设$f$是环$R$到环$R’$的满同态映射，则<br>（1）$kerf\lhd R$<br>（2）$R&#x2F;kerf\cong R’$</p>
-<p>推论（第一同构定理）<br>设$f$是环$R$到环$R’$的满同态，$A\lhd R’,A&#x3D;f^{-1}(A’)$，则$A \lhd R$，并且$R&#x2F;A\cong R’&#x2F;A’$.</p>
-<p>定理4<br>在环$R$到环$\bar{R}$的一个同态映射下<br>（1）$R$的一个子环$S$的象$\bar{S}$是$\bar{R}$的一个子环<br>（2）$R$的一个理想$\mathscr{U}$的象$\bar{\mathscr{U}}$是$\bar{R}$的一个理想<br>（3）$\bar{R}$的一个子环$\bar{S}$的原象$S$是$R$的一个子环<br>（4）$\bar{R}$的一个理想$\bar{\mathscr{U}}$的原象$\mathscr{U}$是$R$的一个理想</p>
-<h2 id="最大理想"><a href="#最大理想" class="headerlink" title="最大理想"></a>最大理想</h2><p>定义<br>设$\mathscr{U}$是环$R$的一个真理想，如果除了$R$和$\mathscr{U}$自身外没有包含$\mathscr{U}$的其他理想，则称$\mathscr{U}$是$R$的一个<strong>最大理想</strong>（<strong>极大理想</strong>）。</p>
-<p>引理<br>设$\mathscr{U}$是环$R$的一个理想，则商环$\bar{R}&#x3D;R&#x2F;\mathscr{U}$只有平凡理想当且仅当$\mathscr{U}$是$R$的最大理想。</p>
-<p>引理<br>若有单位元$(\ne0)$的交换环$R$只有平凡理想，那么$R$一定是一个域。</p>
-<p>定理<br>设$R$是一个有单位元的交换环，$\mathscr{U}$是$R$的一个理想，那么$R&#x2F;\mathscr{U}$是一个域当且仅当$\mathscr{U}$是一个最大理想。</p>
-<h2 id="商域"><a href="#商域" class="headerlink" title="商域"></a>商域</h2><p>定理<br>每一个没有零因子的交换环$R$都是一个域$Q$的子环。</p>
-<p>定理<br>$Q$刚好是由所有元素$\frac{a}{b}(a,b\in R,b\ne0)$所构成的，这里$\frac{a}{b}&#x3D;ab^{-1}&#x3D;b^{-1}a$.</p>
-<p>定义<br>设$R$是一个环，$Q$是一个域，如果$Q$包含$R$，并且$Q$刚好是由所有元素$\frac{a}{b}(a,b\in R,b\ne0)$构成，则称$Q$是$R$的一个<strong>商域</strong>。</p>
-<p>定理<br>由无零因子的交换环$R$构造的域$Q$称为$R$的<strong>商域</strong>。</p>
-<p>推论<br>一个有两个以上元的没有零因子的交换环至少有一个商域。</p>
-<p>定理<br>设$F$是环$R$的商域，设$F’$是环$R’$的商域，若$R\cong R’$，则$F\cong F’$.</p>
-<p>推论<br>设$F,F’$都是环$R$的商域，则$F\cong F’$.</p>
-<p>定理<br>设$R$是一个有两个以上的元素的环，$F$是一个包含$R$的域，那么$F$包含$R$的一个商域，即商域是包含环$R$的最小的域。</p>
-
+                
                 
             </div>
             <hr/>
@@ -572,7 +459,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/07/24/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(2)/">http://example.com/2022/07/24/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(2)/</a>
+                    <a href="http://example.com/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/">http://example.com/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -610,16 +497,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E5%AD%A6/">
-                                    <span class="chip bg-color">数学</span>
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
+                                    <span class="chip bg-color">计算机组成</span>
                                 </a>
                             
-                                <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
-                                    <span class="chip bg-color">抽象代数</span>
+                                <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">数字设计</span>
                                 </a>
                             
-                                <a href="/tags/%E7%8E%AF/">
-                                    <span class="chip bg-color">环</span>
+                                <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">体系结构</span>
                                 </a>
                             
                         </div>
@@ -667,9 +554,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/">
                     <div class="card-image">
@@ -687,9 +575,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -702,6 +590,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -728,13 +617,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/23/KMP%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">
+                <a href="/2022/07/24/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0(2)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="算法分析(1)--KMP">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="抽象代数(2)--环">
                         
-                        <span class="card-title">算法分析(1)--KMP</span>
+                        <span class="card-title">抽象代数(2)--环</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -745,14 +634,18 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/" class="post-category">
+                                    数学
+                                </a>
+                            
+                            <a href="/categories/%E6%95%B0%E5%AD%A6/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" class="post-category">
+                                    抽象代数
                                 </a>
                             
                             
@@ -762,16 +655,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/KMP/">
-                        <span class="chip bg-color">KMP</span>
+                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="chip bg-color">数学</span>
                     </a>
                     
-                    <a href="/tags/kmp/">
-                        <span class="chip bg-color">kmp</span>
+                    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">
+                        <span class="chip bg-color">抽象代数</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/%E7%8E%AF/">
+                        <span class="chip bg-color">环</span>
                     </a>
                     
                 </div>
@@ -895,13 +788,6 @@
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 
