@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数字设计和计算机体系结构(1)--二进制, Uanu&#39;s blog">
-    <meta name="description" content="">
+    <meta name="description" content="基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。
+一个有N个不同状态的离散值变量的信息量(amount of information)D由位(bit)度量，N和D关系为$D&amp;#x3D;log_2">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -433,7 +434,33 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>数字系统使用<strong>离散值变量</strong>(discrete-valued variable)来表示信息。</p>
+<p>一个有N个不同<strong>状态</strong>的离散值变量的<strong>信息量</strong>(amount of information)D由位(bit)度量，N和D关系为$D&#x3D;log_2N$位。ps：连续的信号由于有无穷多的状态N，因此信息量D也无穷大。</p>
+<p><strong>布尔逻辑</strong>(boolean logic)：一种针对二进制变量进行逻辑操作的系统，每个布尔变量都是TRUE或FALSE。</p>
+<p>字节(byte)：8位一组，能表示$2^8&#x3D;256$个数字，计算机存储常用字节为单位，而非位。</p>
+<p>半字节(nibble)：4位一组，能表示$2^4&#x3D;16$个数字，不常用。</p>
+<p>字(word)：大小取决于微处理器的结构，例如64位处理器是对64位的字进行操作。</p>
+<p>最低有效位(least significant bit, lsb)：一组位中权为1的位。</p>
+<p>最高有效位(most significant bit, msb)：一组位中权最高的位。</p>
+<p>最低有效字节(Least Significant Byte, LSB)：类比最低有效位。</p>
+<p>最高有效字节(Most Significant Byte, MSB)：类比最高有效位。</p>
+<p>1024字节称为1千字节(kilobyte, KB)，1024位称为1千比特(kilobit, Kb或Kbit)。</p>
+<p>信息传输速率：比特&#x2F;秒。</p>
+<p>二进制加法：类比十进制加法的进位(carry bit)。</p>
+<h2 id="二进制数的符号"><a href="#二进制数的符号" class="headerlink" title="二进制数的符号"></a>二进制数的符号</h2><p>有符号(signed)二进制数和无符号(unsigned)二进制数：使用带符号的原码和补码。</p>
+<h3 id="带符号的原码"><a href="#带符号的原码" class="headerlink" title="带符号的原码"></a>带符号的原码</h3><p>一个N位带符号的原码数中最高位为符号位，剩下的N-1为数值（绝对值），符号位为0表示正数，1表示负数。</p>
+<blockquote>
+<p>5&#x3D;101<br>-5&#x3D;1101</p>
+</blockquote>
+<h3 id="二进制补码"><a href="#二进制补码" class="headerlink" title="二进制补码"></a>二进制补码</h3><p>二进制补码中最高位的权为$-2^{N-1}$，其它位于无符号二进制数相同。</p>
+<blockquote>
+<p>  $2^{N-1}-1&#x3D;01\cdots111$<br>  $-1&#x3D;11\cdots111$</p>
+</blockquote>
+<p>十进制转二进制补码：先转原码。正数补码是本身；负数补码先对符号位外的每一位取反再在最低位加1。（0看做正数）</p>
+<p>二进制补码转十进制：符号位保持不变，对数据的每一位取反，再在最低位加1，得到二进制原码计算绝对值，再根据补码的最高位确定符号（即数的补码的补码就是本身）。或者直接利用权值计算。</p>
+<p>补码运算：直接相加，如果超过最高有效位则舍去，得到补码的结果。相减则将第二个操作数先变号后转补码再相加。</p>
+<h3 id="表示范围"><a href="#表示范围" class="headerlink" title="表示范围"></a>表示范围</h3><p>无符号原码和二进制补码可以表示$2^N$个数，带符号的原码可以表示$2^N-1$个数。</p>
+<h2 id="逻辑门"><a href="#逻辑门" class="headerlink" title="逻辑门"></a>逻辑门</h2>
                 
             </div>
             <hr/>
@@ -788,6 +815,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
