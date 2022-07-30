@@ -460,7 +460,28 @@
 <p>二进制补码转十进制：符号位保持不变，对数据的每一位取反，再在最低位加1，得到二进制原码计算绝对值，再根据补码的最高位确定符号（即数的补码的补码就是本身）。或者直接利用权值计算。</p>
 <p>补码运算：直接相加，如果超过最高有效位则舍去，得到补码的结果。相减则将第二个操作数先变号后转补码再相加。</p>
 <h3 id="表示范围"><a href="#表示范围" class="headerlink" title="表示范围"></a>表示范围</h3><p>无符号原码和二进制补码可以表示$2^N$个数，带符号的原码可以表示$2^N-1$个数。</p>
-<h2 id="逻辑门"><a href="#逻辑门" class="headerlink" title="逻辑门"></a>逻辑门</h2>
+<h2 id="逻辑门"><a href="#逻辑门" class="headerlink" title="逻辑门"></a>逻辑门</h2><p>逻辑门(logic gate)：最简单的数字电路，接收一个或多个二进制输入并产生一个二进制输出。常用字母表示门的输入，用Y表示门的输出。输入和输出之间的关系由真值表或布尔表达式描述。</p>
+<p>真值表(truth table)：左边列出输入，右边列出输出，每种可能的输入组合对应一行。</p>
+<p>布尔表达式(Boolean equation)：基础二进制变量的数学表达式。</p>
+<h3 id="非门"><a href="#非门" class="headerlink" title="非门"></a>非门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/1.png" alt="非门"></p>
+<p>非门(NOT gate)：有一个输入A和一个输出Y。非门的输出时输入的反。布尔表达式中A上面的横线读作NOT，所以$Y&#x3D;\bar{A}$​读作”Y等于NOTA“。非门也称为反相器(inverter)。三角符号表示缓冲器，输出上的圆圈称为气泡(bubble)，表示取反，即非门。</p>
+<p>非门的其他表示：$Y&#x3D;A’、Y&#x3D;\neg A、Y&#x3D;!A、Y&#x3D;\sim A$.</p>
+<h3 id="缓冲器"><a href="#缓冲器" class="headerlink" title="缓冲器"></a>缓冲器</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/2.png" alt="缓冲器"></p>
+<p>缓冲器(buffer)：有一个输入A和一个输出Y。缓冲器将输入复制到输出。</p>
+<h3 id="与门"><a href="#与门" class="headerlink" title="与门"></a>与门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/3.png" alt="与门"></p>
+<p>与门(AND gate)：有两个输入A与B和一个输出Y。只有当所有输入都是TRUE时，输出才是TRUE，否则是FALSE。$Y&#x3D;AB$读作“Y等于A与B”。</p>
+<p>与门的其他表示：$Y&#x3D;A\cdot B、Y&#x3D;A\cap B$.</p>
+<h3 id="或门"><a href="#或门" class="headerlink" title="或门"></a>或门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/4.png" alt="或门"></p>
+<p>或门(OR gate)：有两个输入A与B和一个输出Y。只要有一个输入是TRUE，则输出是TRUE。$Y&#x3D;A+B$读作“Y等于A或B”。</p>
+<p>或门的其他表示：$Y&#x3D;A\cup B$.</p>
+<h3 id="异或门"><a href="#异或门" class="headerlink" title="异或门"></a>异或门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/5.png" alt="异或门"></p>
+<p>异或门(exclusive OR, XOR)：有两个输入A与B和一个输出Y。当A和B都不为TRUE时才输出TRUE，否则为FALSE。</p>
+<h3 id="与非门"><a href="#与非门" class="headerlink" title="与非门"></a>与非门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/6.png" alt="与非门"></p>
+<p>与非门(NAND)：有两个输入A与B和一个输出Y。当所有输入都为TRUE时输出才为FALSE，否则为TRUE。</p>
+<h3 id="或非门"><a href="#或非门" class="headerlink" title="或非门"></a>或非门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/7.png" alt="或非门"></p>
+<p>或非门(NOR)：有两个输入A与B和一个输出Y。当A和B都不为TRUE时才输出TRUE，否则为FALSE。</p>
+<p>或非门也称为奇偶校验(parity)门，即当有奇数个输入为TRUE时输出为TRUE。</p>
+
                 
             </div>
             <hr/>
