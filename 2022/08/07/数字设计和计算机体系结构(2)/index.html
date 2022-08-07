@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数字设计和计算机体系结构(2)--组合逻辑设计, Uanu&#39;s blog">
-    <meta name="description" content="">
+    <meta name="description" content="基础知识电路：可以处理离散值变量的网络。
+
+  电路组成：  一个或者多个离散值输入端(input terminal)  一个或者多个离散值输出端(output terminal)  描述输入和输出关系的功能规范(function spec">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -433,7 +435,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>电路：可以处理离散值变量的网络。</p>
+<blockquote>
+<p>  电路组成：<br>  一个或者多个离散值输入端(input terminal)<br>  一个或者多个离散值输出端(output terminal)<br>  描述输入和输出关系的功能规范(function specification)<br>  描述当输入改变时输出响应延迟的时序规范(timing specification)</p>
+<p>  电路内部组成：元件(element)和结点(node)<br>  元件：带有输入、输出、功能规范和时序规范的电路。<br>  结点：一段导线，通过电压传递离散值变量。可分为输入结点、输出结点和内部结点（即基本上内部结点也不是外部结点的结点）。</p>
+</blockquote>
+<p>数字电路：分为组合电路(combination circuit)和时序电路(sequential circuit)。</p>
+<blockquote>
+<p>  组合电路的输出仅仅取决于输入的值。例如逻辑门。<strong>没有记忆</strong>。<br>  时序电路的输出取决于当前输入值和之前的输入值。<strong>有记忆</strong>。</p>
+</blockquote>
+<p>组合电路要求：<br>每一个电路元件本身都是组合电路。<br>每一个电路结点或者是一个电路的输入，或者是连接到外部电路的一个输出端。<br>电路不包含回路：经过电路的每条路径最多只能经过每个电路结点一次。</p>
+<p>组合电路功能规范：当前各种输入值的输出值。<br>组合电路时序规范：从输入到输出延迟的最大值和最小值。</p>
+<h2 id="布尔表达式"><a href="#布尔表达式" class="headerlink" title="布尔表达式"></a>布尔表达式</h2><p>布尔表达式(Boolean equation)：处理变量是TRUE或FALSE。</p>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><p>项(literal)：一个变量A的非(complement)是它的反，记为$\bar{A}$。变量或它的反称为项。</p>
+<p>真值形式(true form)和取反形式(complement form)：$A和\bar{A}$。</p>
+<p>乘积项(product)或蕴含项(implicant)：一项或多项的AND。</p>
+<p>最小项(minterm)：一个包含全部输入变量的乘积项。</p>
+<p>求和项(sum)：一项或多项的或。</p>
+<p>最大项(maxterm)：一个包含全部输入项的和。</p>
+<p>运算顺序：$NOT&gt;AND&gt;OR$</p>
+<h3 id="与或式"><a href="#与或式" class="headerlink" title="与或式"></a>与或式</h3><p>与或式(sum-of-product)范式：所有输出为真情况(对应输入若为FALSE则取反然后AND)的或。写成$F(A,B)&#x3D;\sum(m_1,m_3)$或$F(A,B)&#x3D;\sum(1,3)$。</p>
+<h3 id="或与式"><a href="#或与式" class="headerlink" title="或与式"></a>或与式</h3><p>或与式(product-of-sums范式：所有输出为假情况(对应输入若为TRUE则取反然后OR)的与。写成$Y&#x3D;\prod(M_0,M_1)$或$Y&#x3D;\prod(0,1)$。</p>
+<p><strong>与或式和或与式在逻辑上是等价的，根据真值表进行选择简单的表示</strong>。</p>
+<h2 id="布尔代数"><a href="#布尔代数" class="headerlink" title="布尔代数"></a>布尔代数</h2><p>对偶原理：将符号0和1互换，操作符AND和OR互换，表达式依然正确。</p>
+<p>最小与或式：使用最少蕴含项的等式（蕴含项数相等，比较项数最少的）。</p>
+<p>主蕴含项：不能与其他蕴含项合并生成具有较小项的形式。（最小等式中的蕴含项必须都是主蕴含项）</p>
+<h2 id="从逻辑到门"><a href="#从逻辑到门" class="headerlink" title="从逻辑到门"></a>从逻辑到门</h2>
                 
             </div>
             <hr/>
