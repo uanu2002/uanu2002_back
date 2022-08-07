@@ -481,6 +481,14 @@
 <h3 id="或非门"><a href="#或非门" class="headerlink" title="或非门"></a>或非门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/7.png" alt="或非门"></p>
 <p>或非门(NOR)：有两个输入A与B和一个输出Y。当A和B都不为TRUE时才输出TRUE，否则为FALSE。</p>
 <p>或非门也称为奇偶校验(parity)门，即当有奇数个输入为TRUE时输出为TRUE。</p>
+<h2 id="数字抽象"><a href="#数字抽象" class="headerlink" title="数字抽象"></a>数字抽象</h2><p>电源电压：系统中最低电压称为地(ground, GND)，最高电压来自电源，常称$V_{DD}$。</p>
+<p>逻辑电平(logic level)：将连续变量映射到离散的二进制变量。</p>
+<p>噪声容限(noise margin)：保证即使驱动源的输出被一些噪声干扰，接收端的输入也能检测到正确的逻辑电平。可以加在最坏情况输出上但依然能正确解释为有效输入的噪声值，称为噪声容限。</p>
+<p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/8.png" alt="逻辑电平和噪声容限"></p>
+<p>直流电压传输特性：由于真实电路中电压变化是缓慢的，所以需要重新选择逻辑电平。以反相器为例，一种方式是在选择在传输特征曲线斜率为-1的位置，这两个位置称为单位增益点(unity gain point)，这样可以最大化噪声容限。</p>
+<p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/9.png" alt="传输特征曲线"></p>
+<p>静态约束(static discipline)：避免输入落到禁止区域，即对于给定的有效逻辑输入，每个电路元件应该能产生有效的逻辑输出。</p>
+<p>逻辑系列(logic family)：虽然$V_{DD}$和逻辑电平可以任意选择，但所有相互通信的逻辑门必须保持兼容的逻辑电平。同一逻辑系列的所有门都遵循相同的静态约束，使用相同的电源电压和逻辑电平。<br>不同逻辑系列间兼容性要满足：$V_{OL}\lt V_{IL}和V_{OH}\gt V_{IH}$。</p>
 
                 
             </div>
@@ -602,18 +610,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/">
+                <a href="/2022/07/31/hugo+github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="数字设计和计算机体系结构(1)--二进制">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="hugo+github博客搭建">
                         
-                        <span class="card-title">数字设计和计算机体系结构(1)--二进制</span>
+                        <span class="card-title">hugo+github博客搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -623,35 +630,38 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
-                                    计算机组成
+                            <a href="/categories/%E5%BB%BA%E7%AB%99/" class="post-category">
+                                    建站
+                                </a>
+                            
+                            <a href="/categories/%E5%BB%BA%E7%AB%99/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">
-                        <span class="chip bg-color">计算机组成</span>
+                    <a href="/tags/%E5%BB%BA%E7%AB%99/">
+                        <span class="chip bg-color">建站</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">
-                        <span class="chip bg-color">数字设计</span>
+                    <a href="/tags/hugo/">
+                        <span class="chip bg-color">hugo</span>
                     </a>
                     
-                    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">体系结构</span>
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
                     </a>
                     
                 </div>
