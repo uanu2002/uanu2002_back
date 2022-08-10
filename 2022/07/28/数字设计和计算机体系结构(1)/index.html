@@ -481,6 +481,8 @@
 <h3 id="或非门"><a href="#或非门" class="headerlink" title="或非门"></a>或非门</h3><p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/7.png" alt="或非门"></p>
 <p>或非门(NOR)：有两个输入A与B和一个输出Y。当A和B都不为TRUE时才输出TRUE，否则为FALSE。</p>
 <p>或非门也称为奇偶校验(parity)门，即当有奇数个输入为TRUE时输出为TRUE。</p>
+<h3 id="传输门"><a href="#传输门" class="headerlink" title="传输门"></a>传输门</h3><p>传输门(transmission gate)：是一个开关，可以很好的通过0或1。由于开关是双向的，所以A和B不区分输入和输出，控制信号称为使能(Enable)，为EN和$\bar{EN}$，当EN&#x3D;1且$\bar{NE}&#x3D;0$时，传输门导通。</p>
+<p><img src="/2022/07/28/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(1)/10.png" alt="传输门晶体管设计"></p>
 <h2 id="数字抽象"><a href="#数字抽象" class="headerlink" title="数字抽象"></a>数字抽象</h2><p>电源电压：系统中最低电压称为地(ground, GND)，最高电压来自电源，常称$V_{DD}$。</p>
 <p>逻辑电平(logic level)：将连续变量映射到离散的二进制变量。</p>
 <p>噪声容限(noise margin)：保证即使驱动源的输出被一些噪声干扰，接收端的输入也能检测到正确的逻辑电平。可以加在最坏情况输出上但依然能正确解释为有效输入的噪声值，称为噪声容限。</p>
