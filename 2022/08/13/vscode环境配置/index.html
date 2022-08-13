@@ -434,7 +434,121 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="C-x2F-C"><a href="#C-x2F-C" class="headerlink" title="C&#x2F;C++"></a>C&#x2F;C++</h2><h3 id="1、下载vscode"><a href="#1、下载vscode" class="headerlink" title="1、下载vscode"></a>1、下载vscode</h3><h3 id="2、下载gcc编译器"><a href="#2、下载gcc编译器" class="headerlink" title="2、下载gcc编译器"></a>2、下载gcc编译器</h3><p>官网下载：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
+<p>选择最新版本MinGW-W64 GCC，根据电脑选择对应压缩包下载（64位windows电脑下载x86_64-win32-seh）。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/1.png"></p>
+<p>下载后解压，找到bin文件夹，复制bin的路径，添加到电脑的环境变量Path中。</p>
+<img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/2.png" style="zoom:50%;">
+
+<p>然后在命令行cmd中输入</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">gcc -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果显示gcc位置、版本等许多信息则gcc安装成功。</p>
+<h3 id="3、设置配置文件"><a href="#3、设置配置文件" class="headerlink" title="3、设置配置文件"></a>3、设置配置文件</h3><p>（1）在vscode中打开项目文件（下面设置的编译器等配置只在这个文件内有效）。</p>
+<p>（2）配置编译器文件<br><code>Ctrl+Shift+P</code>打开命令面板，输入<code>C/c++:Edit Configurations(UI)</code>，点击打开。<br><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/3.png"></p>
+<p>如下图所示，</p>
+<p>1：windows系统选择win32<br>2：填写：<code>bin路径\g++.exe</code><br>3：可不填，为编译器参数<br>4：选择<code>gcc-x64</code></p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/4.png"></p>
+<p>设置好后文件中会出现<code>.vscode</code>文件夹，其中只有一个<code>c_cpp_properties.json</code>的配置文件，如果出现其他文件则删除。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/5.png"></p>
+<p>（3）配置构建文件<br><code>Ctrl+Shift+P</code>打开控制面板，输入<code>Tasks:Configure Default Build Task</code>，点击后再输入<code>C/C++: g++.exe build active file</code>。然后会在<code>.vscode</code>文件夹内生成一个<code>tasks.json</code>配置文件。</p>
+<p>（4）配置调试文件</p>
+<p>新建或打开一个C++文件，然后点击菜单栏中的调试C&#x2F;C++文件或<code>Debug</code>，然后选择<code>C++(GDB/LLDB)</code>，然后会在<code>.vscode</code>文件夹内生成一个<code>launch.json</code>配置文件。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/6.png"></p>
+<p>执行完效果如下图。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/7.png"></p>
+<p>配置好后可以单独保存.vscode文件夹，下次配置时直接复制到项目文件夹内即可。</p>
+<p>此处粘贴个人的三个文件夹内容，如果上述操作无法完成，则可以直接创建<code>.vscode</code>文件夹和三个配置文件，然后把内容粘贴，<strong>然后要修改其中的编译器等地址和版本信息！</strong></p>
+<p><code>c_cpp_properties.json</code></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">&#123;</span>
+    <span class="token key atrule">"configurations"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token key atrule">"name"</span><span class="token punctuation">:</span> <span class="token string">"Win32"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"includePath"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"$&#123;workspaceFolder&#125;/**"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"defines"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"_DEBUG"</span><span class="token punctuation">,</span>
+                <span class="token string">"UNICODE"</span><span class="token punctuation">,</span>
+                <span class="token string">"_UNICODE"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"windowsSdkVersion"</span><span class="token punctuation">:</span> <span class="token string">"10.0.19041.0"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"compilerPath"</span><span class="token punctuation">:</span> <span class="token string">"D:\\mingw64\\bin\\g++.exe"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"cStandard"</span><span class="token punctuation">:</span> <span class="token string">"c17"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"cppStandard"</span><span class="token punctuation">:</span> <span class="token string">"c++17"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"intelliSenseMode"</span><span class="token punctuation">:</span> <span class="token string">"gcc-x64"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"compilerArgs"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"-Wall"</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token key atrule">"version"</span><span class="token punctuation">:</span> <span class="token number">4</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>tasks.json</code></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">&#123;</span>
+    <span class="token key atrule">"tasks"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token key atrule">"type"</span><span class="token punctuation">:</span> <span class="token string">"cppbuild"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"label"</span><span class="token punctuation">:</span> <span class="token string">"C/C++: g++.exe 生成活动文件"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"command"</span><span class="token punctuation">:</span> <span class="token string">"D:\\mingw64\\bin\\g++.exe"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"args"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"-fdiagnostics-color=always"</span><span class="token punctuation">,</span>
+                <span class="token string">"-g"</span><span class="token punctuation">,</span>
+                <span class="token string">"$&#123;file&#125;"</span><span class="token punctuation">,</span>
+                <span class="token string">"-o"</span><span class="token punctuation">,</span>
+                <span class="token string">"$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"options"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token key atrule">"cwd"</span><span class="token punctuation">:</span> <span class="token string">"D:\\mingw64\\bin"</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"problemMatcher"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"$gcc"</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"group"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span>
+                <span class="token key atrule">"kind"</span><span class="token punctuation">:</span> <span class="token string">"build"</span><span class="token punctuation">,</span>
+                <span class="token key atrule">"isDefault"</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"detail"</span><span class="token punctuation">:</span> <span class="token string">"调试器生成的任务。"</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token key atrule">"version"</span><span class="token punctuation">:</span> <span class="token string">"2.0.0"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>launch.json</code></p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">&#123;</span>
+    <span class="token key atrule">"configurations"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token key atrule">"name"</span><span class="token punctuation">:</span> <span class="token string">"C/C++: g++.exe 生成和调试活动文件"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"type"</span><span class="token punctuation">:</span> <span class="token string">"cppdbg"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"request"</span><span class="token punctuation">:</span> <span class="token string">"launch"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"program"</span><span class="token punctuation">:</span> <span class="token string">"$&#123;fileDirname&#125;\\$&#123;fileBasenameNoExtension&#125;.exe"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"args"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"stopAtEntry"</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"cwd"</span><span class="token punctuation">:</span> <span class="token string">"D:\\mingw64\\bin"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"environment"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"externalConsole"</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"MIMode"</span><span class="token punctuation">:</span> <span class="token string">"gdb"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"miDebuggerPath"</span><span class="token punctuation">:</span> <span class="token string">"D:\\mingw64\\bin\\gdb.exe"</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"setupCommands"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">&#123;</span>
+                    <span class="token key atrule">"description"</span><span class="token punctuation">:</span> <span class="token string">"为 gdb 启用整齐打印"</span><span class="token punctuation">,</span>
+                    <span class="token key atrule">"text"</span><span class="token punctuation">:</span> <span class="token string">"-enable-pretty-printing"</span><span class="token punctuation">,</span>
+                    <span class="token key atrule">"ignoreFailures"</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#123;</span>
+                    <span class="token key atrule">"description"</span><span class="token punctuation">:</span> <span class="token string">"将反汇编风格设置为 Intel"</span><span class="token punctuation">,</span>
+                    <span class="token key atrule">"text"</span><span class="token punctuation">:</span> <span class="token string">"-gdb-set disassembly-flavor intel"</span><span class="token punctuation">,</span>
+                    <span class="token key atrule">"ignoreFailures"</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token key atrule">"preLaunchTask"</span><span class="token punctuation">:</span> <span class="token string">"C/C++: g++.exe 生成活动文件"</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token key atrule">"version"</span><span class="token punctuation">:</span> <span class="token string">"2.0.0"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2>
                 
             </div>
             <hr/>
