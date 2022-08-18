@@ -473,12 +473,13 @@ Are you sure you want to <span class="token builtin class-name">continue</span> 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host myserver1
     HostName IP地址或域名
     User 用户名
+    port 端口（ssh默认22）
 
 Host myserver2
     HostName IP地址或域名
-    User 用户名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    User 用户名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>之后再使用服务器时，可以直接使用别名myserver1、myserver2。</p>
+<p>之后再使用服务器时，可以直接使用<code>ssh myserver1</code>来登录服务器。</p>
 <h2 id="密钥登录"><a href="#密钥登录" class="headerlink" title="密钥登录"></a>密钥登录</h2><p>创建密钥：</p>
 <pre class="line-numbers language-none"><code class="language-none">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -486,9 +487,9 @@ Host myserver2
 <p>执行结束后，<code>~/.ssh/</code>目录下会多两个文件：</p>
 <ul>
 <li><code>id_rsa</code>：私钥</li>
-<li><code>id_rsa.pub</code>：公钥<br>之后想免密码登录哪个服务器，就将公钥传给哪个服务器即可。</li>
+<li><code>id_rsa.pub</code>：公钥<br>之后想<strong>免密码登录</strong>哪个服务器，就将公钥传给哪个服务器即可。</li>
 </ul>
-<p>例如，想免密登录<code>myserver</code>服务器。则将公钥中的内容，复制到<code>myserver</code>中的<code>~/.ssh/authorized_keys</code>文件里即可。</p>
+<p>例如，想免密登录<code>myserver</code>服务器。则将公钥中的内容，复制到服务器中的<code>~/.ssh/authorized_keys</code>文件里即可。</p>
 <p>也可以使用如下命令一键添加公钥：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-copy-id myserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
