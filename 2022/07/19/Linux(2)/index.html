@@ -480,6 +480,10 @@ Host myserver2
     User 用户名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>之后再使用服务器时，可以直接使用<code>ssh myserver1</code>来登录服务器。</p>
+<p>由于root用户权限过大，建议创建新用户并赋予<code>sudo</code>权限。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">adduser uanu <span class="token comment"># 创建用户uanu</span>
+<span class="token function">usermod</span> -aG <span class="token function">sudo</span> uanu <span class="token comment"># 给uanu分配sudo权限</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
 <h2 id="密钥登录"><a href="#密钥登录" class="headerlink" title="密钥登录"></a>密钥登录</h2><p>创建密钥：</p>
 <pre class="line-numbers language-none"><code class="language-none">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -512,6 +516,9 @@ Host myserver2
 <p>使用scp配置其他服务器的vim和tmux：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> ~/.vimrc ~/.tmux.conf myserver:<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>安装软件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> updates
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> tmux<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
                 
             </div>
