@@ -590,6 +590,16 @@ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <p>网页即可更换主题。</p>
 <h3 id="关于配置文件"><a href="#关于配置文件" class="headerlink" title="关于配置文件"></a>关于配置文件</h3><p>博客根目录和主题文件夹内都存在<code>_config.yml</code>配置文件，前者是设置关于网站整体的设置（主题、插件等），后者是该主题的属性设置（如背景、颜色等）。</p>
 <p>至此，一个简单的博客就算搭建完成了！</p>
+<h2 id="六、配置域名"><a href="#六、配置域名" class="headerlink" title="六、配置域名"></a>六、配置域名</h2><p>如果我们想使用更加简单的域名访问网站，那么就需要配置域名。</p>
+<p>1、在万网等平台购买域名。</p>
+<p>2、打开域名控制台，点击解析。<br><img src="/2022/08/12/hexo+github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/24.png"></p>
+<p>然后选择下面任意一种方式添加记录：</p>
+<ul>
+<li>方法一：添加两个记录，两个记录类型都是 CNAME ，第一个主机记录为 @ ，第二个主机记录为 www，记录值都是填你自己的博客地址，即<code>用户名.github.io</code>。</li>
+<li>方法二：添加两个记录类型都为 A ，第一个主机记录为 @ ，第二个主机记录为 www，记录值都为博客的 IP 地址，IP 地址在cmd中输入<code>ping 用户名.github.io</code>获得。</li>
+</ul>
+<p>3、接收域名<br>在网站<code>source</code>文件夹中添加名为<code>CNAME</code>的文件（无后缀），文件中填写域名（可不加www）。</p>
+<p>然后就可以直接通过域名访问博客了。</p>
 
                 
             </div>
