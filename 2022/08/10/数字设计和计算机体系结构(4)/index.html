@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数字设计和计算机体系结构(4)--硬件描述语言, Uanu&#39;s blog">
-    <meta name="description" content="">
+    <meta name="description" content="基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。
+硬件描述语言(Hardware Description Language, HDL)：给出硬件的说明，主要有System Verilog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -438,7 +439,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。</p>
+<p>硬件描述语言(Hardware Description Language, HDL)：给出硬件的说明，主要有System Verilog和VHDL。</p>
+<p>模块(module)：包括输入和输出的硬件块。</p>
+<p>描述模块功能的主要形式：行为模型(behavioral)和结构模型(structural)。</p>
+<ul>
+<li>行为模型：描述一个模块做什么。</li>
+<li>结构模型：应用层次化方法描述一个模块怎样由更简单的部件构造。</li>
+</ul>
+<p>eg：描述$y&#x3D;\bar{a}\bar{b}\bar{c}+a\bar{b}\bar{c}+a\bar{b}c$<br><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/1.png"></p>
+<p>硬件描述语言的主要目的：逻辑模拟(simulation)和综合(synthesis)。</p>
+<ul>
+<li>逻辑模拟：给模块增加输入，检查输出验证模块操作是否正确。</li>
+<li>综合：将模块的文字描述转换成逻辑门。</li>
+</ul>
+<p>网表(netlist)：逻辑综合将HDL代码转换成网表来描述硬件。网表可以是文本文件或可视化的原理图。</p>
+<p>HDL代码分为：</p>
+<ul>
+<li>可综合(synthesizable)模块：描述硬件。</li>
+<li>测试程序(testbench)：用于模拟。</li>
+</ul>
+<p>风格(style)：HDL来描述各种逻辑的一些特定方法。</p>
+<h2 id="组合逻辑"><a href="#组合逻辑" class="headerlink" title="组合逻辑"></a>组合逻辑</h2><h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>位(bitwise)运算符：对单位信号和多位总线进行操作。</p>
+
                 
             </div>
             <hr/>
