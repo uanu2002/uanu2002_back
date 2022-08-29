@@ -448,6 +448,27 @@
 <li>结构模型：应用层次化方法描述一个模块怎样由更简单的部件构造。</li>
 </ul>
 <p>eg：描述$y&#x3D;\bar{a}\bar{b}\bar{c}+a\bar{b}\bar{c}+a\bar{b}c$<br><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/1.png"></p>
+<pre class="line-numbers language-Systemverilog" data-language="Systemverilog"><code class="language-Systemverilog">module module_name(input var_type1 var_in1, var_in2, ...,
+                   output var_type2 var_out1, var_out2, ...);
+    &#x2F;*some different assign *&#x2F;
+    assign var_out1&#x3D;var_in1 func1 var_in2;	&#x2F;&#x2F;annotation
+    assign var_out2&#x3D;var_in1 func2 var_in2;	&#x2F;&#x2F;annotation
+endmodule<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-vhdl" data-language="vhdl"><code class="language-vhdl"><span class="token keyword">library</span> lib_name<span class="token punctuation">:</span><span class="token keyword">use</span> lib_name<span class="token punctuation">.</span>xxx<span class="token punctuation">.</span>xxx<span class="token punctuation">;</span>
+
+<span class="token keyword">entity</span> module_name <span class="token keyword">is</span>
+    <span class="token keyword">port</span><span class="token punctuation">(</span>var_in1<span class="token punctuation">.</span> var_in2<span class="token punctuation">:</span><span class="token keyword">in</span> var_type1<span class="token punctuation">;</span>
+         var_out1<span class="token punctuation">,</span> var_out2<span class="token punctuation">:</span><span class="token keyword">out</span> var_type2<span class="token punctuation">;</span>
+    <span class="token keyword">end</span><span class="token punctuation">;</span>
+
+<span class="token keyword">architecture</span> synth <span class="token keyword">of</span> module_name <span class="token keyword">is</span>
+<span class="token keyword">begin</span>
+    <span class="token comment">--annotation</span>
+    var_out1<span class="token operator">&lt;=</span>var_in1 func1 var_in2<span class="token punctuation">;</span>
+    var_out2<span class="token operator">&lt;=</span>var_in1 func2 var_in2<span class="token punctuation">;</span>
+<span class="token keyword">end</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>硬件描述语言的主要目的：逻辑模拟(simulation)和综合(synthesis)。</p>
 <ul>
 <li>逻辑模拟：给模块增加输入，检查输出验证模块操作是否正确。</li>
@@ -460,8 +481,145 @@
 <li>测试程序(testbench)：用于模拟。</li>
 </ul>
 <p>风格(style)：HDL来描述各种逻辑的一些特定方法。</p>
-<h2 id="组合逻辑"><a href="#组合逻辑" class="headerlink" title="组合逻辑"></a>组合逻辑</h2><h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>位(bitwise)运算符：对单位信号和多位总线进行操作。</p>
-
+<h2 id="组合逻辑"><a href="#组合逻辑" class="headerlink" title="组合逻辑"></a>组合逻辑</h2><h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><p>位(bitwise)运算符：对单位信号和多位总线进行操作。（一个输入，一个输出）</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/2.png"></p>
+<p>小端(little-endian)顺序：[N-1:0]或(N-1 downto 0)。<br>大端(big-endian)顺序：[0:N-1]或(0 upto N-1)。</p>
+<h3 id="注释与空白"><a href="#注释与空白" class="headerlink" title="注释与空白"></a>注释与空白</h3><p>SystemVerilog和VHDL对空白（空格、Tab、换行）<strong>不敏感</strong>；建议使用缩进增加可读性；命名时使用大写字母和下划线，不能以数字开头。</p>
+<p>注释：</p>
+<ul>
+<li>Systemverilog：与C语言相同，单行注释<code>//</code>，多行注释<code>/* */</code>。</li>
+<li>VHDL：单行注释<code>--</code>，多行注释<code>/* */</code>。</li>
+</ul>
+<p>大小写：</p>
+<ul>
+<li>Systemverilog：大小写敏感，例如变量Y和y是不同的信号。</li>
+<li>VHDL：大小写不敏感，例如变量Y和y是相同的信号。</li>
+</ul>
+<h3 id="缩位运算符"><a href="#缩位运算符" class="headerlink" title="缩位运算符"></a>缩位运算符</h3><p>缩位运算符：作用在一条总线上的多输入门。（多个输入，一个输出）</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/3.png"></p>
+<h3 id="条件赋值"><a href="#条件赋值" class="headerlink" title="条件赋值"></a>条件赋值</h3><p>条件赋值(conditional assignment)：在所有可选项中选择一个输出。（如n:1复用器）</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/4.png"></p>
+<h3 id="内部变量"><a href="#内部变量" class="headerlink" title="内部变量"></a>内部变量</h3><p>内部变量：可以将复杂功能分为几个中间过程来完成，中间信号（不是输入或输出）称为内部变量。</p>
+<p><strong>注：HDL中的assign或&lt;&#x3D;都是并行执行的，即所有赋值同时进行，区别于C语言需要执行完一句才能执行下一句。</strong>因此不需要考虑赋值语句的出现顺序。</p>
+<h3 id="补：全加器"><a href="#补：全加器" class="headerlink" title="补：全加器"></a>补：全加器</h3><p>半加器：实现两个一位二进制数加法运算的器件。包含两个输入A和B，两个输出（一个结果位S和一个进位C）。半加即不考虑进位。</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/5.png"></p>
+<p>真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>$S&#x3D;\bar{A}B+A\bar{B}&#x3D;A\oplus B, C&#x3D;AB$</p>
+<p>逻辑电路图：<img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/6.png"></p>
+<p>全加器：实现两个二进制数相加并求出和的组合线路。包含三个输入A、B和低位进位C_in，两个输出（高位进位C_out，本位和S）。一位全加器可以处理<strong>低位进位</strong>。</p>
+<p>一位全加器真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C_in</th>
+<th>C_out</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>$S&#x3D;A\oplus B\oplus C_{in}, C_{out}&#x3D;AB+C_{in}(A+B)&#x3D;AB+C_{in}(A\oplus B)$</p>
+<p>逻辑电路图：</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/7.png"></p>
+<p>多位全加器：多个一位全加器进行级联。</p>
+<h3 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h3><p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/8.png"></p>
+<p>注：</p>
+<ul>
+<li>REM为求余运算。</li>
+<li>循环移位：将移位时丢失部分补入另一侧。</li>
+<li>逻辑移位：移动时均补0，不考虑符号位。</li>
+</ul>
+<h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/9.png"></p>
+<h3 id="Z和X"><a href="#Z和X" class="headerlink" title="Z和X"></a>Z和X</h3><p>HDL使用z表示浮空值，x表示一个无效的逻辑电平。</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/10.png"></p>
+<h3 id="位混合"><a href="#位混合" class="headerlink" title="位混合"></a>位混合</h3><p>位混合(bit swizzling)：在总线的子集上操作或者连接信号来构成总线。</p>
+<p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/11.png"></p>
+<h3 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h3><p><img src="/2022/08/10/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84(4)/12.png"></p>
+<h2 id="结构化建模"><a href="#结构化建模" class="headerlink" title="结构化建模"></a>结构化建模</h2>
                 
             </div>
             <hr/>
