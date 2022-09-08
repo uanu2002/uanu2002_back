@@ -434,7 +434,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="C-x2F-C"><a href="#C-x2F-C" class="headerlink" title="C&#x2F;C++"></a>C&#x2F;C++</h2><h3 id="1、下载vscode"><a href="#1、下载vscode" class="headerlink" title="1、下载vscode"></a>1、下载vscode</h3><h3 id="2、下载gcc编译器"><a href="#2、下载gcc编译器" class="headerlink" title="2、下载gcc编译器"></a>2、下载gcc编译器</h3><p>官网下载：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
+                <h1 id="Windows安装vscode配置C-x2F-C"><a href="#Windows安装vscode配置C-x2F-C" class="headerlink" title="Windows安装vscode配置C&#x2F;C++"></a>Windows安装vscode配置C&#x2F;C++</h1><h3 id="1、下载vscode"><a href="#1、下载vscode" class="headerlink" title="1、下载vscode"></a>1、下载vscode</h3><h3 id="2、下载gcc编译器"><a href="#2、下载gcc编译器" class="headerlink" title="2、下载gcc编译器"></a>2、下载gcc编译器</h3><p>官网下载：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
 <p>选择最新版本MinGW-W64 GCC，根据电脑选择对应压缩包下载（64位windows电脑下载x86_64-win32-seh）。</p>
 <p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/1.png"></p>
 <p>下载后解压，找到bin文件夹，复制bin的路径，添加到电脑的环境变量Path中。</p>
@@ -548,7 +548,57 @@
     <span class="token key atrule">"version"</span><span class="token punctuation">:</span> <span class="token string">"2.0.0"</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2>
+<h1 id="Mac安装vscode配置C-x2F-C"><a href="#Mac安装vscode配置C-x2F-C" class="headerlink" title="Mac安装vscode配置C&#x2F;C++"></a>Mac安装vscode配置C&#x2F;C++</h1><h2 id="一、安装vscode"><a href="#一、安装vscode" class="headerlink" title="一、安装vscode"></a>一、安装vscode</h2><h3 id="1、下载安装vscode"><a href="#1、下载安装vscode" class="headerlink" title="1、下载安装vscode"></a>1、下载安装vscode</h3><p><a target="_blank" rel="noopener" href="https://bhpan.buaa.edu.cn/link/11FF9E374BFC973B3BEDF36780636992">mac版本的vscode下载链接</a></p>
+<p>下载后直接安装即可。</p>
+<h3 id="2、vscode基础设置"><a href="#2、vscode基础设置" class="headerlink" title="2、vscode基础设置"></a>2、vscode基础设置</h3><h4 id="主题选择"><a href="#主题选择" class="headerlink" title="主题选择"></a>主题选择</h4><p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/8.jpg"></p>
+<p>刚进入vscode时会弹出主题的选择，四个主题任选其一即可，然后点击左上角关闭<code>Get Started</code>页面。</p>
+<h4 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h4><p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/9.jpg"></p>
+<p>点击左侧导航栏<code>扩展</code>按钮，进入插件商店。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/10.jpg"></p>
+<p>搜索栏输入<code>chinese</code>，点击打开第一个标有<code>中文简体</code>的插件，然后右侧点击<code>install</code>下载，下载好则会显示为<code>uninstall</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/11.jpg"></p>
+<p>下载好后，会有弹窗提示是否重启vscode，选择<code>Restart</code>。如果没有弹窗提示则手动关闭vscode再打开。重新打开后，界面变为中文则插件生效。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/12.jpg"></p>
+<p>下面用同样的方法安装C&#x2F;C++，在扩展中搜索<code>C/C++</code>，选择安装第一个插件。</p>
+<h2 id="二、C语言环境配置"><a href="#二、C语言环境配置" class="headerlink" title="二、C语言环境配置"></a>二、C语言环境配置</h2><h3 id="1、创建C文件"><a href="#1、创建C文件" class="headerlink" title="1、创建C文件"></a>1、创建C文件</h3><p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/13.jpg"></p>
+<p>点击打开左侧导航栏<code>资源管理器</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/14.jpg"></p>
+<p>然后点击打开文件夹。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/15.jpg"></p>
+<p>新建或选择一个文件夹，这个文件夹用于存放以后的源文件和程序。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/16.jpg"></p>
+<p>点击打开后会有弹窗提示，先选择<code>好</code>，然后勾选<code>信任父文件夹&quot;xxx&quot;中所有文件的作者</code>，最后点击<code>是，我信任此作者</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/17.jpg"></p>
+<p>点击新建文件夹，输入<code>demo.c</code>并回车。<code>demo</code>是文件名可以任意修改。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/18.jpg"></p>
+<h3 id="2、生成配置文件"><a href="#2、生成配置文件" class="headerlink" title="2、生成配置文件"></a>2、生成配置文件</h3><p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/19.jpg"></p>
+<p>点击<code>demo.c</code>打开文件，点击右上角的向下尖括号。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/20.jpg"></p>
+<p>选择<code>运行C/C++文件</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/21.jpg"></p>
+<p>然后会弹出编译器选择，选择<code>C/C++: clang生成和调试活动文件</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/22.png"></p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/23.png"></p>
+<p>然后左侧会文件夹内会多出一个.vscode文件夹，里面包含两个配置文件。</p>
+<h3 id="3、程序测试"><a href="#3、程序测试" class="headerlink" title="3、程序测试"></a>3、程序测试</h3><p>再次打开<code>demo.c</code>，输入以下内容。</p>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">#include &lt;stdio.h&gt;
+
+int main()&#123;
+    printf(&quot;hello world&quot;);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/24.png">然后再次点击<code>运行C/C++文件</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/25.png"></p>
+<p>如果有弹窗则先记住选择，然后选择<code>仍要调试</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/26.png"></p>
+<p>运行后右下侧会弹出终端，选择<code>调试控制台</code>。</p>
+<p><img src="/2022/08/13/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/27.png"></p>
+<p>如果看到<code>hello world</code>则表示配置成功。</p>
+<h2 id="三、注"><a href="#三、注" class="headerlink" title="三、注"></a>三、注</h2><ul>
+<li><code>.vscode</code>不要删除。</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -748,12 +798,12 @@
                         <span class="chip bg-color">建站</span>
                     </a>
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
                     <a href="/tags/github/">
                         <span class="chip bg-color">github</span>
+                    </a>
+                    
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
                     </a>
                     
                 </div>
