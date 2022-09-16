@@ -834,6 +834,11 @@ s<span class="token punctuation">[</span><span class="token number">1</span><spa
 </tr>
 </tbody></table>
 <p>抽象类：不能用于实例化对象，用于将来对该类进行扩充（类不能同时被<code>abstract</code>和<code>final</code>修饰）。包含抽象方法的类一定要声明为抽象类（抽象类可以不包含抽象方法）。<br>抽象方法：一种没有任何实现的方法，实现由子类提供。不能被<code>final</code>和<code>static</code>修饰。</p>
+<p>static修饰函数：</p>
+<ul>
+<li>在类中：即静态成员函数，调用这个函数不会访问或修改任何对象数据成员。</li>
+<li>在类外：即静态函数，只能在本文件中被调用，其他方法默认为extern。</li>
+</ul>
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><h4 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h4><ul>
 <li>算数运算符</li>
 <li>关系运算符</li>
@@ -1529,7 +1534,7 @@ fs <span class="token operator">=</span> <span class="token class-name">String</
 
 
 <h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 普通输出，但只能带有一个参数</span>
-system<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 换行输出，也只能带有一个参数</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 换行输出，也只能带有一个参数</span>
 <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 格式化输出，格式化语法同C语言</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
@@ -1677,7 +1682,7 @@ system<span class="token punctuation">.</span>out<span class="token punctuation"
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java的基础知识和常用语法
+                            Java的基础知识和常用语
                         
                     </div>
                     <div class="publish-info">
