@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「Neural Network」Unet, Uanu&#39;s blog">
-    <meta name="description" content="医学常用网络--Unet">
+    <meta name="keywords" content="「Trouble Shooting」某版本GLIBCXX缺失, Uanu&#39;s blog">
+    <meta name="description" content="解决模型训练过程中遇到的GLIBCXX缺失。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>「Neural Network」Unet | Uanu&#39;s blog</title>
+    <title>「Trouble Shooting」某版本GLIBCXX缺失 | Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「Neural Network」Unet</h1>
+                    <h1 class="description center-align post-title">「Trouble Shooting」某版本GLIBCXX缺失</h1>
                 </div>
             </div>
         </div>
@@ -376,16 +376,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
                             <a href="/tags/Neural-Network/">
                                 <span class="chip bg-color">Neural Network</span>
                             </a>
                         
-                            <a href="/tags/AI/">
-                                <span class="chip bg-color">AI</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                                <span class="chip bg-color">人工智能</span>
+                            <a href="/tags/Ubuntu/">
+                                <span class="chip bg-color">Ubuntu</span>
                             </a>
                         
                     </div>
@@ -396,12 +396,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Neural-Network/" class="post-category">
-                                Neural Network
+                            <a href="/categories/Trouble-Shooting/" class="post-category">
+                                Trouble Shooting
                             </a>
                         
-                            <a href="/categories/Neural-Network/AI/" class="post-category">
-                                AI
+                            <a href="/categories/Trouble-Shooting/Ubuntu/" class="post-category">
+                                Ubuntu
                             </a>
                         
                     </div>
@@ -413,7 +413,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-09-17
+                    2022-09-26
                 </div>
                 
 
@@ -437,13 +437,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Unet是医学图像中进行语义分割(Semantic Segmentation)的重要方法之一。于2015年被提出：[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1505.04597">1505.04597] U-Net: Convolutional Networks for Biomedical Image Segmentation (arxiv.org)</a></p>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>网络整体结构呈”U”形。</p>
-<p><img src="https://img-blog.csdnimg.cn/20181218232106340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FpYW45OQ==,size_16,color_FFFFFF,t_70" alt="Unet"></p>
-<p>总体思路：先进行多次下采样，再进行多次上采样，并将每次上采样的结果与之前相同大小的图像进行特征拼接，最后得到与输入图像尺寸相同的预测结果。</p>
-<p>Unet网络结构也可以看做Encoder-Decoder，下采样看做编码器，上采样看做解码器。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>通过下采样可以获得更深层次的特征，但由于医学图像每个细节都很重要，所以通过与前面结构拼接可以获得上采样过程中丢失的边缘特征。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2>
+                <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ImportError: /usr/lib/x86_64-linux-gnu/libstdc++.so.x: version `GLIBCXX_x.x.xx‘ not found<span class="token punctuation">(</span>required by xxx<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>报错原因：默认路径下的<code>libstdc++.so.x</code>缺少<code>GLIBCXX_x.x.xx</code></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li><p>查看目前已有<code>GLIBCXX</code>版本（可选，主要确认是否真的缺失）</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">strings /usr/lib/x86_64-linux-gnu/libstdc++.so.x <span class="token operator">|</span> <span class="token function">grep</span> GLIBCXX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>查找同类型文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">find</span> / -name <span class="token string">"libstdc++.so.x*"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>选择其中版本较高的，然后复制完整路径名。</p>
+</li>
+<li><p>查看是否包含所需<code>GLIBCXX</code></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">strings 复制的完整路径名 <span class="token operator">|</span> <span class="token function">grep</span> GLIBCXX<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果包含所需版本则继续下一步，否则在步骤二中重新选择。</p>
+</li>
+<li><p>复制到默认目录</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cp</span> 复制的完整路径名 /usr/lib/x86_64-linux-gnu/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>删除原链接</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">rm</span> /usr/lib/x86_64-linux-gnu/libstdc++.so.x<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>建立新链接</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">ln</span> -s 复制的完整路径名 /usr/lib/x86_64-linux-gnu/libstdc++.so.x<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<p>然后重新运行问题程序即可。</p>
+
                 
             </div>
             <hr/>
@@ -469,7 +490,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://uanu2002.top/2022/09/17/Unet/">http://uanu2002.top/2022/09/17/Unet/</a>
+                    <a href="http://uanu2002.top/2022/09/26/import%E6%8A%A5%E9%94%99/">http://uanu2002.top/2022/09/26/import%E6%8A%A5%E9%94%99/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -507,16 +528,16 @@
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
                                 <a href="/tags/Neural-Network/">
                                     <span class="chip bg-color">Neural Network</span>
                                 </a>
                             
-                                <a href="/tags/AI/">
-                                    <span class="chip bg-color">AI</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                                    <span class="chip bg-color">人工智能</span>
+                                <a href="/tags/Ubuntu/">
+                                    <span class="chip bg-color">Ubuntu</span>
                                 </a>
                             
                         </div>
@@ -564,9 +585,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/09/26/import%E6%8A%A5%E9%94%99/">
                     <div class="card-image">
@@ -584,9 +606,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -603,6 +625,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -629,19 +652,19 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/17/Java%E5%AD%A6%E4%B9%A0(2)/">
+                <a href="/2022/09/17/Unet/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Java学习(2)--面向对象">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="「Neural Network」Unet">
                         
-                        <span class="card-title">Java学习(2)--面向对象</span>
+                        <span class="card-title">「Neural Network」Unet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java中的面向对象
+                            医学常用网络--Unet
                         
                     </div>
                     <div class="publish-info">
@@ -652,16 +675,12 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/Neural-Network/" class="post-category">
+                                    Neural Network
                                 </a>
                             
-                            <a href="/categories/Java/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                            
-                            <a href="/categories/Java/%E5%B7%A5%E5%85%B7/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
-                                    面向对象
+                            <a href="/categories/Neural-Network/AI/" class="post-category">
+                                    AI
                                 </a>
                             
                             
@@ -671,24 +690,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/Neural-Network/">
+                        <span class="chip bg-color">Neural Network</span>
                     </a>
                     
-                    <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                        <span class="chip bg-color">语法</span>
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
                     </a>
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                        <span class="chip bg-color">面向对象</span>
-                    </a>
-                    
-                    <a href="/tags/OO/">
-                        <span class="chip bg-color">OO</span>
+                    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                        <span class="chip bg-color">人工智能</span>
                     </a>
                     
                 </div>
