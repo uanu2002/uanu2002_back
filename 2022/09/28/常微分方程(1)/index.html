@@ -449,7 +449,7 @@
 <li><p>解和隐式解：$f(x,y)&#x3D;0$称为隐式解，$y&#x3D;f(x)$为显式解。</p>
 </li>
 </ul>
-<h2 id="一阶微分方程解法"><a href="#一阶微分方程解法" class="headerlink" title="一阶微分方程解法"></a>一阶微分方程解法</h2><h3 id="变量分离"><a href="#变量分离" class="headerlink" title="变量分离"></a>变量分离</h3><p>形式1：$\frac{dy}{dx}&#x3D;f(x)\varphi(y)$</p>
+<h2 id="一阶微分方程解法"><a href="#一阶微分方程解法" class="headerlink" title="一阶微分方程解法"></a>一阶微分方程解法</h2><h3 id="变量分离（齐次方程）"><a href="#变量分离（齐次方程）" class="headerlink" title="变量分离（齐次方程）"></a>变量分离（齐次方程）</h3><p>形式1：$\frac{dy}{dx}&#x3D;f(x)\varphi(y)$</p>
 <p>解法：变量分离为$\frac{dy}{\varphi(y)}&#x3D;f(x)dx$，然后两边积分（**积分后有常数$c$**）</p>
 <p>形式2：$\frac{dy}{dx}&#x3D;g(\frac{y}{x})$</p>
 <p>解法：作变量变换$u&#x3D;\frac{y}{x},则\frac{dy}{dx}&#x3D;x\frac{du}{dx}+u,则原式变为\frac{du}{dx}&#x3D;\frac{g(u)-u}{x}，即为形式1$</p>
@@ -473,7 +473,12 @@
 <h3 id="常数变易法（线性微分方程）"><a href="#常数变易法（线性微分方程）" class="headerlink" title="常数变易法（线性微分方程）"></a>常数变易法（线性微分方程）</h3><p>一阶线性微分方程：$\frac{dy}{dx}&#x3D;P(x)y+Q(x)$</p>
 <p>一阶齐次线性微分方程：$\frac{dy}{dx}&#x3D;P(x)y$</p>
 <p>形式1：$\frac{dy}{dx}&#x3D;P(x)y+Q(x)$</p>
-<p>解法：</p>
+<p>解法：先求解$\frac{dy}{dx}&#x3D;P(x)y$得到$y&#x3D;ce^{\int P(x)dx}，将c换为c(x),然后将y&#x3D;c(x)e^{\int P(x)dx}代入原式，化简得\frac{dc(x)}{dx}&#x3D;Q(x)e^{-\int P(x)dx},则c(x)&#x3D;\int Q(x)e^{-\int P(x)dx}dx+\bar{c},\bar{c}为任意常数$，最终得到原方程通解为$y&#x3D;e^{\int P(x)dx}(\int Q(x)e^{-\int P(x)dx}dx+\bar{c})$</p>
+<p>形式2：$\frac{dy}{dx}&#x3D;P(x)y+Q(x)y^{n},n\ne0,1$（伯努利微分方程）</p>
+<p>解法：作变量变换$z&#x3D;y^{1-n},则变为形式1$，当$n&gt;0$方程还有解$y&#x3D;0$</p>
+<h3 id="积分因子（恰当微分方程）"><a href="#积分因子（恰当微分方程）" class="headerlink" title="积分因子（恰当微分方程）"></a>积分因子（恰当微分方程）</h3><p>恰当微分方程：当一阶微分方程满足$M(x,y)dx+N(x,y)dy&#x3D;du(x,y)&#x3D;\frac{\partial u}{\partial x}dx+\frac{\partial u}{\partial y}dy$</p>
+<p>形式1：恰当微分方程（即满足$\frac{\partial M}{\partial y}&#x3D;\frac{\partial N}{\partial x}$）</p>
+<p>解法1：利用定义可得$u(x,y)&#x3D;\int M(x,y)dx+\int [N(x,y)-\frac{\partial \int M(x,y)dx}{\partial y}]dy$</p>
 
                 
             </div>
@@ -833,6 +838,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
