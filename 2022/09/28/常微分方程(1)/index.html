@@ -461,9 +461,9 @@
 <li>$c_{1}&#x3D;c_{2}&#x3D;0,即为齐次微分方程，为形式2$</li>
 <li>$\begin{vmatrix}a_{1}&amp;b_{1}\a_{2}&amp;b_{2}\end{vmatrix}\ne0$</li>
 </ol>
-<p>​	解法：先解$\left{\begin{matrix}a_{1}x+b_{1}y+c_{1}&#x3D;0 \a_2x+b_{2}y+c_{2}&#x3D;0 \end{matrix}\right.$，解得$\left{\begin{matrix}x&#x3D;\alpha \ y&#x3D;\beta \end{matrix}\right.$，令$\left{\begin{matrix}X&#x3D;x-\alpha \Y&#x3D;y-\beta \end{matrix}\right.$，则原式变为$\frac{dy}{dx}&#x3D;f(\frac{a_{1}+b_{1}\frac{Y}{X}}{a_{2}+b_{2}\frac{Y}{X}})&#x3D;g(\frac{Y}{X}),即为形式2$</p>
+<p>​	解法：先解$$\left{\begin{matrix}a_{1}x+b_{1}y+c_{1}&#x3D;0 \a_2x+b_{2}y+c_{2}&#x3D;0 \end{matrix}\right.$$，解得$\left{\begin{matrix}x&#x3D;\alpha \ y&#x3D;\beta \end{matrix}\right.$，令$\left{\begin{matrix}X&#x3D;x-\alpha \Y&#x3D;y-\beta \end{matrix}\right.$，则原式变为$$\frac{dy}{dx}&#x3D;f(\frac{a_{1}+b_{1}\frac{Y}{X}}{a_{2}+b_{2}\frac{Y}{X}})&#x3D;g(\frac{Y}{X}),即为形式2$$</p>
 <ol start="3">
-<li>$\begin{vmatrix}a_{1}&amp;b_{1}\a_{2}&amp;b_{2}\end{vmatrix}&#x3D; 0$<ol>
+<li>$$\begin{vmatrix}a_{1}&amp;b_{1}\a_{2}&amp;b_{2}\end{vmatrix}&#x3D; 0$$<ol>
 <li>$a_{1}&#x3D;b_{1}&#x3D;0，即为形式3$</li>
 <li>$b_{1}&#x3D;b_{2}&#x3D;0或a_{1}&#x3D;a_{2}&#x3D;0，即\frac{dy}{dx}&#x3D;h(x)或\frac{dy}{dx}&#x3D;h(y),即为形式1$</li>
 <li>$\frac{a_{1}}{b_{1}}&#x3D;\frac{a_{2}}{b_{2}}，令u&#x3D;a_{2}x+b_{2}y，则原式变为\frac{du}{dx}&#x3D;a_{2}+b_{2}f(\frac{ku+c_{1}}{u+c_{2}})&#x3D;g(u)，即为形式1$</li>
@@ -479,6 +479,10 @@
 <h3 id="积分因子（恰当微分方程）"><a href="#积分因子（恰当微分方程）" class="headerlink" title="积分因子（恰当微分方程）"></a>积分因子（恰当微分方程）</h3><p>恰当微分方程：当一阶微分方程满足$M(x,y)dx+N(x,y)dy&#x3D;du(x,y)&#x3D;\frac{\partial u}{\partial x}dx+\frac{\partial u}{\partial y}dy$</p>
 <p>形式1：恰当微分方程（即满足$\frac{\partial M}{\partial y}&#x3D;\frac{\partial N}{\partial x}$）</p>
 <p>解法1：利用定义可得$u(x,y)&#x3D;\int M(x,y)dx+\int [N(x,y)-\frac{\partial \int M(x,y)dx}{\partial y}]dy$</p>
+<p>解法2：利用曲线积分：$u(x,y)&#x3D;\int_{x_0}^{x}M(x,y_{0})dx+\int_{y_0}^{y}N(x,y)dy$或$u(x,y)&#x3D;\int_{y_{0}}^{y}N(x_{0},y)dy+\int_{x_0}^{x}M(x,y)dx$</p>
+<p>解法3：分项组合：将各项组合成全微分形式</p>
+<p>形式2：不满足$\frac{\partial M}{\partial y}&#x3D;\frac{\partial N}{\partial x}$</p>
+<p>解法：只有有解，就一定存在（不唯一）积分因子$\mu$</p>
 
                 
             </div>
