@@ -440,7 +440,38 @@
                 <h2 id="工作流简介"><a href="#工作流简介" class="headerlink" title="工作流简介"></a>工作流简介</h2><p>工作流（WorkFlow）：工作流程及操作规则的概括描述。</p>
 <p>Git Flow：是工作流的一种，它定义了项目的分支模型及各分支的作用，还定义了分支间的交互要求。</p>
 <p><img src="/2022/09/18/gitflow/1.png" alt="Git Flow"></p>
-<h2 id="Git-Flow"><a href="#Git-Flow" class="headerlink" title="Git Flow"></a>Git Flow</h2>
+<h2 id="Git-Flow"><a href="#Git-Flow" class="headerlink" title="Git Flow"></a>Git Flow</h2><p>将代码托管平台上的库称为中央存储库<code>origin</code>。</p>
+<h3 id="主要分支"><a href="#主要分支" class="headerlink" title="主要分支"></a>主要分支</h3><h4 id="develop和master"><a href="#develop和master" class="headerlink" title="develop和master"></a>develop和master</h4><p>中央存储库有两个无限生命周期的分支：</p>
+<ul>
+<li><code>master</code></li>
+<li><code>develop</code></li>
+</ul>
+<p>这两个分支用于记录项目的历史版本，<code>master</code>保存正式发布的版本，<code>develop</code>则保存<strong>集成</strong>特性的分支（测试版本）。</p>
+<h4 id="feature"><a href="#feature" class="headerlink" title="feature"></a>feature</h4><p>每一个特性都需要有自己的<code>feature</code>分支，当一个特性开发完成后，对应<code>feature</code>会被<code>merge</code>到<code>develop</code>分支中。<code>feature</code>将<code>develop</code>作为其父分支。<strong>不能直接与<code>master</code>合并</strong>。</p>
+<h4 id="release"><a href="#release" class="headerlink" title="release"></a>release</h4><p>发布分支<code>release</code>，当<code>develop</code>已经有足够多的新特性时，需要从<code>develop</code>分支开辟一个<code>release</code>分支。<code>release</code>分支创建后不允许新特性加入，只允许修复bug和发布任务。当<code>release</code>准备好后，将<code>release</code>分支与<code>master</code>分支合并，同时给<code>master</code>分支打上一个版本号。</p>
+<h4 id="hotfix"><a href="#hotfix" class="headerlink" title="hotfix"></a>hotfix</h4><p>修补分支<code>hotfix</code>，用于快速修补<code>master</code>版本，是<strong>唯一</strong>从<code>master</code>开辟的分支。当<code>hotfix</code>修复完成后需要合并回<code>master</code>、<code>develop</code>和<code>release</code>分支。</p>
+<h3 id="工具包安装使用"><a href="#工具包安装使用" class="headerlink" title="工具包安装使用"></a>工具包安装使用</h3><p>为了更高效的实现上述操作，可以在<code>git</code>中下载<code>git-flow</code>，<a target="_blank" rel="noopener" href="https://git-scm.com/download/win">官网下载链接</a>。</p>
+<h4 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h4><ul>
+<li><code>git flow init</code>：创建<code>develop</code>分支。</li>
+<li><code>git flow feature start feature_branch</code>：创建一个名为<code>feature_branch</code>的特征分支。</li>
+<li><code>git flow feature finish feature_branch</code>：结束一个名为<code>feature_branch</code>的特征分支（即与<code>develop</code>进行<code>merge</code>）。</li>
+<li><code>git flow release start 0.1.0</code>：创建一个名为<code>0.1.0</code>的<code>release</code>分支。</li>
+<li><code>git flow release finish &#39;0.1.0&#39;</code>：结束一个名为<code>0.1.0</code>的<code>release</code>分支（即与<code>master</code>进行<code>merge</code>）。</li>
+<li><code>git flow hotfix start hotfix_branch</code>：创建一个名为<code>hotfix_branch</code>的修补分支。</li>
+<li><code>git flow hotfix finish hotfix_branch</code>：结束一个名为<code>hotfix_branch</code>的修补分支（即与<code>master</code>、<code>develop</code>进行<code>merge</code>，然后删除该分支）。</li>
+</ul>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>git flow指令与git指令并不冲突，实质上是将git指令进行集成。</p>
+<h3 id="总流程"><a href="#总流程" class="headerlink" title="总流程"></a>总流程</h3><p>总结下Git Flow的完整流程：</p>
+<ol>
+<li>从 <code>master</code> 创建一个 <code>develop</code> 分支</li>
+<li>从 <code>develop</code>创建一个 <code>release</code> 分支</li>
+<li>从 <code>develop</code> 创建 <code>feature</code> 分支</li>
+<li>当一个 <code>feature</code> 开发结束，将被 merge 到 <code>develop</code> 分支</li>
+<li>当 <code>release</code> 分支完成，将被 merge 到 <code>develop</code> 和 <code>master</code></li>
+<li>如果在 <code>master</code> 中发现问题，要从 <code>master</code> 创建一个 <code>hotfix</code> 分支</li>
+<li>一旦 <code>hotfix</code> 完成，将被 merge 回 <code>develop</code> 和 <code>master</code></li>
+</ol>
+
                 
             </div>
             <hr/>
