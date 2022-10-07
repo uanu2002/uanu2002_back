@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「Congnitive Science」FMRI和MVPA, Uanu的博客|Uanu&#39;s blog">
-    <meta name="description" content="功能性核磁共振成像和多体素模式分析">
+    <meta name="description" content="功能性磁共振成像和多体素模式分析">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -437,7 +437,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="FMRI"><a href="#FMRI" class="headerlink" title="FMRI"></a>FMRI</h2><p>即功能性磁共振成像（functional magnetic reasonable imaging），一种非侵入式成像方法。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>先分析核磁共振成像（MRI）原理：通过施加外部射频脉冲，组织液中的质子吸收能量，纵向磁化量减小并产生横向磁化量，即MR信号。但由于质子恢复到原位置需要时间，所以MR信号易受影响，时间分辨率低。</p>
+<p>FMRI原理：当脑区域收到刺激时，能量和氧气消耗增加，从而引起血管扩张，脑血流量（CBF）增加，导致氧合血红蛋白与去氧血红蛋白的比例增大。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-a06a728a894c722d18201ea638da517e_1440w.webp"></p>
+<p>因为两种蛋白分别是顺磁性和逆磁性，所以会形成局部磁场梯度，导致不同物质内的氢质子受到不同的磁场强度。然后产生了不同强度的MR信号，即图像上不同的亮暗程度。</p>
+<p>FMRI的成像单位是体素（voxel）（即三维的像素）。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>时间分辨率更高。</p>
+<blockquote>
+<p>  时间分辨率：同一区域两次成像的最小时间间隔，时间间隔越小，分辨率越高。</p>
+</blockquote>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li>脑功能映射（Function Brain Mapping）。</li>
+<li>认知神经科学。</li>
+</ul>
+<h2 id="MVPA"><a href="#MVPA" class="headerlink" title="MVPA"></a>MVPA</h2><p>即多体素模式分析，用分类的机器学习算法从FMRI获得的大量体素信息中解码对应的信息。</p>
+<p><img src="https://pic2.zhimg.com/80/169c18e2d7abef26c27daf740867b669_1440w.webp" alt="img"></p>
+<p>左图：只分析单个体素就可以进行分类。<br>右图：二维分类，如果只用一个维度很难区分，这时多体素分析就发挥作用了。</p>
+<p>注：由于使用了多个体素，所以可以解码得到比体素还小的功能单位所包含的信息。</p>
+<p>分类器的选择：</p>
+<ul>
+<li>线性分类器（logistic regression等）：可以衡量某个体素的对分类模型的贡献。</li>
+<li>非线性分类器（SVM等）：可以衡量某个脑区（不能衡量单个体素）的表征精度。</li>
+</ul>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>进行MVPA的步骤：</p>
+<ol>
+<li><p>选择特征（feature selection)</p>
+<blockquote>
+<p>  常用方法：</p>
+<ul>
+<li>根据脑区加工、编码信息的既定理论选择<strong>特定位置</strong>的体素进行后续分析。</li>
+<li>相关性分析，选择和任务相关性较高的体素，但可能存在不相关的体素也会起作用。</li>
+<li>前向（后向）搜索，从某个起点开始，逐个加入体素观察分类器精度的变化，如果精度提高就保留，否则删去。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>构建数据集</p>
+<p>将体素转换成矩阵，并构建对应的标记y。</p>
+</li>
+<li><p>训练分类器</p>
+<p>同机器学习。</p>
+</li>
+<li><p>分类器测试（验证）</p>
+<p>同机器学习。</p>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -575,7 +620,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            功能性核磁共振成像和多体素模式分析
+                            功能性磁共振成像和多体素模式分析
                         
                     </div>
                     <div class="publish-info">
