@@ -485,8 +485,45 @@
 <p>解法3：分项组合：将各项组合成全微分形式</p>
 <p>形式2：不满足$\frac{\partial M}{\partial y}&#x3D;\frac{\partial N}{\partial x}$</p>
 <p>解法：只有有解，就一定存在（不唯一）积分因子$\mu$满足$\frac{\partial (\mu M)}{\partial y}&#x3D;\frac{\partial (\mu N)}{\partial x}，如果存在只与x有关的\mu，即\frac{d \mu}{dx}&#x3D;0，则可化简得N\frac{d\mu}{dx}&#x3D;(\frac{\partial M}{\partial y}-\frac{\partial N}{\partial x})\mu，变量分离可得\mu$，然后原方程两边同乘$\mu$，即可变为形式1。</p>
-<h3 id="参数表示（一阶隐式微分方程）"><a href="#参数表示（一阶隐式微分方程）" class="headerlink" title="参数表示（一阶隐式微分方程）"></a>参数表示（一阶隐式微分方程）</h3><p>一阶隐式微分方程：$F(x,y,y’)&#x3D;0$</p>
-<p>形式1：</p>
+<h3 id="参数表示（一阶隐式微分方程）"><a href="#参数表示（一阶隐式微分方程）" class="headerlink" title="参数表示（一阶隐式微分方程）"></a>参数表示（一阶隐式微分方程）</h3><p>一阶隐式微分方程：$F(x,y,y’)&#x3D;0$，与前面一阶显式微分方程区别：$\frac{dy}{dx}$项不是一次方。</p>
+<h4 id="含单独-x-项或-y-项的方程"><a href="#含单独-x-项或-y-项的方程" class="headerlink" title="含单独$x$项或$y$项的方程"></a>含单独$x$项或$y$项的方程</h4><p><strong>形式1</strong>：可化为$y&#x3D;f(x,y’)$</p>
+<blockquote>
+<p>  解法：<br>  (1) 假设$f(x,y’)$有连续偏导数，令$y’&#x3D;p$，代入得$p&#x3D;\frac{\partial{f}}{\partial{x}}+\frac{\partial{f}}{\partial{p}}\frac{dp}{dx}$，此时化为关于$p,x$的一阶显式微分方程，即只有一次方的$\frac{dp}{dx}$。<br>  (2)利用前面三种方法求解得到的微分方程：</p>
+<ul>
+<li>若解为$p&#x3D;\varphi(x,c)$，然后两边积分即得到原方程解为：$y&#x3D;f(x,\varphi(x,c))$</li>
+<li>若解为$x&#x3D;\psi(p,c)$，则原方程解为参数方程形式：$\left{\begin{aligned}x&#x3D;\psi(p,c)\ y&#x3D;f(x,p)\end{aligned}\right.$</li>
+</ul>
+</blockquote>
+<p><strong>形式2</strong>：可化为$x&#x3D;f(y,y’)$</p>
+<blockquote>
+<p>  解法：<br>  (1)假设$f(y,y’)$有连续偏导数，令$y’&#x3D;p$，同理代入得到$x&#x3D;f(y,p)$，即化为关于$p,y$的一阶显式微分方程。<br>  (2)利用前面三种方法求解得到的微分方程，得到$\phi(y,p,c)&#x3D;0$，则原方程解为：$\left{\begin{aligned}x&#x3D;f(y,p)\\phi(y,p,c)&#x3D;0\end{aligned}\right.$</p>
+</blockquote>
+<h4 id="不含单独-x-项或-y-项的方程"><a href="#不含单独-x-项或-y-项的方程" class="headerlink" title="不含单独$x$项或$y$项的方程"></a>不含单独$x$项或$y$项的方程</h4><p><strong>形式3</strong>：$F(x,y’)&#x3D;0$</p>
+<blockquote>
+<p>  解法：<br>  (1)设$y’&#x3D;p&#x3D;tx$（一个参数方式，不唯一），代入原方程解得$x&#x3D;\varphi(t)$，进而将原方程表示成参数形式：$\left{\begin{aligned}x&#x3D;\varphi(t)\p&#x3D;\psi(t)\end{aligned}\right.$<br>  (2)将参数方程代入$y’&#x3D;p$，得$dy&#x3D;\psi(t)\varphi’(t)dt$，然后两边积分得到$y&#x3D;\phi(t,c)$<br>  (3)最终得到原方程解的参数形式：$\left{\begin{aligned}x&#x3D;\varphi(t)\y&#x3D;\phi(t,c)\end{aligned}\right.$</p>
+</blockquote>
+<p><strong>形式4</strong>：$F(y,y’)&#x3D;0$</p>
+<blockquote>
+<p>  解法：<br>  (1)设$y’&#x3D;p&#x3D;ty$（一个参数方式，不唯一），代入原方程解得$y&#x3D;\varphi(t)$，进而将原方程表示成参数形式：$\left{\begin{aligned}y&#x3D;\varphi(t)\p&#x3D;\psi(t)\end{aligned}\right.$<br>  (2)将参数方程代入$dx&#x3D;dy&#x2F;p$，得$dx&#x3D;\frac{\varphi’(t)}{\psi(t)}dt$，然后两边积分得到$x&#x3D;\phi(t,c)$<br>  (3)最终得到原方程解的参数形式：$\left{\begin{aligned}y&#x3D;\varphi(t)\x&#x3D;\phi(t,c)\end{aligned}\right.$</p>
+</blockquote>
+<h2 id="一阶微分方程的解的存在定理"><a href="#一阶微分方程的解的存在定理" class="headerlink" title="一阶微分方程的解的存在定理"></a>一阶微分方程的解的存在定理</h2><p>解析解和数值解：</p>
+<ul>
+<li>解析解：能求出具体的函数表达式，图像是连续的。</li>
+<li>数值解：给出一系列自变量的值，求出对应的因变量值，图像是离散的。</li>
+</ul>
+<p>初值问题：求解满足$\left{\begin{aligned}\frac{dy}{dx}&#x3D;f(y,x)\初值条件：y(x_{0})&#x3D;y_{0}\end{aligned}\right.$，可能是解析解或数值解</p>
+<h3 id="存在唯一性定理"><a href="#存在唯一性定理" class="headerlink" title="存在唯一性定理"></a>存在唯一性定理</h3><p>利普希茨(lipschitz)条件：$f(x,y)$在区域$R$上关于$y$满足利普希茨条件：即存在$L$(利普希茨常数)，使得：$|f(x,y_{1})-f(x,y_{2})|\le L|y_{1}-y_{2}|,\forall(x,y_{1}),(x,y_{2})\in R$.其中$R$是矩形域：$|x-x_{0}|\le a,|y-y_{0}|\le b$.</p>
+<p><strong>定理1</strong>：如果$f(x,y)$在$R$上连续且关于$y$满足Lipschitz条件，则存在唯一解$y&#x3D;\varphi(x)$定义在$|x-x_{0}|\le h$上连续，其中$h&#x3D;min{a,\frac{b}{M}},M&#x3D;max|f(x,y)|$</p>
+<blockquote>
+<p>  验证Lipschitz条件困难，有时用$f_{y}在R$的上界作为$L$</p>
+</blockquote>
+<h3 id="近似计算和误差估计"><a href="#近似计算和误差估计" class="headerlink" title="近似计算和误差估计"></a>近似计算和误差估计</h3><p>$\varphi(x)$是$n$次近似解，$\varphi(x)$是真正解，可以通过$|\varphi_{n}(x)-\varphi(x)|\le \frac{M}{L}\cdot \frac{(Lh)^{n+1}}{(n+1)!}\le 误差$来计算满足误差的近似解。</p>
+<blockquote>
+<p>  近似解计算：已知$\frac{dy}{dx}&#x3D;f(x,y)$，求过$(x_{0},y_{0})$的解的存在区间，并求此区间上与真正解误差不超过$error$的近似解。</p>
+<p>  (1)$M&#x3D;max|f(x,y)|,|x-x_{0}|\le a,|y-y_{0}|\le b$<br>  $h&#x3D;min{a,\frac{b}{M}}$，则解的存在区间：$[x_{0}-h,x_{0}+h]$</p>
+<p>  (2)$L&#x3D;max{|\frac{\partial{f}}{\partial{y}}|}$<br>  通过$|\varphi_{n}(x)-\varphi(x)|\le \frac{M}{L}\cdot \frac{(Lh)^{n+1}}{(n+1)!}\le error$解出$n$</p>
+<p>  然后一次计算$\varphi_{0}(x)&#x3D;y_{0}\\varphi_{1}(x)&#x3D;\int^{x}<em>{x</em>{0}}f(\xi,\varphi_{0}(\xi))d\xi\\cdots\\varphi_{n}(x)&#x3D;\int^{x}<em>{x_0}f(\xi,\varphi</em>{n-1}(\xi))dx$，最终得到近似解$\varphi_{n}(x)$.</p>
+</blockquote>
 
                 
             </div>
@@ -616,9 +653,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="「Congnitive Science」FMRI和MVPA">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="「Congnitive Science」FMRI、MVPA和群体编码">
                         
-                        <span class="card-title">「Congnitive Science」FMRI和MVPA</span>
+                        <span class="card-title">「Congnitive Science」FMRI、MVPA和群体编码</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
