@@ -517,6 +517,13 @@
 <blockquote>
 <p>  验证Lipschitz条件困难，有时用$f_{y}在R$的上界作为$L$</p>
 </blockquote>
+<p><strong>定理2</strong>：如果在点$(x_{0},y_{0},y_{0}’)$的某一领域中，</p>
+<ol>
+<li>$F(x,y,y’)$对所有变元$(x,y,y’)$连续，且存在连续偏导数。</li>
+<li>$F(x_{0},y_{0},y_{0}’)&#x3D;0$</li>
+<li>$\frac{\partial{F(x_{0},y_{0},y_{0}’)}}{\partial{y’}}\ne0$</li>
+</ol>
+<p>则一阶隐式方程$F(x,y,y’)$存在唯一解$y&#x3D;y(x),|x-x_{0}|\le h,h为足够小的正数$</p>
 <h3 id="近似计算和误差估计"><a href="#近似计算和误差估计" class="headerlink" title="近似计算和误差估计"></a>近似计算和误差估计</h3><p>$\varphi(x)$是$n$次近似解，$\varphi(x)$是真正解，可以通过$|\varphi_{n}(x)-\varphi(x)|\le \frac{M}{L}\cdot \frac{(Lh)^{n+1}}{(n+1)!}\le 误差$来计算满足误差的近似解。</p>
 <blockquote>
 <p>  近似解计算：已知$\frac{dy}{dx}&#x3D;f(x,y)$，求过$(x_{0},y_{0})$的解的存在区间，并求此区间上与真正解误差不超过$error$的近似解。</p>
@@ -524,6 +531,39 @@
 <p>  (2)$L&#x3D;max{|\frac{\partial{f}}{\partial{y}}|}$<br>  通过$|\varphi_{n}(x)-\varphi(x)|\le \frac{M}{L}\cdot \frac{(Lh)^{n+1}}{(n+1)!}\le error$解出$n$</p>
 <p>  然后一次计算$\varphi_{0}(x)&#x3D;y_{0}\\varphi_{1}(x)&#x3D;\int^{x}<em>{x</em>{0}}f(\xi,\varphi_{0}(\xi))d\xi\\cdots\\varphi_{n}(x)&#x3D;\int^{x}<em>{x_0}f(\xi,\varphi</em>{n-1}(\xi))dx$，最终得到近似解$\varphi_{n}(x)$.</p>
 </blockquote>
+<h3 id="解的延拓"><a href="#解的延拓" class="headerlink" title="解的延拓"></a>解的延拓</h3><p>由解的存在唯一性定理可知$y&#x3D;\varphi(x)$存在区间是$|x-x_{0}|&lt;h&#x3D;min{a,\frac{b}{M}}$。通过令$x_{1}&#x3D;x_{0}+$，然后以$(x_{1},y_{1})$建立一个新的区间$|x-x_{1}|&lt;h_{1}$，有存在唯一性定理这个区间上存在$y&#x3D;\phi(x)$，两个区间相交处$\varphi(x)&#x3D;\phi(x)$。进而可以得到在$[x_{0}-h,x_{0}+h+h_{1}]$上存在唯一解$y&#x3D;\left{\begin{aligned}\varphi(x),\quad x_{0}-h\le x \le x_{0}+h\ \phi(x), \quad x_{0}+h\lt x \le x_{0}+h+h_{1}\end{aligned}\right.$，即解被<strong>右延拓</strong>了。</p>
+<h4 id="解的延拓定理"><a href="#解的延拓定理" class="headerlink" title="解的延拓定理"></a>解的延拓定理</h4><p>函数$f(x,y)$在有界区域$G$内关于$y$满足局部的利普希茨条件，那么解$y&#x3D;\varphi(x)$可以延拓到点$(x,\varphi(x))$任意接近区域$G$的边界。</p>
+<p><strong>推论</strong></p>
+<p>如果$G$是无界区域（以一侧为例），则：</p>
+<ul>
+<li>解$y&#x3D;\varphi(x)$可以延拓到区间$[x_{0},+\infin)$</li>
+<li>解$y&#x3D;\varphi(x)$可以延拓到区间$[x_{0},d)$，区间边界<strong>开区间</strong>，必须是其中$d$为有限数，当$x \to d,y&#x3D;\varphi(x)$无界，或者点$(x,\varphi(x))$趋于区域$G$的边界。</li>
+</ul>
+<p><strong>应用</strong></p>
+<p>主要用于求解的存在区间。</p>
+<h4 id="解对初值的性质"><a href="#解对初值的性质" class="headerlink" title="解对初值的性质"></a>解对初值的性质</h4><p>在求解初值问题时，我们可以把初值也看做变量，则函数变为$y&#x3D;\varphi(x,x_{0},y_{0})$.</p>
+<p><strong>解对初值的连续性</strong></p>
+<p>若函数$f(x,y)$在区域$G$内连续，且关于$y$满足局部利普希茨条件，则解$y&#x3D;\varphi(x,x_{0},y_{0})$作为$x,x_{0},y_{0}$的函数在其存在范围内连续。</p>
+<p><strong>解对初值的可微性</strong></p>
+<p>若函数$f(x,y)$和$\frac{\partial{f}}{\partial{x_{0}}}$都在区域$G$内连续，则解$y&#x3D;\varphi(x,x_{0},y_{0})$作为$x,x_{0},y_{0}$的函数在它的存在范围内是连续可微的。微分公式为：</p>
+<ul>
+<li>$\frac{\partial{\varphi}}{\partial{x_{0}}}&#x3D;-f(x_{0},y_{0})exp(\int_{x_{0}}^{x}\frac{\partial{f(x,\varphi)}}{\partial{y}}dx)$</li>
+<li>$\frac{\partial{\varphi}}{\partial{y_{0}}}&#x3D;exp(\int_{x_{0}}^{x}\frac{\partial{f(x,\varphi)}}{\partial{y}}dx)$</li>
+</ul>
+<h3 id="奇解"><a href="#奇解" class="headerlink" title="奇解"></a>奇解</h3><p>包络：部分微分方程存在的一条特殊曲线，该曲线不属于此方程的积分曲线族，该曲线上的每一点都有积分曲线族中的一条曲线和它相切。将这条曲线称为<strong>积分曲线族</strong>的<strong>包络</strong>。（可能不存在、存在一个或多个）</p>
+<p>奇解：包络对应的解。</p>
+<p>设给定单参数曲线族$\Phi(x,y,c)&#x3D;0$，则曲线族的包络<strong>包含</strong>在方程组$\left{\begin{aligned}\Phi(x,y,c)&#x3D;0\\Phi_c’(x,y,c)&#x3D;0\end{aligned}\right.$消去参数$c$（即解多个曲线公共切线）得到的曲线<strong>之中</strong>，消去$c$得到的曲线称为<strong>c-判别曲线</strong>，<strong>其中除去包络外还有其他曲线</strong>，需要<strong>检验</strong>。</p>
+<p>奇解定义（2）：如果一个解的每一个点上至少还有方程的另外一个解存在，就称为奇解。</p>
+<p><strong>求奇解方法1</strong>：先求通解积分曲线族 -&gt; 求通解包络 -&gt; 即奇解</p>
+<p>由存在唯一性定理2，如果$F$关于$y’$的偏导不等于$0$，则解唯一，即不存在奇解。</p>
+<p>因此奇解如果存在的话，必须满足$F(x,y,y’),\frac{\partial{F}}{\partial{y’}}&#x3D;0$</p>
+<p><strong>求奇解方法2</strong>：令$p&#x3D;y’$，则奇解<strong>包含</strong>在$\left{\begin{aligned}F(x,y,p)&#x3D;0\F’_{p}(x,y,p)&#x3D;0\end{aligned}\right.$方程组消去参数$p$得到的曲线<strong>之中</strong>，消去$p$得到的曲线称为<strong>p-判别曲线</strong>，但不一定是奇解，需要<strong>检验</strong>。</p>
+<h4 id="克莱罗微分方程"><a href="#克莱罗微分方程" class="headerlink" title="克莱罗微分方程"></a>克莱罗微分方程</h4><p>形式1：$y&#x3D;xp+f(p),这里p&#x3D;\frac{dp}{dx},f(p)是p的连续可微函数$（即四种一阶方程中的第四种）</p>
+<p><strong>特殊性质</strong>：令$p&#x3D;y’$，然后两边对$x$求导，化简得$\frac{dp}{dx}(x+f’(p))&#x3D;0$.</p>
+<ul>
+<li>如果$\frac{dp}{dx}&#x3D;0$，则$p&#x3D;c,解为y&#x3D;cx+f(c)$.</li>
+<li>如果$x+f’(p)&#x3D;0$，解为$\left{\begin{aligned}x+f’(p)&#x3D;0\y&#x3D;xp+f(p)\end{aligned}\right.$.求解过程和从通解中求解包络一样，因此解即通解$y&#x3D;cx+f(c)$的包络。</li>
+</ul>
 
                 
             </div>
