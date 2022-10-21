@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java学习(3)--高级结构, Uanu的博客|Uanu&#39;s blog">
-    <meta name="description" content="Java中的高级结构">
+    <meta name="keywords" content="「Tools」Zotero, Uanu的博客|Uanu&#39;s blog">
+    <meta name="description" content="文献管理工具Zotero">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>Java学习(3)--高级结构 | Uanu的博客|Uanu&#39;s blog</title>
+    <title>「Tools」Zotero | Uanu的博客|Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java学习(3)--高级结构</h1>
+                    <h1 class="description center-align post-title">「Tools」Zotero</h1>
                 </div>
             </div>
         </div>
@@ -376,24 +376,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                <span class="chip bg-color">语法</span>
+                            <a href="/tags/%E8%AE%BA%E6%96%87/">
+                                <span class="chip bg-color">论文</span>
                             </a>
                         
                             <a href="/tags/%E5%B7%A5%E5%85%B7/">
                                 <span class="chip bg-color">工具</span>
                             </a>
                         
-                            <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                                <span class="chip bg-color">面向对象</span>
-                            </a>
-                        
-                            <a href="/tags/OO/">
-                                <span class="chip bg-color">OO</span>
+                            <a href="/tags/Tools/">
+                                <span class="chip bg-color">Tools</span>
                             </a>
                         
                     </div>
@@ -404,16 +396,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java/" class="post-category">
-                                Java
-                            </a>
-                        
-                            <a href="/categories/Java/%E5%B7%A5%E5%85%B7/" class="post-category">
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
                                 工具
                             </a>
                         
-                            <a href="/categories/Java/%E5%B7%A5%E5%85%B7/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
-                                面向对象
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/Tools/" class="post-category">
+                                Tools
                             </a>
                         
                     </div>
@@ -425,7 +413,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-10-17
+                    2022-10-21
                 </div>
                 
 
@@ -449,72 +437,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>JDK5引入，泛型本质是参数化类型，即将数据类型看做参数。</p>
-<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><p>通过传入不同参数类型，来实现对不同类型数据的处理，类似于重载。</p>
-<p>规则：</p>
-<ul>
-<li>声明时，在方法<strong>返回类型前</strong>有一个<strong>类型参数声明</strong>部分，以尖括号<code>&lt;&gt;</code>分隔。</li>
-<li>类型参数声明部分包括一个或多个类型参数（用泛型标记符表示），逗号隔开。</li>
-<li>类型参数可以用来声明返回值类型，也可以作为传入参数类型的占位符。</li>
-<li>类型参数只能代表引用型类型，不能是原始类型，如：int、double等。</li>
-</ul>
-<h4 id="泛型标记符"><a href="#泛型标记符" class="headerlink" title="泛型标记符"></a>泛型标记符</h4><ul>
-<li><strong>E</strong> - Element (在集合中使用，因为集合中存放的是元素)</li>
-<li><strong>T</strong> - Type（Java 类）</li>
-<li><strong>K</strong> - Key（键）</li>
-<li><strong>V</strong> - Value（值）</li>
-<li><strong>N</strong> - Number（数值类型）</li>
-<li><strong>？</strong> - 表示不确定的 java 类型</li>
-</ul>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> demo<span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">E</span><span class="token punctuation">></span></span> <span class="token class-name">E</span> <span class="token function">is_print</span><span class="token punctuation">(</span><span class="token class-name">E</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token class-name">Array</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">E</span> element <span class="token operator">:</span> <span class="token class-name">Array</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> element<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token class-name">E</span> re <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> re<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> argv<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> array <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> re <span class="token operator">=</span> <span class="token function">is_print</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>re<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token comment">// 输出：123451</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="有界的类型参数"><a href="#有界的类型参数" class="headerlink" title="有界的类型参数"></a>有界的类型参数</h4><p>用于限制类型参数的类型种类范围，比如希望方法只会接受Number或Number的子类实例。</p>
-<p>实例：</p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">public static &lt;T extends Comparable&lt;T&gt;&gt; T maximum(T x, T y)
-&#123;
-&#x2F;&#x2F; 一个只接受可比较（Comparable）类型的比较函数
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p>在类名后面添加类型参数声明部分，用法同泛型方法。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Box</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">></span></span> <span class="token punctuation">&#123;</span>
-   
-  <span class="token keyword">private</span> <span class="token class-name">T</span> t<span class="token punctuation">;</span>
- 
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">T</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>t <span class="token operator">=</span> t<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
- 
-  <span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> t<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
- 
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">Box</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> integerBox <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Box</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">Box</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> stringBox <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Box</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- 
-    integerBox<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    stringBox<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"菜鸟教程"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- 
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"整型值为 :%d\n\n"</span><span class="token punctuation">,</span> integerBox<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"字符串为 :%s\n"</span><span class="token punctuation">,</span> stringBox<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
+                
                 
             </div>
             <hr/>
@@ -540,7 +463,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://uanu2002.top/2022/10/17/Java%E5%AD%A6%E4%B9%A0(3)/">http://uanu2002.top/2022/10/17/Java%E5%AD%A6%E4%B9%A0(3)/</a>
+                    <a href="http://uanu2002.top/2022/10/21/Zotero/">http://uanu2002.top/2022/10/21/Zotero/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -578,24 +501,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%AF%AD%E6%B3%95/">
-                                    <span class="chip bg-color">语法</span>
+                                <a href="/tags/%E8%AE%BA%E6%96%87/">
+                                    <span class="chip bg-color">论文</span>
                                 </a>
                             
                                 <a href="/tags/%E5%B7%A5%E5%85%B7/">
                                     <span class="chip bg-color">工具</span>
                                 </a>
                             
-                                <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-                                    <span class="chip bg-color">面向对象</span>
-                                </a>
-                            
-                                <a href="/tags/OO/">
-                                    <span class="chip bg-color">OO</span>
+                                <a href="/tags/Tools/">
+                                    <span class="chip bg-color">Tools</span>
                                 </a>
                             
                         </div>
@@ -643,9 +558,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2022/10/21/Zotero/">
                     <div class="card-image">
@@ -663,9 +579,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -682,6 +598,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -708,35 +625,39 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/05/FMRI/">
+                <a href="/2022/10/17/Java%E5%AD%A6%E4%B9%A0(3)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="「Congnitive Science」FMRI、MVPA和群体编码">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Java学习(3)--高级结构">
                         
-                        <span class="card-title">「Congnitive Science」FMRI、MVPA和群体编码</span>
+                        <span class="card-title">Java学习(3)--高级结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            功能性磁共振成像和多体素模式分析
+                            Java中的高级结构
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Congnitive-Science/" class="post-category">
-                                    Congnitive Science
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
-                            <a href="/categories/Congnitive-Science/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/" class="post-category">
-                                    认知科学
+                            <a href="/categories/Java/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            <a href="/categories/Java/%E5%B7%A5%E5%85%B7/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
+                                    面向对象
                                 </a>
                             
                             
@@ -746,16 +667,24 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Congnitive-Science/">
-                        <span class="chip bg-color">Congnitive Science</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">
-                        <span class="chip bg-color">认知科学</span>
+                    <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">语法</span>
                     </a>
                     
-                    <a href="/tags/%E8%AE%BA%E6%96%87/">
-                        <span class="chip bg-color">论文</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                        <span class="chip bg-color">工具</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+                        <span class="chip bg-color">面向对象</span>
+                    </a>
+                    
+                    <a href="/tags/OO/">
+                        <span class="chip bg-color">OO</span>
                     </a>
                     
                 </div>
