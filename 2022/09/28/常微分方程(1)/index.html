@@ -564,6 +564,18 @@
 <li>如果$\frac{dp}{dx}&#x3D;0$，则$p&#x3D;c,解为y&#x3D;cx+f(c)$.</li>
 <li>如果$x+f’(p)&#x3D;0$，解为$\left{\begin{aligned}x+f’(p)&#x3D;0\y&#x3D;xp+f(p)\end{aligned}\right.$.求解过程和从通解中求解包络一样，因此解即通解$y&#x3D;cx+f(c)$的包络。</li>
 </ul>
+<h2 id="高阶微分方程"><a href="#高阶微分方程" class="headerlink" title="高阶微分方程"></a>高阶微分方程</h2><h3 id="线性微分方程"><a href="#线性微分方程" class="headerlink" title="线性微分方程"></a>线性微分方程</h3><p>$n$阶线性微分方程：$\frac{d^{n}x}{dt^{n}}+a_{1}(t)\frac{d^{n-1}x}{dt^{n-1}}+\cdots+a_{n-1}(t)\frac{dx}{dt}+a_n(t)&#x3D;f(t)$</p>
+<p><strong>定理1</strong>（<strong>叠加原理</strong>）：如果$x_{1}(t),x_{2}(t),\cdots,x_{k}(t)$是线性微分方程对应齐次线性微分方程的$k$个解，则$c_{1}x_{1}(1)+c_{2}x_{2}(t)+\cdots+c_{k}x_{k}(t)$也是齐次线性微分方程的解。当$k&#x3D;n$，则有解为$x&#x3D;c_{1}x_{1}(t)+c_{2}x_{2}(t)+\cdots+c_{n}x_{n}(t)$</p>
+<p><strong>线性相关</strong>：存在不全为零的常数$c_{1},c_{2},\cdots,c_{k}$使得$c_{1}x_{1}(t)+c_{2}x_{2}(t)+\cdots+c_{k}x_{k}(t)\equiv 0$</p>
+<p><strong>线性无关</strong>：不存在线性相关的情况。</p>
+<p><strong>朗斯基行列式</strong>：<img src="https://bkimg.cdn.bcebos.com/formula/911552a9ab68aa285b1d97a34928995e.svg" alt="img"></p>
+<p>其中$f_{1},f_{2},\cdots,f_{k}$都是可微$k-1$次函数。</p>
+<p><strong>定理2</strong>：若$f_{1},f_{2},\cdots,f_{n}$线性相关，则朗斯基行列式$W(f_{1},f_{2},\cdots,f_{n})\equiv 0$。<strong>逆定理不成立</strong></p>
+<p><strong>定理3</strong>：当线性齐次微分方程的解$f_{1},f_{2},\cdots,f_{n}$在$a\le t \le b$上线性无关，则对应朗斯基行列式在这个区间的任何点上都不等于零。</p>
+<p><strong>定理4</strong>：$n$阶齐次线性微分方程一定存在$n$个线性无关的解$x_{1}(t),x_{2}(t),\cdots,x_{n}(t)$，且通解为$x&#x3D;c_{1}x_{1}(t)+c_{2}x_{2}(t)+\cdots+c_{n}x_{n}(t)$</p>
+<p><strong>推论</strong>：$n$个线性无关的解称为方程的一个<strong>基本解组</strong>（不唯一），当$W(t_{0})&#x3D;1$时称为<strong>标准基本解组</strong>。通解构成一个$n$维线性空间。</p>
+<h4 id="非齐次线性微分方程（常数变易法）"><a href="#非齐次线性微分方程（常数变易法）" class="headerlink" title="非齐次线性微分方程（常数变易法）"></a>非齐次线性微分方程（常数变易法）</h4><p><strong>定理</strong>：设$x_{1}(t),x_{2}(t),\cdots,x_{n}(t)$是对应齐次线性微分方程的基本解组，$\bar{x(t)}$是非齐次线性微分方程的某一特解，则其通解为$x&#x3D;c_{1}x_{1}(t)+c_{2}x_{2}(t)+\cdots+c_{n}x_{n}(t)+\bar{x(t)}$</p>
+<p>解法：求出基本解组后，与特解联立设通解，然后代入非齐次微分方程求解系数。</p>
 
                 
             </div>
