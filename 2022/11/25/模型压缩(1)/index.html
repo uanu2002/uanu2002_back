@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「Tools」Zerotier, Uanu的博客|Uanu&#39;s blog">
-    <meta name="description" content="免费内网穿透工具Zerotier、">
+    <meta name="keywords" content="「Model Compresion」模型压缩学习（1）, Uanu的博客|Uanu&#39;s blog">
+    <meta name="description" content="模型压缩和训练加速总览">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@
     </style>
 
 
-    <title>「Tools」Zerotier | Uanu的博客|Uanu&#39;s blog</title>
+    <title>「Model Compresion」模型压缩学习（1） | Uanu的博客|Uanu&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon2.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -255,12 +255,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「Tools」Zerotier</h1>
+                    <h1 class="description center-align post-title">「Model Compresion」模型压缩学习（1）</h1>
                 </div>
             </div>
         </div>
@@ -376,20 +376,20 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                                <span class="chip bg-color">工具</span>
+                            <a href="/tags/Neural-Network/">
+                                <span class="chip bg-color">Neural Network</span>
                             </a>
                         
-                            <a href="/tags/Tools/">
-                                <span class="chip bg-color">Tools</span>
+                            <a href="/tags/AI/">
+                                <span class="chip bg-color">AI</span>
                             </a>
                         
-                            <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
-                                <span class="chip bg-color">内网穿透</span>
+                            <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                                <span class="chip bg-color">人工智能</span>
                             </a>
                         
-                            <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">
-                                <span class="chip bg-color">局域网</span>
+                            <a href="/tags/Model-Compression/">
+                                <span class="chip bg-color">Model Compression</span>
                             </a>
                         
                     </div>
@@ -400,12 +400,16 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                工具
+                            <a href="/categories/Neural-Network/" class="post-category">
+                                Neural Network
                             </a>
                         
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/Tools/" class="post-category">
-                                Tools
+                            <a href="/categories/Neural-Network/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                            <a href="/categories/Neural-Network/AI/Model-Compression/" class="post-category">
+                                Model Compression
                             </a>
                         
                     </div>
@@ -417,7 +421,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-11-06
+                    2022-11-25
                 </div>
                 
 
@@ -441,7 +445,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&#x2F;&#x2F;TODO</p>
+                <h2 id="模型压缩"><a href="#模型压缩" class="headerlink" title="模型压缩"></a>模型压缩</h2><p>将效果很好但参数和运算量巨大的模型部署到内存等资源有限的设备上。</p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+<th>应用</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>参数裁剪和量化</td>
+<td>减少对性能影响较小的参数</td>
+<td>卷积层、全连接层</td>
+<td>鲁棒性好、支持从头开始训练和预训练</td>
+</tr>
+<tr>
+<td>低秩因子化</td>
+<td>张量分解</td>
+<td>卷积层、全连接层</td>
+<td>标准化、易被实施、支持从头开始训练和预训练</td>
+</tr>
+<tr>
+<td>转移&#x2F;压缩卷积过滤器</td>
+<td>设计特殊结构卷积</td>
+<td>卷积层</td>
+<td>取决于应用、只支持从头开始训练</td>
+</tr>
+<tr>
+<td>知识提炼</td>
+<td>训练一个紧凑的神经网络和大模型的知识提炼</td>
+<td>卷积层、全连接层</td>
+<td>性能敏感、只支持从头开始训练</td>
+</tr>
+</tbody></table>
+<h3 id="参数裁剪和量化"><a href="#参数裁剪和量化" class="headerlink" title="参数裁剪和量化"></a>参数裁剪和量化</h3><h4 id="量化和二进制化"><a href="#量化和二进制化" class="headerlink" title="量化和二进制化"></a>量化和二进制化</h4><p>参数量化：将实数转换成一个离散整数且保证计算精度的情况下使用最小比特数。</p>
+<p>$Q(r)&#x3D;Int(r&#x2F;S)-Z$，$Q$是量化运算符，$r$是实数值输入，$S$是实数值的比例因子，$Z$是整数零点，$Int$函数将实数四舍五入为整数。</p>
+<blockquote>
+<p>  量化运算后间隔均匀称为均匀量化，否则为非均匀量化。</p>
+</blockquote>
+<p>$S&#x3D;\frac{\beta - \alpha}{2^{b}-1}$，$[\alpha,\beta]$是实数值$r$的上下边界，$b$是量化比特位宽度。</p>
+<blockquote>
+<p>  上下边界绝对值相等称为对称量化，否则为非对称量化。边界由权重静态计算成为静态量化，运行时动态运算为动态量化。</p>
+</blockquote>
 
                 
             </div>
@@ -468,7 +515,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://uanu2002.top/2022/11/06/zerotier/">http://uanu2002.top/2022/11/06/zerotier/</a>
+                    <a href="http://uanu2002.top/2022/11/25/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9(1)/">http://uanu2002.top/2022/11/25/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9(1)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -506,20 +553,20 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                                    <span class="chip bg-color">工具</span>
+                                <a href="/tags/Neural-Network/">
+                                    <span class="chip bg-color">Neural Network</span>
                                 </a>
                             
-                                <a href="/tags/Tools/">
-                                    <span class="chip bg-color">Tools</span>
+                                <a href="/tags/AI/">
+                                    <span class="chip bg-color">AI</span>
                                 </a>
                             
-                                <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
-                                    <span class="chip bg-color">内网穿透</span>
+                                <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                                    <span class="chip bg-color">人工智能</span>
                                 </a>
                             
-                                <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">
-                                    <span class="chip bg-color">局域网</span>
+                                <a href="/tags/Model-Compression/">
+                                    <span class="chip bg-color">Model Compression</span>
                                 </a>
                             
                         </div>
@@ -567,9 +614,80 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/11/25/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9(1)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="「Model Compresion」模型压缩学习（1）">
+                        
+                        <span class="card-title">「Model Compresion」模型压缩学习（1）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            模型压缩和训练加速总览
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Neural-Network/" class="post-category">
+                                    Neural Network
+                                </a>
+                            
+                            <a href="/categories/Neural-Network/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            <a href="/categories/Neural-Network/AI/Model-Compression/" class="post-category">
+                                    Model Compression
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Neural-Network/">
+                        <span class="chip bg-color">Neural Network</span>
+                    </a>
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
+                        <span class="chip bg-color">人工智能</span>
+                    </a>
+                    
+                    <a href="/tags/Model-Compression/">
+                        <span class="chip bg-color">Model Compression</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/11/15/Trainning%20trick/">
                     <div class="card-image">
@@ -587,9 +705,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -623,67 +741,6 @@
                     
                     <a href="/tags/trick/">
                         <span class="chip bg-color">trick</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/10/21/Zotero/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="「Tools」Zotero">
-                        
-                        <span class="card-title">「Tools」Zotero</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            文献管理工具Zotero
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-21
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/Tools/" class="post-category">
-                                    Tools
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E8%AE%BA%E6%96%87/">
-                        <span class="chip bg-color">论文</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
-                    
-                    <a href="/tags/Tools/">
-                        <span class="chip bg-color">Tools</span>
                     </a>
                     
                 </div>
@@ -807,6 +864,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
