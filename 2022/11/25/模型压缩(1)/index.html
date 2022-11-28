@@ -468,13 +468,13 @@
 <td>标准化、易被实施、支持从头开始训练和预训练</td>
 </tr>
 <tr>
-<td>转移&#x2F;压缩卷积过滤器</td>
+<td>转移&#x2F;压缩卷积</td>
 <td>设计特殊结构卷积</td>
 <td>卷积层</td>
 <td>取决于应用、只支持从头开始训练</td>
 </tr>
 <tr>
-<td>知识提炼</td>
+<td>知识蒸馏</td>
 <td>训练一个紧凑的神经网络和大模型的知识提炼</td>
 <td>卷积层、全连接层</td>
 <td>性能敏感、只支持从头开始训练</td>
@@ -489,6 +489,35 @@
 <blockquote>
 <p>  上下边界绝对值相等称为对称量化，否则为非对称量化。边界由权重静态计算成为静态量化，运行时动态运算为动态量化。</p>
 </blockquote>
+<h4 id="网络修剪（剪枝）"><a href="#网络修剪（剪枝）" class="headerlink" title="网络修剪（剪枝）"></a>网络修剪（剪枝）</h4><ul>
+<li><p>非结构化剪枝：对于独立权重（individual weight）进行剪枝。</p>
+<blockquote>
+<p>  缺点：得到的权重矩阵是稀疏的，需要专用的硬件和库。</p>
+</blockquote>
+</li>
+<li><p>结构化剪枝：对通道或层进行剪枝，原始卷积结构仍存在。</p>
+</li>
+</ul>
+<p>典型的修剪算法：训练-&gt;剪枝-&gt;微调</p>
+<p>常用剪枝算法：</p>
+<ul>
+<li><p>权重共享：即使用卷积，卷积的权重对于一张图的每个部分都相同，相比全连接层减少了参数量。</p>
+</li>
+<li><p>卷积核剪枝：删除权重绝对值之和最小的卷积核及其feature map和相关核。</p>
+</li>
+<li><p>通道剪枝：如果某一层输入子集得到的输出与原来很类似，就可以去掉该子集以外的输入和对应的filter。</p>
+</li>
+</ul>
+<h4 id="设计结构矩阵"><a href="#设计结构矩阵" class="headerlink" title="设计结构矩阵"></a>设计结构矩阵</h4><p>&#x2F;&#x2F;TODO</p>
+<h3 id="低秩因子化"><a href="#低秩因子化" class="headerlink" title="低秩因子化"></a>低秩因子化</h3><p>当矩阵各行间的相关性很强时，可以投影到更低维空间，用更少的信息表达。</p>
+<blockquote>
+<p>  优点：有许多优秀的算法，比如高维DCT等。</p>
+</blockquote>
+<h3 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h3><p>核心是Teacher-Student Mode</p>
+<ul>
+<li>先训练一个大而全模型T</li>
+<li>然后训练小模型，分别将真实标签和模型T预测标签作为target计算Loss函数，然后加权相加。</li>
+</ul>
 
                 
             </div>
@@ -614,68 +643,54 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/11/25/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9(1)/">
+                <a href="/2022/11/29/%E8%AE%A4%E7%9F%A5%E5%9F%BA%E7%A1%80(0)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="「Model Compresion」模型压缩学习（1）">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「Congnitive Science」00 认知心理学绪论">
                         
-                        <span class="card-title">「Model Compresion」模型压缩学习（1）</span>
+                        <span class="card-title">「Congnitive Science」00 认知心理学绪论</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            模型压缩和训练加速总览
+                            认知心理学绪论
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-29
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Neural-Network/" class="post-category">
-                                    Neural Network
+                            <a href="/categories/Congnitive-Science/" class="post-category">
+                                    Congnitive Science
                                 </a>
                             
-                            <a href="/categories/Neural-Network/AI/" class="post-category">
-                                    AI
-                                </a>
-                            
-                            <a href="/categories/Neural-Network/AI/Model-Compression/" class="post-category">
-                                    Model Compression
+                            <a href="/categories/Congnitive-Science/%E8%AE%A4%E7%9F%A5%E5%BF%83%E7%90%86%E5%AD%A6/" class="post-category">
+                                    认知心理学
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Neural-Network/">
-                        <span class="chip bg-color">Neural Network</span>
+                    <a href="/tags/Congnitive-Science/">
+                        <span class="chip bg-color">Congnitive Science</span>
                     </a>
                     
-                    <a href="/tags/AI/">
-                        <span class="chip bg-color">AI</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
-                        <span class="chip bg-color">人工智能</span>
-                    </a>
-                    
-                    <a href="/tags/Model-Compression/">
-                        <span class="chip bg-color">Model Compression</span>
+                    <a href="/tags/%E8%AE%A4%E7%9F%A5%E5%BF%83%E7%90%86%E5%AD%A6/">
+                        <span class="chip bg-color">认知心理学</span>
                     </a>
                     
                 </div>
