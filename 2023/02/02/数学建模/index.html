@@ -1074,6 +1074,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </li>
 <li><p>判断正负关联：<br>$$<br>\sigma_i&#x3D;\sum^n_{k&#x3D;1}kX_i(k)-\sum^n_{k&#x3D;1}X_i(k)\sum^n_{k&#x3D;1}\frac{k}{n}\<br>\sigma_n&#x3D;\sum^n_{k&#x3D;1}k^2-(\sum^n_{k&#x3D;1}k)\frac{2}{n}\<br>当sign(\frac{\sigma_i}{\sigma_n})&#x3D;sign(\frac{\sigma_j}{\sigma_n}),则X_i和X_j为正关联\<br>当sign(\frac{\sigma_i}{\sigma_n})&#x3D;-sign(\frac{\sigma_j}{\sigma_n}),则X_i和X_j为负关联<br>$$</p>
 </li>
+<li></li>
 </ol>
 <h3 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h3><p>插值问题：已知函数在某区间内若干点处的值，求函数在该区间内其他点处的值。即找到一个函数（插值多项式）经过所有已知点。</p>
 <p>分类：</p>
@@ -1293,6 +1294,272 @@ pred_y <span class="token operator">=</span> model<span class="token punctuation
 <ul>
 <li>线性拟合：最小二乘法（多项式拟合）。</li>
 <li>非线性拟合：Gauss-Newton迭代法。</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> scipy
+
+<span class="token comment"># 非线性拟合</span>
+<span class="token triple-quoted-string string">'''
+f为要拟合的函数，需要提前定义f(xdata, *params)
+xdata,ydata为已知点数据
+可选参数：
+bounds参数范围
+full_output是否输出其他信息（偏差等）
+返回值：
+popt为函数中的参数值
+pcov为协方差
+'''</span>
+popt<span class="token punctuation">,</span> pcov <span class="token operator">=</span> scipy<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>curve_fit<span class="token punctuation">(</span>f<span class="token punctuation">,</span> xdata<span class="token punctuation">,</span> ydata<span class="token punctuation">,</span> bounds<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span>inf<span class="token punctuation">,</span> inf<span class="token punctuation">)</span><span class="token punctuation">,</span> full_output<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+<span class="token comment">#demo</span>
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> a<span class="token operator">*</span>np<span class="token punctuation">.</span>e<span class="token operator">**</span><span class="token punctuation">(</span>b<span class="token operator">*</span>x<span class="token punctuation">)</span>
+popt<span class="token punctuation">,</span> pcov <span class="token operator">=</span> scipy<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>curve_fit<span class="token punctuation">(</span>f<span class="token punctuation">,</span> xdata<span class="token punctuation">,</span> ydata<span class="token punctuation">)</span>
+pred_y <span class="token operator">=</span> f<span class="token punctuation">(</span>pred_x<span class="token punctuation">,</span> <span class="token operator">*</span>popt<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>综合评价问题分类</strong>：</p>
+<ul>
+<li>分类：对对象的全部个体进行分类</li>
+<li>比较、排序</li>
+<li>考察某一综合目标的整体实现程度：例如现代化的程度</li>
+</ul>
+<p>构成综合评价问题的五个要素：被评价对象、评价指标、权重系数、综合评价模型和评价者。</p>
+<p><strong>综合评价的一般步骤</strong>：</p>
+<ol>
+<li><p>确定综合评价的目的</p>
+</li>
+<li><p>确定评价指标体系</p>
+</li>
+<li><p>对指标数据做<strong>预处理</strong></p>
+<ol>
+<li><p>指标一致化：全部转化为效益型指标。</p>
+</li>
+<li><p>无量纲化处理：转化为可以相加的量纲。</p>
+<ul>
+<li><p>向量归一化：<br>$$<br>x&#x3D;(x_1,x_2,\cdots,x_n)\<br>归一化后:\<br>x’&#x3D;(\frac{x_1}{\sum^n_{i&#x3D;1}x_i},\frac{x_2}{\sum^n_{i&#x3D;1}x_i},\cdots,\frac{x_n}{\sum^n_{i&#x3D;1}x_i})<br>$$</p>
+</li>
+<li><p>极差变换法（效益型）：结果均匀<br>$$<br>x_{ij}&#x3D;\frac{a_{ij}-a_{min}}{a_{max}-a_{min}}<br>$$</p>
+</li>
+<li><p>线性比例变换法（效益型）：结果会右倾（趋向1）<br>$$<br>x_{ij}&#x3D;\frac{a_{ij}}{a_{max}}<br>$$</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>确定指标权重</p>
+</li>
+<li><p>求综合评价值</p>
+</li>
+</ol>
+<p><strong>确定指标权重方法</strong>：</p>
+<ul>
+<li>主观定权法：<ul>
+<li>专家评分法</li>
+<li>成对比较法</li>
+<li>Santy权重法</li>
+</ul>
+</li>
+<li>客观定权法<ul>
+<li>模糊定权法</li>
+<li>秩和比法</li>
+<li>熵权法</li>
+<li>相关系数法</li>
+</ul>
+</li>
+</ul>
+<p><strong>综合评价方法</strong>：</p>
+<ul>
+<li><p>线性加权综合法：<strong>要求各指标之间相互独立</strong><br>$$<br>y&#x3D;\sum^m_{j&#x3D;1}w_jx_j<br>$$<br>权重系数对结果影响明显。</p>
+</li>
+<li><p>非线性加权综合法：<strong>各指标间有较强关联性</strong><br>$$<br>y&#x3D;\prod^m_{j&#x3D;1}x_j^{w_j}<br>$$<br>指数值只能为正数。</p>
+<p>容易拉开评价档次，对较小数值的变动敏感。</p>
+</li>
+<li><p>理想点（TOPSIS）法：见上文</p>
+</li>
+</ul>
+<h3 id="模糊综合评价"><a href="#模糊综合评价" class="headerlink" title="模糊综合评价"></a>模糊综合评价</h3><p>模糊综合评价：部分因素很难给出确切的表达，需使用模糊评价。<br>$$<br>设U是论域，称映射\<br>A(x):U\rightarrow [0,1]\<br>确定了一个U上的模糊子集A，映射A(x)称为A的隶属函数，\<br>表示x对A的隶属程度<br>$$<br>$A(x)&#x3D;0.5$的点x称为A的过渡点，此点最具有模糊性。</p>
+<p>当$A(x)$只取0或1时，模糊子集A就是经典子集。</p>
+<p><strong>一级模糊综合评价的基本步骤</strong>：</p>
+<ol>
+<li><p>确定评价指标集U和评语集V</p>
+</li>
+<li><p>求出模糊评价矩阵P（一般根据具体数据），其中$P_{ij}$表示方案X的第i个指标处于第j级评语的隶属度。</p>
+<p>设各指标的权系数向量为：$A&#x3D;(W_1,W_2,\cdots,W_n)$</p>
+</li>
+<li><p>计算综合模糊评价结果向量：$B&#x3D;AP$，运算为模糊乘法：<br>$$<br>逻辑乘\and:两者取小\<br>逻辑加\or:两者取大\<br>eg.\<br>a&#x3D;(0.8,0.5,0.3)\<br>b&#x3D;(0.4,0.7,0.5)^T\<br>ab&#x3D;(0.8\and 0.4)\or(0.5\and 0.7)\or(0.3\and 0.5)<br>$$</p>
+</li>
+<li><p>归一化评价结果向量后，计算综合评价结果：</p>
+<ul>
+<li>最大隶属度法：将最大隶属度对应等级作为评价等级</li>
+<li>加权平均法：给各等级赋权重，然后加权求和</li>
+</ul>
+</li>
+</ol>
+<p><strong>多级模糊综合评价</strong>：</p>
+<p>多级：即部分指标有子指标组成。eg.图像指标&#x3D;{3D指标，2D指标}，设子指标的比例为$A_{1\times 2}$，根据各子指标的模糊评价矩阵计算出评价结果向量$B_1,B_2$，则$A(B_1,B_2)^T$为父指标的模糊评价矩阵。</p>
+<p>即从最小不可分的指标开始计算，看做一级模糊综合评价，逐步减少层次，最终计算。</p>
+<p><strong>变异系数法确定权重</strong>：</p>
+<p>目的：使数值差异较大的指标能被明确区分，提高分辨能力，即权重更大。<br>$$<br>\bar{x}_i,s^2_i为第i项指标的均值与方差\<br>则第i项指标的权重为:w_i&#x3D;v_i&#x2F;\sum v_i,其中v_i&#x3D;s_i&#x2F;|\bar{x}_i|<br>$$</p>
+<h3 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h3><p>主成分分析：将原有众多的具有一定<strong>相关性</strong>的变量，重新组合成一组互不相关的综合变量，同时尽可能多地保留原始变量的信息。从而实现数据的压缩和解释。</p>
+<p>步骤：</p>
+<ol>
+<li>相关性检验，一般采用KMO检验法（要求0.6以上，越接近1越好）和Bartlett球形检验法（要求小于0.05）两种方法来对原始变量进行相关性检验，满足后进入下一步</li>
+<li>对原指标进行标准化，消除水平和量纲上的影响</li>
+<li>根据标准化的数据矩阵求出相关系数矩阵</li>
+<li>求出协方差矩阵的特征根和特征向量：方差（方差占总方差和的比例即为贡献率）越大的优先级越高，依次选择主成分直到满足累计方差大于85%或选择所有特征值大于1的成分。对应特征向量为该主成分由原指标线性组合的系数。</li>
+<li>确定主成分，并对其包含信息进行解释</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">from</span> sklearn<span class="token punctuation">.</span>decomposition <span class="token keyword">import</span> PCA <span class="token comment"># sklearn计算使用的是协方差矩阵</span>
+
+<span class="token keyword">from</span> factor_analyzer <span class="token keyword">import</span> FactorAnalyzer
+
+<span class="token comment"># Bartlett's球状检验</span>
+<span class="token keyword">from</span> factor_analyzer<span class="token punctuation">.</span>factor_analyzer <span class="token keyword">import</span> calculate_bartlett_sphericity
+ 
+chi_square_value<span class="token punctuation">,</span> p_value <span class="token operator">=</span> calculate_bartlett_sphericity<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>chi_square_value<span class="token punctuation">,</span> p_value<span class="token punctuation">)</span> <span class="token comment"># 如果p_value小于0.05则满足</span>
+
+<span class="token comment"># KMO检验</span>
+<span class="token keyword">from</span> factor_analyzer<span class="token punctuation">.</span>factor_analyzer <span class="token keyword">import</span> calculate_kmo
+kmo_all<span class="token punctuation">,</span>kmo_model<span class="token operator">=</span>calculate_kmo<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>kmo_model<span class="token punctuation">)</span> <span class="token comment"># 越接近1越好，至少0.6</span>
+
+<span class="token comment"># 先数据预处理</span>
+<span class="token comment"># todo</span>
+
+<span class="token comment"># 进行主成分分析（通过因子分析实现）</span>
+pca <span class="token operator">=</span> PCA<span class="token punctuation">(</span>n_components <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment"># n_components为要降到几维</span>
+pca<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">)</span> <span class="token comment"># 传入数据训练</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>pca<span class="token punctuation">.</span>transform<span class="token punctuation">(</span>X<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 输出降维后的结果</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>pca<span class="token punctuation">.</span>explained_variance_ratio_<span class="token punctuation">)</span> <span class="token comment"># 输出各主成分的方差占比</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="因子分析"><a href="#因子分析" class="headerlink" title="因子分析"></a>因子分析</h3><p>因子分析：找少于原指标数量的新指标来表示原指标。</p>
+<p>步骤：</p>
+<ol>
+<li>相关性检验，一般采用KMO检验法（要求0.6以上，越接近1越好）和Bartlett球形检验法（要求小于0.05）两种方法来对原始变量进行相关性检验，满足后进入下一步</li>
+<li>对原指标进行标准化，消除水平和量纲上的影响</li>
+<li>根据标准化的数据矩阵求出相关系数矩阵</li>
+<li>提取公因子：按方差从大到小依次选取因子，直到累计方差大于85%。</li>
+<li>确定因子载荷矩阵：即确定因子系数，使用主成分法或主因子法（主成分法的修正）</li>
+<li>因子载荷矩阵的旋转：对得到的矩阵进行正交变换增加其可解释性</li>
+<li>因子分析：对其包含信息进行解释</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> factor_analyzer <span class="token keyword">import</span> FactorAnalyzer
+
+<span class="token comment"># Bartlett's球状检验</span>
+<span class="token keyword">from</span> factor_analyzer<span class="token punctuation">.</span>factor_analyzer <span class="token keyword">import</span> calculate_bartlett_sphericity
+ 
+chi_square_value<span class="token punctuation">,</span> p_value <span class="token operator">=</span> calculate_bartlett_sphericity<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>chi_square_value<span class="token punctuation">,</span> p_value<span class="token punctuation">)</span> <span class="token comment"># 如果p_value小于0.05则满足</span>
+
+<span class="token comment"># KMO检验</span>
+<span class="token keyword">from</span> factor_analyzer<span class="token punctuation">.</span>factor_analyzer <span class="token keyword">import</span> calculate_kmo
+kmo_all<span class="token punctuation">,</span>kmo_model<span class="token operator">=</span>calculate_kmo<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>kmo_model<span class="token punctuation">)</span> <span class="token comment"># 越接近1越好，至少0.6</span>
+
+<span class="token comment"># 建立模型</span>
+faa <span class="token operator">=</span> FactorAnalyzer<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span>rotation<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token comment"># 25为迭代次数</span>
+faa<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+ 
+<span class="token comment"># 得到特征值ev、特征向量v</span>
+ev<span class="token punctuation">,</span>v<span class="token operator">=</span>faa<span class="token punctuation">.</span>get_eigenvalues<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>ev<span class="token punctuation">,</span>v<span class="token punctuation">)</span>
+
+ <span class="token comment"># 同样的数据绘制散点图和折线图</span>
+plt<span class="token punctuation">.</span>scatter<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ev<span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> df<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ev<span class="token punctuation">)</span>
+ 
+<span class="token comment"># 显示图的标题和xy轴的名字</span>
+<span class="token comment"># 最好使用英文，中文可能乱码</span>
+plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Scree Plot"</span><span class="token punctuation">)</span>  
+plt<span class="token punctuation">.</span>xlabel<span class="token punctuation">(</span><span class="token string">"Factors"</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>ylabel<span class="token punctuation">(</span><span class="token string">"Eigenvalue"</span><span class="token punctuation">)</span>
+ 
+plt<span class="token punctuation">.</span>grid<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 显示网格</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 显示图形</span>
+
+<span class="token comment"># 选择方式： varimax 方差最大化</span>
+<span class="token comment"># 选择固定因子为 2 个</span>
+faa_two <span class="token operator">=</span> FactorAnalyzer<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span>rotation<span class="token operator">=</span><span class="token string">'varimax'</span><span class="token punctuation">)</span>
+faa_two<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>X<span class="token punctuation">)</span>
+
+<span class="token comment"># 公因子方差</span>
+faa_two<span class="token punctuation">.</span>get_communalities<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>faa_two<span class="token punctuation">.</span>get_eigenvalues<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># 旋转后的方程</span>
+
+<span class="token comment"># 降维后的结果</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>faa_two<span class="token punctuation">.</span>loadings_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>因子分析与主成分分析异同</strong>：</p>
+<ul>
+<li>相同：都是对原数据进行降维</li>
+<li>不同：<ul>
+<li>因子分析：侧重可解释性，因子数量少于原指标数。</li>
+<li>主成分分析：侧重变量变换，变换时的因子数量等于原指标数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="相关性分析"><a href="#相关性分析" class="headerlink" title="相关性分析"></a>相关性分析</h3><p>基本变量：</p>
+<ul>
+<li>定类变量：根据定性区分，如性别、民族等</li>
+<li>定序变量：根据等级次序区分，如文化程度、规模等</li>
+<li>定距变量：根据大小或距离（有具体值）区分（无零点值），如温度、比率等</li>
+<li>定比变量：定距变量基础上增加了零点</li>
+</ul>
+<h4 id="两变量的相关分析"><a href="#两变量的相关分析" class="headerlink" title="两变量的相关分析"></a>两变量的相关分析</h4><p><img src="/2023/02/02/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20230205154802902.png" alt="image-20230205154802902"></p>
+<p>Pearson相关系数：即相关系数<br>$$<br>r&#x3D;\frac{\sum^n_{i&#x3D;1}(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum^n_{i&#x3D;1}(x_i-\bar{x})^2\sum^n_{i&#x3D;1}(y_i-\bar{y})^2}}\<br>检验其偶然性:\<br>t&#x3D;\frac{r}{\sqrt{q-r^2&#x2F;(n-2)}}\<br>|t|\gt t_{a&#x2F;2}表明r统计显著\<br>|t|\le t_{a&#x2F;2}表明r统计不显著,其中a为给定显著性水平<br>$$<br><img src="/2023/02/02/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20230205153842664.png" alt="image-20230205153842664"></p>
+<p>适用条件：</p>
+<ul>
+<li>两变量均为连续变量</li>
+<li>两变量总体为正态分布或接近正态的单峰对称分布</li>
+<li>变量必须是成对的数据</li>
+<li>变量间为线性关系</li>
+</ul>
+<p>Spearman等级相关系数：<br>$$<br>r_s&#x3D;1-\frac{6\sum(x_i-y_i)^2}{n(n^2-1)},\其中x_i,y_i分别是两个变量按大小（或优劣）排序后对应的位次（值相同，对应位次相同）。\<br>当n\gt20时，需要进行t检验:\<br>t&#x3D;r_s\sqrt{\frac{n-2}{1-r_s^2}}\<br>|t|\gt t_{a&#x2F;2}表明r统计显著\<br>|t|\le t_{a&#x2F;2}表明r统计不显著<br>$$<br>适用条件：</p>
+<ul>
+<li>两变量均为定序变量</li>
+</ul>
+<p>卡方类检测：<br>$$<br>\chi^2 &#x3D; \sum^n_{i&#x3D;1}\frac{(o_i-e_i)^2}{e_i},\<br>其中o_i为实际值，e_i为期望值<br>$$<br>查表计算p值判断（小于0.05时满足）两变量有关系的概率。</p>
+<p>适用条件：</p>
+<ul>
+<li>两变量均为定类变量</li>
+</ul>
+<p>Eta平方系数：</p>
+<p>使用SPSS计算。</p>
+<p>使用条件：</p>
+<ul>
+<li>非线性</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token comment"># (Pearson)相关系数矩阵</span>
+np<span class="token punctuation">.</span>corrcoef<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment"># 协方差矩阵</span>
+np<span class="token punctuation">.</span>cov<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment"># t检验</span>
+<span class="token keyword">from</span> scipy <span class="token keyword">import</span> stats
+r <span class="token operator">=</span> stats<span class="token punctuation">.</span>ttest_1samp<span class="token punctuation">(</span>sample<span class="token punctuation">,</span> ave<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token comment"># 第一个参数为样本，第二个为均值</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"statistic:"</span><span class="token punctuation">,</span> r<span class="token punctuation">.</span>__getattribute__<span class="token punctuation">(</span><span class="token string">"statistic"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"pvalue:"</span><span class="token punctuation">,</span> r<span class="token punctuation">.</span>__getattribute__<span class="token punctuation">(</span><span class="token string">"pvalue"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+dates <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span>
+date<span class="token punctuation">.</span>corr<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">#计算皮尔逊相关系数</span>
+date<span class="token punctuation">.</span>corr<span class="token punctuation">(</span><span class="token string">'spearman'</span><span class="token punctuation">)</span><span class="token comment">#计算spearman相关系数</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="元胞自动机"><a href="#元胞自动机" class="headerlink" title="元胞自动机"></a>元胞自动机</h3><p>元胞自动机（CA）：不可逆的时空离散的局部动力学模型，适合空间复杂系统的时空动态模拟研究。由一系列模型构造的规则构成（非严格的函数或方程）。</p>
+<p><strong>基本构成</strong>：元胞、元胞空间、邻居和规则。</p>
+<p>一个元胞下一时刻的状态取决于本身和邻居的状态，邻居可以是距离大于1的元胞，需提前定义邻居。</p>
+<p>核心：<br>$$<br>s_i^{t+1}&#x3D;f(s_1^t,s_2^t,\cdots,s_m^t,s_i^t),其中s_1,s_2,\cdots,s_m为s_i的邻居元胞，f为转换规则。<br>$$</p>
+<p>分类：</p>
+<ul>
+<li>平稳型：若干步后停留在一个固定的状态。</li>
+<li>周期型：若干步后在几种状态之间周期循环。</li>
+<li>混沌型：处于完全无序随机的状态。</li>
+<li>复杂型：演化过程中可能产生复杂的结构，该结构既不是完全的随机混乱，又没有固定的周期和状态。</li>
 </ul>
 
                 
