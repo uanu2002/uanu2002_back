@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>写作 on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/%E5%86%99%E4%BD%9C/</link>
+    <description>Recent content in 写作 on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/%E5%86%99%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「LaTeX」 Grammar</title>
+      <link>https://uanu2002.github.io/posts/latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/latex/</guid>
+      <description>LaTeX的基础知识和常用语法</description>
+    </item>
+    
+  </channel>
+</rss>

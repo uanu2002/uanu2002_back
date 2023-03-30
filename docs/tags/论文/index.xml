@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>论文 on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/%E8%AE%BA%E6%96%87/</link>
+    <description>Recent content in 论文 on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/%E8%AE%BA%E6%96%87/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「Congnitive Science」FMRI、MVPA和群体编码</title>
+      <link>https://uanu2002.github.io/posts/fmri/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/fmri/</guid>
+      <description>功能性磁共振成像和多体素模式分析</description>
+    </item>
+    
+    <item>
+      <title>「Tools」Zotero</title>
+      <link>https://uanu2002.github.io/posts/zotero/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/zotero/</guid>
+      <description>文献管理工具Zotero</description>
+    </item>
+    
+  </channel>
+</rss>

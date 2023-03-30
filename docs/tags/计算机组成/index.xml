@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机组成 on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/</link>
+    <description>Recent content in 计算机组成 on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数字设计和计算机体系结构(1)--二进制</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/</guid>
+      <description>基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。 一个有N个不同状态的离散值变量的信息量(amou</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(2)--组合逻辑设计</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/</guid>
+      <description>基础知识电路：可以处理离散值变量的网络。 电路组成： 一个或者多个离散值输入端(input terminal) 一个或者多个离散值输出端(output terminal) 描述输入和输</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(3)--时序逻辑设计</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/</guid>
+      <description>基础知识状态(state)：先前输入的信息。 状态变量(state variable)：包含用于解释电路未来行为所需要的有关过去的所有信息。 锁存</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(4)--硬件描述语言</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%844/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%844/</guid>
+      <description>基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。 硬件描述语言(Hardware Description Language, HDL)：给出硬件的</description>
+    </item>
+    
+  </channel>
+</rss>

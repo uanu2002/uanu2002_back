@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BUAA CO on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/categories/buaa-co/</link>
+    <description>Recent content in BUAA CO on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 30 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uanu2002.github.io/categories/buaa-co/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「BUAA CO」P1 MIPS 指令</title>
+      <link>https://uanu2002.github.io/posts/buaacop1/</link>
+      <pubDate>Thu, 30 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/buaacop1/</guid>
+      <description>MIPS 指令集与汇编语言：基础部分</description>
+    </item>
+    
+  </channel>
+</rss>

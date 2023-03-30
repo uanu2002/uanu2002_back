@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>hexo&#43;github博客搭建 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="基础&#43;超详细">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hexo&#43;github博客搭建"/>
+<meta name="twitter:description" content="基础&#43;超详细"/>
+
+  <meta property="og:title" content="hexo&#43;github博客搭建" />
+<meta property="og:description" content="基础&#43;超详细" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E5%BB%BA%E7%AB%99/" title="建站">建站</a>
+            
+            <a class="tag" href="/tags/hexo/" title="hexo">hexo</a>
+            
+            <a class="tag" href="/tags/github/" title="github">github</a>
+            
+          </div>
+          <h1>hexo&#43;github博客搭建</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="一本地环境准备">一、本地环境准备<a class="anchorjs-link" href="#%e4%b8%80%e6%9c%ac%e5%9c%b0%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87"></a></h2><h3 id="git安装">git安装<a class="anchorjs-link" href="#git%e5%ae%89%e8%a3%85"></a></h3><p>官方下载链接：https://git-scm.com/</p>
+<p>1、直接下载安装即可，安装成功后右击鼠标会出现如图Git Bash Here的选项。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/1.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>2、点击Git Bash Here打开Git的终端，输入<code>git --version</code>，如果显示git版本信息则说明安装成功。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/2.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="nodejs安装">Node.js安装<a class="anchorjs-link" href="#nodejs%e5%ae%89%e8%a3%85"></a></h3><p>官方下载链接：https://nodejs.org/en/download/</p>
+<p>1、直接下载安装即可。</p>
+<p>2、安装后在刚才打开的Git终端中分别输入<code>node -v</code>和<code>npm -v</code>，如果显示Node和npm的版本信息则说明安装成功。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/3.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="hexo安装">Hexo安装<a class="anchorjs-link" href="#hexo%e5%ae%89%e8%a3%85"></a></h3><p>1、新建存放博客的文件夹，打开文件夹并在文件夹内打开Git终端。</p>
+<p>2、在Git终端中输入安装命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>npm install hexo-cli -g
+</span></span></code></pre></div><p>安装hexo。</p>
+<p>3、在Git终端中输入安装命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>npm install hexo-deployer-git --save
+</span></span></code></pre></div><p>安装将hexo部署到github的deployer插件。</p>
+<p>4、在Git终端中输入命令<code>hexo -v</code>，如果显示hexo的版本信息则说明hexo安装成功。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/4.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="二github准备">二、github准备<a class="anchorjs-link" href="#%e4%ba%8cgithub%e5%87%86%e5%a4%87"></a></h2><h3 id="git配置ssh连接">git配置ssh连接<a class="anchorjs-link" href="#git%e9%85%8d%e7%bd%aessh%e8%bf%9e%e6%8e%a5"></a></h3><p>上传博客或更新网站都需要将本地文件上传到github的仓库中，所以首先就需要将本地与github进行连接。这里使用的是ssh连接，ssh连接后续无需再次输入账号密码且上传更稳定。</p>
+<p>1、生成ssh key
+在终端中输入命令，双引号中为github绑定的邮箱。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ssh-keygen -t rsa -C <span style="color:#f1fa8c">&#34;xxxxxx@xxx.com&#34;</span>
+</span></span></code></pre></div><p>然后直接连续回车三次（即按默认设置和保存），会显示生成的公钥，即图中蓝色框内。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/5.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>公钥默认保存在<code>C:\Users\DELL\.ssh</code>文件夹中的<code>id_rsa.pub</code>文件中。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/6.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后记事本打开文件复制内容（即公钥），或者终端输入命令直接复制。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>clip &lt; ~/.ssh/id_rsa.pub
+</span></span></code></pre></div><p>2、github添加公钥</p>
+<p>github登录后，右上角打开setting。</p>
+<img src="./hexo+github博客搭建/7.png" style="zoom:50%;" />
+<p>然后找到SSH and GPG keys。
+<img src="./hexo+github博客搭建/8.png" style="zoom:50%;" /></p>
+<p>然后点击New SSH key绑定新的公钥，Title随便输，Key输入刚才复制的公钥。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/9.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>最后点击Add SSH key完成。</p>
+<p>3、在Git终端中输入命令。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>ssh -T git@github.com
+</span></span></code></pre></div><p>接着输入<code>yes</code>，出现如图提示则连接成功。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/10.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>4、配置Git个人信息
+在Git终端输入命令配置用户名和邮箱，这是上传更新仓库时的身份凭证。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>git config --global user.name <span style="color:#f1fa8c">&#34;用户名&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>git config --global user.email <span style="color:#f1fa8c">&#34;邮箱&#34;</span>
+</span></span></code></pre></div><h2 id="三博客搭建">三、博客搭建<a class="anchorjs-link" href="#%e4%b8%89%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba"></a></h2><h3 id="本地搭建">本地搭建<a class="anchorjs-link" href="#%e6%9c%ac%e5%9c%b0%e6%90%ad%e5%bb%ba"></a></h3><p>1、初始化网站</p>
+<p>在刚才创建存放博客的文件夹内打开Git终端，输入命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo init
+</span></span></code></pre></div><p>hexo创建和初始化一个网站，文件夹中会出现各种文件。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/11.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>2、生成静态网页</p>
+<p>在Git终端中输入命令生成静态网页。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo g
+</span></span></code></pre></div><p>3、本地部署</p>
+<p>在Git终端中输入命令在本地部署。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo s
+</span></span></code></pre></div><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/12.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后浏览器输入网址<code>localhost:4000</code>即可访问网站。<code>ctrl+c</code>可以关闭本地部署。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/15.png" data-action="zoom" alt="本地效果"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="github部署">github部署<a class="anchorjs-link" href="#github%e9%83%a8%e7%bd%b2"></a></h3><p>本地部署只能在hexo s运行时才能访问，而且别人无法通过互联网进行访问，所以我们需要将网站托管至github仓库。</p>
+<p>1、创建仓库</p>
+<p>点击New repository开始创建仓库。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/13.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>仓库名称（repository name）必须是<code>用户名.github.io</code>，即和<code>/</code>前的用户名一样。其他设置默认即可。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/14.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后点击Create repository完成创建。</p>
+<p>2、修改配置文件</p>
+<p>打开博客文件中的<code>_config.yml</code>，找到<code>deploy</code>选项，修改为</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">deploy</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#ff79c6">type</span>: git
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#ff79c6">repository</span>: SSH的链接
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#ff79c6">branch</span>: main
+</span></span></code></pre></div><p>其中，repository要先打开仓库，点击code，选择ssh，然后复制下面的链接。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/17.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>branch要填仓库如图位置显示的分支。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/18.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后保存配置文件。</p>
+<p>3、发布到github</p>
+<p>在Git终端输入命令将网站上传至仓库。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo d
+</span></span></code></pre></div><p>如果显示Deploy done且仓库出现文件，这说明上传成功。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/20.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>如果出现报错ERROR Deployer not found: git</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/19.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>则先运行命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>npm install hexo-deployer-git --save
+</span></span></code></pre></div><p>部署成功后的网址为<code>用户名.github.io</code>，现在就可以任意时刻通过公网进行访问了（可能会有几分钟的延迟）。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/21.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="四博客使用">四、博客使用<a class="anchorjs-link" href="#%e5%9b%9b%e5%8d%9a%e5%ae%a2%e4%bd%bf%e7%94%a8"></a></h2><p>常用指令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo new <span style="color:#f1fa8c">&#34;postName&#34;</span> <span style="color:#6272a4">#新建文章</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>hexo new page <span style="color:#f1fa8c">&#34;pageName&#34;</span> <span style="color:#6272a4">#新建页面</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>hexo g <span style="color:#6272a4">#生成静态页面至public目录</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>hexo s <span style="color:#6272a4">#开启本地预览访问端口</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>hexo d <span style="color:#6272a4">#部署到GitHub</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>hexo <span style="color:#8be9fd;font-style:italic">help</span>  <span style="color:#6272a4"># 查看帮助</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>hexo v  <span style="color:#6272a4">#查看Hexo的版本</span>
+</span></span></code></pre></div><h3 id="写博客及发布博客">写博客及发布博客<a class="anchorjs-link" href="#%e5%86%99%e5%8d%9a%e5%ae%a2%e5%8f%8a%e5%8f%91%e5%b8%83%e5%8d%9a%e5%ae%a2"></a></h3><p>写博客前首先要创建一篇博客，可以通过命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo new <span style="color:#f1fa8c">&#34;postname&#34;</span>
+</span></span></code></pre></div><p>然后<code>source/_posts</code>文件夹中就会出现一个名为<code>postname.md</code>的文件（当然也可以直接在该文件夹中新建md格式的文件），支持md语法（可以参照以往博客内容）。</p>
+<p>博客开头要使用如下格式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>---
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>title: first-blog
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>date: 2022-08-12 12:00:00
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>author: 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>tags: 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>categories: 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>---
+</span></span></code></pre></div><p>两个<code>---</code>之间是该篇博客的属性设置，前两个属性title和date必须设置，其他属性（不止上述属性）可选。</p>
+<p>上传博客是需要在Git终端中输入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo clean <span style="color:#6272a4"># 清除缓存</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>hexo g -d <span style="color:#6272a4"># 生成静态页面并上传至github</span>
+</span></span></code></pre></div><p>再次访问网站就可以看到更新的内容。</p>
+<h2 id="五更换博客主题">五、更换博客主题<a class="anchorjs-link" href="#%e4%ba%94%e6%9b%b4%e6%8d%a2%e5%8d%9a%e5%ae%a2%e4%b8%bb%e9%a2%98"></a></h2><p>有时基础的hexo博客功能可能较少，美观度也较差，这时可以通过更换主题来美化和优化网站。</p>
+<p>1、下载主题</p>
+<p>hexo官网主题：<a href="https://hexo.io/themes/" target="_blank">Themes | Hexo</a></p>
+<p>在官网找到自己喜欢的主题并打开，然后找到该主题的github地址，一般在网页最底端。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/23.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后进入该主题github仓库查看仓库地址。地址点击code即可查看，https和ssh均可。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/22.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后在<code>themes</code>文件加打开Git终端，输入命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>git clone 地址
+</span></span></code></pre></div><p><code>themes</code>文件夹中会出现该主题的文件夹。也可以直接点击Download ZIP下载该文件压缩包，解压后放在<code>themes</code>文件夹内。</p>
+<p>2、修改配置文件</p>
+<p>打开博客根目录的<code>_config.yml</code>文件，找到关键字<code>theme</code>，修改为</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>themes: 主题文件名
+</span></span></code></pre></div><p>3、更新网页</p>
+<p>依次输入命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>hexo clean
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>hexo g -d
+</span></span></code></pre></div><p>网页即可更换主题。</p>
+<h3 id="关于配置文件">关于配置文件<a class="anchorjs-link" href="#%e5%85%b3%e4%ba%8e%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"></a></h3><p>博客根目录和主题文件夹内都存在<code>_config.yml</code>配置文件，前者是设置关于网站整体的设置（主题、插件等），后者是该主题的属性设置（如背景、颜色等）。</p>
+<p>至此，一个简单的博客就算搭建完成了！</p>
+<h2 id="六配置域名">六、配置域名<a class="anchorjs-link" href="#%e5%85%ad%e9%85%8d%e7%bd%ae%e5%9f%9f%e5%90%8d"></a></h2><p>如果我们想使用更加简单的域名访问网站，那么就需要配置域名。</p>
+<p>1、在万网等平台购买域名。</p>
+<p>2、打开域名控制台，点击解析。
+<figure>
+  <a class="paragraph-image">
+    <img data-src="./hexo&#43;github%e5%8d%9a%e5%ae%a2%e6%90%ad%e5%bb%ba/24.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后选择下面任意一种方式添加记录：</p>
+<ul>
+<li>方法一：添加两个记录，两个记录类型都是 CNAME ，第一个主机记录为 @ ，第二个主机记录为 www，记录值都是填你自己的博客地址，即<code>用户名.github.io</code>。</li>
+<li>方法二：添加两个记录类型都为 A ，第一个主机记录为 @ ，第二个主机记录为 www，记录值都为博客的 IP 地址，IP 地址在cmd中输入<code>ping 用户名.github.io</code>获得。</li>
+</ul>
+<p>3、接收域名
+在网站<code>source</code>文件夹中添加名为<code>CNAME</code>的文件（无后缀），文件中填写域名（可不加www）。</p>
+<p>然后就可以直接通过域名访问博客了。</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-toggle="tooltip" data-placement="top" title="hugo&#43;github博客搭建">
+              Previous<br>
+              <span>hugo&#43;github博客搭建</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/hello-world/" data-toggle="tooltip" data-placement="top" title="Hello World">
+              Next<br>
+              <span>Hello World</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/linux/</link>
+    <description>Recent content in Linux on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「Trouble Shooting」某版本GLIBCXX缺失</title>
+      <link>https://uanu2002.github.io/posts/import%E6%8A%A5%E9%94%99/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/import%E6%8A%A5%E9%94%99/</guid>
+      <description>解决模型训练过程中遇到的GLIBCXX缺失。</description>
+    </item>
+    
+    <item>
+      <title>Linux(1)--shell语法</title>
+      <link>https://uanu2002.github.io/posts/linux1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux1/</guid>
+      <description>简介shell是我们通过命令行与操作系统沟通的语言。shell脚本可以直接在命令行中执行，同时方便复用。 因此，终端中的命令行可以看成是一个“</description>
+    </item>
+    
+    <item>
+      <title>Linux(2)--ssh使用</title>
+      <link>https://uanu2002.github.io/posts/linux2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux2/</guid>
+      <description>ssh登录基本用法远程登录服务器： 1ssh user@hostname user：用户名 hostname：IP地址或域名 第一次登录会提示： 1The authenticity of host &amp;#39;你的IP(你的IP</description>
+    </item>
+    
+    <item>
+      <title>Linux(3)--git使用</title>
+      <link>https://uanu2002.github.io/posts/linux3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux3/</guid>
+      <description>git使用基本概念 工作区：仓库的目录。工作区是独立于各个分支的。 暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于</description>
+    </item>
+    
+  </channel>
+</rss>

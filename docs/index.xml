@@ -6,59 +6,297 @@
     <description>Recent content on Uanu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 09 Aug 2022 15:38:30 +0800</lastBuildDate><atom:link href="https://uanu2002.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uanu2002.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Puppet - Getting Started</title>
-      <link>https://uanu2002.github.io/posts/getting-started/</link>
-      <pubDate>Tue, 09 Aug 2022 15:38:30 +0800</pubDate>
+      <title>「BUAA CO」P1 MIPS 指令</title>
+      <link>https://uanu2002.github.io/posts/buaacop1/</link>
+      <pubDate>Thu, 30 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://uanu2002.github.io/posts/getting-started/</guid>
-      <description>&lt;p&gt;Puppet is a responsive, simple and clean &lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; theme based on the &lt;a href=&#34;https://github.com/Huxpro/huxpro.github.io&#34; target=&#34;_blank&#34;&gt;Huxblog Jekyll theme&lt;/a&gt;.&lt;/p&gt;</description>
+      <guid>https://uanu2002.github.io/posts/buaacop1/</guid>
+      <description>MIPS 指令集与汇编语言：基础部分</description>
     </item>
     
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://uanu2002.github.io/posts/coooo/markdown-syntax/</link>
-      <pubDate>Wed, 11 Mar 2020 00:00:00 +0000</pubDate>
+      <title>「BUAA Minor」常微分方程</title>
+      <link>https://uanu2002.github.io/posts/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B1/</link>
+      <pubDate>Wed, 28 Sep 2022 10:45:00 +0000</pubDate>
       
-      <guid>https://uanu2002.github.io/posts/coooo/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+      <guid>https://uanu2002.github.io/posts/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B1/</guid>
+      <description>常微分方程总结</description>
     </item>
     
     <item>
-      <title>Rich Content</title>
-      <link>https://uanu2002.github.io/posts/coooo/rich-content/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      <title></title>
+      <link>https://uanu2002.github.io/posts/%E8%AE%A1%E7%BB%841/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://uanu2002.github.io/posts/coooo/rich-content/</guid>
-      <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34; target=&#34;_blank&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34; target=&#34;_blank&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
+      <guid>https://uanu2002.github.io/posts/%E8%AE%A1%E7%BB%841/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Placeholder Text</title>
-      <link>https://uanu2002.github.io/posts/coooo/placeholder-text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <title>「Congnitive Science」FMRI、MVPA和群体编码</title>
+      <link>https://uanu2002.github.io/posts/fmri/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://uanu2002.github.io/posts/coooo/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
+      <guid>https://uanu2002.github.io/posts/fmri/</guid>
+      <description>功能性磁共振成像和多体素模式分析</description>
     </item>
     
     <item>
-      <title>Math Typesetting</title>
-      <link>https://uanu2002.github.io/posts/coooo/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+      <title>「Git」Git Flow工作流</title>
+      <link>https://uanu2002.github.io/posts/gitflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://uanu2002.github.io/posts/coooo/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
+      <guid>https://uanu2002.github.io/posts/gitflow/</guid>
+      <description>Git Flow工作流</description>
     </item>
     
     <item>
-      <title>Emoji Support</title>
-      <link>https://uanu2002.github.io/posts/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+      <title>「LaTeX」 Grammar</title>
+      <link>https://uanu2002.github.io/posts/latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://uanu2002.github.io/posts/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>https://uanu2002.github.io/posts/latex/</guid>
+      <description>LaTeX的基础知识和常用语法</description>
+    </item>
+    
+    <item>
+      <title>「Mathematical modeling」数学建模学习（1）</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/</guid>
+      <description>数学建模学习，mathjax可能存在渲染问题</description>
+    </item>
+    
+    <item>
+      <title>「Model Compresion」模型压缩学习（1）</title>
+      <link>https://uanu2002.github.io/posts/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A91/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A91/</guid>
+      <description>模型压缩和训练加速总览</description>
+    </item>
+    
+    <item>
+      <title>「Neural Network」Unet</title>
+      <link>https://uanu2002.github.io/posts/unet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/unet/</guid>
+      <description>医学常用网络&amp;ndash;Unet</description>
+    </item>
+    
+    <item>
+      <title>「Neural Network」模型训练trick</title>
+      <link>https://uanu2002.github.io/posts/trainning-trick/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/trainning-trick/</guid>
+      <description>模型训练过程中的常用技巧</description>
+    </item>
+    
+    <item>
+      <title>「Tools」Zerotier</title>
+      <link>https://uanu2002.github.io/posts/zerotier/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/zerotier/</guid>
+      <description>免费内网穿透工具Zerotier、</description>
+    </item>
+    
+    <item>
+      <title>「Tools」Zotero</title>
+      <link>https://uanu2002.github.io/posts/zotero/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/zotero/</guid>
+      <description>文献管理工具Zotero</description>
+    </item>
+    
+    <item>
+      <title>「Trouble Shooting」某版本GLIBCXX缺失</title>
+      <link>https://uanu2002.github.io/posts/import%E6%8A%A5%E9%94%99/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/import%E6%8A%A5%E9%94%99/</guid>
+      <description>解决模型训练过程中遇到的GLIBCXX缺失。</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://uanu2002.github.io/posts/hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hello-world/</guid>
+      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new &amp;#34;My New Post&amp;#34; More info: Writing
+Run server1$ hexo server More info: Server
+Generate static files1$ hexo generate More info: Generating
+Deploy to remote sites1$ hexo deploy More info: Deployment</description>
+    </item>
+    
+    <item>
+      <title>hexo&#43;github博客搭建</title>
+      <link>https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>基础+超详细</description>
+    </item>
+    
+    <item>
+      <title>hugo&#43;github博客搭建</title>
+      <link>https://uanu2002.github.io/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>如果我们没有服务器和域名，又想搭建个人博客或者简单的静态网页，这时该怎么办？这时Github Pages和Hugo就提供了解决方案。 Github Page</description>
+    </item>
+    
+    <item>
+      <title>Java学习(1)--基础知识及语法</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/</guid>
+      <description>Java的基础知识和常用语法</description>
+    </item>
+    
+    <item>
+      <title>Java学习(2)--面向对象</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A02/</guid>
+      <description>Java中的面向对象</description>
+    </item>
+    
+    <item>
+      <title>Java学习(3)--高级结构</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/</guid>
+      <description>Java中的高级结构</description>
+    </item>
+    
+    <item>
+      <title>Linux(1)--shell语法</title>
+      <link>https://uanu2002.github.io/posts/linux1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux1/</guid>
+      <description>简介shell是我们通过命令行与操作系统沟通的语言。shell脚本可以直接在命令行中执行，同时方便复用。 因此，终端中的命令行可以看成是一个“</description>
+    </item>
+    
+    <item>
+      <title>Linux(2)--ssh使用</title>
+      <link>https://uanu2002.github.io/posts/linux2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux2/</guid>
+      <description>ssh登录基本用法远程登录服务器： 1ssh user@hostname user：用户名 hostname：IP地址或域名 第一次登录会提示： 1The authenticity of host &amp;#39;你的IP(你的IP</description>
+    </item>
+    
+    <item>
+      <title>Linux(3)--git使用</title>
+      <link>https://uanu2002.github.io/posts/linux3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux3/</guid>
+      <description>git使用基本概念 工作区：仓库的目录。工作区是独立于各个分支的。 暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于</description>
+    </item>
+    
+    <item>
+      <title>python语法</title>
+      <link>https://uanu2002.github.io/posts/python%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/python%E8%AF%AD%E6%B3%95/</guid>
+      <description>python基础语法速查</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio Code环境配置</title>
+      <link>https://uanu2002.github.io/posts/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>vscode常用的环境配置</description>
+    </item>
+    
+    <item>
+      <title>抽象代数(0)--子群</title>
+      <link>https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B00/</guid>
+      <description>抽象代数的前置和补充内容</description>
+    </item>
+    
+    <item>
+      <title>抽象代数(1)--子群</title>
+      <link>https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B01/</guid>
+      <description>子群的定义定义1 设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G</description>
+    </item>
+    
+    <item>
+      <title>抽象代数(2)--环</title>
+      <link>https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B02/</guid>
+      <description>环的定义定义1 设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果 （1）$(R,+)$是加群（即交换群） （2）$(</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(1)--二进制</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/</guid>
+      <description>基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。 一个有N个不同状态的离散值变量的信息量(amou</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(2)--组合逻辑设计</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/</guid>
+      <description>基础知识电路：可以处理离散值变量的网络。 电路组成： 一个或者多个离散值输入端(input terminal) 一个或者多个离散值输出端(output terminal) 描述输入和输</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(3)--时序逻辑设计</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/</guid>
+      <description>基础知识状态(state)：先前输入的信息。 状态变量(state variable)：包含用于解释电路未来行为所需要的有关过去的所有信息。 锁存</description>
+    </item>
+    
+    <item>
+      <title>数字设计和计算机体系结构(4)--硬件描述语言</title>
+      <link>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%844/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%844/</guid>
+      <description>基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。 硬件描述语言(Hardware Description Language, HDL)：给出硬件的</description>
+    </item>
+    
+    <item>
+      <title>算法分析(1)--KMP</title>
+      <link>https://uanu2002.github.io/posts/kmp%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/kmp%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</guid>
+      <description>KMP算法简介KMP是三位大牛提出的一种字符串匹配算法。简单来说就是给定一个目标字符串，下称模式串（pattern string）；再给定一个</description>
     </item>
     
   </channel>

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>Java学习(3)--高级结构 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="Java中的高级结构">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java学习(3)--高级结构"/>
+<meta name="twitter:description" content="Java中的高级结构"/>
+
+  <meta property="og:title" content="Java学习(3)--高级结构" />
+<meta property="og:description" content="Java中的高级结构" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/java/" title="Java">Java</a>
+            
+            <a class="tag" href="/tags/%E8%AF%AD%E6%B3%95/" title="语法">语法</a>
+            
+            <a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/" title="工具">工具</a>
+            
+            <a class="tag" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a>
+            
+            <a class="tag" href="/tags/oo/" title="OO">OO</a>
+            
+          </div>
+          <h1>Java学习(3)--高级结构</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="泛型">泛型<a class="anchorjs-link" href="#%e6%b3%9b%e5%9e%8b"></a></h2><p>JDK5引入，泛型本质是参数化类型，即将数据类型看做参数。</p>
+<h3 id="泛型方法">泛型方法<a class="anchorjs-link" href="#%e6%b3%9b%e5%9e%8b%e6%96%b9%e6%b3%95"></a></h3><p>通过传入不同参数类型，来实现对不同类型数据的处理，类似于重载。</p>
+<p>规则：</p>
+<ul>
+<li>声明时，在方法<strong>返回类型前</strong>有一个<strong>类型参数声明</strong>部分，以尖括号<code>&lt;&gt;</code>分隔。</li>
+<li>类型参数声明部分包括一个或多个类型参数（用泛型标记符表示），逗号隔开。</li>
+<li>类型参数可以用来声明返回值类型，也可以作为传入参数类型的占位符。</li>
+<li>类型参数只能代表引用型类型，不能是原始类型，如：int、double等。</li>
+</ul>
+<h4 id="泛型标记符">泛型标记符<a class="anchorjs-link" href="#%e6%b3%9b%e5%9e%8b%e6%a0%87%e8%ae%b0%e7%ac%a6"></a></h4><ul>
+<li><strong>E</strong> - Element (在集合中使用，因为集合中存放的是元素)</li>
+<li><strong>T</strong> - Type（Java 类）</li>
+<li><strong>K</strong> - Key（键）</li>
+<li><strong>V</strong> - Value（值）</li>
+<li><strong>N</strong> - Number（数值类型）</li>
+<li><strong>？</strong> - 表示不确定的 java 类型</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">demo</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#ff79c6">&lt;</span>E<span style="color:#ff79c6">&gt;</span> E <span style="color:#50fa7b">is_print</span><span style="color:#ff79c6">(</span>E<span style="color:#ff79c6">[]</span> Array<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span>E element <span style="color:#ff79c6">:</span> Array<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>            System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">printf</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;%s&#34;</span><span style="color:#ff79c6">,</span> element<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>        E re <span style="color:#ff79c6">=</span> Array<span style="color:#ff79c6">[</span><span style="color:#bd93f9">0</span><span style="color:#ff79c6">];</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>        <span style="color:#ff79c6">return</span> re<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String <span style="color:#ff79c6">[]</span> argv<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        Integer<span style="color:#ff79c6">[]</span> array <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">{</span> <span style="color:#bd93f9">1</span><span style="color:#ff79c6">,</span> <span style="color:#bd93f9">2</span><span style="color:#ff79c6">,</span> <span style="color:#bd93f9">3</span><span style="color:#ff79c6">,</span> <span style="color:#bd93f9">4</span><span style="color:#ff79c6">,</span> <span style="color:#bd93f9">5</span> <span style="color:#ff79c6">};</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        <span style="color:#8be9fd">int</span> re <span style="color:#ff79c6">=</span> is_print<span style="color:#ff79c6">(</span>array<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>re<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#6272a4">// 输出：123451
+</span></span></span></code></pre></div><h4 id="有界的类型参数">有界的类型参数<a class="anchorjs-link" href="#%e6%9c%89%e7%95%8c%e7%9a%84%e7%b1%bb%e5%9e%8b%e5%8f%82%e6%95%b0"></a></h4><p>用于限制类型参数的类型种类范围，比如希望方法只会接受Number或Number的子类实例。</p>
+<p>实例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#ff79c6">&lt;</span>T <span style="color:#8be9fd;font-style:italic">extends</span> Comparable<span style="color:#ff79c6">&lt;</span>T<span style="color:#ff79c6">&gt;&gt;</span> T <span style="color:#50fa7b">maximum</span><span style="color:#ff79c6">(</span>T x<span style="color:#ff79c6">,</span> T y<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4">// 一个只接受可比较（Comparable）类型的比较函数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h3 id="泛型类">泛型类<a class="anchorjs-link" href="#%e6%b3%9b%e5%9e%8b%e7%b1%bb"></a></h3><p>在类名后面添加类型参数声明部分，用法同泛型方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Box</span><span style="color:#ff79c6">&lt;</span>T<span style="color:#ff79c6">&gt;</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>   
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>  <span style="color:#8be9fd;font-style:italic">private</span> T t<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">add</span><span style="color:#ff79c6">(</span>T t<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">t</span> <span style="color:#ff79c6">=</span> t<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>  <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>  <span style="color:#8be9fd;font-style:italic">public</span> T <span style="color:#50fa7b">get</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#ff79c6">return</span> t<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>  <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    Box<span style="color:#ff79c6">&lt;</span>Integer<span style="color:#ff79c6">&gt;</span> integerBox <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Box<span style="color:#ff79c6">&lt;</span>Integer<span style="color:#ff79c6">&gt;();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>    Box<span style="color:#ff79c6">&lt;</span>String<span style="color:#ff79c6">&gt;</span> stringBox <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Box<span style="color:#ff79c6">&lt;</span>String<span style="color:#ff79c6">&gt;();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    integerBox<span style="color:#ff79c6">.</span><span style="color:#50fa7b">add</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> Integer<span style="color:#ff79c6">(</span><span style="color:#bd93f9">10</span><span style="color:#ff79c6">));</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>    stringBox<span style="color:#ff79c6">.</span><span style="color:#50fa7b">add</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;菜鸟教程&#34;</span><span style="color:#ff79c6">));</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">printf</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;整型值为 :%d\n\n&#34;</span><span style="color:#ff79c6">,</span> integerBox<span style="color:#ff79c6">.</span><span style="color:#50fa7b">get</span><span style="color:#ff79c6">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">printf</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;字符串为 :%s\n&#34;</span><span style="color:#ff79c6">,</span> stringBox<span style="color:#ff79c6">.</span><span style="color:#50fa7b">get</span><span style="color:#ff79c6">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>  <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div>
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/linux1/" data-toggle="tooltip" data-placement="top" title="Linux(1)--shell语法">
+              Previous<br>
+              <span>Linux(1)--shell语法</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/java%E5%AD%A6%E4%B9%A02/" data-toggle="tooltip" data-placement="top" title="Java学习(2)--面向对象">
+              Next<br>
+              <span>Java学习(2)--面向对象</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

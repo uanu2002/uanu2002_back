@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OO on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/oo/</link>
+    <description>Recent content in OO on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/oo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java学习(1)--基础知识及语法</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/</guid>
+      <description>Java的基础知识和常用语法</description>
+    </item>
+    
+    <item>
+      <title>Java学习(2)--面向对象</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A02/</guid>
+      <description>Java中的面向对象</description>
+    </item>
+    
+    <item>
+      <title>Java学习(3)--高级结构</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/</guid>
+      <description>Java中的高级结构</description>
+    </item>
+    
+  </channel>
+</rss>

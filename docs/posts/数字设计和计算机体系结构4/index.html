@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>数字设计和计算机体系结构(4)--硬件描述语言 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。 硬件描述语言(Hardware Description Language, HDL)：给出硬件的">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数字设计和计算机体系结构(4)--硬件描述语言"/>
+<meta name="twitter:description" content="基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。 硬件描述语言(Hardware Description Language, HDL)：给出硬件的"/>
+
+  <meta property="og:title" content="数字设计和计算机体系结构(4)--硬件描述语言" />
+<meta property="og:description" content="基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。 硬件描述语言(Hardware Description Language, HDL)：给出硬件的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%844/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" title="计算机组成">计算机组成</a>
+            
+            <a class="tag" href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/" title="数字设计">数字设计</a>
+            
+            <a class="tag" href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" title="体系结构">体系结构</a>
+            
+          </div>
+          <h1>数字设计和计算机体系结构(4)--硬件描述语言</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="基础知识">基础知识<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86"></a></h2><p>计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。</p>
+<p>硬件描述语言(Hardware Description Language, HDL)：给出硬件的说明，主要有System Verilog和VHDL。</p>
+<p>模块(module)：包括输入和输出的硬件块。</p>
+<p>描述模块功能的主要形式：行为模型(behavioral)和结构模型(structural)。</p>
+<ul>
+<li>行为模型：描述一个模块做什么。</li>
+<li>结构模型：应用层次化方法描述一个模块怎样由更简单的部件构造。</li>
+</ul>
+<p>eg：描述$y=\bar{a}\bar{b}\bar{c}+a\bar{b}\bar{c}+a\bar{b}c$
+<figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/1.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Systemverilog" data-lang="Systemverilog"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">module</span> module_name(<span style="color:#ff79c6">input</span> var_type1 var_in1, var_in2, ...,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>                   <span style="color:#ff79c6">output</span> var_type2 var_out1, var_out2, ...);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#6272a4">/*some different assign */</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#ff79c6">assign</span> var_out1<span style="color:#ff79c6">=</span>var_in1 func1 var_in2;	<span style="color:#6272a4">//annotation
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">assign</span> var_out2<span style="color:#ff79c6">=</span>var_in1 func2 var_in2;	<span style="color:#6272a4">//annotation
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">endmodule</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vhdl" data-lang="vhdl"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff79c6">library</span> lib_name<span style="color:#ff79c6">:</span><span style="color:#ff79c6">use</span> lib_name.xxx.xxx;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#ff79c6">entity</span> <span style="color:#50fa7b">module_name</span> <span style="color:#ff79c6">is</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    <span style="color:#ff79c6">port</span>(var_in1. var_in2<span style="color:#ff79c6">:</span><span style="color:#ff79c6">in</span> var_type1;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>         var_out1, var_out2<span style="color:#ff79c6">:</span><span style="color:#ff79c6">out</span> var_type2;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff79c6">end</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#ff79c6">architecture</span> <span style="color:#50fa7b">synth</span> <span style="color:#ff79c6">of</span> <span style="color:#50fa7b">module_name</span> <span style="color:#ff79c6">is</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#ff79c6">begin</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#6272a4">--annotation</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    var_out1<span style="color:#ff79c6">&lt;=</span>var_in1 func1 var_in2;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    var_out2<span style="color:#ff79c6">&lt;=</span>var_in1 func2 var_in2;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#ff79c6">end</span>;
+</span></span></code></pre></div><p>硬件描述语言的主要目的：逻辑模拟(simulation)和综合(synthesis)。</p>
+<ul>
+<li>逻辑模拟：给模块增加输入，检查输出验证模块操作是否正确。</li>
+<li>综合：将模块的文字描述转换成逻辑门。</li>
+</ul>
+<p>网表(netlist)：逻辑综合将HDL代码转换成网表来描述硬件。网表可以是文本文件或可视化的原理图。</p>
+<p>HDL代码分为：</p>
+<ul>
+<li>可综合(synthesizable)模块：描述硬件。</li>
+<li>测试程序(testbench)：用于模拟。</li>
+</ul>
+<p>风格(style)：HDL来描述各种逻辑的一些特定方法。</p>
+<h2 id="组合逻辑">组合逻辑<a class="anchorjs-link" href="#%e7%bb%84%e5%90%88%e9%80%bb%e8%be%91"></a></h2><h3 id="位运算符">位运算符<a class="anchorjs-link" href="#%e4%bd%8d%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h3><p>位(bitwise)运算符：对单位信号和多位总线进行操作。（一个输入，一个输出）</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/2.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>小端(little-endian)顺序：[N-1:0]或(N-1 downto 0)。
+大端(big-endian)顺序：[0:N-1]或(0 upto N-1)。</p>
+<h3 id="注释与空白">注释与空白<a class="anchorjs-link" href="#%e6%b3%a8%e9%87%8a%e4%b8%8e%e7%a9%ba%e7%99%bd"></a></h3><p>SystemVerilog和VHDL对空白（空格、Tab、换行）<strong>不敏感</strong>；建议使用缩进增加可读性；命名时使用大写字母和下划线，不能以数字开头。</p>
+<p>注释：</p>
+<ul>
+<li>Systemverilog：与C语言相同，单行注释<code>//</code>，多行注释<code>/* */</code>。</li>
+<li>VHDL：单行注释<code>--</code>，多行注释<code>/* */</code>。</li>
+</ul>
+<p>大小写：</p>
+<ul>
+<li>Systemverilog：大小写敏感，例如变量Y和y是不同的信号。</li>
+<li>VHDL：大小写不敏感，例如变量Y和y是相同的信号。</li>
+</ul>
+<h3 id="缩位运算符">缩位运算符<a class="anchorjs-link" href="#%e7%bc%a9%e4%bd%8d%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h3><p>缩位运算符：作用在一条总线上的多输入门。（多个输入，一个输出）</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/3.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="条件赋值">条件赋值<a class="anchorjs-link" href="#%e6%9d%a1%e4%bb%b6%e8%b5%8b%e5%80%bc"></a></h3><p>条件赋值(conditional assignment)：在所有可选项中选择一个输出。（如n:1复用器）</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/4.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="内部变量">内部变量<a class="anchorjs-link" href="#%e5%86%85%e9%83%a8%e5%8f%98%e9%87%8f"></a></h3><p>内部变量：可以将复杂功能分为几个中间过程来完成，中间信号（不是输入或输出）称为内部变量。</p>
+<p>**注：HDL中的assign或&lt;=都是并行执行的，即所有赋值同时进行，区别于C语言需要执行完一句才能执行下一句。**因此不需要考虑赋值语句的出现顺序。</p>
+<h3 id="补全加器">补：全加器<a class="anchorjs-link" href="#%e8%a1%a5%e5%85%a8%e5%8a%a0%e5%99%a8"></a></h3><p>半加器：实现两个一位二进制数加法运算的器件。包含两个输入A和B，两个输出（一个结果位S和一个进位C）。半加即不考虑进位。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/5.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>$S=\bar{A}B+A\bar{B}=A\oplus B, C=AB$</p>
+<p>逻辑电路图：<figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/6.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>全加器：实现两个二进制数相加并求出和的组合线路。包含三个输入A、B和低位进位C_in，两个输出（高位进位C_out，本位和S）。一位全加器可以处理<strong>低位进位</strong>。</p>
+<p>一位全加器真值表如下：</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C_in</th>
+<th>C_out</th>
+<th>S</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>$S=A\oplus B\oplus C_{in}, C_{out}=AB+C_{in}(A+B)=AB+C_{in}(A\oplus B)$</p>
+<p>逻辑电路图：</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/7.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>多位全加器：多个一位全加器进行级联。</p>
+<h3 id="优先级">优先级<a class="anchorjs-link" href="#%e4%bc%98%e5%85%88%e7%ba%a7"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/8.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>注：</p>
+<ul>
+<li>REM为求余运算。</li>
+<li>循环移位：将移位时丢失部分补入另一侧。</li>
+<li>逻辑移位：移动时均补0，不考虑符号位。</li>
+</ul>
+<h3 id="数字">数字<a class="anchorjs-link" href="#%e6%95%b0%e5%ad%97"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/9.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="z和x">Z和X<a class="anchorjs-link" href="#z%e5%92%8cx"></a></h3><p>HDL使用z表示浮空值，x表示一个无效的逻辑电平。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/10.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="位混合">位混合<a class="anchorjs-link" href="#%e4%bd%8d%e6%b7%b7%e5%90%88"></a></h3><p>位混合(bit swizzling)：在总线的子集上操作或者连接信号来构成总线。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/11.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="延迟">延迟<a class="anchorjs-link" href="#%e5%bb%b6%e8%bf%9f"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%284%29/12.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="结构化建模">结构化建模<a class="anchorjs-link" href="#%e7%bb%93%e6%9e%84%e5%8c%96%e5%bb%ba%e6%a8%a1"></a></h2>
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/kmp%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/" data-toggle="tooltip" data-placement="top" title="算法分析(1)--KMP">
+              Previous<br>
+              <span>算法分析(1)--KMP</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/" data-toggle="tooltip" data-placement="top" title="数字设计和计算机体系结构(3)--时序逻辑设计">
+              Next<br>
+              <span>数字设计和计算机体系结构(3)--时序逻辑设计</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

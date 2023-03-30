@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>「LaTeX」 Grammar | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="LaTeX的基础知识和常用语法">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="「LaTeX」 Grammar"/>
+<meta name="twitter:description" content="LaTeX的基础知识和常用语法"/>
+
+  <meta property="og:title" content="「LaTeX」 Grammar" />
+<meta property="og:description" content="LaTeX的基础知识和常用语法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/latex/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/" title="工具">工具</a>
+            
+            <a class="tag" href="/tags/latex/" title="Latex">Latex</a>
+            
+            <a class="tag" href="/tags/%E5%86%99%E4%BD%9C/" title="写作">写作</a>
+            
+          </div>
+          <h1>「LaTeX」 Grammar</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="基础介绍">基础介绍<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e4%bb%8b%e7%bb%8d"></a></h2><p>运行环境：TeXlive2022 + TeXstudio</p>
+<p>参考文档：111分钟了解$\LaTeX$</p>
+<blockquote>
+<p>LaTeX是基于TeX语法的一种排版引擎，即编译器。</p>
+<p>TeXlive是LaTeX的发行版之一，类似于Linux的发行版Ubuntu。</p>
+<p>TeXstudio是IDE。</p>
+</blockquote>
+<p>相关文件：</p>
+<ul>
+<li>.tex 源代码文件</li>
+<li>.sty 宏包文件，宏包名称与文件名一致</li>
+<li>.bib BiBTeX参考文献数据库文件</li>
+<li>.bst BiBTeX用到的参考文献格式模板</li>
+<li>.log 排版引擎生成的日志文件，仅排除错误用</li>
+<li>&hellip;</li>
+</ul>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>
+<p>中文文档一般选择XeLaTex作为编译器，英文文档选择pdfLaTeX</p>
+</li>
+<li>
+<p>LaTeX对大小写敏感</p>
+</li>
+</ul>
+<h2 id="语法">语法<a class="anchorjs-link" href="#%e8%af%ad%e6%b3%95"></a></h2><p><strong>命令</strong>：以<code>\</code>开头，有两种形式：</p>
+<ul>
+<li>
+<p><code>\</code>加字母串。以非字母符号（<strong>空格、数字、标点等</strong>）为界限。</p>
+<blockquote>
+<p>\LaTeX。</p>
+</blockquote>
+</li>
+<li>
+<p><code>\</code>加单个非字母符。</p>
+<blockquote>
+<p>$</p>
+</blockquote>
+</li>
+</ul>
+<p>命令会忽略后面所有连续的空格，如果需要引入空格，需要在命令后加一对花括号<code>{}</code>。</p>
+<p>部分命令可以接收参数，参数分为可选参数和必选参数：</p>
+<ul>
+<li>
+<p>可选参数使用<code>[]</code>包裹</p>
+<blockquote>
+<p><code>\begin[&lt;optional arguments&gt;]</code></p>
+</blockquote>
+</li>
+<li>
+<p>必选参数用<code>{}</code>包裹</p>
+<blockquote>
+<p><code>\begin{&lt;mandatory arguments&gt;}</code></p>
+</blockquote>
+</li>
+<li>
+<p>特殊的可选参数：<code>*</code></p>
+</li>
+</ul>
+<p><strong>环境</strong>：令一些效果在局部生效，使用<code>\begin</code>和<code>\end</code>来限制区域，必选参数·<code>&lt;environment name&gt;</code>为环境名。</p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>\begin{&lt;environment name&gt;}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>...
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>\end{&lt;environment name&gt;}
+</span></span></code></pre></div></blockquote>
+<p>部分环境应许嵌套。</p>
+<p><strong>分组</strong>：限制命令的作用域（有些命令可以会影响其后的所有内容），使用<code>{}</code>进行分组。</p>
+<p><strong>源代码结构</strong>：</p>
+<ul>
+<li>以<code>\documentclass</code>命令作为开头，指定文档使用的文档类，document环境中的内容是文档正文。</li>
+<li>在<code>\documentclass</code>和\begin{document}之间的位置为<strong>导言区</strong>。在导言区常用<code>\usepackage</code>来调用<strong>宏包</strong>，以及文档的全局设置。</li>
+<li><code>%</code>后至行末的内容为注释。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">\documentclass</span><span style="color:#8be9fd;font-style:italic">{</span>...<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#6272a4">% ...为某文档类
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">% 导言区
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>document<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4">% 正文内容
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>document<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#6272a4">% 此后的内容会被忽略
+</span></span></span></code></pre></div><h3 id="宏包和文档类">宏包和文档类<a class="anchorjs-link" href="#%e5%ae%8f%e5%8c%85%e5%92%8c%e6%96%87%e6%a1%a3%e7%b1%bb"></a></h3><p><strong>文档类</strong>：规定文档的性质（书籍、简历等）</p>
+<p>LaTeX提供的基础文档类：</p>
+<blockquote>
+<ul>
+<li>article：文章格式</li>
+<li>report：长篇报告</li>
+<li>book：书籍文档</li>
+<li>proc：学术文档</li>
+<li>slides：幻灯片，使用无衬线字体</li>
+<li>minimal：极简文档</li>
+</ul>
+</blockquote>
+<p>可选参数：字号、纸张大小、单双面等</p>
+<blockquote>
+<p>\documentclass[11pt,twoside,a4paper]{article} % 指定纸张为A4大小，字号11pt，双面排版，article文档</p>
+</blockquote>
+<blockquote>
+<p>常用参数：</p>
+<ul>
+<li>oneclumn, twocolumn：单双栏，默认为单栏</li>
+<li>fleqn：令公式左对齐，默认居中对齐</li>
+<li>leqno：令公式编号在左边，默认右边</li>
+</ul>
+</blockquote>
+<p><strong>宏包</strong>：引入扩展来补充功能（前提设备中有），使用<code>usepackage[&lt;options&gt;]{&lt;package-name&gt;}</code></p>
+<blockquote>
+<p>调用多个宏包时在<code>&lt;package-name&gt;</code>中用逗号隔开</p>
+</blockquote>
+<p>查看宏包或文件类的帮助文档：命令行输入<code>texdoc &lt;pkg-name&gt;</code></p>
+<h3 id="文字排版">文字排版<a class="anchorjs-link" href="#%e6%96%87%e5%ad%97%e6%8e%92%e7%89%88"></a></h3><p>新版本LaTeX均使用UTF-8编码，支持中文字体。</p>
+<p>ctex宏包：用于配合各种文档类排版中文。</p>
+<p>ctex文档类：适合中文排版习惯。有ctexart、ctexrep、ctexbook等。</p>
+<p>空格：Tab键视为空格，连续空白字符视为一个空格，一行开头空格忽略，行末换行符视为一个空格，多个空行视为一个空行。</p>
+<p>可以使用\或回车或<code>\par</code>命令换行分段。</p>
+<p>特殊字符：<code># $ % &amp; { } _ ^ ~ \</code>，直接输入会报错，需要在前加反斜线<code>\</code>，通常还需要后面加<code>{}</code>，防止将后面字符作为参数。</p>
+<blockquote>
+<p>^{} #{}</p>
+</blockquote>
+<p>输入反斜线命令<code>\textbackslash</code></p>
+<p>避免连字，在连个字符间加<code>{}</code></p>
+<blockquote>
+<p>dif{}fcult</p>
+</blockquote>
+<p>中文符号可以直接输入。</p>
+<p>英文引号：需要区分左右，左为`和``，右为&rsquo;和''</p>
+<p>横线：从短到长为<code>-</code>、<code>--</code>、<code>---</code></p>
+<p>省略号：<code>\dots</code>或<code>\ldots</code></p>
+<p>LaTeX标志：<code>\TeX</code>和<code>\LaTeX</code></p>
+<p>断行：<code>\\</code>、<code>\newline</code></p>
+<p>断页：<code>\newpage</code>（双栏时为下一栏）、<code>clearpage</code>（始终为下一页）</p>
+<h3 id="文档元素">文档元素<a class="anchorjs-link" href="#%e6%96%87%e6%a1%a3%e5%85%83%e7%b4%a0"></a></h3><p>章节标题：</p>
+<ul>
+<li>
+<p><code>\chapter{&lt;title&gt;}</code> 章</p>
+</li>
+<li>
+<p><code>\section{&lt;title&gt;}</code> 节</p>
+</li>
+<li>
+<p><code>\subsection{&lt;title}</code>  小节</p>
+<blockquote>
+<p>加星号可以取消自带的编号，<code>\section*{&lt;title&gt;}</code></p>
+</blockquote>
+</li>
+<li>
+<p><code>\part</code> 分块</p>
+</li>
+</ul>
+<p>生成目录：<code>\tableofcontents</code>，目录标题默认为<code>Contents</code></p>
+<p>加<code>*</code>的标题不写入目录，如需要加入，在生成目录命令后加上<code>\addcontentsline{toc}{&lt;level&gt;}{&lt;title&gt;}</code>命令，<code>&lt;level&gt;</code>为章节层次（chapter、section等），<code>&lt;title&gt;</code>为章节标题。</p>
+<p>文档结构：</p>
+<ul>
+<li><code>\appendix</code> 将正文与附录分开，附录章节用拉丁字母编号，从A开始</li>
+<li><code>\frontmatter</code> 前言部分，页面使用小写罗马数字；其后的<code>\chapter</code>不编号</li>
+<li><code>\mainmaster</code> 正文部分，页码使用阿拉伯数字，从1计数；其后的章节编号正常</li>
+<li><code>backmatter</code> 后记部分，页码格式不变，继续正常计数；其他的<code>\chapter</code>不编号</li>
+</ul>
+<p>一般顺序：前言、正文、附录、后记。</p>
+<p>标题页：必须有<code>\title{&lt;title&gt;}</code>、<code>\author{&lt;author&gt;}</code>，可选<code>\date{&lt;date}</code>（默认调用<code>\today</code>命令生成当前日期），位置可以在\begin前。命令内部可以用<code>\thanks</code>生成标题页脚注，用<code>\and</code>隔开多个人名。</p>
+<p>然后使用<code>\maketitle</code>生成标题页。</p>
+<p>article文档类标题默认不成页，report和book默认单独成页。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">\title</span><span style="color:#8be9fd;font-style:italic">{</span>Test title<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#ff79c6">\author</span><span style="color:#8be9fd;font-style:italic">{</span>Uanu<span style="color:#ff79c6">\thanks</span><span style="color:#8be9fd;font-style:italic">{</span>E-mail:uanu2002@163.com<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#ff79c6">\and</span> anyone<span style="color:#ff79c6">\thanks</span><span style="color:#8be9fd;font-style:italic">{</span>Corresponding author<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	<span style="color:#ff79c6">\and</span> someone<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#ff79c6">\date</span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\today</span><span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p><strong>交叉引用</strong>：$\LaTeX$最为强大的功能之一。</p>
+<p>使用<code>\label{&lt;label-name&gt;}</code>来设置索引，使用<code>\ref{&lt;label-name}</code>或<code>\pageref{&lt;label-name&gt;}</code>来使用索引。</p>
+<p>脚注：在需要脚注的后面<code>\footnote{&lt;footnote&gt;}</code></p>
+<p>注：在某些情况下（表格环境等）需要先使用<code>\footnotemark</code>为脚注计数，再在合适位置用<code>\tootnotetext</code>生成脚注。</p>
+<p>边注：<code>\marginpar{&lt;left-margin/right-margin&gt;}</code></p>
+<p><strong>特殊环境</strong>：</p>
+<p>列表：</p>
+<ul>
+<li><code>enumerate</code> 有序列表</li>
+<li><code>itemize</code> 无序列表</li>
+</ul>
+<blockquote>
+<p>\begin{enumerate}</p>
+<p>\item[a] &hellip;</p>
+<p>\end{enumerate}</p>
+</blockquote>
+<p><code>\item</code>可带一个可选参数，作为计数的符号。</p>
+<p>列表最多嵌套4层。</p>
+<p>对齐环境：</p>
+<ul>
+<li><code>center</code> 居中对齐</li>
+<li><code>flushleft</code> 左对齐</li>
+<li><code>flushright</code> 右对齐</li>
+</ul>
+<blockquote>
+<p>\begin{center}</p>
+<p>contents</p>
+<p>\end{center}</p>
+</blockquote>
+<p>还可以使用<code>\centering</code>、<code>\raggedright</code>、<code>raggedleft</code>直接改变文字的对齐方式</p>
+<blockquote>
+<p>\centering</p>
+<p>contents</p>
+</blockquote>
+<p>两者区别在于环境会在上下文产生一个额外的间距。</p>
+<p><strong>代码环境</strong>：</p>
+<ul>
+<li><code>verbatim</code> 普通代码环境</li>
+<li><code>verbatim*</code> 额外单独显示空格</li>
+</ul>
+<p>简短代码或关键字可以使用<code>\verb&lt;delim&gt;&lt;code&gt;&lt;delim&gt;</code>或<code>\verb&lt;delim&gt;&lt;code&gt;&lt;delim&gt;</code>（区别同上）命令，<code>&lt;delim&gt;</code>为分割符，前后必须一致，可选择除字母、空格和星号外的不与代码冲突的字符，一般选<code>|</code></p>
+<blockquote>
+<p>\verb|\LaTeX|</p>
+</blockquote>
+<p>表格：<code>tabular</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tabular<span style="color:#8be9fd;font-style:italic">}</span>[&lt;align&gt;]<span style="color:#8be9fd;font-style:italic">{</span>&lt;column-spec&gt;<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>&lt;item1&gt;<span style="color:#8be9fd;font-style:italic">&amp;</span>&lt;item2&gt;<span style="color:#8be9fd;font-style:italic">&amp;</span>... <span style="color:#ff79c6">\\</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#ff79c6">\hline</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>&lt;item1&gt;<span style="color:#8be9fd;font-style:italic">&amp;</span>&lt;item2&gt;<span style="color:#8be9fd;font-style:italic">&amp;</span>... <span style="color:#ff79c6">\\</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tabular<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p><code>&lt;column-spec&gt;</code>是列格式标记。</p>
+<p><code>&amp;</code>用来分隔单元格；<code>\\</code>用来换行；<code>\hline</code>用来行与行之间绘制横线。</p>
+<p>列格式：</p>
+<ul>
+<li><code>l/c/r</code> 单元格内容左对齐/居中/右对齐，不折行（每行单元格的数目不多于l/c/r/p的总数，可以少于）</li>
+<li><code>p{&lt;width&gt;}</code> 单元格宽度固定为<code>&lt;width&gt;</code>，可自动折行</li>
+<li><code>|</code> 绘制竖线</li>
+<li><code>@{&lt;string&gt;}</code> 自定义列分隔线内容<code>&lt;string&gt;</code></li>
+</ul>
+<p>横线：<code>\hline</code>或<code>\cline{&lt;i&gt;-&lt;j&gt;}</code></p>
+<p><code>\cline{&lt;i&gt;-&lt;j&gt;}</code>绘制跨越单元格的横线。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>tabular<span style="color:#8be9fd;font-style:italic">}{</span>|c|c|c|<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#ff79c6">\hline</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	4 <span style="color:#8be9fd;font-style:italic">&amp;</span> 9 <span style="color:#8be9fd;font-style:italic">&amp;</span> 2 <span style="color:#ff79c6">\\</span> <span style="color:#ff79c6">\cline</span><span style="color:#8be9fd;font-style:italic">{</span>2-3<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>	3 <span style="color:#8be9fd;font-style:italic">&amp;</span> 5 <span style="color:#8be9fd;font-style:italic">&amp;</span> 7 <span style="color:#ff79c6">\\</span> <span style="color:#ff79c6">\cline</span><span style="color:#8be9fd;font-style:italic">{</span>1-1<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>	8 <span style="color:#8be9fd;font-style:italic">&amp;</span> 1 <span style="color:#8be9fd;font-style:italic">&amp;</span> 6 <span style="color:#ff79c6">\\</span> <span style="color:#ff79c6">\hline</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>tabular<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>合并单元格：<code>\multicolumn{&lt;n&gt;}{&lt;column-spec&gt;}{&lt;item&gt;}</code></p>
+<p>其中<code>&lt;n&gt;</code>为要合并的列数，<code>&lt;column-spec&gt;</code>为合并单元格后的列格式，只允许出现一个l/c/r或p格式，且合并前后表格线一样。</p>
+<p>纵向合并单元格需要用到<code>multirow</code>宏包提供的<code>\multirow{&lt;n&gt;}{&lt;width&gt;}{&lt;item&gt;}</code></p>
+<p>其中<code>&lt;width&gt;</code>为合并后单元格的宽度，填<code>*</code>使用自然宽度</p>
+<p>行距：给<code>\\</code>添加可选参数。</p>
+<blockquote>
+<p><code>\\[6pt]</code></p>
+</blockquote>
+<p>注意，第二行开始，表格的首个单元格不能直接使用中括号<code>[]</code>，以免当做可选参数，或添加<code>\\[0pt]</code></p>
+<p>图片：需要使用<code>graphicx</code>宏包辅助：<code>\includegraphics[&lt;options&gt;]{&lt;filename&gt;}</code></p>
+<p>文件名中不能有空格和多余的英文点号。</p>
+<p>可选参数使用<code>&lt;key&gt;=&lt;value&gt;</code>的形式：</p>
+<ul>
+<li><code>width=&lt;width&gt;</code> 图片缩放到宽度为<code>&lt;width&gt;</code></li>
+<li><code>height=&lt;height&gt;</code> 图片缩放到高度为<code>&lt;height&gt;</code></li>
+<li><code>scale=&lt;scale&gt;</code> 图片相对于原尺寸缩放<code>&lt;scale&gt;</code>倍</li>
+<li><code>angle=&lt;angle&gt;</code> 图片逆时针旋转<code>&lt;angle&gt;</code>度</li>
+</ul>
+<h3 id="数学公式">数学公式<a class="anchorjs-link" href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f"></a></h3><p>常用拓展：<code>amsmath</code>宏包（AMS宏集的核心）</p>
+<p>排版方式：</p>
+<ul>
+<li>行内公式：在文字间。</li>
+<li>行间公式：单独一行。</li>
+</ul>
+<p>行间公式：由<code>equation</code>环境包裹。使用<code>\tag{&lt;tag-name&gt;}</code>可以手动修改公式编号，<code>\notag</code>或<code>equation*</code>环境取消公式编号。</p>
+<p>行内公式由于要与文字对齐，因此显示效果不如行间公式。</p>
+<p>数学模式：使用<code>$</code>开启行内公式输入，或使用<code>\[</code>命令、<code>equation</code>环境时，就会进入数学模式。</p>
+<p>数学模式特点：</p>
+<ul>
+<li>空格被忽略，人为间距使用<code>\quad</code>和<code>\qquad</code></li>
+<li>不允许有空行或分段，无法用<code>\\</code>手动换行</li>
+<li>所有字母被当做公式变量处理。如果要输入正文，使用<code>\mathrm{content}</code>或<code>\text</code></li>
+</ul>
+<p>数学符号：类型较多，按需查询。</p>
+<p>长公式：<code>multline</code>环境允许用<code>\\</code>折行。</p>
+<p>多行公式：<code>align</code>环境，使用<code>&amp;</code>作为对齐标志。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>align<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>a <span style="color:#8be9fd;font-style:italic">&amp;</span> = b + c <span style="color:#ff79c6">\\</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#8be9fd;font-style:italic">&amp;</span> = d + e
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>align<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p><code>align</code>环境会给每行公式编号。</p>
+<p>如果不需要按等号对齐，也可以使用<code>gather</code>环境。</p>
+<p>多个公式共用一个编号：<code>aligned</code>或<code>gathered</code>环境。</p>
+<p><strong>上述环境均嵌套在<code>equation</code>环境中</strong></p>
+<p>数组和矩阵：<code>array</code>环境，同时在外套用<code>\left</code>和<code>\right</code>界定符</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#f1fa8c">\[</span><span style="color:#8be9fd;font-style:italic"> </span><span style="color:#8be9fd;font-style:italic">\mathbf</span><span style="color:#8be9fd;font-style:italic">{x} </span><span style="color:#ff79c6">=</span><span style="color:#8be9fd;font-style:italic"> </span><span style="color:#8be9fd;font-style:italic">\left</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd;font-style:italic">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#8be9fd;font-style:italic"></span><span style="color:#8be9fd;font-style:italic">\begin</span><span style="color:#8be9fd;font-style:italic">{array}{cc}
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#8be9fd;font-style:italic">x_{</span><span style="color:#bd93f9">11</span><span style="color:#8be9fd;font-style:italic">} &amp; x_{</span><span style="color:#bd93f9">12</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#8be9fd;font-style:italic">\\</span><span style="color:#8be9fd;font-style:italic">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#8be9fd;font-style:italic">x_{</span><span style="color:#bd93f9">21</span><span style="color:#8be9fd;font-style:italic">} &amp; x_{</span><span style="color:#bd93f9">22</span><span style="color:#8be9fd;font-style:italic">}</span><span style="color:#8be9fd;font-style:italic">\\</span><span style="color:#8be9fd;font-style:italic">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#8be9fd;font-style:italic"></span><span style="color:#8be9fd;font-style:italic">\end</span><span style="color:#8be9fd;font-style:italic">{arrary} </span><span style="color:#8be9fd;font-style:italic">\right</span><span style="color:#ff79c6">)</span><span style="color:#8be9fd;font-style:italic"> </span><span style="color:#f1fa8c">\]</span>
+</span></span></code></pre></div><p>公式间距（从小到大）：<code>\! \, \: \; \空格 \quad \qquad</code></p>
+<p>字体：<code>\mathnormal{}</code>、<code>\mathrm{}</code>、<code>\mathit{}</code>、<code>\mathbf{}</code>、<code>\mathsf{}</code>、<code>\mathtt{}</code>、<code>\mathcal{}</code>、<code>\mathscr{}</code>、<code>\mathfrak{}</code>、<code>\mathbb{}</code></p>
+<p>证明相关：<code>proof</code>环境为证明环境，开头有一个proof，末位自动加上证毕符号。</p>
+<h3 id="排版样式">排版样式<a class="anchorjs-link" href="#%e6%8e%92%e7%89%88%e6%a0%b7%e5%bc%8f"></a></h3><p>字号（从小到大）：<code>\tiny</code>、<code>\scriptsize</code>、<code>\footnotesize</code>、<code>\small</code>、<code>\normalsize</code>、<code>large</code>、<code>\Large</code>、<code>\LARGE</code>、<code>\huge</code>、<code>\Huge</code></p>
+<blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>{\small it&#39;s small!}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>{\large it&#39;s large!}
+</span></span></code></pre></div></blockquote>
+<p>或者使用<code>\fontsize{&lt;size&gt;}{&lt;base line-skip&gt;}</code>自定义大小，其中<code>&lt;size&gt;</code>为字号，<code>&lt;base line-skip&gt;</code>为基础行距。</p>
+<p>下划线：<code>\underline</code></p>
+<p>斜体：<code>\emph</code></p>
+<p>行距离：导言区使用<code>\linespread{&lt;factor&gt;}</code></p>
+<p>段落缩进：<code>\indent</code>，不缩进为<code>\noindent</code></p>
+<p>默认在段落开始时缩进。</p>
+<p>设置段落左右缩进及首行缩进：</p>
+<p><code>\setlength{\leftskip}{&lt;length&gt;}</code></p>
+<p><code>\setlength{\rightskip}{&lt;length&gt;}</code></p>
+<p><code>\setlength{\parindent}{&lt;length&gt;}</code></p>
+<h3 id="特色工具">特色工具<a class="anchorjs-link" href="#%e7%89%b9%e8%89%b2%e5%b7%a5%e5%85%b7"></a></h3><p>参考文献：在正文中用<code>\cite{&lt;citation&gt;}</code>引用参考文献，<code>&lt;citation&gt;</code>为引用的参考文献的标签（类似<code>\ref{}</code>）</p>
+<p>参考文献由<code>thebibliography</code>环境包裹，每条参考文献由<code>\bibitem</code>开头。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">\begin</span><span style="color:#8be9fd;font-style:italic">{</span>thebibliography<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#ff79c6">\bibitem</span><span style="color:#50fa7b">[&lt;item number&gt;]</span><span style="color:#8be9fd;font-style:italic">{</span>&lt;citation&gt;<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#ff79c6">\end</span><span style="color:#8be9fd;font-style:italic">{</span>thebibliography<span style="color:#8be9fd;font-style:italic">}</span>
+</span></span></code></pre></div><p>其中<code>&lt;citation&gt;</code>为<code>\cite</code>使用的文献标签，<code>&lt;item number&gt;</code>为自定义参考文献的序号，默认按自然排序。</p>
+<p>颜色：需要调用<code>color</code>宏包或<code>xcolor</code>宏包：<code>\color[&lt;color-mode&gt;]{&lt;code&gt;}</code>或<code>\color[&lt;color-name&gt;]</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#50fa7b">[gray]</span><span style="color:#8be9fd;font-style:italic">{</span>0.6<span style="color:#8be9fd;font-style:italic">}</span> xxx<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#6272a4">% 60%灰色
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#50fa7b">[rgb]</span><span style="color:#8be9fd;font-style:italic">{</span>0,1,1<span style="color:#8be9fd;font-style:italic">}</span> xxx<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#6272a4">% 青色
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">{</span><span style="color:#ff79c6">\color</span><span style="color:#8be9fd;font-style:italic">{</span>red<span style="color:#8be9fd;font-style:italic">}</span> xxx<span style="color:#8be9fd;font-style:italic">}</span> <span style="color:#6272a4">% 红色
+</span></span></span></code></pre></div><p>超链接：</p>
+<ul>
+<li><code>url{&lt;url&gt;}</code>或<code>\nolinkurl</code> 直接书写超链接</li>
+<li><code>href{&lt;url&gt;}{&lt;text&gt;}</code> 将文本<code>&lt;text&gt;</code>与链接绑定</li>
+</ul>
+<p>Last modified: Uanu 2022.12.29</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" data-toggle="tooltip" data-placement="top" title="「Mathematical modeling」数学建模学习（1）">
+              Previous<br>
+              <span>「Mathematical modeling」数学建模学习（1）</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/gitflow/" data-toggle="tooltip" data-placement="top" title="「Git」Git Flow工作流">
+              Next<br>
+              <span>「Git」Git Flow工作流</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

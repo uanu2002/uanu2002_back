@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>Java学习(1)--基础知识及语法 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="Java的基础知识和常用语法">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Java学习(1)--基础知识及语法"/>
+<meta name="twitter:description" content="Java的基础知识和常用语法"/>
+
+  <meta property="og:title" content="Java学习(1)--基础知识及语法" />
+<meta property="og:description" content="Java的基础知识和常用语法" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/java/" title="Java">Java</a>
+            
+            <a class="tag" href="/tags/%E8%AF%AD%E6%B3%95/" title="语法">语法</a>
+            
+            <a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/" title="工具">工具</a>
+            
+            <a class="tag" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="面向对象">面向对象</a>
+            
+            <a class="tag" href="/tags/oo/" title="OO">OO</a>
+            
+          </div>
+          <h1>Java学习(1)--基础知识及语法</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="基础知识">基础知识<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86"></a></h2><h3 id="java特点">Java特点<a class="anchorjs-link" href="#java%e7%89%b9%e7%82%b9"></a></h3><ul>
+<li>面向对象：将需求分<strong>类</strong>实现。（面向过程：将需求分<strong>分布</strong>实现）</li>
+<li>安全性高：不支持指针类型、自动垃圾回收、字节码验证、异常处理机制。</li>
+<li>结构特点：Java项目的结构为：项目 -&gt; 包 -&gt; 源代码。每个项目至少包含一个类，类中包含方法。</li>
+<li>&hellip;</li>
+</ul>
+<h3 id="java执行过程">Java执行过程<a class="anchorjs-link" href="#java%e6%89%a7%e8%a1%8c%e8%bf%87%e7%a8%8b"></a></h3><p>.java文件 -&gt; .class字节码文件 -&gt; 运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#6272a4">// 代码运行main.java
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// step 1
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>javac main<span style="color:#ff79c6">.</span><span style="color:#50fa7b">java</span> <span style="color:#6272a4">// javac.exe进行编译并生成main.class字节码文件
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4">// step 2
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4"></span>java main <span style="color:#6272a4">// java.exe翻译执行main.class
+</span></span></span></code></pre></div><h3 id="java安装">Java安装<a class="anchorjs-link" href="#java%e5%ae%89%e8%a3%85"></a></h3><p>1、下载安装JDK</p>
+<p>JDK是Java开发工具包，即提供上述需要的javac.exe、java.exe等运行环境和各种类库和工具。</p>
+<p><a href="https://www.oracle.com/java/technologies/downloads/" target="_blank">JDK官网下载</a></p>
+<p>2、配置环境变量</p>
+<p>右键<code>此电脑</code>选择属性 -&gt; 高级系统设置 -&gt; 高级 -&gt; 环境变量 -&gt; 在系统变量（用户变量也行）进行以下操作：</p>
+<ul>
+<li>设置JAVA_HOME的值为JDK的安装目录。</li>
+<li>PATH添加java.exe和javac.exe的位置。</li>
+<li>设置CLASSPATH的值为类库的路径。</li>
+</ul>
+<p>此时就可以用记事本直接编写Java程序，然后更改后缀为,java，再使用上述执行方法即可。</p>
+<p>（可选）3、下载安装IntelliJ idea</p>
+<p>Intellij idea类似vscode，提供集成开发环境，可以更方便的开发和管理。</p>
+<p><a href="https://www.jetbrains.com" target="_blank">Intellij官网下载</a></p>
+<p>下载后直接新建Java项目即可。</p>
+<h3 id="java概念">Java概念<a class="anchorjs-link" href="#java%e6%a6%82%e5%bf%b5"></a></h3><p>方法：类比C语言中的函数。</p>
+<p>实例变量：类比C语言中的变量。</p>
+<p>类：提供一个模板，里面包含实例变量、方法等。eg：人类：有头发，会说话。</p>
+<p>对象：类具化的结果。eg：人类的小明：有黑头发，会说北京话。</p>
+<p><strong>命名</strong>：</p>
+<ul>
+<li>大小写敏感。</li>
+<li>类名首字母应该大写。</li>
+<li>方法名小写开头。</li>
+<li>源文件名必须与类名相同。</li>
+<li>程序都必须由<code>public static void main(String[] args)</code>的方法开始执行。</li>
+</ul>
+<h2 id="基础语法">基础语法<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e8%af%ad%e6%b3%95"></a></h2><h3 id="注释">注释<a class="anchorjs-link" href="#%e6%b3%a8%e9%87%8a"></a></h3><p>单行、多行注释：同C语言。
+文档注释：即作者、来源、参数等关于文档的信息。使用<code>/** */</code>。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#6272a4">// 示例main.java
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4"></span><span style="color:#6272a4">/**
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4">* @author uanu //@author、@version均为标签，后面接描述。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4">* @version 1.0.0
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4">*/</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#6272a4">// 代码部分
+</span></span></span></code></pre></div><p>可以通过<code>javadoc [options] [sourcefiles]</code>命令获得文档注释。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>javadoc <span style="color:#ff79c6">-</span>author main<span style="color:#ff79c6">.</span><span style="color:#50fa7b">java</span> <span style="color:#6272a4">// 获得author的文档描述：uanu
+</span></span></span></code></pre></div><h3 id="类的定义">类的定义<a class="anchorjs-link" href="#%e7%b1%bb%e7%9a%84%e5%ae%9a%e4%b9%89"></a></h3><p>定义类示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">class_name</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    String name<span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 实例成员变量
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> age<span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 静态成员变量（类变量）
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#6272a4"></span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">play</span><span style="color:#ff79c6">(){</span> <span style="color:#6272a4">// 方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#6272a4"></span>        <span style="color:#8be9fd">int</span> num<span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 局部变量
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#6272a4"></span>        <span style="color:#6272a4">// do somethings
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">class_name</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">){</span> <span style="color:#6272a4">// 构造方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#6272a4"></span>        <span style="color:#6272a4">// 传参：name
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><p>类可以包含的变量类型：</p>
+<ul>
+<li>局部变量</li>
+<li>（实例）成员变量</li>
+<li>类变量（静态成员变量）</li>
+</ul>
+<p>类至少包含一个<code>构造方法</code>，构造方法必须与类同名，创建对象时至少要调用一个构造方法。如果没有的话编译器会提供一个默认构造方法。</p>
+<h3 id="对象创建">对象创建<a class="anchorjs-link" href="#%e5%af%b9%e8%b1%a1%e5%88%9b%e5%bb%ba"></a></h3><p>创建对象有三步：</p>
+<ul>
+<li>声明：声明一个对象，包括对象名称和对象类型。</li>
+<li>实例化：使用关键词new来创建一个对象。</li>
+<li>初始化：new创建对象时调用构造方法来初始化对象。</li>
+</ul>
+<p>创建对象示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">human</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">human</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#6272a4">//构造方法参数：name
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#6272a4"></span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>&#39;名字是：&#39; <span style="color:#ff79c6">+</span> name <span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        human Uanu <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> human<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">);</span>  <span style="color:#6272a4">// 创建一个Uanu对象。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#6272a4"></span>        <span style="color:#6272a4">// 左侧先声明，右侧new创建，调用human构造方法初始化。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h3 id="访问实例变量和方法">访问实例变量和方法<a class="anchorjs-link" href="#%e8%ae%bf%e9%97%ae%e5%ae%9e%e4%be%8b%e5%8f%98%e9%87%8f%e5%92%8c%e6%96%b9%e6%b3%95"></a></h3><p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#6272a4">// 实例化对象
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4"></span>human Uanu <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> human<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4">// 访问实例变量
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4"></span>Uanu<span style="color:#ff79c6">.</span><span style="color:#50fa7b">name</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4">// 访问方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#6272a4"></span>Uanu<span style="color:#ff79c6">.</span><span style="color:#50fa7b">play</span><span style="color:#ff79c6">();</span>
+</span></span></code></pre></div><h3 id="源文件声明规则">源文件声明规则<a class="anchorjs-link" href="#%e6%ba%90%e6%96%87%e4%bb%b6%e5%a3%b0%e6%98%8e%e8%a7%84%e5%88%99"></a></h3><ul>
+<li>一个源文件中只能有一个public类</li>
+<li>源文件名称要与public类的类名保持一致</li>
+<li>类如果定义在包里，package语句应该在源文件的首行</li>
+<li>import语句要放在package语句和类定义之间，如果没有package语句，import语句要放在源文件最前面。</li>
+</ul>
+<h3 id="import语句">import语句<a class="anchorjs-link" href="#import%e8%af%ad%e5%8f%a5"></a></h3><p>通过import语句可以载入某路径下的所有类。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">import</span> java.io.* <span style="color:#6272a4">// 载入./java/io下的所有类
+</span></span></span></code></pre></div><h3 id="this关键字">this关键字<a class="anchorjs-link" href="#this%e5%85%b3%e9%94%ae%e5%ad%97"></a></h3><h4 id="this属性名">this.属性名<a class="anchorjs-link" href="#this%e5%b1%9e%e6%80%a7%e5%90%8d"></a></h4><p>用于方法中的局部变量和类中成员变量同名，但在方法中需要覆盖（修改）这个成员变量时，需要使用this作为前缀指向类中的成员变量。</p>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">human</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	String name<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">get_name</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>		<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">name</span> <span style="color:#ff79c6">=</span> name<span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 此时产生同名name，需要用this来区分，前者是成员变量。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4"></span>	<span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="this方法名">this.方法名<a class="anchorjs-link" href="#this%e6%96%b9%e6%b3%95%e5%90%8d"></a></h4><p>同理调用类的方法。</p>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">human</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	String name<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">run</span><span style="color:#ff79c6">(){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#ff79c6">};</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">play</span><span style="color:#ff79c6">(){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>        <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">run</span><span style="color:#ff79c6">();</span> <span style="color:#6272a4">// 调用类中的run方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="this构造方法">this(构造方法)<a class="anchorjs-link" href="#this%e6%9e%84%e9%80%a0%e6%96%b9%e6%b3%95"></a></h4><p><strong>只能在构造方法中使用，且必须是第一条语句</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Student</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    String name<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#6272a4">// 无参构造方法（没有参数的构造方法）
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">Student</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#ff79c6">this</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#6272a4">// 有参构造方法(被this调用)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">Student</span><span style="color:#ff79c6">(</span>String name<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">name</span> <span style="color:#ff79c6">=</span> name<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="单独this">单独this<a class="anchorjs-link" href="#%e5%8d%95%e7%8b%acthis"></a></h4><p>表示当前这个类对象。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">human</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	String name<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">run</span><span style="color:#ff79c6">(){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#ff79c6">};</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>o<span style="color:#ff79c6">);</span><span style="color:#6272a4">//输出human和地址表示当前这个类对象。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h3 id="基础数据类型">基础数据类型<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8b"></a></h3><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>内存大小(bit)</th>
+<th>数据范围</th>
+<th>默认值</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>8</td>
+<td>-128~127</td>
+<td>0</td>
+<td>byte a = -66;</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16</td>
+<td>-2^15~2^15-1</td>
+<td>0</td>
+<td>short b = 1000;</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32</td>
+<td>-2^31~2^31-1</td>
+<td>0</td>
+<td>int a = 100;</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64</td>
+<td>-2^63~2^63-1</td>
+<td>0<strong>L</strong></td>
+<td>long b = 10000<strong>L</strong>;</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32</td>
+<td>单精度</td>
+<td>0.0<strong>f</strong></td>
+<td>float a = 3.14<strong>f</strong>;</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64</td>
+<td>双精度</td>
+<td>0.0<strong>d</strong></td>
+<td>double = 2.3<strong>D</strong>; double b = 3.14;</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1</td>
+<td>true/false</td>
+<td>false</td>
+<td>boolean a = true;</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16(Unicode)</td>
+<td>\u0000~\uffff</td>
+<td>&lsquo;\u0000&rsquo;</td>
+<td>char ch = &lsquo;a&rsquo;</td>
+</tr>
+<tr>
+<td>String</td>
+<td>不定</td>
+<td>无</td>
+<td>null</td>
+<td>String name = &ldquo;Uanu&rdquo;</td>
+</tr>
+</tbody>
+</table>
+<p>引用类型：数组、对象。默认值都为<strong>null</strong>。</p>
+<p>常量：在类型前加<code>final</code>关键词。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">final</span> <span style="color:#8be9fd">double</span> PI <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">3.1415926</span><span style="color:#ff79c6">;</span>
+</span></span></code></pre></div><p>转义字符：同C语言，输出需要加<code>\</code>。</p>
+<h4 id="类型转换">类型转换<a class="anchorjs-link" href="#%e7%b1%bb%e5%9e%8b%e8%bd%ac%e6%8d%a2"></a></h4><ul>
+<li>boolean不能类型转换。</li>
+<li>不能把对象类型转换成不相关类的对象。</li>
+<li>浮点数转整数是舍去小数。</li>
+<li>自动类型转换：小位数 -&gt; 大位数。</li>
+<li>强制类型转换：大位数 -&gt; 小位数，同时前后类型必须兼容。</li>
+</ul>
+<p>注：double格式化输出也为%f</p>
+<h3 id="变量">变量<a class="anchorjs-link" href="#%e5%8f%98%e9%87%8f"></a></h3><h4 id="分类">分类：<a class="anchorjs-link" href="#%e5%88%86%e7%b1%bb"></a></h4><ul>
+<li>局部变量：在类的方法、构造方法或者语句块中定义的变量，方法结束后会自动销毁。</li>
+<li>类变量：即静态变量。独立于方法外的变量，用<code>static</code>修饰。</li>
+<li>成员变量：即实例变量。独立于方法外的变量，没有<code>static</code>修饰。</li>
+</ul>
+<h4 id="局部变量">局部变量<a class="anchorjs-link" href="#%e5%b1%80%e9%83%a8%e5%8f%98%e9%87%8f"></a></h4><ul>
+<li>不能使用访问修饰符</li>
+<li>使用栈的内存</li>
+<li>没有默认值，<strong>必须初始化</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">name</span><span style="color:#ff79c6">(){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>        <span style="color:#8be9fd">int</span> age <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">20</span><span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 局部变量，只能在name函数内访问。必须要初始化！
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="实例变量">实例变量<a class="anchorjs-link" href="#%e5%ae%9e%e4%be%8b%e5%8f%98%e9%87%8f"></a></h4><ul>
+<li>对象实例化后，实例变量的值就会确定。</li>
+<li>生存周期和对象相同。</li>
+<li>可以声明在使用前或后。</li>
+<li>可以使用访问修饰符。</li>
+<li>有默认值。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">test</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#8be9fd;font-style:italic">public</span>  String name<span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 实例变量，有默认值。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="类变量">类变量<a class="anchorjs-link" href="#%e7%b1%bb%e5%8f%98%e9%87%8f"></a></h4><ul>
+<li>初始化后不可改变，常声明为常量。</li>
+<li>建议大写。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">test</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> String type <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;human&#34;</span><span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 类变量。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h3 id="数组">数组<a class="anchorjs-link" href="#%e6%95%b0%e7%bb%84"></a></h3><h4 id="声明数组变量">声明数组变量<a class="anchorjs-link" href="#%e5%a3%b0%e6%98%8e%e6%95%b0%e7%bb%84%e5%8f%98%e9%87%8f"></a></h4><p>格式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>datatype<span style="color:#ff79c6">[]</span> arrayvar<span style="color:#ff79c6">;</span> <span style="color:#6272a4">// 推荐
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// 或
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>datatype arrayvar<span style="color:#ff79c6">[];</span>
+</span></span></code></pre></div><h4 id="创建数组">创建数组<a class="anchorjs-link" href="#%e5%88%9b%e5%bb%ba%e6%95%b0%e7%bb%84"></a></h4><p>格式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>arrayvar <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> datatype<span style="color:#ff79c6">[</span>array_size<span style="color:#ff79c6">]{</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">,</span> <span style="color:#bd93f9">2</span><span style="color:#ff79c6">,</span> <span style="color:#ff79c6">...};</span>
+</span></span></code></pre></div><p>声明和创建合并</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>datatype<span style="color:#ff79c6">[]</span> arrayvar <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> datatype<span style="color:#ff79c6">[</span>array_size<span style="color:#ff79c6">];</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// 或
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>datatype<span style="color:#ff79c6">[]</span> arrayvar <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">{</span>value0<span style="color:#ff79c6">,</span> value1<span style="color:#ff79c6">,</span> <span style="color:#ff79c6">...,</span> valuek<span style="color:#ff79c6">};</span>
+</span></span></code></pre></div><p><strong>数组索引从0开始！</strong></p>
+<h4 id="多维数组">多维数组<a class="anchorjs-link" href="#%e5%a4%9a%e7%bb%b4%e6%95%b0%e7%bb%84"></a></h4><p>格式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>datatype<span style="color:#ff79c6">[][]</span> arrayName <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> type<span style="color:#ff79c6">[</span>typeLength1<span style="color:#ff79c6">][</span>typeLength2<span style="color:#ff79c6">];</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#6272a4">// 或分别为每一维分配空间
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#6272a4"></span>String<span style="color:#ff79c6">[][]</span> s <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">[</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">][];</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">0</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">[</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">];</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">[</span><span style="color:#bd93f9">3</span><span style="color:#ff79c6">];</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">0</span><span style="color:#ff79c6">][</span><span style="color:#bd93f9">0</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Good&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">0</span><span style="color:#ff79c6">][</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Luck&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">][</span><span style="color:#bd93f9">0</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;to&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">][</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;you&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>s<span style="color:#ff79c6">[</span><span style="color:#bd93f9">1</span><span style="color:#ff79c6">][</span><span style="color:#bd93f9">2</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;!&#34;</span><span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><p>用法：同C语言。</p>
+<h4 id="常用方法">常用方法<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95"></a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法和说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><strong>public static int binarySearch(Object[] a, Object key)</strong> 用二分查找算法在给定数组中搜索给定值的对象(Byte,Int,double等)。数组在调用前必须排序好的。如果查找值包含在数组中，则返回搜索键的索引；否则返回 (-(<em>插入点</em>) - 1)。</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><strong>public static boolean equals(long[] a, long[] a2)</strong> 如果两个指定的 long 型数组彼此<em>相等</em>，则返回 true。如果两个数组包含相同数量的元素，并且两个数组中的所有相应元素对都是相等的，则认为这两个数组是相等的。换句话说，如果两个数组以相同顺序包含相同的元素，则两个数组是相等的。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><strong>public static void fill(int[] a, int val)</strong> 将指定的 int 值分配给指定 int 型数组指定范围中的每个元素。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）。</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><strong>public static void sort(Object[] a)</strong> 对指定对象数组根据其元素的自然顺序进行升序排列。同样的方法适用于所有的其他基本数据类型（Byte，short，Int等）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="修饰符">修饰符<a class="anchorjs-link" href="#%e4%bf%ae%e9%a5%b0%e7%ac%a6"></a></h3><h4 id="分类-1">分类<a class="anchorjs-link" href="#%e5%88%86%e7%b1%bb-1"></a></h4><ul>
+<li>访问修饰符</li>
+<li>非访问修饰符</li>
+</ul>
+<h4 id="访问修饰符">访问修饰符<a class="anchorjs-link" href="#%e8%ae%bf%e9%97%ae%e4%bf%ae%e9%a5%b0%e7%ac%a6"></a></h4><table>
+<thead>
+<tr>
+<th>访问修饰符</th>
+<th>使用对象</th>
+<th>访问权限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default(即什么都不写)</td>
+<td>类、接口、变量、方法</td>
+<td>包内、子孙类（包内）</td>
+</tr>
+<tr>
+<td>public</td>
+<td>类、接口、变量、方法</td>
+<td>均可</td>
+</tr>
+<tr>
+<td>private</td>
+<td>变量、方法</td>
+<td>当前类</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>变量、方法</td>
+<td>包内、子孙类（包内）</td>
+</tr>
+</tbody>
+</table>
+<p>基类：即父类。
+子类：即子类。</p>
+<h4 id="非访问修饰符">非访问修饰符<a class="anchorjs-link" href="#%e9%9d%9e%e8%ae%bf%e9%97%ae%e4%bf%ae%e9%a5%b0%e7%ac%a6"></a></h4><table>
+<thead>
+<tr>
+<th>非访问修饰符</th>
+<th>使用对象</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static</td>
+<td>类方法、类变量</td>
+<td>实例化对象时，只有一份拷贝。</td>
+</tr>
+<tr>
+<td>final</td>
+<td>类、方法、变量</td>
+<td>类不能被继承，方法不能被重新定义，变量不能修改。</td>
+</tr>
+<tr>
+<td>abstract</td>
+<td>类、方法</td>
+<td>创建抽象类和抽象方法。</td>
+</tr>
+<tr>
+<td>synchronized/volatile</td>
+<td></td>
+<td>线程的编程。</td>
+</tr>
+</tbody>
+</table>
+<p>抽象类：不能用于实例化对象，用于将来对该类进行扩充（类不能同时被<code>abstract</code>和<code>final</code>修饰）。包含抽象方法的类一定要声明为抽象类（抽象类可以不包含抽象方法）。
+抽象方法：一种没有任何实现的方法，实现由子类提供。不能被<code>final</code>和<code>static</code>修饰。</p>
+<p>static修饰函数：</p>
+<ul>
+<li>在类中：即静态成员函数，调用这个函数不会访问或修改任何对象数据成员。</li>
+<li>在类外：即静态函数，只能在本文件中被调用，其他方法默认为extern。</li>
+</ul>
+<p>static与final区别：</p>
+<ul>
+<li>static更侧重于作用域，只会被创建一次，可以共享数据。即多个同类只有一个共用的static。</li>
+<li>final类比于C/C++中的const，定义常量，不能被修改。</li>
+<li>public完全是作用域，为所有类和方法都能访问。</li>
+</ul>
+<h3 id="运算符">运算符<a class="anchorjs-link" href="#%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h3><h4 id="分类-2">分类<a class="anchorjs-link" href="#%e5%88%86%e7%b1%bb-2"></a></h4><ul>
+<li>算数运算符</li>
+<li>关系运算符</li>
+<li>位运算符</li>
+<li>逻辑运算符</li>
+<li>赋值运算符</li>
+<li>其他运算符</li>
+</ul>
+<h4 id="算数运算符">算数运算符<a class="anchorjs-link" href="#%e7%ae%97%e6%95%b0%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><p>分类：+、-、*、/、%、++、&ndash;
+用法：同C语言。</p>
+<h4 id="关系运算符">关系运算符<a class="anchorjs-link" href="#%e5%85%b3%e7%b3%bb%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><p>分类：==、!=、&gt;、&lt;、&gt;=、&lt;=
+用法：同C语言。</p>
+<h4 id="位运算符">位运算符<a class="anchorjs-link" href="#%e4%bd%8d%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><p>分类：&amp;、|、^、~、&laquo;、&raquo;、&laquo;&lt;。
+用法：同C语言。&raquo;&gt;：按位右移，空位补零。&raquo;：按位右移，用高位值（符号位）补位。</p>
+<h4 id="逻辑运算符">逻辑运算符<a class="anchorjs-link" href="#%e9%80%bb%e8%be%91%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><p>分类：&amp;&amp;、||、!
+用法：同C语言。</p>
+<p><strong>满足短路逻辑</strong>。</p>
+<h4 id="赋值运算符">赋值运算符<a class="anchorjs-link" href="#%e8%b5%8b%e5%80%bc%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><p>分类：=、+=、-=、*=、/=、%=、&laquo;=、&raquo;=、&amp;=、^=、|=
+用法：同C语言。</p>
+<h4 id="条件运算符">条件运算符<a class="anchorjs-link" href="#%e6%9d%a1%e4%bb%b6%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>variable x <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span>expression<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">?</span> value1 <span style="color:#ff79c6">:</span> value2<span style="color:#ff79c6">;</span>
+</span></span></code></pre></div><p>用法：同C语言。</p>
+<h4 id="instanceof运算符">instanceof运算符<a class="anchorjs-link" href="#instanceof%e8%bf%90%e7%ae%97%e7%ac%a6"></a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">(</span>variable_name<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">instanceof</span> <span style="color:#ff79c6">(</span>class<span style="color:#ff79c6">/</span>type<span style="color:#ff79c6">)</span>
+</span></span></code></pre></div><p>用法：判断左侧变量是否属于右侧类型，返回true或false。</p>
+<h4 id="运算优先级">运算优先级<a class="anchorjs-link" href="#%e8%bf%90%e7%ae%97%e4%bc%98%e5%85%88%e7%ba%a7"></a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">类别</th>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">关联性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">后缀</td>
+<td style="text-align:left">() [] . (点操作符)</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">一元</td>
+<td style="text-align:left">expr++ expr&ndash;</td>
+<td style="text-align:left">从左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">一元</td>
+<td style="text-align:left">++expr &ndash;expr + - ～ ！</td>
+<td style="text-align:left">从右到左</td>
+</tr>
+<tr>
+<td style="text-align:left">乘性</td>
+<td style="text-align:left">* /％</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">加性</td>
+<td style="text-align:left">+ -</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">移位</td>
+<td style="text-align:left">&raquo; &raquo;&gt;  &laquo;</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">关系</td>
+<td style="text-align:left">&gt; &gt;= &lt; &lt;=</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">相等</td>
+<td style="text-align:left">== !=</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">按位与</td>
+<td style="text-align:left">＆</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">按位异或</td>
+<td style="text-align:left">^</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">按位或</td>
+<td style="text-align:left">|</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">逻辑与</td>
+<td style="text-align:left">&amp;&amp;</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">逻辑或</td>
+<td style="text-align:left">| |</td>
+<td style="text-align:left">左到右</td>
+</tr>
+<tr>
+<td style="text-align:left">条件</td>
+<td style="text-align:left">？：</td>
+<td style="text-align:left">从右到左</td>
+</tr>
+<tr>
+<td style="text-align:left">赋值</td>
+<td style="text-align:left">= + = - = * = / =％= &raquo; = &laquo; =＆= ^ = | =</td>
+<td style="text-align:left">从右到左</td>
+</tr>
+<tr>
+<td style="text-align:left">逗号</td>
+<td style="text-align:left">，</td>
+<td style="text-align:left">左到右</td>
+</tr>
+</tbody>
+</table>
+<h3 id="循环结构">循环结构<a class="anchorjs-link" href="#%e5%be%aa%e7%8e%af%e7%bb%93%e6%9e%84"></a></h3><h4 id="分类-3">分类<a class="anchorjs-link" href="#%e5%88%86%e7%b1%bb-3"></a></h4><ul>
+<li>while循环</li>
+<li>do&hellip;while循环</li>
+<li>for循环</li>
+<li>关键字：break和continue</li>
+</ul>
+<p>用法：同C语言。</p>
+<h4 id="增强for循环">增强for循环<a class="anchorjs-link" href="#%e5%a2%9e%e5%bc%bafor%e5%be%aa%e7%8e%af"></a></h4><p>格式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span>声明语句 <span style="color:#ff79c6">:</span> 表达式<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    <span style="color:#6272a4">// do somethings
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#6272a4">// 声明语句：声明新的局部变量，类型要和数组元素相同。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#6272a4">// 表达式：要访问的数组名或者返回为数组的方法。
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#6272a4">// 示例：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    String <span style="color:#ff79c6">[]</span> names <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">{</span><span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#34;ben&#34;</span><span style="color:#ff79c6">,</span> <span style="color:#f1fa8c">&#34;bo&#34;</span><span style="color:#ff79c6">};</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    <span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span>String name <span style="color:#ff79c6">:</span> names<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span>name<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;,&#34;</span><span style="color:#ff79c6">);</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#6272a4">// 输出为：Uanu,ben,bo
+</span></span></span></code></pre></div><h4 id="标签">标签<a class="anchorjs-link" href="#%e6%a0%87%e7%ad%be"></a></h4><p>格式：字符串加<code>:</code>，放在要控制的循环结构前。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">label:</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#ff79c6">while</span><span style="color:#ff79c6">(</span>condition<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>    <span style="color:#ff79c6">break</span> label<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#8be9fd;font-style:italic">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#8be9fd;font-style:italic">label:</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#ff79c6">for</span><span style="color:#ff79c6">(;;){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>    <span style="color:#ff79c6">continue</span> label<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><p>作用：嵌套多层循环时，跨层控制循环。</p>
+<h3 id="条件语句">条件语句<a class="anchorjs-link" href="#%e6%9d%a1%e4%bb%b6%e8%af%ad%e5%8f%a5"></a></h3><h4 id="分类-4">分类<a class="anchorjs-link" href="#%e5%88%86%e7%b1%bb-4"></a></h4><ul>
+<li>if</li>
+<li>if&hellip;else</li>
+<li>if&hellip;else if&hellip;else</li>
+<li>switch case</li>
+<li>嵌套上述语句</li>
+</ul>
+<p>用法：同C语言。</p>
+<h3 id="包装类">包装类<a class="anchorjs-link" href="#%e5%8c%85%e8%a3%85%e7%b1%bb"></a></h3><h4 id="number类和math类">Number类和Math类<a class="anchorjs-link" href="#number%e7%b1%bb%e5%92%8cmath%e7%b1%bb"></a></h4><p>作用：有时方法的参数为对象，需要将内置数据类型(int、double等)换成对应的包装类。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">包装类</th>
+<th style="text-align:left">基本数据类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">boolean</td>
+</tr>
+<tr>
+<td style="text-align:left">Byte</td>
+<td style="text-align:left">byte</td>
+</tr>
+<tr>
+<td style="text-align:left">Short</td>
+<td style="text-align:left">short</td>
+</tr>
+<tr>
+<td style="text-align:left">Integer</td>
+<td style="text-align:left">int</td>
+</tr>
+<tr>
+<td style="text-align:left">Long</td>
+<td style="text-align:left">long</td>
+</tr>
+<tr>
+<td style="text-align:left">Character</td>
+<td style="text-align:left">char</td>
+</tr>
+<tr>
+<td style="text-align:left">Float</td>
+<td style="text-align:left">float</td>
+</tr>
+<tr>
+<td style="text-align:left">Double</td>
+<td style="text-align:left">double</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>   <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>      Integer x <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">5</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>      x <span style="color:#ff79c6">=</span>  x <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">10</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>      System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>x<span style="color:#ff79c6">);</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>   <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span><span style="color:#6272a4">// 输出：15
+</span></span></span></code></pre></div><h4 id="常用方法-1">常用方法<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95-1"></a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法与描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-xxxvalue.html" target="_blank">xxxValue()</a> 将 Number 对象转换为xxx数据类型的值并返回。</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-compareto.html" target="_blank">compareTo()</a> 将number对象与参数比较。</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-equals.html" target="_blank">equals()</a> 判断number对象是否与参数相等。</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-valueof.html" target="_blank">valueOf()</a> 返回一个 Number 对象指定的内置数据类型</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-tostring.html" target="_blank">toString()</a> 以字符串形式返回值。</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-parseInt.html" target="_blank">parseInt()</a> 将字符串解析为int类型。</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-abs.html" target="_blank">abs()</a> 返回参数的绝对值。</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-ceil.html" target="_blank">ceil()</a> 返回大于等于( &gt;= )给定参数的的最小整数，类型为双精度浮点型。</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-floor.html" target="_blank">floor()</a> 返回小于等于（&lt;=）给定参数的最大整数 。</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-rint.html" target="_blank">rint()</a> 返回与参数最接近的整数。返回类型为double。</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-round.html" target="_blank">round()</a> 它表示<strong>四舍五入</strong>，算法为 <strong>Math.floor(x+0.5)</strong>，即将原来的数字加上 0.5 后再向下取整，所以，Math.round(11.5) 的结果为12，Math.round(-11.5) 的结果为-11。</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-min.html" target="_blank">min()</a> 返回两个参数中的最小值。</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-max.html" target="_blank">max()</a> 返回两个参数中的最大值。</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-exp.html" target="_blank">exp()</a> 返回自然数底数e的参数次方。</td>
+</tr>
+<tr>
+<td style="text-align:left">15</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-log.html" target="_blank">log()</a> 返回参数的自然数底数的对数值。</td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-pow.html" target="_blank">pow()</a> 返回第一个参数的第二个参数次方。</td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-sqrt.html" target="_blank">sqrt()</a> 求参数的算术平方根。</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-sin.html" target="_blank">sin()</a> 求指定double类型参数的正弦值。</td>
+</tr>
+<tr>
+<td style="text-align:left">19</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-cos.html" target="_blank">cos()</a> 求指定double类型参数的余弦值。</td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-tan.html" target="_blank">tan()</a> 求指定double类型参数的正切值。</td>
+</tr>
+<tr>
+<td style="text-align:left">21</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-asin.html" target="_blank">asin()</a> 求指定double类型参数的反正弦值。</td>
+</tr>
+<tr>
+<td style="text-align:left">22</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-acos.html" target="_blank">acos()</a> 求指定double类型参数的反余弦值。</td>
+</tr>
+<tr>
+<td style="text-align:left">23</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-atan.html" target="_blank">atan()</a> 求指定double类型参数的反正切值。</td>
+</tr>
+<tr>
+<td style="text-align:left">24</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-atan2.html" target="_blank">atan2()</a> 将笛卡尔坐标转换为极坐标，并返回极坐标的角度值。</td>
+</tr>
+<tr>
+<td style="text-align:left">25</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-todegrees.html" target="_blank">toDegrees()</a> 将参数转化为角度。</td>
+</tr>
+<tr>
+<td style="text-align:left">26</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-toradians.html" target="_blank">toRadians()</a> 将角度转换为弧度。</td>
+</tr>
+<tr>
+<td style="text-align:left">27</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/number-random.html" target="_blank">random()</a> 返回一个随机数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="character类">Character类<a class="anchorjs-link" href="#character%e7%b1%bb"></a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Character ch <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Character<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#39;a&#39;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// 或
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>Character ch <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;a&#39;</span><span style="color:#ff79c6">;</span>
+</span></span></code></pre></div><h4 id="常用方法-2">常用方法<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95-2"></a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法与描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-isletter.html" target="_blank">isLetter()</a> 是否是一个字母</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-isdigit.html" target="_blank">isDigit()</a> 是否是一个数字字符</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-iswhitespace.html" target="_blank">isWhitespace()</a> 是否是一个空白字符</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-isuppercase.html" target="_blank">isUpperCase()</a> 是否是大写字母</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-islowercase.html" target="_blank">isLowerCase()</a> 是否是小写字母</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-touppercase.html" target="_blank">toUpperCase()</a> 指定字母的大写形式</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-tolowercase.html" target="_blank">toLowerCase</a>() 指定字母的小写形式</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/character-tostring.html" target="_blank">toString</a>() 返回字符的字符串形式，字符串的长度仅为1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="string类">String类<a class="anchorjs-link" href="#string%e7%b1%bb"></a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>String name <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> String<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>String name <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">;</span>
+</span></span></code></pre></div><p><strong>String类值不可改变</strong></p>
+<p>创建格式化字符串</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>String fs<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>fs <span style="color:#ff79c6">=</span> String<span style="color:#ff79c6">.</span><span style="color:#50fa7b">format</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;浮点型变量的值为 &#34;</span> <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>                   <span style="color:#f1fa8c">&#34;%f, 整型变量的值为 &#34;</span> <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>                   <span style="color:#f1fa8c">&#34; %d, 字符串变量的值为 &#34;</span> <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>                   <span style="color:#f1fa8c">&#34; %s&#34;</span><span style="color:#ff79c6">,</span> floatVar<span style="color:#ff79c6">,</span> intVar<span style="color:#ff79c6">,</span> stringVar<span style="color:#ff79c6">);</span>
+</span></span></code></pre></div><h4 id="常用方法-3">常用方法<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95-3"></a></h4><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-charat.html" target="_blank">char charAt(int index)</a> 返回指定索引处的 char 值。</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-compareto.html" target="_blank">int compareTo(Object o)</a> 把这个字符串和另一个对象比较。</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-compareto.html" target="_blank">int compareTo(String anotherString)</a> 按字典顺序比较两个字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-comparetoignorecase.html" target="_blank">int compareToIgnoreCase(String str)</a> 按字典顺序比较两个字符串，不考虑大小写。</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-concat.html" target="_blank">String concat(String str)</a> 将指定字符串连接到此字符串的结尾。</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-contentequals.html" target="_blank">boolean contentEquals(StringBuffer sb)</a> 当且仅当字符串与指定的StringBuffer有相同顺序的字符时候返回真。</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">[static String copyValueOf(char<a href="https://www.runoob.com/java/java-string-copyvalueof.html" target="_blank">] data)</a> 返回指定数组中表示该字符序列的 String。</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">[static String copyValueOf(char<a href="https://www.runoob.com/java/java-string-copyvalueof.html" target="_blank">] data, int offset, int count)</a> 返回指定数组中表示该字符序列的 String。</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-endswith.html" target="_blank">boolean endsWith(String suffix)</a> 测试此字符串是否以指定的后缀结束。</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-equals.html" target="_blank">boolean equals(Object anObject)</a> 将此字符串与指定的对象比较。</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-equalsignorecase.html" target="_blank">boolean equalsIgnoreCase(String anotherString)</a> 将此 String 与另一个 String 比较，不考虑大小写。</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">[byte<a href="https://www.runoob.com/java/java-string-getbytes.html" target="_blank">] getBytes()</a>  使用平台的默认字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">[byte<a href="https://www.runoob.com/java/java-string-getbytes.html" target="_blank">] getBytes(String charsetName)</a> 使用指定的字符集将此 String 编码为 byte 序列，并将结果存储到一个新的 byte 数组中。</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">[void getChars(int srcBegin, int srcEnd, char<a href="https://www.runoob.com/java/java-string-getchars.html" target="_blank">] dst, int dstBegin)</a> 将字符从此字符串复制到目标字符数组。</td>
+</tr>
+<tr>
+<td style="text-align:left">15</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-hashcode.html" target="_blank">int hashCode()</a> 返回此字符串的哈希码。</td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-indexof.html" target="_blank">int indexOf(int ch)</a> 返回指定字符在此字符串中第一次出现处的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-indexof.html" target="_blank">int indexOf(int ch, int fromIndex)</a> 返回在此字符串中第一次出现指定字符处的索引，从指定的索引开始搜索。</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-indexof.html" target="_blank">int indexOf(String str)</a>  返回指定子字符串在此字符串中第一次出现处的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">19</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-indexof.html" target="_blank">int indexOf(String str, int fromIndex)</a> 返回指定子字符串在此字符串中第一次出现处的索引，从指定的索引开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-intern.html" target="_blank">String intern()</a>  返回字符串对象的规范化表示形式。</td>
+</tr>
+<tr>
+<td style="text-align:left">21</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-lastindexof.html" target="_blank">int lastIndexOf(int ch)</a>  返回指定字符在此字符串中最后一次出现处的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">22</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-lastindexof.html" target="_blank">int lastIndexOf(int ch, int fromIndex)</a> 返回指定字符在此字符串中最后一次出现处的索引，从指定的索引处开始进行反向搜索。</td>
+</tr>
+<tr>
+<td style="text-align:left">23</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-lastindexof.html" target="_blank">int lastIndexOf(String str)</a> 返回指定子字符串在此字符串中最右边出现处的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">24</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-lastindexof.html" target="_blank">int lastIndexOf(String str, int fromIndex)</a>  返回指定子字符串在此字符串中最后一次出现处的索引，从指定的索引开始反向搜索。</td>
+</tr>
+<tr>
+<td style="text-align:left">25</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-length.html" target="_blank">int length()</a> 返回此字符串的长度。</td>
+</tr>
+<tr>
+<td style="text-align:left">26</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-matches.html" target="_blank">boolean matches(String regex)</a> 告知此字符串是否匹配给定的正则表达式。</td>
+</tr>
+<tr>
+<td style="text-align:left">27</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-regionmatches.html" target="_blank">boolean regionMatches(boolean ignoreCase, int toffset, String other, int ooffset, int len)</a> 测试两个字符串区域是否相等。</td>
+</tr>
+<tr>
+<td style="text-align:left">28</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-regionmatches.html" target="_blank">boolean regionMatches(int toffset, String other, int ooffset, int len)</a> 测试两个字符串区域是否相等。</td>
+</tr>
+<tr>
+<td style="text-align:left">29</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-replace.html" target="_blank">String replace(char oldChar, char newChar)</a> 返回一个新的字符串，它是通过用 newChar 替换此字符串中出现的所有 oldChar 得到的。</td>
+</tr>
+<tr>
+<td style="text-align:left">30</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-replaceall.html" target="_blank">String replaceAll(String regex, String replacement)</a> 使用给定的 replacement 替换此字符串所有匹配给定的正则表达式的子字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">31</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-replacefirst.html" target="_blank">String replaceFirst(String regex, String replacement)</a>  使用给定的 replacement 替换此字符串匹配给定的正则表达式的第一个子字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">32</td>
+<td style="text-align:left">[String<a href="https://www.runoob.com/java/java-string-split.html" target="_blank">] split(String regex)</a> 根据给定正则表达式的匹配拆分此字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">33</td>
+<td style="text-align:left">[String<a href="https://www.runoob.com/java/java-string-split.html" target="_blank">] split(String regex, int limit)</a> 根据匹配给定的正则表达式来拆分此字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">34</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-startswith.html" target="_blank">boolean startsWith(String prefix)</a> 测试此字符串是否以指定的前缀开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">35</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-startswith.html" target="_blank">boolean startsWith(String prefix, int toffset)</a> 测试此字符串从指定索引开始的子字符串是否以指定前缀开始。</td>
+</tr>
+<tr>
+<td style="text-align:left">36</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-subsequence.html" target="_blank">CharSequence subSequence(int beginIndex, int endIndex)</a>  返回一个新的字符序列，它是此序列的一个子序列。</td>
+</tr>
+<tr>
+<td style="text-align:left">37</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-substring.html" target="_blank">String substring(int beginIndex)</a> 返回一个新的字符串，它是此字符串的一个子字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">38</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-substring.html" target="_blank">String substring(int beginIndex, int endIndex)</a> 返回一个新字符串，它是此字符串的一个子字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">39</td>
+<td style="text-align:left">[char<a href="https://www.runoob.com/java/java-string-tochararray.html" target="_blank">] toCharArray()</a> 将此字符串转换为一个新的字符数组。</td>
+</tr>
+<tr>
+<td style="text-align:left">40</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-tolowercase.html" target="_blank">String toLowerCase()</a> 使用默认语言环境的规则将此 String 中的所有字符都转换为小写。</td>
+</tr>
+<tr>
+<td style="text-align:left">41</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-tolowercase.html" target="_blank">String toLowerCase(Locale locale)</a>  使用给定 Locale 的规则将此 String 中的所有字符都转换为小写。</td>
+</tr>
+<tr>
+<td style="text-align:left">42</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-tostring.html" target="_blank">String toString()</a>  返回此对象本身（它已经是一个字符串！）。</td>
+</tr>
+<tr>
+<td style="text-align:left">43</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-touppercase.html" target="_blank">String toUpperCase()</a> 使用默认语言环境的规则将此 String 中的所有字符都转换为大写。</td>
+</tr>
+<tr>
+<td style="text-align:left">44</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-touppercase.html" target="_blank">String toUpperCase(Locale locale)</a> 使用给定 Locale 的规则将此 String 中的所有字符都转换为大写。</td>
+</tr>
+<tr>
+<td style="text-align:left">45</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-trim.html" target="_blank">String trim()</a> 返回字符串的副本，忽略前导空白和尾部空白。</td>
+</tr>
+<tr>
+<td style="text-align:left">46</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-valueof.html" target="_blank">static String valueOf(primitive data type x)</a> 返回给定data type类型x参数的字符串表示形式。</td>
+</tr>
+<tr>
+<td style="text-align:left">47</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-contains.html" target="_blank">contains(CharSequence chars)</a> 判断是否包含指定的字符系列。</td>
+</tr>
+<tr>
+<td style="text-align:left">48</td>
+<td style="text-align:left"><a href="https://www.runoob.com/java/java-string-isempty.html" target="_blank">isEmpty()</a> 判断字符串是否为空。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="stringbuffer类和stringbuilder类">StringBuffer类和StringBuilder类<a class="anchorjs-link" href="#stringbuffer%e7%b1%bb%e5%92%8cstringbuilder%e7%b1%bb"></a></h4><p>不同于String，StringBuffer类和StringBuilder类可以被多次修改。</p>
+<p>StringBuilder不是线程安全的（不能同步访问）但速度更快，StringBuffer是线程安全的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String args<span style="color:#ff79c6">[]){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>        StringBuilder name <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> StringBuilder<span style="color:#ff79c6">(</span><span style="color:#bd93f9">10</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>        name<span style="color:#ff79c6">.</span><span style="color:#50fa7b">append</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Uanu&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="常用方法-4">常用方法<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95-4"></a></h4><p>StringBuffer：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">public StringBuffer append(String s) 将指定的字符串追加到此字符序列。</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">public StringBuffer reverse()  将此字符序列用其反转形式取代。</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">public delete(int start, int end) 移除此序列的子字符串中的字符。</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">public insert(int offset, int i) 将 <code>int</code> 参数的字符串表示形式插入此序列中。</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">insert(int offset, String str) 将 <code>str</code> 参数的字符串插入此序列中。</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">replace(int start, int end, String str) 使用给定 <code>String</code> 中的字符替换此序列的子字符串中的字符。</td>
+</tr>
+</tbody>
+</table>
+<p>StringBuilder：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">方法描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">int capacity() 返回当前容量。</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">char charAt(int index) 返回此序列中指定索引处的 <code>char</code> 值。</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">void ensureCapacity(int minimumCapacity) 确保容量至少等于指定的最小值。</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin) 将字符从此序列复制到目标字符数组 <code>dst</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">int indexOf(String str) 返回第一次出现的指定子字符串在该字符串中的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">int indexOf(String str, int fromIndex) 从指定的索引处开始，返回第一次出现的指定子字符串在该字符串中的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">int lastIndexOf(String str) 返回最右边出现的指定子字符串在此字符串中的索引。</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">int lastIndexOf(String str, int fromIndex) 返回 String 对象中子字符串最后出现的位置。</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">int length()  返回长度（字符数）。</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">void setCharAt(int index, char ch) 将给定索引处的字符设置为 <code>ch</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">void setLength(int newLength) 设置字符序列的长度。</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">CharSequence subSequence(int start, int end) 返回一个新的字符序列，该字符序列是此序列的子序列。</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">String substring(int start) 返回一个新的 <code>String</code>，它包含此字符序列当前所包含的字符子序列。</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">String substring(int start, int end) 返回一个新的 <code>String</code>，它包含此序列当前所包含的字符子序列。</td>
+</tr>
+<tr>
+<td style="text-align:left">15</td>
+<td style="text-align:left">String toString() 返回此序列中数据的字符串表示形式。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="枚举类">枚举类<a class="anchorjs-link" href="#%e6%9e%9a%e4%b8%be%e7%b1%bb"></a></h3><p>用enum关键字定义，常量用<code>,</code>分割。</p>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">enum</span> Color <span style="color:#6272a4">// 也可以声明在内部类
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#6272a4"></span><span style="color:#ff79c6">{</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    RED<span style="color:#ff79c6">,</span> GREEN<span style="color:#ff79c6">,</span> BLUE<span style="color:#ff79c6">;</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#ff79c6">}</span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>        Color c1 <span style="color:#ff79c6">=</span> Color<span style="color:#ff79c6">.</span><span style="color:#50fa7b">RED</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>c1<span style="color:#ff79c6">);</span> <span style="color:#6272a4">// 输出：RED
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="内部实现">内部实现<a class="anchorjs-link" href="#%e5%86%85%e9%83%a8%e5%ae%9e%e7%8e%b0"></a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Color</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>     <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Color RED <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Color<span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>     <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Color BLUE <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Color<span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>     <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Color GREEN <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Color<span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="枚举元素">枚举元素<a class="anchorjs-link" href="#%e6%9e%9a%e4%b8%be%e5%85%83%e7%b4%a0"></a></h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">enum</span> Color
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    RED<span style="color:#ff79c6">,</span> GREEN<span style="color:#ff79c6">,</span> BLUE<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">MyClass</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>  <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span>Color myVar <span style="color:#ff79c6">:</span> Color<span style="color:#ff79c6">.</span><span style="color:#50fa7b">values</span><span style="color:#ff79c6">())</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>      System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>myVar<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>  <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="常用方法-5">常用方法<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95-5"></a></h4><ul>
+<li>values() 返回枚举类中所有的值。</li>
+<li>ordinal()方法可以找到每个枚举常量的索引，就像数组索引一样。</li>
+<li>valueOf()方法返回指定字符串值的枚举常量。</li>
+</ul>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">enum</span> Color
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    RED<span style="color:#ff79c6">,</span> GREEN<span style="color:#ff79c6">,</span> BLUE<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#6272a4">// 调用 values()
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span><span style="color:#6272a4"></span>        Color<span style="color:#ff79c6">[]</span> arr <span style="color:#ff79c6">=</span> Color<span style="color:#ff79c6">.</span><span style="color:#50fa7b">values</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        <span style="color:#6272a4">// 迭代枚举
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#6272a4"></span>        <span style="color:#ff79c6">for</span> <span style="color:#ff79c6">(</span>Color col <span style="color:#ff79c6">:</span> arr<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            <span style="color:#6272a4">// 查看索引
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#6272a4"></span>            System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>col <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34; at index &#34;</span> <span style="color:#ff79c6">+</span> col<span style="color:#ff79c6">.</span><span style="color:#50fa7b">ordinal</span><span style="color:#ff79c6">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        <span style="color:#6272a4">// 使用 valueOf() 返回枚举常量，不存在的会报错 IllegalArgumentException
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#6272a4"></span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>Color<span style="color:#ff79c6">.</span><span style="color:#50fa7b">valueOf</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;RED&#34;</span><span style="color:#ff79c6">));</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        <span style="color:#6272a4">// System.out.println(Color.valueOf(&#34;WHITE&#34;));
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span><span style="color:#6272a4"></span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h4 id="枚举类-1">枚举类<a class="anchorjs-link" href="#%e6%9e%9a%e4%b8%be%e7%b1%bb-1"></a></h4><p>枚举类也可以有变量、方法和构造函数，构造函数必须用private修饰。如果有抽象方法，则枚举类的每个实例都必须实现该方法。</p>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">enum</span> Color
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>    RED<span style="color:#ff79c6">,</span> GREEN<span style="color:#ff79c6">,</span> BLUE<span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    <span style="color:#6272a4">// 构造函数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#50fa7b">Color</span><span style="color:#ff79c6">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Constructor called for : &#34;</span> <span style="color:#ff79c6">+</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">toString</span><span style="color:#ff79c6">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">colorInfo</span><span style="color:#ff79c6">()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;Universal Color&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span> 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Test</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#ff79c6">{</span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>    <span style="color:#6272a4">// 输出
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>    <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        Color c1 <span style="color:#ff79c6">=</span> Color<span style="color:#ff79c6">.</span><span style="color:#50fa7b">RED</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span>c1<span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>        c1<span style="color:#ff79c6">.</span><span style="color:#50fa7b">colorInfo</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span><span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span><span style="color:#6272a4">/* 输出：
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span><span style="color:#6272a4">Constructor called for : RED
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span><span style="color:#6272a4">Constructor called for : GREEN
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span><span style="color:#6272a4">Constructor called for : BLUE
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span><span style="color:#6272a4">RED
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span><span style="color:#6272a4">Universal Color
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span><span style="color:#6272a4">*/</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#8be9fd;font-style:italic">enum</span> Color<span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    RED<span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        <span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">getColor</span><span style="color:#ff79c6">(){</span><span style="color:#6272a4">//枚举对象实现抽象方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;红色&#34;</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>        <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#ff79c6">},</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    GREEN<span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>        <span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">getColor</span><span style="color:#ff79c6">(){</span><span style="color:#6272a4">//枚举对象实现抽象方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;绿色&#34;</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>        <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    <span style="color:#ff79c6">},</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>    BLUE<span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>        <span style="color:#8be9fd;font-style:italic">public</span> String <span style="color:#50fa7b">getColor</span><span style="color:#ff79c6">(){</span><span style="color:#6272a4">//枚举对象实现抽象方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span><span style="color:#6272a4"></span>            <span style="color:#ff79c6">return</span> <span style="color:#f1fa8c">&#34;蓝色&#34;</span><span style="color:#ff79c6">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>    <span style="color:#ff79c6">};</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">abstract</span> String <span style="color:#50fa7b">getColor</span><span style="color:#ff79c6">();</span><span style="color:#6272a4">//定义抽象方法
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span><span style="color:#6272a4"></span>    <span style="color:#8be9fd;font-style:italic">private</span>  <span style="color:#50fa7b">color</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;独属于color的构造方法！&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>    <span style="color:#ff79c6">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span><span style="color:#ff79c6">}</span>
+</span></span></code></pre></div><h2 id="常用函数">常用函数<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e5%87%bd%e6%95%b0"></a></h2><h3 id="输入">输入<a class="anchorjs-link" href="#%e8%be%93%e5%85%a5"></a></h3><p>1.使用<code>scanner</code>类的对象及方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Scanner input <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> Scanner<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>String str <span style="color:#ff79c6">=</span> input<span style="color:#ff79c6">.</span><span style="color:#50fa7b">next</span><span style="color:#ff79c6">();</span>
+</span></span></code></pre></div><p>next():</p>
+<ul>
+<li>只有读到有效字符后才可以结束输入。</li>
+<li>忽略有效字符前的空白。</li>
+<li>读入有效字符后的空白为结束标志（即不能读入空白）。</li>
+</ul>
+<p>nextLine():</p>
+<ul>
+<li>回车为结束标志。</li>
+<li>可以读入空白。</li>
+</ul>
+<p>2.使用read()方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#8be9fd">char</span> c <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">char</span><span style="color:#ff79c6">)</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">read</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// 或
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>BufferedReader br <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> BufferedReader<span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> InputStreamReader<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">));</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#8be9fd">char</span> c <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">(</span><span style="color:#8be9fd">char</span><span style="color:#ff79c6">)</span>br<span style="color:#ff79c6">.</span><span style="color:#50fa7b">read</span><span style="color:#ff79c6">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span><span style="color:#6272a4">// 使用ReadLine();可以读取字符串
+</span></span></span></code></pre></div><p>3.文件读入</p>
+<p>创建文件输入流</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>Input f <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> FileInputStream<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;路径&#34;</span><span style="color:#ff79c6">);</span> <span style="color:#6272a4">// 创建输入流对象
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// 或
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>File f <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> File<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;路径&#34;</span><span style="color:#ff79c6">);</span> <span style="color:#6272a4">// 创建文件对象
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span><span style="color:#6272a4"></span>InputStream in <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> FileInputStream<span style="color:#ff79c6">(</span>f<span style="color:#ff79c6">);</span> <span style="color:#6272a4">// 创建输入流对象
+</span></span></span></code></pre></div><h3 id="输出">输出<a class="anchorjs-link" href="#%e8%be%93%e5%87%ba"></a></h3><p>1.标准流输出</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">();</span> <span style="color:#6272a4">// 普通输出，但只能带有一个参数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4"></span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">println</span><span style="color:#ff79c6">();</span> <span style="color:#6272a4">// 换行输出，也只能带有一个参数
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">printf</span><span style="color:#ff79c6">();</span> <span style="color:#6272a4">// 格式化输出，格式化语法同C语言
+</span></span></span></code></pre></div><p>2.文件输出</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>OutputStream f <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> FileOutputStream<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;路径&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#6272a4">// 或
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#6272a4"></span>File f <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> File<span style="color:#ff79c6">(</span><span style="color:#f1fa8c">&#34;路径&#34;</span><span style="color:#ff79c6">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>OutputStream fOut <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> FileOutputStream<span style="color:#ff79c6">(</span>f<span style="color:#ff79c6">);</span>
+</span></span></code></pre></div>
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/java%E5%AD%A6%E4%B9%A02/" data-toggle="tooltip" data-placement="top" title="Java学习(2)--面向对象">
+              Previous<br>
+              <span>Java学习(2)--面向对象</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" data-toggle="tooltip" data-placement="top" title="hugo&#43;github博客搭建">
+              Next<br>
+              <span>hugo&#43;github博客搭建</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

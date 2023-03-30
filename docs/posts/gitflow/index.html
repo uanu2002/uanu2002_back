@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>「Git」Git Flow工作流 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="Git Flow工作流">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="「Git」Git Flow工作流"/>
+<meta name="twitter:description" content="Git Flow工作流"/>
+
+  <meta property="og:title" content="「Git」Git Flow工作流" />
+<meta property="og:description" content="Git Flow工作流" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/gitflow/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/git/" title="git">git</a>
+            
+            <a class="tag" href="/tags/gitflow/" title="GitFlow">GitFlow</a>
+            
+            <a class="tag" href="/tags/%E5%B7%A5%E5%85%B7/" title="工具">工具</a>
+            
+          </div>
+          <h1>「Git」Git Flow工作流</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="工作流简介">工作流简介<a class="anchorjs-link" href="#%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%ae%80%e4%bb%8b"></a></h2><p>工作流（WorkFlow）：工作流程及操作规则的概括描述。</p>
+<p>Git Flow：是工作流的一种，它定义了项目的分支模型及各分支的作用，还定义了分支间的交互要求。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./gitflow/1.png" data-action="zoom" alt="Git Flow"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="git-flow">Git Flow<a class="anchorjs-link" href="#git-flow"></a></h2><p>将代码托管平台上的库称为中央存储库<code>origin</code>。</p>
+<h3 id="主要分支">主要分支<a class="anchorjs-link" href="#%e4%b8%bb%e8%a6%81%e5%88%86%e6%94%af"></a></h3><h4 id="develop和master">develop和master<a class="anchorjs-link" href="#develop%e5%92%8cmaster"></a></h4><p>中央存储库有两个无限生命周期的分支：</p>
+<ul>
+<li><code>master</code></li>
+<li><code>develop</code></li>
+</ul>
+<p>这两个分支用于记录项目的历史版本，<code>master</code>保存正式发布的版本，<code>develop</code>则保存<strong>集成</strong>特性的分支（测试版本）。</p>
+<h4 id="feature">feature<a class="anchorjs-link" href="#feature"></a></h4><p>每一个特性都需要有自己的<code>feature</code>分支，当一个特性开发完成后，对应<code>feature</code>会被<code>merge</code>到<code>develop</code>分支中。<code>feature</code>将<code>develop</code>作为其父分支。<strong>不能直接与<code>master</code>合并</strong>。</p>
+<h4 id="release">release<a class="anchorjs-link" href="#release"></a></h4><p>发布分支<code>release</code>，当<code>develop</code>已经有足够多的新特性时，需要从<code>develop</code>分支开辟一个<code>release</code>分支。<code>release</code>分支创建后不允许新特性加入，只允许修复bug和发布任务。当<code>release</code>准备好后，将<code>release</code>分支与<code>master</code>分支合并，同时给<code>master</code>分支打上一个版本号。</p>
+<h4 id="hotfix">hotfix<a class="anchorjs-link" href="#hotfix"></a></h4><p>修补分支<code>hotfix</code>，用于快速修补<code>master</code>版本，是<strong>唯一</strong>从<code>master</code>开辟的分支。当<code>hotfix</code>修复完成后需要合并回<code>master</code>、<code>develop</code>和<code>release</code>分支。</p>
+<h3 id="工具包安装使用">工具包安装使用<a class="anchorjs-link" href="#%e5%b7%a5%e5%85%b7%e5%8c%85%e5%ae%89%e8%a3%85%e4%bd%bf%e7%94%a8"></a></h3><p>为了更高效的实现上述操作，可以在<code>git</code>中下载<code>git-flow</code>，<a href="https://git-scm.com/download/win" target="_blank">官网下载链接</a>。</p>
+<h4 id="常用指令">常用指令<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4"></a></h4><ul>
+<li><code>git flow init</code>：创建<code>develop</code>分支。</li>
+<li><code>git flow feature start feature_branch</code>：创建一个名为<code>feature_branch</code>的特征分支。</li>
+<li><code>git flow feature finish feature_branch</code>：结束一个名为<code>feature_branch</code>的特征分支（即与<code>develop</code>进行<code>merge</code>）。</li>
+<li><code>git flow release start 0.1.0</code>：创建一个名为<code>0.1.0</code>的<code>release</code>分支。</li>
+<li><code>git flow release finish '0.1.0'</code>：结束一个名为<code>0.1.0</code>的<code>release</code>分支（即与<code>master</code>进行<code>merge</code>）。</li>
+<li><code>git flow hotfix start hotfix_branch</code>：创建一个名为<code>hotfix_branch</code>的修补分支。</li>
+<li><code>git flow hotfix finish hotfix_branch</code>：结束一个名为<code>hotfix_branch</code>的修补分支（即与<code>master</code>、<code>develop</code>进行<code>merge</code>，然后删除该分支）。</li>
+</ul>
+<h4 id="补充">补充<a class="anchorjs-link" href="#%e8%a1%a5%e5%85%85"></a></h4><p>git flow指令与git指令并不冲突，实质上是将git指令进行集成。</p>
+<h3 id="总流程">总流程<a class="anchorjs-link" href="#%e6%80%bb%e6%b5%81%e7%a8%8b"></a></h3><p>总结下Git Flow的完整流程：</p>
+<ol>
+<li>从 <code>master</code> 创建一个 <code>develop</code> 分支</li>
+<li>从 <code>develop</code>创建一个 <code>release</code> 分支</li>
+<li>从 <code>develop</code> 创建 <code>feature</code> 分支</li>
+<li>当一个 <code>feature</code> 开发结束，将被 merge 到 <code>develop</code> 分支</li>
+<li>当 <code>release</code> 分支完成，将被 merge 到 <code>develop</code> 和 <code>master</code></li>
+<li>如果在 <code>master</code> 中发现问题，要从 <code>master</code> 创建一个 <code>hotfix</code> 分支</li>
+<li>一旦 <code>hotfix</code> 完成，将被 merge 回 <code>develop</code> 和 <code>master</code></li>
+</ol>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/latex/" data-toggle="tooltip" data-placement="top" title="「LaTeX」 Grammar">
+              Previous<br>
+              <span>「LaTeX」 Grammar</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/fmri/" data-toggle="tooltip" data-placement="top" title="「Congnitive Science」FMRI、MVPA和群体编码">
+              Next<br>
+              <span>「Congnitive Science」FMRI、MVPA和群体编码</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>工具 on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「Git」Git Flow工作流</title>
+      <link>https://uanu2002.github.io/posts/gitflow/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/gitflow/</guid>
+      <description>Git Flow工作流</description>
+    </item>
+    
+    <item>
+      <title>「LaTeX」 Grammar</title>
+      <link>https://uanu2002.github.io/posts/latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/latex/</guid>
+      <description>LaTeX的基础知识和常用语法</description>
+    </item>
+    
+    <item>
+      <title>「Tools」Zerotier</title>
+      <link>https://uanu2002.github.io/posts/zerotier/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/zerotier/</guid>
+      <description>免费内网穿透工具Zerotier、</description>
+    </item>
+    
+    <item>
+      <title>「Tools」Zotero</title>
+      <link>https://uanu2002.github.io/posts/zotero/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/zotero/</guid>
+      <description>文献管理工具Zotero</description>
+    </item>
+    
+    <item>
+      <title>hexo&#43;github博客搭建</title>
+      <link>https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>基础+超详细</description>
+    </item>
+    
+    <item>
+      <title>hugo&#43;github博客搭建</title>
+      <link>https://uanu2002.github.io/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>如果我们没有服务器和域名，又想搭建个人博客或者简单的静态网页，这时该怎么办？这时Github Pages和Hugo就提供了解决方案。 Github Page</description>
+    </item>
+    
+    <item>
+      <title>Java学习(1)--基础知识及语法</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A01/</guid>
+      <description>Java的基础知识和常用语法</description>
+    </item>
+    
+    <item>
+      <title>Java学习(2)--面向对象</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A02/</guid>
+      <description>Java中的面向对象</description>
+    </item>
+    
+    <item>
+      <title>Java学习(3)--高级结构</title>
+      <link>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/java%E5%AD%A6%E4%B9%A03/</guid>
+      <description>Java中的高级结构</description>
+    </item>
+    
+    <item>
+      <title>Linux(2)--ssh使用</title>
+      <link>https://uanu2002.github.io/posts/linux2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux2/</guid>
+      <description>ssh登录基本用法远程登录服务器： 1ssh user@hostname user：用户名 hostname：IP地址或域名 第一次登录会提示： 1The authenticity of host &amp;#39;你的IP(你的IP</description>
+    </item>
+    
+    <item>
+      <title>Linux(3)--git使用</title>
+      <link>https://uanu2002.github.io/posts/linux3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/linux3/</guid>
+      <description>git使用基本概念 工作区：仓库的目录。工作区是独立于各个分支的。 暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于</description>
+    </item>
+    
+    <item>
+      <title>python语法</title>
+      <link>https://uanu2002.github.io/posts/python%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/python%E8%AF%AD%E6%B3%95/</guid>
+      <description>python基础语法速查</description>
+    </item>
+    
+    <item>
+      <title>Visual Studio Code环境配置</title>
+      <link>https://uanu2002.github.io/posts/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid>
+      <description>vscode常用的环境配置</description>
+    </item>
+    
+  </channel>
+</rss>

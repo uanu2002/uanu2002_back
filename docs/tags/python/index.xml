@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>python on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/python/</link>
+    <description>Recent content in python on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>python语法</title>
+      <link>https://uanu2002.github.io/posts/python%E8%AF%AD%E6%B3%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/python%E8%AF%AD%E6%B3%95/</guid>
+      <description>python基础语法速查</description>
+    </item>
+    
+  </channel>
+</rss>

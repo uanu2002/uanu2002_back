@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>Visual Studio Code环境配置 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="vscode常用的环境配置">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Visual Studio Code环境配置"/>
+<meta name="twitter:description" content="vscode常用的环境配置"/>
+
+  <meta property="og:title" content="Visual Studio Code环境配置" />
+<meta property="og:description" content="vscode常用的环境配置" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/vscode%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/vscode/" title="vscode">vscode</a>
+            
+            <a class="tag" href="/tags/%E9%85%8D%E7%BD%AE/" title="配置">配置</a>
+            
+          </div>
+          <h1>Visual Studio Code环境配置</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h1 id="windows安装vscode配置cc">Windows安装vscode配置C/C++<a class="anchorjs-link" href="#windows%e5%ae%89%e8%a3%85vscode%e9%85%8d%e7%bd%aecc"></a></h1><h3 id="1下载vscode">1、下载vscode<a class="anchorjs-link" href="#1%e4%b8%8b%e8%bd%bdvscode"></a></h3><h3 id="2下载gcc编译器">2、下载gcc编译器<a class="anchorjs-link" href="#2%e4%b8%8b%e8%bd%bdgcc%e7%bc%96%e8%af%91%e5%99%a8"></a></h3><p>官网下载：<a href="https://sourceforge.net/projects/mingw-w64/files/" target="_blank">MinGW-w64 - for 32 and 64 bit Windows - Browse Files at SourceForge.net</a></p>
+<p>选择最新版本MinGW-W64 GCC，根据电脑选择对应压缩包下载（64位windows电脑下载x86_64-win32-seh）。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/1.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>下载后解压，找到bin文件夹，复制bin的路径，添加到电脑的环境变量Path中。</p>
+<img src="./vscode环境配置/2.png" style="zoom:50%;" />
+<p>然后在命令行cmd中输入</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>gcc -v
+</span></span></code></pre></div><p>如果显示gcc位置、版本等许多信息则gcc安装成功。</p>
+<h3 id="3设置配置文件">3、设置配置文件<a class="anchorjs-link" href="#3%e8%ae%be%e7%bd%ae%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"></a></h3><p>（1）在vscode中打开项目文件（下面设置的编译器等配置只在这个文件内有效）。</p>
+<p>（2）配置编译器文件
+<code>Ctrl+Shift+P</code>打开命令面板，输入<code>C/c++:Edit Configurations(UI)</code>，点击打开。
+<figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/3.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>如下图所示，</p>
+<p>1：windows系统选择win32
+2：填写：<code>bin路径\g++.exe</code>
+3：可不填，为编译器参数
+4：选择<code>gcc-x64</code></p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/4.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>设置好后文件中会出现<code>.vscode</code>文件夹，其中只有一个<code>c_cpp_properties.json</code>的配置文件，如果出现其他文件则删除。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/5.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>（3）配置构建文件
+<code>Ctrl+Shift+P</code>打开控制面板，输入<code>Tasks:Configure Default Build Task</code>，点击后再输入<code>C/C++: g++.exe build active file</code>。然后会在<code>.vscode</code>文件夹内生成一个<code>tasks.json</code>配置文件。</p>
+<p>（4）配置调试文件</p>
+<p>新建或打开一个C++文件，然后点击菜单栏中的调试C/C++文件或<code>Debug</code>，然后选择<code>C++(GDB/LLDB)</code>，然后会在<code>.vscode</code>文件夹内生成一个<code>launch.json</code>配置文件。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/6.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>执行完效果如下图。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/7.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>配置好后可以单独保存.vscode文件夹，下次配置时直接复制到项目文件夹内即可。</p>
+<p>此处粘贴个人的三个文件夹内容，如果上述操作无法完成，则可以直接创建<code>.vscode</code>文件夹和三个配置文件，然后把内容粘贴，<strong>然后要修改其中的编译器等地址和版本信息！</strong></p>
+<p><code>c_cpp_properties.json</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#ff79c6">&#34;configurations&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>            <span style="color:#ff79c6">&#34;name&#34;: </span><span style="color:#f1fa8c">&#34;Win32&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>            <span style="color:#ff79c6">&#34;includePath&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>                <span style="color:#f1fa8c">&#34;${workspaceFolder}/**&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>            <span style="color:#ff79c6">&#34;defines&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>                <span style="color:#f1fa8c">&#34;_DEBUG&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>                <span style="color:#f1fa8c">&#34;UNICODE&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>                <span style="color:#f1fa8c">&#34;_UNICODE&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>            ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>            <span style="color:#ff79c6">&#34;windowsSdkVersion&#34;: </span><span style="color:#f1fa8c">&#34;10.0.19041.0&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            <span style="color:#ff79c6">&#34;compilerPath&#34;: </span><span style="color:#f1fa8c">&#34;D:\\mingw64\\bin\\g++.exe&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>            <span style="color:#ff79c6">&#34;cStandard&#34;: </span><span style="color:#f1fa8c">&#34;c17&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            <span style="color:#ff79c6">&#34;cppStandard&#34;: </span><span style="color:#f1fa8c">&#34;c++17&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>            <span style="color:#ff79c6">&#34;intelliSenseMode&#34;: </span><span style="color:#f1fa8c">&#34;gcc-x64&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>            <span style="color:#ff79c6">&#34;compilerArgs&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>                <span style="color:#f1fa8c">&#34;-Wall&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>            ]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>    ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>    <span style="color:#ff79c6">&#34;version&#34;: </span><span style="color:#bd93f9">4</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>}
+</span></span></code></pre></div><p><code>tasks.json</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#ff79c6">&#34;tasks&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>            <span style="color:#ff79c6">&#34;type&#34;: </span><span style="color:#f1fa8c">&#34;cppbuild&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>            <span style="color:#ff79c6">&#34;label&#34;: </span><span style="color:#f1fa8c">&#34;C/C++: g++.exe 生成活动文件&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>            <span style="color:#ff79c6">&#34;command&#34;: </span><span style="color:#f1fa8c">&#34;D:\\mingw64\\bin\\g++.exe&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            <span style="color:#ff79c6">&#34;args&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>                <span style="color:#f1fa8c">&#34;-fdiagnostics-color=always&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>                <span style="color:#f1fa8c">&#34;-g&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>                <span style="color:#f1fa8c">&#34;${file}&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>                <span style="color:#f1fa8c">&#34;-o&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>                <span style="color:#f1fa8c">&#34;${fileDirname}\\${fileBasenameNoExtension}.exe&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>            ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            <span style="color:#ff79c6">&#34;options&#34;: </span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>                <span style="color:#ff79c6">&#34;cwd&#34;: </span><span style="color:#f1fa8c">&#34;D:\\mingw64\\bin&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>            },
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>            <span style="color:#ff79c6">&#34;problemMatcher&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>                <span style="color:#f1fa8c">&#34;$gcc&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>            ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>            <span style="color:#ff79c6">&#34;group&#34;: </span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>                <span style="color:#ff79c6">&#34;kind&#34;: </span><span style="color:#f1fa8c">&#34;build&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>                <span style="color:#ff79c6">&#34;isDefault&#34;: </span><span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>            },
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>            <span style="color:#ff79c6">&#34;detail&#34;: </span><span style="color:#f1fa8c">&#34;调试器生成的任务。&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>    ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>    <span style="color:#ff79c6">&#34;version&#34;: </span><span style="color:#f1fa8c">&#34;2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>}
+</span></span></code></pre></div><p><code>launch.json</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>{
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>    <span style="color:#ff79c6">&#34;configurations&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>        {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>            <span style="color:#ff79c6">&#34;name&#34;: </span><span style="color:#f1fa8c">&#34;C/C++: g++.exe 生成和调试活动文件&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>            <span style="color:#ff79c6">&#34;type&#34;: </span><span style="color:#f1fa8c">&#34;cppdbg&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>            <span style="color:#ff79c6">&#34;request&#34;: </span><span style="color:#f1fa8c">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>            <span style="color:#ff79c6">&#34;program&#34;: </span><span style="color:#f1fa8c">&#34;${fileDirname}\\${fileBasenameNoExtension}.exe&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>            <span style="color:#ff79c6">&#34;args&#34;: </span>[],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>            <span style="color:#ff79c6">&#34;stopAtEntry&#34;: </span><span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>            <span style="color:#ff79c6">&#34;cwd&#34;: </span><span style="color:#f1fa8c">&#34;D:\\mingw64\\bin&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>            <span style="color:#ff79c6">&#34;environment&#34;: </span>[],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>            <span style="color:#ff79c6">&#34;externalConsole&#34;: </span><span style="color:#ff79c6">false</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>            <span style="color:#ff79c6">&#34;MIMode&#34;: </span><span style="color:#f1fa8c">&#34;gdb&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>            <span style="color:#ff79c6">&#34;miDebuggerPath&#34;: </span><span style="color:#f1fa8c">&#34;D:\\mingw64\\bin\\gdb.exe&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>            <span style="color:#ff79c6">&#34;setupCommands&#34;: </span>[
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>                {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>                    <span style="color:#ff79c6">&#34;description&#34;: </span><span style="color:#f1fa8c">&#34;为 gdb 启用整齐打印&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>                    <span style="color:#ff79c6">&#34;text&#34;: </span><span style="color:#f1fa8c">&#34;-enable-pretty-printing&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>                    <span style="color:#ff79c6">&#34;ignoreFailures&#34;: </span><span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>                },
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>                {
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>                    <span style="color:#ff79c6">&#34;description&#34;: </span><span style="color:#f1fa8c">&#34;将反汇编风格设置为 Intel&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>                    <span style="color:#ff79c6">&#34;text&#34;: </span><span style="color:#f1fa8c">&#34;-gdb-set disassembly-flavor intel&#34;</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>                    <span style="color:#ff79c6">&#34;ignoreFailures&#34;: </span><span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>                }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>            ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>            <span style="color:#ff79c6">&#34;preLaunchTask&#34;: </span><span style="color:#f1fa8c">&#34;C/C++: g++.exe 生成活动文件&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        }
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>    ],
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>    <span style="color:#ff79c6">&#34;version&#34;: </span><span style="color:#f1fa8c">&#34;2.0.0&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>}
+</span></span></code></pre></div><h1 id="mac安装vscode配置cc">Mac安装vscode配置C/C++<a class="anchorjs-link" href="#mac%e5%ae%89%e8%a3%85vscode%e9%85%8d%e7%bd%aecc"></a></h1><h2 id="一安装vscode">一、安装vscode<a class="anchorjs-link" href="#%e4%b8%80%e5%ae%89%e8%a3%85vscode"></a></h2><h3 id="1下载安装vscode">1、下载安装vscode<a class="anchorjs-link" href="#1%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85vscode"></a></h3><p><a href="https://bhpan.buaa.edu.cn:443/link/11FF9E374BFC973B3BEDF36780636992" target="_blank">mac版本的vscode下载链接</a></p>
+<p>下载后直接安装即可。</p>
+<h3 id="2vscode基础设置">2、vscode基础设置<a class="anchorjs-link" href="#2vscode%e5%9f%ba%e7%a1%80%e8%ae%be%e7%bd%ae"></a></h3><h4 id="主题选择">主题选择<a class="anchorjs-link" href="#%e4%b8%bb%e9%a2%98%e9%80%89%e6%8b%a9"></a></h4><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/8.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>刚进入vscode时会弹出主题的选择，四个主题任选其一即可，然后点击左上角关闭<code>Get Started</code>页面。</p>
+<h4 id="插件安装">插件安装<a class="anchorjs-link" href="#%e6%8f%92%e4%bb%b6%e5%ae%89%e8%a3%85"></a></h4><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/9.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>点击左侧导航栏<code>扩展</code>按钮，进入插件商店。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/10.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>搜索栏输入<code>chinese</code>，点击打开第一个标有<code>中文简体</code>的插件，然后右侧点击<code>install</code>下载，下载好则会显示为<code>uninstall</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/11.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>下载好后，会有弹窗提示是否重启vscode，选择<code>Restart</code>。如果没有弹窗提示则手动关闭vscode再打开。重新打开后，界面变为中文则插件生效。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/12.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>下面用同样的方法安装C/C++，在扩展中搜索<code>C/C++</code>，选择安装第一个插件。</p>
+<h2 id="二c语言环境配置">二、C语言环境配置<a class="anchorjs-link" href="#%e4%ba%8cc%e8%af%ad%e8%a8%80%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae"></a></h2><h3 id="1创建c文件">1、创建C文件<a class="anchorjs-link" href="#1%e5%88%9b%e5%bb%bac%e6%96%87%e4%bb%b6"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/13.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>点击打开左侧导航栏<code>资源管理器</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/14.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后点击打开文件夹。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/15.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>新建或选择一个文件夹，这个文件夹用于存放以后的源文件和程序。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/16.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>点击打开后会有弹窗提示，先选择<code>好</code>，然后勾选<code>信任父文件夹&quot;xxx&quot;中所有文件的作者</code>，最后点击<code>是，我信任此作者</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/17.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>点击新建文件夹，输入<code>demo.c</code>并回车。<code>demo</code>是文件名可以任意修改。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/18.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="2生成配置文件">2、生成配置文件<a class="anchorjs-link" href="#2%e7%94%9f%e6%88%90%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/19.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>点击<code>demo.c</code>打开文件，点击右上角的向下尖括号。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/20.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>选择<code>运行C/C++文件</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/21.jpg" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后会弹出编译器选择，选择<code>C/C++: clang生成和调试活动文件</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/22.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/23.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>然后左侧会文件夹内会多出一个.vscode文件夹，里面包含两个配置文件。</p>
+<h3 id="3程序测试">3、程序测试<a class="anchorjs-link" href="#3%e7%a8%8b%e5%ba%8f%e6%b5%8b%e8%af%95"></a></h3><p>再次打开<code>demo.c</code>，输入以下内容。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>(){
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>    <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;hello world&#34;</span>);
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>}
+</span></span></code></pre></div><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/24.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure>然后再次点击<code>运行C/C++文件</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/25.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>如果有弹窗则先记住选择，然后选择<code>仍要调试</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/26.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>运行后右下侧会弹出终端，选择<code>调试控制台</code>。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./vscode%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae/27.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>如果看到<code>hello world</code>则表示配置成功。</p>
+<h2 id="三注">三、注<a class="anchorjs-link" href="#%e4%b8%89%e6%b3%a8"></a></h2><ul>
+<li><code>.vscode</code>不要删除。</li>
+</ul>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B00/" data-toggle="tooltip" data-placement="top" title="抽象代数(0)--子群">
+              Previous<br>
+              <span>抽象代数(0)--子群</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/python%E8%AF%AD%E6%B3%95/" data-toggle="tooltip" data-placement="top" title="python语法">
+              Next<br>
+              <span>python语法</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

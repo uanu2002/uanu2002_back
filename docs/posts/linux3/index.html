@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>Linux(3)--git使用 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="git使用基本概念 工作区：仓库的目录。工作区是独立于各个分支的。 暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux(3)--git使用"/>
+<meta name="twitter:description" content="git使用基本概念 工作区：仓库的目录。工作区是独立于各个分支的。 暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于"/>
+
+  <meta property="og:title" content="Linux(3)--git使用" />
+<meta property="og:description" content="git使用基本概念 工作区：仓库的目录。工作区是独立于各个分支的。 暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/linux3/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/linux/" title="Linux">Linux</a>
+            
+            <a class="tag" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="操作系统">操作系统</a>
+            
+            <a class="tag" href="/tags/git/" title="git">git</a>
+            
+          </div>
+          <h1>Linux(3)--git使用</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h1 id="git使用">git使用<a class="anchorjs-link" href="#git%e4%bd%bf%e7%94%a8"></a></h1><h2 id="基本概念">基本概念<a class="anchorjs-link" href="#%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5"></a></h2><ul>
+<li>工作区：仓库的目录。工作区是独立于各个分支的。</li>
+<li>暂存区：数据暂时存放的区域，类似于工作区写入版本库前的缓存区。暂存区是独立于各个分支的。</li>
+<li>版本库：存放所有已经提交到本地仓库的代码版本。</li>
+<li>版本结构：树结构，树中每个节点代表一个代码版本。</li>
+</ul>
+<h2 id="常用命令">常用命令<a class="anchorjs-link" href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4"></a></h2><ol>
+<li>
+<p><code>git config --global user.name xxx</code>：设置全局用户名，信息记录在<code>~/.gitconfig</code>文件中</p>
+</li>
+<li>
+<p><code>git config --global user.email xxx@xxx.com</code>：设置全局邮箱地址，信息记录在<code>~/.gitconfig</code>文件中</p>
+</li>
+<li>
+<p><code>git init</code>：将当前目录配置成git仓库，信息记录在隐藏的.git文件夹中</p>
+</li>
+<li>
+<p><code>git add XX</code>：将XX文件添加到暂存区</p>
+<ul>
+<li><code>git add .</code>：将所有待加入暂存区的文件加入暂存区</li>
+</ul>
+</li>
+<li>
+<p><code>git rm --cached XX</code>：将文件从仓库索引目录中删掉</p>
+</li>
+<li>
+<p><code>git commit -m &quot;给自己看的备注信息&quot;</code>：将暂存区的内容提交到当前分支</p>
+</li>
+<li>
+<p><code>git status</code>：查看仓库状态</p>
+</li>
+<li>
+<p><code>git diff XX</code>：查看XX文件相对于暂存区修改了哪些内容</p>
+</li>
+<li>
+<p><code>git log</code>：查看当前分支的所有版本</p>
+</li>
+<li>
+<p><code>git reflog</code>：查看HEAD指针的移动历史（包括被回滚的版本）</p>
+</li>
+<li>
+<p><code>git reset --hard HEAD^</code> 或 <code>git reset --hard HEAD~</code>：将代码库回滚到上一个版本</p>
+<ul>
+<li>
+<p><code>git reset --hard HEAD^^</code>：往上回滚两次，以此类推</p>
+</li>
+<li>
+<p><code>git reset --hard HEAD~100</code>：往上回滚100个版本</p>
+</li>
+<li>
+<p><code>git reset --hard</code> 版本号：回滚到某一特定版本</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>git checkout — XX</code>或<code>git restore XX</code>：将XX文件尚未加入暂存区的修改全部撤销</p>
+</li>
+<li>
+<p><code>git remote add origin git@git.uanu2002.com:xxx/XXX.git</code>：将本地仓库关联到远程仓库</p>
+</li>
+<li>
+<p><code>git push -u</code> (第一次需要-u以后不需要)：将当前分支推送到远程仓库</p>
+<ul>
+<li><code>git push origin branch_name</code>：将本地的某个分支推送到远程仓库</li>
+</ul>
+</li>
+<li>
+<p><code>git clone git@git.uanu2002.com:xxx/XXX.git</code>：将远程仓库XXX下载到当前目录下</p>
+</li>
+<li>
+<p><code>git checkout -b branch_name</code>：创建并切换到<code>branch_name</code>这个分支</p>
+</li>
+<li>
+<p><code>git branch</code>：查看所有分支和当前所处分支</p>
+</li>
+<li>
+<p><code>git checkout branch_name</code>：切换到<code>branch_name</code>这个分支</p>
+</li>
+<li>
+<p><code>git merge branch_name</code>：将分支<code>branch_name</code>合并到当前分支上</p>
+</li>
+<li>
+<p><code>git branch -d branch_name</code>：删除本地仓库的<code>branch_name</code>分支</p>
+</li>
+<li>
+<p><code>git branch branch_name</code>：创建新分支</p>
+</li>
+<li>
+<p><code>git push --set-upstream origin branch_name</code>：设置本地的<code>branch_name</code>分支对应远程仓库的<code>branch_name</code>分支</p>
+</li>
+<li>
+<p><code>git push -d origin branch_name</code>：删除远程仓库的<code>branch_name</code>分支</p>
+</li>
+<li>
+<p><code>git pull</code>：将远程仓库的当前分支与本地仓库的当前分支合并</p>
+<ul>
+<li><code>git pull origin branch_name</code>：将远程仓库的<code>branch_name</code>分支与本地仓库的当前分支合并</li>
+</ul>
+</li>
+<li>
+<p><code>git branch --set-upstream-to=origin/branch_name1 branch_name2</code>：将远程<code>branch_name1</code>分支与本地的<code>branch_name2</code>分支对应</p>
+</li>
+<li>
+<p><code>git checkout -t origin/branch_name</code> 将远程的<code>branch_name</code>分支拉取到本地</p>
+</li>
+<li>
+<p><code>git stash</code>：将工作区和暂存区中尚未提交的修改存入栈中</p>
+</li>
+<li>
+<p><code>git stash apply</code>：将栈顶存储的修改恢复到当前分支，但不删除栈顶元素</p>
+</li>
+<li>
+<p><code>git stash drop</code>：删除栈顶存储的修改</p>
+</li>
+<li>
+<p><code>git stash pop</code>：将栈顶存储的修改恢复到当前分支，同时删除栈顶元素</p>
+</li>
+<li>
+<p><code>git stash list</code>：查看栈中所有元素</p>
+</li>
+</ol>
+<h2 id="流程图">流程图<a class="anchorjs-link" href="#%e6%b5%81%e7%a8%8b%e5%9b%be"></a></h2><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./Linux%283%29/1.png" data-action="zoom" alt="image-20220720093332104"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./Linux%283%29/2.png" data-action="zoom" alt="image-20220720093506913"  class="lazyload">
+  </a>
+  
+</figure></p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/python%E8%AF%AD%E6%B3%95/" data-toggle="tooltip" data-placement="top" title="python语法">
+              Previous<br>
+              <span>python语法</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/linux2/" data-toggle="tooltip" data-placement="top" title="Linux(2)--ssh使用">
+              Next<br>
+              <span>Linux(2)--ssh使用</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

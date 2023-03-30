@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>数字设计和计算机体系结构(1)--二进制 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。 一个有N个不同状态的离散值变量的信息量(amou">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数字设计和计算机体系结构(1)--二进制"/>
+<meta name="twitter:description" content="基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。 一个有N个不同状态的离散值变量的信息量(amou"/>
+
+  <meta property="og:title" content="数字设计和计算机体系结构(1)--二进制" />
+<meta property="og:description" content="基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。 一个有N个不同状态的离散值变量的信息量(amou" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" title="计算机组成">计算机组成</a>
+            
+            <a class="tag" href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/" title="数字设计">数字设计</a>
+            
+            <a class="tag" href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" title="体系结构">体系结构</a>
+            
+          </div>
+          <h1>数字设计和计算机体系结构(1)--二进制</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="基础知识">基础知识<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86"></a></h2><p>数字系统使用<strong>离散值变量</strong>(discrete-valued variable)来表示信息。</p>
+<p>一个有N个不同<strong>状态</strong>的离散值变量的<strong>信息量</strong>(amount of information)D由位(bit)度量，N和D关系为$D=log_2N$位。ps：连续的信号由于有无穷多的状态N，因此信息量D也无穷大。</p>
+<p><strong>布尔逻辑</strong>(boolean logic)：一种针对二进制变量进行逻辑操作的系统，每个布尔变量都是TRUE或FALSE。</p>
+<p>字节(byte)：8位一组，能表示$2^8=256$个数字，计算机存储常用字节为单位，而非位。</p>
+<p>半字节(nibble)：4位一组，能表示$2^4=16$个数字，不常用。</p>
+<p>字(word)：大小取决于微处理器的结构，例如64位处理器是对64位的字进行操作。</p>
+<p>最低有效位(least significant bit, lsb)：一组位中权为1的位。</p>
+<p>最高有效位(most significant bit, msb)：一组位中权最高的位。</p>
+<p>最低有效字节(Least Significant Byte, LSB)：类比最低有效位。</p>
+<p>最高有效字节(Most Significant Byte, MSB)：类比最高有效位。</p>
+<p>1024字节称为1千字节(kilobyte, KB)，1024位称为1千比特(kilobit, Kb或Kbit)。</p>
+<p>信息传输速率：比特/秒。</p>
+<p>二进制加法：类比十进制加法的进位(carry bit)。</p>
+<h2 id="二进制数的符号">二进制数的符号<a class="anchorjs-link" href="#%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%95%b0%e7%9a%84%e7%ac%a6%e5%8f%b7"></a></h2><p>有符号(signed)二进制数和无符号(unsigned)二进制数：使用带符号的原码和补码。</p>
+<h3 id="带符号的原码">带符号的原码<a class="anchorjs-link" href="#%e5%b8%a6%e7%ac%a6%e5%8f%b7%e7%9a%84%e5%8e%9f%e7%a0%81"></a></h3><p>一个N位带符号的原码数中最高位为符号位，剩下的N-1为数值（绝对值），符号位为0表示正数，1表示负数。</p>
+<blockquote>
+<p>5=101
+-5=1101</p>
+</blockquote>
+<h3 id="二进制补码">二进制补码<a class="anchorjs-link" href="#%e4%ba%8c%e8%bf%9b%e5%88%b6%e8%a1%a5%e7%a0%81"></a></h3><p>二进制补码中最高位的权为$-2^{N-1}$，其它位于无符号二进制数相同。</p>
+<blockquote>
+<p>$2^{N-1}-1=01\cdots111$
+$-1=11\cdots111$</p>
+</blockquote>
+<p>十进制转二进制补码：先转原码。正数补码是本身；负数补码先对符号位外的每一位取反再在最低位加1。（0看做正数）</p>
+<p>二进制补码转十进制：符号位保持不变，对数据的每一位取反，再在最低位加1，得到二进制原码计算绝对值，再根据补码的最高位确定符号（即数的补码的补码就是本身）。或者直接利用权值计算。</p>
+<p>补码运算：直接相加，如果超过最高有效位则舍去，得到补码的结果。相减则将第二个操作数先变号后转补码再相加。</p>
+<h3 id="表示范围">表示范围<a class="anchorjs-link" href="#%e8%a1%a8%e7%a4%ba%e8%8c%83%e5%9b%b4"></a></h3><p>无符号原码和二进制补码可以表示$2^N$个数，带符号的原码可以表示$2^N-1$个数。</p>
+<h2 id="逻辑门">逻辑门<a class="anchorjs-link" href="#%e9%80%bb%e8%be%91%e9%97%a8"></a></h2><p>逻辑门(logic gate)：最简单的数字电路，接收一个或多个二进制输入并产生一个二进制输出。常用字母表示门的输入，用Y表示门的输出。输入和输出之间的关系由真值表或布尔表达式描述。</p>
+<p>真值表(truth table)：左边列出输入，右边列出输出，每种可能的输入组合对应一行。</p>
+<p>布尔表达式(Boolean equation)：基础二进制变量的数学表达式。</p>
+<h3 id="非门">非门<a class="anchorjs-link" href="#%e9%9d%9e%e9%97%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/1.png" data-action="zoom" alt="非门"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>非门(NOT gate)：有一个输入A和一个输出Y。非门的输出时输入的反。布尔表达式中A上面的横线读作NOT，所以$Y=\bar{A}$​读作”Y等于NOTA“。非门也称为反相器(inverter)。三角符号表示缓冲器，输出上的圆圈称为气泡(bubble)，表示取反，即非门。</p>
+<p>非门的其他表示：$Y=A&rsquo;、Y=\neg A、Y=!A、Y=\sim A$.</p>
+<h3 id="缓冲器">缓冲器<a class="anchorjs-link" href="#%e7%bc%93%e5%86%b2%e5%99%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/2.png" data-action="zoom" alt="缓冲器"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>缓冲器(buffer)：有一个输入A和一个输出Y。缓冲器将输入复制到输出。</p>
+<h3 id="与门">与门<a class="anchorjs-link" href="#%e4%b8%8e%e9%97%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/3.png" data-action="zoom" alt="与门"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>与门(AND gate)：有两个输入A与B和一个输出Y。只有当所有输入都是TRUE时，输出才是TRUE，否则是FALSE。$Y=AB$读作“Y等于A与B”。</p>
+<p>与门的其他表示：$Y=A\cdot B、Y=A\cap B$.</p>
+<h3 id="或门">或门<a class="anchorjs-link" href="#%e6%88%96%e9%97%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/4.png" data-action="zoom" alt="或门"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>或门(OR gate)：有两个输入A与B和一个输出Y。只要有一个输入是TRUE，则输出是TRUE。$Y=A+B$读作“Y等于A或B”。</p>
+<p>或门的其他表示：$Y=A\cup B$.</p>
+<h3 id="异或门">异或门<a class="anchorjs-link" href="#%e5%bc%82%e6%88%96%e9%97%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/5.png" data-action="zoom" alt="异或门"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>异或门(exclusive OR, XOR)：有两个输入A与B和一个输出Y。当A和B都不为TRUE时才输出TRUE，否则为FALSE。</p>
+<h3 id="与非门">与非门<a class="anchorjs-link" href="#%e4%b8%8e%e9%9d%9e%e9%97%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/6.png" data-action="zoom" alt="与非门"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>与非门(NAND)：有两个输入A与B和一个输出Y。当所有输入都为TRUE时输出才为FALSE，否则为TRUE。</p>
+<h3 id="或非门">或非门<a class="anchorjs-link" href="#%e6%88%96%e9%9d%9e%e9%97%a8"></a></h3><p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/7.png" data-action="zoom" alt="或非门"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>或非门(NOR)：有两个输入A与B和一个输出Y。当A和B都不为TRUE时才输出TRUE，否则为FALSE。</p>
+<p>或非门也称为奇偶校验(parity)门，即当有奇数个输入为TRUE时输出为TRUE。</p>
+<h3 id="传输门">传输门<a class="anchorjs-link" href="#%e4%bc%a0%e8%be%93%e9%97%a8"></a></h3><p>传输门(transmission gate)：是一个开关，可以很好的通过0或1。由于开关是双向的，所以A和B不区分输入和输出，控制信号称为使能(Enable)，为EN和$\bar{EN}$，当EN=1且$\bar{NE}=0$时，传输门导通。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/10.png" data-action="zoom" alt="传输门晶体管设计"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="数字抽象">数字抽象<a class="anchorjs-link" href="#%e6%95%b0%e5%ad%97%e6%8a%bd%e8%b1%a1"></a></h2><p>电源电压：系统中最低电压称为地(ground, GND)，最高电压来自电源，常称$V_{DD}$。</p>
+<p>逻辑电平(logic level)：将连续变量映射到离散的二进制变量。</p>
+<p>噪声容限(noise margin)：保证即使驱动源的输出被一些噪声干扰，接收端的输入也能检测到正确的逻辑电平。可以加在最坏情况输出上但依然能正确解释为有效输入的噪声值，称为噪声容限。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/8.png" data-action="zoom" alt="逻辑电平和噪声容限"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>直流电压传输特性：由于真实电路中电压变化是缓慢的，所以需要重新选择逻辑电平。以反相器为例，一种方式是在选择在传输特征曲线斜率为-1的位置，这两个位置称为单位增益点(unity gain point)，这样可以最大化噪声容限。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%281%29/9.png" data-action="zoom" alt="传输特征曲线"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>静态约束(static discipline)：避免输入落到禁止区域，即对于给定的有效逻辑输入，每个电路元件应该能产生有效的逻辑输出。</p>
+<p>逻辑系列(logic family)：虽然$V_{DD}$和逻辑电平可以任意选择，但所有相互通信的逻辑门必须保持兼容的逻辑电平。同一逻辑系列的所有门都遵循相同的静态约束，使用相同的电源电压和逻辑电平。
+不同逻辑系列间兼容性要满足：$V_{OL}\lt V_{IL}和V_{OH}\gt V_{IH}$。</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/" data-toggle="tooltip" data-placement="top" title="数字设计和计算机体系结构(2)--组合逻辑设计">
+              Previous<br>
+              <span>数字设计和计算机体系结构(2)--组合逻辑设计</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B02/" data-toggle="tooltip" data-placement="top" title="抽象代数(2)--环">
+              Next<br>
+              <span>抽象代数(2)--环</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

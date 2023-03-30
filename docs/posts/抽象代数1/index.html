@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>抽象代数(1)--子群 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="子群的定义定义1 设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="抽象代数(1)--子群"/>
+<meta name="twitter:description" content="子群的定义定义1 设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G"/>
+
+  <meta property="og:title" content="抽象代数(1)--子群" />
+<meta property="og:description" content="子群的定义定义1 设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B01/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" title="数学">数学</a>
+            
+            <a class="tag" href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" title="抽象代数">抽象代数</a>
+            
+            <a class="tag" href="/tags/%E5%AD%90%E7%BE%A4/" title="子群">子群</a>
+            
+          </div>
+          <h1>抽象代数(1)--子群</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="子群的定义">子群的定义<a class="anchorjs-link" href="#%e5%ad%90%e7%be%a4%e7%9a%84%e5%ae%9a%e4%b9%89"></a></h2><p>定义1
+设<em>G</em>是一个群，<em>H</em>是<em>G</em>的一个<strong>非空</strong>子集合，如果关于<em>G</em>的乘法也能作成群，则称<em>H</em>是<em>G</em>的<strong>子群</strong>，记为<em>H</em>$\le$<em>G</em>.如果子群<em>H</em>真包含于<em>G</em>，也称<em>H</em>为<em>G</em>的<strong>真子群</strong>，记为<em>H</em>$\lt$<em>G</em>.</p>
+<blockquote>
+<p>例
+设<em>G</em>是一个群。则{<em>e</em>}$\le$<em>G</em>，<em>G</em>$\le$<em>G</em>.</p>
+</blockquote>
+<p>定理1（子群第一判定定理）
+设<em>G</em>是一个群，<em>H</em>是<em>G</em>的一个非空子集，则<em>H</em>$\le$<em>G</em>当且仅当
+（1）<em>a, b</em>$\in$<em>H</em>，都有<em>ab</em>$\in$<em>H</em>
+（2）<em>a</em>$\in$<em>H</em>，有$a^{-1}\in H$</p>
+<p>推论
+设$H\le G$，则$e_H=e_G$，$e_H^{-1}=e_G^{-1}$.</p>
+<p>定理2（子群第二判定定理）
+设$G$是一个群，$H$是$G$的一个<strong>非空</strong>子集，则$H\le G$当且仅当$a,b\in H$，有$ab^{-1}\in H$.</p>
+<p>定理3（子群第三判定定理）
+设$G$是一个群，$H$是$G$的一个非空<strong>有限</strong>子集，则$H\le G$当且仅当$a,b\in H$，有$ab\in H$.</p>
+<p>推论
+设$G$是一个有限群，$H$是$G$的一个非空子集，则$H\le G$当且仅当$a,b\in H$，有$ab\in H$.</p>
+<blockquote>
+<p>例
+$A_n\le S_n$.（称$A_n$为$n$次交错群）</p>
+</blockquote>
+<p>定理4
+设$G$是一个群，$S$是$G$的一个非空子集，则$(S)={\underbrace{a^{m}b^{n}\cdots c^{k} }_{有限个}|a,b,&hellip;,c\in S,m,n,&hellip;,k\in \mathbb{Z}}$是$G$的一个子群，且是包含$S$的最小子群.（称为$S$的<strong>生成子群</strong>）</p>
+<blockquote>
+<p>例
+循环群的子群就是循环群。（进而可以计算有限循环群（模n剩余类）的子群。</p>
+</blockquote>
+<p>子群图
+每层的子群阶相等，下层是上层的真子群，有子群关系的用线连接，最上为原群，最下方子群只含单位元。</p>
+<blockquote>
+<p>例
+子群的交还是子群。</p>
+</blockquote>
+<h2 id="子群的陪集">子群的陪集<a class="anchorjs-link" href="#%e5%ad%90%e7%be%a4%e7%9a%84%e9%99%aa%e9%9b%86"></a></h2><p>定义1
+设$H\le G，a\in G$，称$aH= {ah|h\in H }$   $(Ha={ha| h\in H})$为子群H的<strong>左陪集（右陪集）</strong>.如果$aH=Ha$，则称它们为子群$H$的<strong>陪集</strong>.</p>
+<p>定理1
+设$H\le G,a,b\in G$，则
+（1）$a\in aH$  ($a\in Ha$)
+<strong>（2）</strong>$a\in bH \leftrightarrow aH=bH \leftrightarrow a^{-1}b \in H$  ($a\in Hb \leftrightarrow Ha=Hb \leftrightarrow ab^{-1} \in H$)   (证循环)
+（3）$\left |aH \right |=\left |Ha \right |=\left |H \right |$  (证存在双射)</p>
+<p>定理2
+设$S_l,S_r$分别是群$G$关于子群$H$的左，右陪集分解，则$\left |S_l \right |=\left |S_r \right |$.</p>
+<p>定义2
+设$H\le G,S_l,S_r$分别是$G$关于$H$的左，右陪集分解，称$\left |S_l \right |=\left |S_r \right |$为$H$在$G$中的<strong>指数</strong>，记为$[G:H]$.</p>
+<p>定理3（拉格朗日定理）
+设$G$是一个有限群，$H\le G$，则$[G:H]=|G|/|H|$.</p>
+<p>推论
+设$G$是一个有限群，$a\in G$，则$|a|$整除$|G|$.</p>
+<blockquote>
+<p>例
+素数阶群必定是循环群。
+一个有限非交换群至少有六个元素。</p>
+</blockquote>
+<p>命题
+设$G$是一个群，$e$是单位元，$a\in G,m,n,k$都是正整数，则
+（1）若$|a|=k,a^{m}=e,则k|m$.
+（2）若$m|k,n|k,(m,n)=1,则mn|k$.
+（3）若$m|kn,(m,n)=1,则m|k$.</p>
+<h2 id="不变子群和商群">不变子群和商群<a class="anchorjs-link" href="#%e4%b8%8d%e5%8f%98%e5%ad%90%e7%be%a4%e5%92%8c%e5%95%86%e7%be%a4"></a></h2><p>定义1
+设$N\le G$，如果对于任意的$a\in G$，都有$aN=Na$，则称$N$是群$G$的<strong>不变子群</strong>(或<strong>正规子群</strong>)，记为$N\lhd G$.$N$的一个左陪集(也是右陪集)称为$N$的一个<strong>陪集</strong>.</p>
+<blockquote>
+<p>注
+$aN=Na$并不是说$a$可以和$N$中每一个元交换。而仅仅是作为集合它们是相等的。</p>
+</blockquote>
+<blockquote>
+<p>例
+<strong>交换群的任意子群都是不变子群。</strong></p>
+</blockquote>
+<p>推论
+（1）循环群的子群都是不变子群（因为循环群都是交换群）
+（2）素数阶群的任意子群都是不变子群（因为素数阶子群都是循环群）
+（3）平凡子群都是不变子群（平凡子群是单位子群和群本身）</p>
+<p>定义2
+设$S_1,S_2,\cdots,S_m\subseteq G$，称$S_1S_2\cdots S_m={ s_1s_2\cdots s_m|s_i\in S_i }$为G的子集$S_1,S_2,\cdots, S_m$的<strong>乘积</strong>.</p>
+<p>命题
+群中子集的乘积满足<strong>结合律</strong>，即$(S_1S_2)S_3=S_1(S_2S_3)$.</p>
+<p>定理1（不变子群的第一判定定理）
+设$N\le G$，则$N\lhd G$当且仅当对任意的$a\in G$，有$aNa^{-1}=N$.</p>
+<p>定理2（不变子群的第二判定定理）
+设$N\le G$，则$N\lhd G$当且仅当对任意的$a\in G$和任意的$n\in N$，有$ana^{-1}\in N$.</p>
+<p>定理3
+设$N\lhd G,G/N={ aN,bN,\cdots }$是群G关于其不变子群$N$的一个陪集分解，对于任意的$xN,yN\in S$，定义$xN\cdot yN=(xy)N$.则$G/N$关于上述法则作成一个群，称之为群$G$关于不变子群$N$的<strong>商群</strong>.</p>
+<p>注
+商群中的单位元是$eN$.</p>
+<p>推论
+设$G$是有限群，$N\lhd G$，则$|G/N|=|G|/|N|$.</p>
+<blockquote>
+<p>例
+子群的乘积不一定是子群。</p>
+</blockquote>
+<p>推论
+（1）两子群中一个为<strong>不变</strong>子群，则乘积仍为子群。
+（2）不变子群的乘积仍为不变子群。
+（3）子群关系具有传递性：$H\le G,K\le H,则K\le G$.
+（4）不变子群关系不能传递。
+（5）两个不变子群的交集还是不变子群。
+（6）指数是2的子群一定是不变子群。</p>
+<h2 id="同态和不变子群">同态和不变子群<a class="anchorjs-link" href="#%e5%90%8c%e6%80%81%e5%92%8c%e4%b8%8d%e5%8f%98%e5%ad%90%e7%be%a4"></a></h2><p>定理1
+一个群$G$同它的每一个商群$G/N$同态。</p>
+<p>推论
+交换群的每一个商群都是交换群。</p>
+<p>定义1
+设$G,\bar{G}$都是群，$\phi :G\to\bar{G}$是一个满同态，则称$ker\phi={ a\in G|\phi(a)=\bar{e} }$为满同态$\phi$的<strong>核</strong>。</p>
+<p>定理2（同态基本定理）
+设$G,\bar{G}$都是群，$\phi$：$G\to\bar{G}$是一个满同态，则$N=ker\phi \lhd G$，且$G/N\cong \bar{G}$.</p>
+<blockquote>
+<p>例
+$SL(n,\mathbb{R})\lhd GL(n,\mathbb{R})$
+$SL(n,\mathbb{R})$和$GL(n,\mathbb{R})$分别为实数域$\mathbb{R}$上的特殊线性群和一般线性群（即全体行列式等于1的$n$阶实矩阵的关于矩阵乘法作成的群和全体行列式不等于0的$n$阶实矩阵的关于矩阵乘法作成的群。）</p>
+</blockquote>
+<p>定义2
+设$\phi :A\to\bar{A}$是一个满射。
+（1）如果$S\subseteq A$，则称$\phi(S)={ \phi(a)|a\in S }$为$S$在$\phi$下的<strong>象</strong>。
+（2）如果$\bar{S}\subseteq \bar{A}$，则称$\phi(\bar{S})={ \phi^{-1}(\bar{a})|\bar{a}\in\bar{S} }$为$\bar{S}$在$\phi$下的<strong>逆象</strong>，或<strong>原象</strong>。</p>
+<p>定理3
+设$G,\bar{G}$都是群，$\phi :G\to \bar{G}$是一个满同态，则
+（1）若$H\le G,则\phi(H)\le \bar{G}$.
+（2）若$N\lhd G,则\phi(N)\lhd \bar{G}$.</p>
+<p>定理4
+设$G,\bar{G}$都是群，$\phi :G\to \bar{G}$是一个满同态，则
+（1）若$\bar{H}\le \bar{G},则\phi^{-1}(\bar{H})\le G$.
+（2）若$\bar{N}\lhd \bar{G},则\phi^{-1}(\bar{N})\lhd G$.</p>
+<blockquote>
+<p>例1
+设$G$是一个循环群，$N$是$G$的一个子群。则$G/N$也是循环群。
+例2
+设$G$与$\bar{G}$是两个有限循环群，它们的阶各是$m$和$n$，则$G$与$\bar{G}$同态当且仅当$n|m$.</p>
+</blockquote>
+<h2 id="群的直积">群的直积<a class="anchorjs-link" href="#%e7%be%a4%e7%9a%84%e7%9b%b4%e7%a7%af"></a></h2><p>定义
+设$G_1,G_2$是两个群，在$G_1\times G_2$上规定运算：$(a_1,a_2)\cdot (b_1,b_2)=(a_1b_1,a_2b_2)$.则$G_1\times G_2$关于此运算作成一个群，称此群为群$G_1,G_2$的<strong>外直积</strong>，简称<strong>直积</strong>。</p>
+<p>推论
+设${G_i|i=1,2,\cdots ,n}$是一族群，定义此族群的<strong>外直积</strong>为：对于任意的$(a_1,a_2,\cdots,a_n),(b_1,b_2,\cdots,b_n)\in \prod^{n}<em>{i=1}G_i,(a_1,a_2,\cdots, a_n)\cdot (b_1,b_2,\cdots,b_n)=(a_1b_1,a_2b_2,\cdots,a_nb_n)$.而且如果$|G_i|-r_i,i=1,2,\cdots,n$，那么$|\prod^{n}</em>{i=1}G_i|=r_ir_2\cdots r_n$.</p>
+<p>注
+如果群族中的成员都是交换群，那么也称此族群的直积为群族的值和，记作$\oplus^n_{i=1}G_i$.</p>
+<p>定理
+设$G_1,G_2$是交换群，那么它们的外直积$G_1\times G_2$也是一个交换群，即交换群的外直积是交换群。</p>
+<p>定理
+设$G_1,G_2$都是群，那么$G_1\times G_2\cong G_2\times G_1$.即群的外直积可交换。</p>
+<p>定理
+设$G_1,G_2$是两个群，$a,b$分别是$G_1,G_2$中的有限阶元素，则对于$(a,b)\in G_1\times G_2$，有$|(a,b)|=lcm(|a|,|b|)$，$lcm$表示最小公倍数。</p>
+<p>定理
+设$G_1,G_2$分别是m阶和n阶的循环群，则$G_1\times G_2$是同构于$\mathbb{Z}_{mn}$循环群的充要条件是$(m,n)=1$.</p>
+<p>推论
+可以推广到群族，当且仅当两两互素。</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B02/" data-toggle="tooltip" data-placement="top" title="抽象代数(2)--环">
+              Previous<br>
+              <span>抽象代数(2)--环</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B00/" data-toggle="tooltip" data-placement="top" title="抽象代数(0)--子群">
+              Next<br>
+              <span>抽象代数(0)--子群</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

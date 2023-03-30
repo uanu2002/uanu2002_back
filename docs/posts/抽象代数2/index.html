@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>抽象代数(2)--环 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="环的定义定义1 设$R\ne\emptyset,&#43;,\cdot$是$R$上定义的两个映射，如果 （1）$(R,&#43;)$是加群（即交换群） （2）$(">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="抽象代数(2)--环"/>
+<meta name="twitter:description" content="环的定义定义1 设$R\ne\emptyset,&#43;,\cdot$是$R$上定义的两个映射，如果 （1）$(R,&#43;)$是加群（即交换群） （2）$("/>
+
+  <meta property="og:title" content="抽象代数(2)--环" />
+<meta property="og:description" content="环的定义定义1 设$R\ne\emptyset,&#43;,\cdot$是$R$上定义的两个映射，如果 （1）$(R,&#43;)$是加群（即交换群） （2）$(" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B02/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E6%95%B0%E5%AD%A6/" title="数学">数学</a>
+            
+            <a class="tag" href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/" title="抽象代数">抽象代数</a>
+            
+            <a class="tag" href="/tags/%E7%8E%AF/" title="环">环</a>
+            
+          </div>
+          <h1>抽象代数(2)--环</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="环的定义">环的定义<a class="anchorjs-link" href="#%e7%8e%af%e7%9a%84%e5%ae%9a%e4%b9%89"></a></h2><p>定义1
+设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果
+（1）$(R,+)$是加群（即交换群）
+（2）$(R,\cdot)$中群公理$\mathrm{I,II}$成立
+（3）左右律 $c(a+b)=ca+cb,(a+b)c=ac+bc$成立
+则称$R$关于$+,\cdot$作成一个<strong>环</strong>，记为$(R,+,\cdot)$.加群中的单位元改称<strong>零元</strong>，记为$0$.元素$a$在加群中的逆元改称<strong>负元</strong>，记为$-a$. （乘法中的仍称单位元和逆元。）$a+(-b)$简写为$a-b$，读作$a$减$b$.</p>
+<blockquote>
+<p>例（<strong>有理数环</strong>）
+有理数集$\mathbb{Q}$关于普通数的加法和乘法作成一个环。</p>
+</blockquote>
+<p>定义（域）
+把所有非零元关于乘法能作成<strong>交换群</strong>的环叫做<strong>域</strong>。</p>
+<blockquote>
+<p>例1
+有理数环即<strong>有理数域</strong>。实数域。复数域。</p>
+<p>例2
+<strong>模$p$剩余类域</strong>，也称为<strong>有限域</strong>（不止包含模$p$剩余类域）。</p>
+</blockquote>
+<p>定理1
+环$(R,+,\cdot)$具有下列性质
+（1）$0+a=a+0=a$
+（2）$-a+a=a-a=0$
+（3）$-(-a)=a$
+（4）$a+c=b$等价于$c=b-a$
+（5）$-(a+b)=-a-b,-(a-b)=-a+b$
+（6）$ma+na=(m+n)a, m\cdot na=mn\cdot a, n(a+b)=na+nb$
+（7）$(a-b)c=ac-bc, c(a-b)=ca-cb$
+（8）$0a=a0=0$   ($0$是指零元)
+（9）$(-a)b=a(-b)=-ab$
+（10）$(-a)(-b)=ab$
+（11）$a(b_1+b_2+\cdots +b_n)=ab_1+ab_2+\cdots +ab_n, (b_1+b_2+\cdots +b_n)a=b_1a+b_2a+\cdots +b_na$
+（12）$(a_1+a_2+\cdots +a_m)(b_1+b_2+\cdots +b_n)=a_1b_1+\cdots+a_1b_n+\cdots+a_mb_1+\cdots +a_mb_n$
+（13）$(na)b=a(nb)=n(ab)$
+（14）$a^ma^n=a^{m+n}, (a^m)^n=a^{mn}.$($m,n$是任意正整数)</p>
+<p>定义2
+设$(R,+,\cdot)$是一个环，$n\in \mathbb{Z}<em>+$，称$na=\underbrace{a+a+\cdots +a}</em>{n个}$为$a$的$n$倍，简称$n$倍$a$.</p>
+<p>定义3
+设$(R,+,\cdot)$是一个环，$n\in \mathbb{Z}<em>{_}$，规定：$0a=0,na=\underbrace{(-a)+(-a)+\cdots +(-a)}</em>{-n个}=(-n)(-a)$</p>
+<p>定理2
+设$(R,+,\cdot)$是一个环，$a\in R,n\in \mathbb{Z}_+$，则$(-n)a=n(-a)=-(na)$.</p>
+<p>定理3
+即定理1中（6）</p>
+<p>定理4
+即定理1（7）（8）（9）（10）（11）（12）（13）（14）</p>
+<h2 id="零因子环和环的分类">零因子环和环的分类<a class="anchorjs-link" href="#%e9%9b%b6%e5%9b%a0%e5%ad%90%e7%8e%af%e5%92%8c%e7%8e%af%e7%9a%84%e5%88%86%e7%b1%bb"></a></h2><p>定义1
+设$R$是一个环，$a,b$是$R$中的两个非零元，如果$ab=0$，则称$a$是$R$的一个<strong>左零因子</strong>，$b$是$R$的一个<strong>右零因子</strong>。如果一个元素既是左零因子又是右零因子，则称它为一个<strong>零因子</strong>。</p>
+<p>定理1
+在一个<strong>无零因子</strong>的环中，乘法消去律成立：
+（1）$a\ne0, ab=ac \Rightarrow b=c$
+（2）$a\ne0,ba=ca\Rightarrow b=c$
+反过来，在一个环里，如果有<strong>一个</strong>消去律成立，那么这个环没有零因子。</p>
+<p>推论
+在一个环中，如果有一个消去律成立，那么另一个消去律也成立。</p>
+<p>定义2
+设$R$是一个环
+（1）如果$R$的乘法适合交换律，则称$R$是<strong>交换环</strong>。
+（2）如果$R$有乘法单位元，则称$R$是<strong>含幺环</strong>。
+（3）如果$R$不含任何零因子，则称$R$是<strong>无零因子环</strong>。
+（4）同时满足（1）（2）（3）条件的环，称为<strong>整环</strong>。</p>
+<p>定理3
+设$R$是一个环，如果
+（1）$R$中至少包含一个非零元
+（2）$R$中有乘法单位元
+（3）$R$的每一个非零元都有逆元
+则称$R$是一个<strong>除环</strong>，<strong>交换除环</strong>称为<strong>域</strong>。</p>
+<blockquote>
+<p>例1
+设$R={0 }$，则$(R,+,\cdot)$作成一个环，称为<strong>零环</strong>。（易得零环不是除环，也不是域，是无零因子环）</p>
+<p>例2
+数集$\mathbb{Q,C,R}$关于普通数的加法和乘法，都作成域。</p>
+<p>例3
+非交换除环：<strong>哈密顿四元数体</strong></p>
+<p>例4
+一个至少有两个元且没有零因子的有限环是一个除环</p>
+</blockquote>
+<h2 id="除环和域">除环和域<a class="anchorjs-link" href="#%e9%99%a4%e7%8e%af%e5%92%8c%e5%9f%9f"></a></h2><p>命题1
+除环是无零因子环（即证只要$ab=0$，就有$a=0$或$b=0$）</p>
+<p>命题2
+设$(R,+,\cdot)$是一个除环，$R^{<em>}=R-{ 0 }$，则$(R^{</em>},\cdot)$作成一个群，将$R^{*}$称为<strong>除环R的乘群</strong>.</p>
+<p>定义1（域的第二定义）
+设非空集合$F$上定义有两种法则$+,\cdot$，如果$(F,+),(F^{*},\cdot)$都是交换群，且$+,\cdot$适合分配律，则称$F$是一个<strong>域</strong>.</p>
+<blockquote>
+<p>例
+模$p$的剩余类$(\mathbb{Z}_p,+,\cdot)(p是素数)$关于剩余类的加法和乘法作成域。</p>
+</blockquote>
+<p>定义2
+在域$F$中，$a\in F,b\in F^{*}$，则称$\frac{a}{b}=ab^{-1}=b^{-1}a$，为一个<strong>分数</strong>，读作$b$分之$a$，或$a$比$b$.</p>
+<p>定理1
+在一个域$F$中，$a,b,c,d\in F$，则
+（1）$\frac{a}{b}=\frac{c}{d}\Leftrightarrow ad=bc$
+（2）$\frac{a}{b}+\frac{c}{d}=\frac{ad+bc}{bd}$
+（3）$\frac{a}{b}\cdot \frac{c}{d}=\frac{ac}{bd}$</p>
+<h2 id="无零因子环的特征">无零因子环的特征<a class="anchorjs-link" href="#%e6%97%a0%e9%9b%b6%e5%9b%a0%e5%ad%90%e7%8e%af%e7%9a%84%e7%89%b9%e5%be%81"></a></h2><p>规则1
+$\forall a\ne0,\forall m\in \mathbb{Z}<em>+,ma=\underbrace{a+a+\cdots+a}</em>{m个}\ne0$.即<strong>非零元的加法阶都是无限大</strong>。</p>
+<p>定理1
+设$R$是一个无零因子环，则$R$中所有非零元对于加法来说阶都相同。</p>
+<p>定义1
+一个无零因子环$R$的非零元的相同的（对于加法来说）阶叫做环$R$的<strong>特征</strong>。（如果特征是有限数，那么规则（1）永远不对；特征是无限大，那么规则（1）永远对。</p>
+<p>定理2
+如果无零因子环$R$的特征是有限整数$n$，那么$n$是素数。</p>
+<p>推论
+整环，除环以及域的特征或是无限大，或是一个素数$p$.</p>
+<p>命题
+在一个特征是$p$的交换群里，有$(a+b)^p=a^p+b^p$.</p>
+<h2 id="子环与环的同态">子环与环的同态<a class="anchorjs-link" href="#%e5%ad%90%e7%8e%af%e4%b8%8e%e7%8e%af%e7%9a%84%e5%90%8c%e6%80%81"></a></h2><p>定义1
+设$(R,+,\cdot)$是一个环，$\emptyset \ne S\subseteq R$，如果$(S,+,\cdot)$也是一个环，则称$S$是环$R$的子环，记作$S\le R$.</p>
+<p>定理1
+（1）设$R$是环，则$\emptyset \ne S \subseteq R$是$R$的子环<strong>当且仅当</strong>对于任意的$a,b\in S,a-b\in S,ab\in S$
+（2）设$R$是除环（域），则$\emptyset \ne S\subseteq R$是$R$的子除环（子域）当且仅当对于任意的$a,b\in S,a-b\in S$，且任意的$a,b\in S,b\ne0,ab^{-1}\in S$.</p>
+<blockquote>
+<p>例1
+$R\le R,{ 0 }\le R$.（合称<strong>平凡子环</strong>）</p>
+<p>例2
+$\mathbb{Q\le R,R\le C}$.</p>
+</blockquote>
+<p>定义（环的中心）
+设$R$是一个环，$S={ x\in R|xa=ax,\forall a\in R }$是$R$的交换子环，称$S$为环$R$的中心。</p>
+<p>定理2
+设$R$是环，$\emptyset \ne \bar{R}$上有两种代数运算：$+,\cdot$.如果存在满射$\phi:R\rightarrow \bar{R}$，使得$\phi$对于一对加法和一对乘法都是同态映射，则$\bar{R}$也是一个环。</p>
+<p>定理3
+设$R,\bar{R}$是两个环，且$\phi:R\rightarrow \bar{R}$是满同态（对两种运算），则
+（1）零元的同态像是零元
+（2）负元的同态像是负元
+（3）单位元的同态像是单位元
+（4）$R$是交换环，则$\bar{R}$也是交换环</p>
+<p>注
+一个环没有零因子的性质经过满同态映射不一定能保持。</p>
+<p>定理4
+假定$R,\bar{R}$是两个环，且$R\cong \bar{R}$，那么
+（1）若$R$是整环，则$\bar{R}$也是整环
+（2）若$R$是除环，则$\bar{R}$也是除环
+（3）若$R$是域，则$\bar{R}$也是域</p>
+<p>定理5
+设$A,\bar{A}$是两个非空集合，$\phi:A\rightarrow \bar{A}$是一一映射，如果$A$有加法$+$和乘法$\cdot$，那么适当地为$\bar{A}$规定加法和乘法，可以使得$A\cong \bar{A}$.</p>
+<p>定理6（补足定理）
+设$R,\bar{S}$都是环，$S\le R,(R-S)\cap\bar{S}=\emptyset ,S\cong \bar{S}$，则存在环$\bar{R}$与$R$同构，且$\bar{S}\le \bar{R}$.</p>
+<blockquote>
+<p>例
+一个除环的中心是一个域。</p>
+</blockquote>
+<h2 id="多项式环">多项式环<a class="anchorjs-link" href="#%e5%a4%9a%e9%a1%b9%e5%bc%8f%e7%8e%af"></a></h2><p>定理1
+设$F$是一个域，则关于数域上的行列式理论，多项式理论，线性方程组理论，矩阵运算理论，线性空间和线性变换理论在域$F$上都成立。（唯一有问题的是二次型理论）</p>
+<p>定义1
+设$R_0$是一个有单位元的交换环，$R\le R_0$，且$R$包含$R_0$的<strong>单位元</strong>，$\alpha\in R_0$，则称$a_0+a_1\alpha+\cdots+a_n\alpha^n(a_i\in R)$为$R$上的$\alpha$的一个<strong>多项式</strong>，$a_i$叫做<strong>多项式的系数</strong>。</p>
+<p>定理2
+$R[a]={ f(a)=a_0+a_1\alpha+\cdots+a_n\alpha^n|a_i\in R.\alpha\in R_0,n是非负整数 }$是$R_0$的包含$R$和$\alpha$的最小子环。（称$R[a]$为$R$上的<strong>多项式环</strong>）</p>
+<p>推论
+多项式环是有单位元的交换环。</p>
+<p>定义2
+设$x\in R_0$，如果不存在不全为零的元$a_9,a_1,\cdots,a_n$，使得$a_0+a_1x+\cdots+a_nx^n=0$，则称$x$为$R$上的一个<strong>未定元</strong>。（类比线性无关）</p>
+<p>命题
+$x\in R_0$为$R$上的一个未定元当且仅当若$R$上$x$的多项式$a_0+a_1x+\cdots+a_nx^n=0$，则系数$a_0=a_1=a_2=\cdots=a_n=0$.（即零多项式的表示法唯一）</p>
+<p>命题
+环$R$上未定元$x$的多项式$f(x)$的表示法唯一。</p>
+<p>定义3
+设$a_0+a_1x+\cdots+a_nx^n,a_n\ne0$是环$R$上的一个一元多项式，那么非负整数$n$叫做这个多项式的<strong>次数</strong>，规定多项式$0$没有次数。</p>
+<p>定理3（多项式环存在定理）
+设$R$是一个含幺交换环，则$R$上必定存在未定元$x$，因此也就有$R$上的多项式环$R[x]$存在。</p>
+<p>定义4
+形如$\sum_{i_1,i_2,\cdots,i_n}a_{i_1,i_2,\cdots,i_n}\alpha^{i_1}\alpha^{i_2}\cdots\alpha^{i_n}$的元叫做$R$上的元$\alpha_1,\alpha_2,\cdots,\alpha_n$的一个<strong>多项式</strong>，$a_{i_1,i_2,\cdots,i_n}$叫做<strong>多项式的系数</strong>。（这里的$a_{i_1,i_2,\cdots,i_n}\in R$，但只有有限个$a_{i_1,i_2,\cdots,i_n}\ne0$.）环$R[\alpha_1,\alpha_2,\cdots,\alpha_n]=R[\alpha_1][\alpha_2]\cdots[\alpha_n]$叫做$R$上的$\alpha_1,\alpha_2,\cdots,\alpha_n$的<strong>多项式环</strong>。</p>
+<p>命题
+多项式环$R[\alpha_1,\alpha_2]$中，$\alpha_1\alpha_2=\alpha_2\alpha_1$.</p>
+<p>定义5
+设$n$个元$x_1,x_2,\cdots,x_n\in R_0$，如果任何一个$R$上的$x_1,x_2,\cdots,x_n$的多项式都不会等于0，除非这个多项式的所有系数都等于零，那么则称$x_1,x_2,\cdots,x_n$为$R$上的<strong>无关未定元</strong>。</p>
+<p>定理4
+设$R$是一个含幺交换环，$n\in \mathbb{Z_+}$，则$R$上无关未定元$x_1,x_2,\cdots,x_n$必定存在，$R$上的多项式环也一定存在。</p>
+<p>定理5
+设$R[x_1,x_2,\cdots,x_n]$和$R[\alpha_1.\alpha_2,\cdots,\alpha_n]$都是由单位元的交换环$R$上的多项式环，$x_1,x_2,\cdots,x_n$是$R$上的无关未定元，$\alpha_1,\alpha_2,\cdots,\alpha_n$是$R$上的任意元，那么$R[x_1,x_2,\cdots,x_n]\sim R[\alpha_1.\alpha_2,\cdots,\alpha_n]$.</p>
+<h2 id="理想">理想<a class="anchorjs-link" href="#%e7%90%86%e6%83%b3"></a></h2><p>定义1
+设$\emptyset\ne \mathscr{U}\subseteq$环$R$，如果
+（1）对于任意的$a,b\in \mathscr{U}$，都有$a-b\in \mathscr{U}$
+（2）对于任意的$a\in\mathscr{U},r\in R$，都有$ra,ar\in \mathscr{U}$
+则称$\mathscr{U}$是环$R$的<strong>理想子环</strong>，简称<strong>理想</strong>，记作$\mathscr{U}\lhd R$（类比于不变子群）（证明时先说明是非空子集）</p>
+<p>定理1
+理想必定是子环。（子环未必是理想）</p>
+<blockquote>
+<p>例
+设$R$是环，则${0}\lhd R,R\lhd R$，${0}$称为<strong>零理想</strong>，$R$称为<strong>单位理想</strong>，合称<strong>平凡理想</strong>。</p>
+</blockquote>
+<p>定理2
+除环和域只有平凡理想。</p>
+<blockquote>
+<p>例1
+两个理想的交集还是一个理想。</p>
+<p>例2
+两个理想的并集未必是理想。</p>
+<p>例3
+理想的和还是理想。
+设$\mathscr{U,B}$是环$R$的两个理想，则${a+b|a\in\mathscr{U},b\in\mathscr{B} }$是$R$的包含$\mathscr{U}$和$\mathscr{B}$的最小理想，称之为理想$\mathscr{U}$和$\mathscr{B}$的<strong>和理想</strong>，记为$\mathscr{U+B}$.</p>
+<p>例4
+设$\mathscr{U,B}$是环$R$的两个理想，则${一切有限和\sum^n_{i=1}x_iy_i|x_i\in\mathscr{U},y_i\in\mathscr{B},n是正整数}$是$R$的一个理想，称之为理想$\mathscr{U}$和$\mathscr{B}$的<strong>积理想</strong>，记为$\mathscr{UB}$.</p>
+</blockquote>
+<p>定理3
+设$R$是一个环，$a\in R$，则$\mathscr{U}={ (\sum^m_{i=1}x_iay_i)+sa+at+na|x_i,y_i,s,t\in R,n\in\mathbb{Z} }$是$R$的包含$a$的最小的理想，记为$(a)$，称为$R$的元$a$生成的<strong>主理想</strong>。</p>
+<p>推论
+设$R$是一个环，$a\in R$，则
+（1）若$R$是交换环，则$(a)={ ra+na|r\in R,n\in \mathbb{Z} }$
+（2）若$R$是含幺环，则$(a)={ (\sum^m_{i=1}x_iay_i)|x_i,y_i\in R}$
+（3）若$R$是有单位元的交换环，则$(a)={ ra|r\in R }$</p>
+<p>推论
+整数环$\mathbb{Z}$的每一个理想$\mathscr{U}$是它的主理想。（类比循环群的子群是它的生成子群。）</p>
+<p>定理4
+$\mathbb{Z}$的理想都是主理想，并且$\mathbb{Z}$的理想个数等于$n$的正因子的个数。</p>
+<p>命题
+设$R$是一个环，$a_1,a_2,\cdots,a_m\in R,\mathscr{U}={ s_1+s_2+\cdots+s_m|s_i\in(a_i) }$，则$\mathscr{U}$是$R$的包含$a_1,a_2,\cdots,a_m$的最小理想。称$\mathscr{U}$为$R$的由$a_1,a_2,\cdots,a_m$确定的<strong>生成理想</strong>，记为$(a_1,a_2,\cdots,a_m)$.（当$m=1$时为主理想）</p>
+<p>推论
+整数环中，生成理想$(k,l)$等于主理想$(a)$，并且$a$是$k,l$的最大公因数。</p>
+<h2 id="剩余类环商环同态和理想">剩余类环（商环）、同态和理想<a class="anchorjs-link" href="#%e5%89%a9%e4%bd%99%e7%b1%bb%e7%8e%af%e5%95%86%e7%8e%af%e5%90%8c%e6%80%81%e5%92%8c%e7%90%86%e6%83%b3"></a></h2><p>命题
+设$A$是环$R$的理想，则$(A,+)$是$(R,+)$的不变子群。</p>
+<p>定理1
+设$R$是环，$A\lhd R$，在商群$(R,+)/(A,+)={ [x]|x\in R }={ x+A|x\in R }$中再规定：$[x]\cdot[y]=[xy],\forall [x],[y]\in R/A$，则$(R/A,+,\cdot)$是一个环。（$R/A$称为$R$关于理想$A$的<strong>商环</strong>或<strong>剩余类环</strong>，$[x]=x+A$称为$R$模$A$的<strong>剩余类</strong>。）</p>
+<p>命题
+（1）若$R$是交换环，则$R/A$也是交换环
+（2）若R是有单位元$1$的环，则$R/A$也有单位元$[1]$.</p>
+<p>定理2
+一个环$R$与它的每一个商环$R/A$同态。</p>
+<p>注
+同态映射$\pi:\pi(x)=[x]$称为环$R$到它的商环$R/A$的<strong>自然同态</strong>。（$ker\pi =A$）</p>
+<p>定义1
+设$f$是环$R$到环$\bar{R}$的同态映射，$\bar{0}$是$\bar{R}$的零元，则称$kerf={ x\in R|f(x)=\bar{0} }$是同态映射$f$的<strong>核</strong>。（类比群间同态映射的核）</p>
+<p>定理3（环的同态基本定理）
+设$f$是环$R$到环$R&rsquo;$的满同态映射，则
+（1）$kerf\lhd R$
+（2）$R/kerf\cong R'$</p>
+<p>推论（第一同构定理）
+设$f$是环$R$到环$R&rsquo;$的满同态，$A\lhd R&rsquo;,A=f^{-1}(A&rsquo;)$，则$A \lhd R$，并且$R/A\cong R&rsquo;/A&rsquo;$.</p>
+<p>定理4
+在环$R$到环$\bar{R}$的一个同态映射下
+（1）$R$的一个子环$S$的象$\bar{S}$是$\bar{R}$的一个子环
+（2）$R$的一个理想$\mathscr{U}$的象$\bar{\mathscr{U}}$是$\bar{R}$的一个理想
+（3）$\bar{R}$的一个子环$\bar{S}$的原象$S$是$R$的一个子环
+（4）$\bar{R}$的一个理想$\bar{\mathscr{U}}$的原象$\mathscr{U}$是$R$的一个理想</p>
+<h2 id="最大理想">最大理想<a class="anchorjs-link" href="#%e6%9c%80%e5%a4%a7%e7%90%86%e6%83%b3"></a></h2><p>定义
+设$\mathscr{U}$是环$R$的一个真理想，如果除了$R$和$\mathscr{U}$自身外没有包含$\mathscr{U}$的其他理想，则称$\mathscr{U}$是$R$的一个<strong>最大理想</strong>（<strong>极大理想</strong>）。</p>
+<p>引理
+设$\mathscr{U}$是环$R$的一个理想，则商环$\bar{R}=R/\mathscr{U}$只有平凡理想当且仅当$\mathscr{U}$是$R$的最大理想。</p>
+<p>引理
+若有单位元$(\ne0)$的交换环$R$只有平凡理想，那么$R$一定是一个域。</p>
+<p>定理
+设$R$是一个有单位元的交换环，$\mathscr{U}$是$R$的一个理想，那么$R/\mathscr{U}$是一个域当且仅当$\mathscr{U}$是一个最大理想。</p>
+<h2 id="商域">商域<a class="anchorjs-link" href="#%e5%95%86%e5%9f%9f"></a></h2><p>定理
+每一个没有零因子的交换环$R$都是一个域$Q$的子环。</p>
+<p>定理
+$Q$刚好是由所有元素$\frac{a}{b}(a,b\in R,b\ne0)$所构成的，这里$\frac{a}{b}=ab^{-1}=b^{-1}a$.</p>
+<p>定义
+设$R$是一个环，$Q$是一个域，如果$Q$包含$R$，并且$Q$刚好是由所有元素$\frac{a}{b}(a,b\in R,b\ne0)$构成，则称$Q$是$R$的一个<strong>商域</strong>。</p>
+<p>定理
+由无零因子的交换环$R$构造的域$Q$称为$R$的<strong>商域</strong>。</p>
+<p>推论
+一个有两个以上元的没有零因子的交换环至少有一个商域。</p>
+<p>定理
+设$F$是环$R$的商域，设$F&rsquo;$是环$R&rsquo;$的商域，若$R\cong R&rsquo;$，则$F\cong F&rsquo;$.</p>
+<p>推论
+设$F,F&rsquo;$都是环$R$的商域，则$F\cong F&rsquo;$.</p>
+<p>定理
+设$R$是一个有两个以上的元素的环，$F$是一个包含$R$的域，那么$F$包含$R$的一个商域，即商域是包含环$R$的最小的域。</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/" data-toggle="tooltip" data-placement="top" title="数字设计和计算机体系结构(1)--二进制">
+              Previous<br>
+              <span>数字设计和计算机体系结构(1)--二进制</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B01/" data-toggle="tooltip" data-placement="top" title="抽象代数(1)--子群">
+              Next<br>
+              <span>抽象代数(1)--子群</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

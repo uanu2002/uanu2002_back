@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+    
+  <title>数字设计和计算机体系结构(2)--组合逻辑设计 | Uanu&#39;s blog</title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="基础知识电路：可以处理离散值变量的网络。 电路组成： 一个或者多个离散值输入端(input terminal) 一个或者多个离散值输出端(output terminal) 描述输入和输">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="数字设计和计算机体系结构(2)--组合逻辑设计"/>
+<meta name="twitter:description" content="基础知识电路：可以处理离散值变量的网络。 电路组成： 一个或者多个离散值输入端(input terminal) 一个或者多个离散值输出端(output terminal) 描述输入和输"/>
+
+  <meta property="og:title" content="数字设计和计算机体系结构(2)--组合逻辑设计" />
+<meta property="og:description" content="基础知识电路：可以处理离散值变量的网络。 电路组成： 一个或者多个离散值输入端(input terminal) 一个或者多个离散值输出端(output terminal) 描述输入和输" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/" /><meta property="article:section" content="posts" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" title="计算机组成">计算机组成</a>
+            
+            <a class="tag" href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/" title="数字设计">数字设计</a>
+            
+            <a class="tag" href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" title="体系结构">体系结构</a>
+            
+          </div>
+          <h1>数字设计和计算机体系结构(2)--组合逻辑设计</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h2 id="基础知识">基础知识<a class="anchorjs-link" href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86"></a></h2><p>电路：可以处理离散值变量的网络。</p>
+<blockquote>
+<p>电路组成：
+一个或者多个离散值输入端(input terminal)
+一个或者多个离散值输出端(output terminal)
+描述输入和输出关系的功能规范(function specification)
+描述当输入改变时输出响应延迟的时序规范(timing specification)</p>
+<p>电路内部组成：元件(element)和结点(node)
+元件：带有输入、输出、功能规范和时序规范的电路。
+结点：一段导线，通过电压传递离散值变量。可分为输入结点、输出结点和内部结点（即基本上内部结点也不是外部结点的结点）。</p>
+</blockquote>
+<p>数字电路：分为组合电路(combination circuit)和时序电路(sequential circuit)。</p>
+<blockquote>
+<p>组合电路的输出仅仅取决于输入的值。例如逻辑门。<strong>没有记忆</strong>。
+时序电路的输出取决于当前输入值和之前的输入值。<strong>有记忆</strong>。</p>
+</blockquote>
+<p>组合电路要求：
+每一个电路元件本身都是组合电路。
+每一个电路结点或者是一个电路的输入，或者是连接到外部电路的一个输出端。
+电路不包含回路：经过电路的每条路径最多只能经过每个电路结点一次。</p>
+<p>组合电路功能规范：当前各种输入值的输出值。
+组合电路时序规范：从输入到输出延迟的最大值和最小值。</p>
+<h2 id="布尔表达式">布尔表达式<a class="anchorjs-link" href="#%e5%b8%83%e5%b0%94%e8%a1%a8%e8%be%be%e5%bc%8f"></a></h2><p>布尔表达式(Boolean equation)：处理变量是TRUE或FALSE。</p>
+<h3 id="术语">术语<a class="anchorjs-link" href="#%e6%9c%af%e8%af%ad"></a></h3><p>项(literal)：一个变量A的非(complement)是它的反，记为$\bar{A}$。变量或它的反称为项。</p>
+<p>真值形式(true form)和取反形式(complement form)：$A和\bar{A}$。</p>
+<p>乘积项(product)或蕴含项(implicant)：一项或多项的AND。</p>
+<p>最小项(minterm)：一个包含全部输入变量的乘积项。</p>
+<p>求和项(sum)：一项或多项的或。</p>
+<p>最大项(maxterm)：一个包含全部输入项的和。</p>
+<p>运算顺序：$NOT&gt;AND&gt;OR$</p>
+<h3 id="与或式">与或式<a class="anchorjs-link" href="#%e4%b8%8e%e6%88%96%e5%bc%8f"></a></h3><p>与或式(sum-of-product)范式：所有输出为真情况(对应输入若为FALSE则取反然后AND)的或。写成$F(A,B)=\sum(m_1,m_3)$或$F(A,B)=\sum(1,3)$。</p>
+<h3 id="或与式">或与式<a class="anchorjs-link" href="#%e6%88%96%e4%b8%8e%e5%bc%8f"></a></h3><p>或与式(product-of-sums范式：所有输出为假情况(对应输入若为TRUE则取反然后OR)的与。写成$Y=\prod(M_0,M_1)$或$Y=\prod(0,1)$。</p>
+<p><strong>与或式和或与式在逻辑上是等价的，根据真值表进行选择简单的表示</strong>。</p>
+<h2 id="布尔代数">布尔代数<a class="anchorjs-link" href="#%e5%b8%83%e5%b0%94%e4%bb%a3%e6%95%b0"></a></h2><p>对偶原理：将符号0和1互换，操作符AND和OR互换，表达式依然正确。</p>
+<p>最小与或式：使用最少蕴含项的等式（蕴含项数相等，比较项数最少的）。</p>
+<p>主蕴含项：不能与其他蕴含项合并生成具有较小项的形式。（最小等式中的蕴含项必须都是主蕴含项）</p>
+<h2 id="从逻辑到门">从逻辑到门<a class="anchorjs-link" href="#%e4%bb%8e%e9%80%bb%e8%be%91%e5%88%b0%e9%97%a8"></a></h2><p>电路原理图(schematic)：描述数字电路的内部元件及其相互连接。</p>
+<blockquote>
+<p>电路原理图遵循准则：
+输入在原理图的左边（或者顶部）。
+输出在原理图的右边（或者底部）。
+无论何时，门必须从左至右流。
+最好使用直线而不使用有很多拐角的线。
+线总是在T型接头连接。
+在两条线交叉的地方有一个点，表示它们之间有连接。</p>
+</blockquote>
+<p>注：电路可以通过布尔代数进行简化，例如CMOS实现中，与非门和或非门优先于与门和或门。</p>
+<h2 id="多级组合逻辑">多级组合逻辑<a class="anchorjs-link" href="#%e5%a4%9a%e7%ba%a7%e7%bb%84%e5%90%88%e9%80%bb%e8%be%91"></a></h2><p>与或式称为二级逻辑：将一级与门再连接到一级或门。</p>
+<h3 id="减少硬件">减少硬件<a class="anchorjs-link" href="#%e5%87%8f%e5%b0%91%e7%a1%ac%e4%bb%b6"></a></h3><p>最好的多级结构：门的数量最少、速度最快、设计时间最短、花费最少或功耗最低。</p>
+<p>eg：$A\oplus B\oplus C=(A\oplus B)\oplus C$.后者使用门数量更少。</p>
+<h3 id="推气泡">推气泡<a class="anchorjs-link" href="#%e6%8e%a8%e6%b0%94%e6%b3%a1"></a></h3><p>转与门和或门：</p>
+<blockquote>
+<p>推气泡方法：
+从电路输出端开始并向输入方向推。
+将气泡从最后的输出端向输入端推，这样读出输出(Y)的布尔表达式，而不是输出取反的表达式。
+继续向后推，以便画出每个门来消除气泡。如果当前门有一个输入气泡，则在其前面门的输入加上气泡。如果当前门没有输入气泡，则其前面的门也不带输出气泡。</p>
+</blockquote>
+<p>转与非门和或非门：</p>
+<blockquote>
+<p>推气泡方法：
+气泡可以添加到门的输出和下一个门的输入而不改变逻辑功能。</p>
+</blockquote>
+<h2 id="x和z">X和Z<a class="anchorjs-link" href="#x%e5%92%8cz"></a></h2><h3 id="非法值x">非法值X<a class="anchorjs-link" href="#%e9%9d%9e%e6%b3%95%e5%80%bcx"></a></h3><p>符号X表示电路结点有未知(unknown)或非法(illegal)值。通常发生在此结点同时被0或1驱动时，这种情况称为竞争(contention)。</p>
+<p>X值有时也被电路仿真器用来表示一个没有初始化的值，例如忘记说明的一个输入的值。</p>
+<p><strong>区别真值表中用来表示不重要值的X。</strong></p>
+<h3 id="浮空值z">浮空值Z<a class="anchorjs-link" href="#%e6%b5%ae%e7%a9%ba%e5%80%bcz"></a></h3><p>符号Z表示结点既没有被高电平也没有被低电平驱动，这个结点称为浮空(floating)、高阻态(high impedance)或高Z态。通常发生在忘记将电压连接到输入端或者假定没有连接的输入为0。</p>
+<p><strong>区别于逻辑0，因为浮空或未被驱动的结点可能是0或1，这取决于先前状态。此外，浮空结点并不意味电路出错。</strong></p>
+<p>三态缓冲器(tristate buffer)：有三种可能输出状态：高电平HIGH(1)、低电平LOW(0)和浮空(Z)。有输入端A、输出端Y和使能控制端E。当使能端为TRUE时，三态缓冲器作为一个简单的缓冲器，将输入值传送到输出端。当使能端为FALSE时，输出被设置为浮空(Z)。（三态缓冲器的使能端是高电平有效，当在E输入放置一个气泡，则变成低电平有效，称为Ebar或Eb。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/1.png" data-action="zoom" alt="三态缓冲器"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="卡诺图">卡诺图<a class="anchorjs-link" href="#%e5%8d%a1%e8%af%ba%e5%9b%be"></a></h2><p>卡诺图(Karnaugh map, K-map)：一种图形化的化简布尔表达式的方法。对处理最多4个变量的问题非常好，给出了操作布尔表达式的可视化方法。</p>
+<p>卡诺图每一个方格与相邻方格只有一个变量的值不同。（最左侧和最右侧也看做相邻）</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/2.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>相邻且Y相等的可以化简合并。</p>
+<h3 id="化简逻辑">化简逻辑<a class="anchorjs-link" href="#%e5%8c%96%e7%ae%80%e9%80%bb%e8%be%91"></a></h3><p>化简逻辑：用尽可能少的圈来圈住卡诺图中所有为1的方格，每一个圈应该尽可能地大，然后读取每个圈起来的蕴含项。（卡诺图中的每一个圈代表一个蕴含项，每个尽可能大的圈是主蕴含项。）</p>
+<blockquote>
+<p>最小化等式规则：
+用最少的圈来圈住所有的1。
+每个圈中的所有方格都必须包含1。
+每个圈必须是矩形，其每边长必须是2的整数次幂（1、2、4等）。
+每个圈必须尽可能地大。
+圈可以环绕卡诺图的边界。
+如果可以使用更少数量或更大的圈，则卡诺图中一个为1的方格可以被多次圈住。</p>
+</blockquote>
+<p>无关项：当某些变量对输出没有影响时，可以减少表中行的数量，无关项用符号X表示，表示输入可能是0或1。</p>
+<p>无关项可以进一步帮助化简逻辑，在选择圈时无关项可以被圈起来，当没有帮助时也可以不圈。</p>
+<h2 id="组合逻辑模块">组合逻辑模块<a class="anchorjs-link" href="#%e7%bb%84%e5%90%88%e9%80%bb%e8%be%91%e6%a8%a1%e5%9d%97"></a></h2><p>组合逻辑模块：隐藏不重要的门级细节，把重点放在模块的功能上。</p>
+<h3 id="复用器">复用器<a class="anchorjs-link" href="#%e5%a4%8d%e7%94%a8%e5%99%a8"></a></h3><p>复用器(multiplexer)：一种最常用的组合逻辑电路。根据选择(select)信号的值它可从多个可能的输入中选择一个作为输出。简称为mux。</p>
+<h4 id="21复用器">2:1复用器<a class="anchorjs-link" href="#21%e5%a4%8d%e7%94%a8%e5%99%a8"></a></h4><p>有两个输入$D_0,D_1$，一个选择输入S和一个输出Y。复用器根据选择信号的值在两个输入数据中选择一个数据输出：如果S=0，则输出第一个，反之输出第二个。S也称为控制信号(control signal)。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/3.png" data-action="zoom" alt="复用器"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>复用器也可以由三态缓冲器构成，使能信号有效使得在任何时刻仅有一个三态缓冲器有效。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/4.png" data-action="zoom" alt="三态缓冲器实现2:1复用器"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="更宽的复用器">更宽的复用器<a class="anchorjs-link" href="#%e6%9b%b4%e5%ae%bd%e7%9a%84%e5%a4%8d%e7%94%a8%e5%99%a8"></a></h4><p>可以使用多个三态缓冲器或多个2:1复用器。
+<figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/5.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>一个N:1复用器需要$log_2N$条选择线。</p>
+<h4 id="复用器逻辑">复用器逻辑<a class="anchorjs-link" href="#%e5%a4%8d%e7%94%a8%e5%99%a8%e9%80%bb%e8%be%91"></a></h4><p>复用器可以用查找表(lookup table)的方式实现逻辑功能，将输入作为选择信号。</p>
+<p>一个$2^N$个输入的复用器可以实现N输入逻辑函数。如果将一个变量，以及0和1作为数据输入，则可以将复用器大小减小一般，只使用$2^{N-1}$个输入。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/6.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="译码器">译码器<a class="anchorjs-link" href="#%e8%af%91%e7%a0%81%e5%99%a8"></a></h3><p>译码器：有N个输入和$2^N$个输出。每一个输出都取决于输入的组合，输出称为独热(one-hot)，因为在给定恰好只有一个输出为高电平。
+<figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/7.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>译码器逻辑：译码器可以和或门组合来实现逻辑函数。</p>
+<p>一个在真值表中包含M个1的N输入函数，可以通过一个$N:2^N$译码器和M输入或门来实现。（应用：只读存储器(ROM)）</p>
+<h2 id="时序">时序<a class="anchorjs-link" href="#%e6%97%b6%e5%ba%8f"></a></h2><p>时序(timing)：如何使电路运行得最快。</p>
+<p>时序图(timing diagram)：描绘当输入改变时电路的瞬间响应(transient response)。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/8.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>上升沿：从低电平LOW到高电平HIGH的转变。</p>
+<p>下降沿：从高电平HIGH到低电平LOW的转变。</p>
+<h3 id="传播延迟和最小延迟">传播延迟和最小延迟<a class="anchorjs-link" href="#%e4%bc%a0%e6%92%ad%e5%bb%b6%e8%bf%9f%e5%92%8c%e6%9c%80%e5%b0%8f%e5%bb%b6%e8%bf%9f"></a></h3><p>组合逻辑电路的时序特征包括传播延迟(propagation delay)和最小延迟(contamination delay).</p>
+<p>传播延迟$t_{pd}$：是当输入改变直到一个或多个输出达到它们的最终值所经历的最长时间，即变化稳定。</p>
+<p>最小延迟$t_{ed}$：是当一个输入发生变化直到任何一个输出开始改变的最短时间。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/9.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>注：时刻均选取变化的中间时刻。</p>
+<blockquote>
+<p>传播延迟和最小延迟的值可能不同的原因：
+不同的上升和下降阶段。
+多个输入和输出之间的延迟可能不同。
+当电路较热时速度会变慢，较冷时会变快。</p>
+</blockquote>
+<p>延迟可以由一个信号从输入到输出的路径来确定。</p>
+<p>关键路径(critical path)：最长、最慢的路径。</p>
+<p>最短路径(short path)：顾名思义。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/10.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>组合电路的传播延迟：关键路径上每一个元件传播延迟之和。
+组合电路的最小延迟：最短路径上每一个元件的最小延迟之和。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/11.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="毛刺">毛刺<a class="anchorjs-link" href="#%e6%af%9b%e5%88%ba"></a></h3><p>毛刺(glitch)或冒险(hazard)：一个输入信号的改变导致多个输出信号的改变。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/12.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>当B从1变成0时，n2（最短路径）在n1（关键路径）上升前下降，导致存在暂时为0的毛刺。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/13.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>从卡诺图来理解，毛刺的产生式因为B的改变穿过了两个主蕴含项的边界。如果增加一个覆盖边界的主蕴含项（即一致项或多余项，逻辑上仍然等价），就可以消除毛刺。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="./%e6%95%b0%e5%ad%97%e8%ae%be%e8%ae%a1%e5%92%8c%e8%ae%a1%e7%ae%97%e6%9c%ba%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84%282%29/14.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>因此，当信号的变化在卡诺图中穿越2个主蕴含项边界时就会出现毛刺，需要增加额外的硬件来避免毛刺。</p>
+<p>此外，多个输入上的同时变化也会导致毛刺，但这并不能通过增加硬件来避免。（关键不在于如何去除，而是要意识到毛刺的存在，以便于正确分析示波器和仿真器上的时序图。）</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/" data-toggle="tooltip" data-placement="top" title="数字设计和计算机体系结构(3)--时序逻辑设计">
+              Previous<br>
+              <span>数字设计和计算机体系结构(3)--时序逻辑设计</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/" data-toggle="tooltip" data-placement="top" title="数字设计和计算机体系结构(1)--二进制">
+              Next<br>
+              <span>数字设计和计算机体系结构(1)--二进制</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

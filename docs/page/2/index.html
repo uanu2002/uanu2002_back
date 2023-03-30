@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta name="generator" content="Hugo 0.111.3">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title></title>
+  <meta name="author" content="Uanu">
+  <meta name="description" content="Home Index Content">
+  <meta name="keywords" content="blog,developer,personal,ai,cs">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="勤奋的懒惰者~"/>
+
+  <meta property="og:title" content="" />
+<meta property="og:description" content="勤奋的懒惰者~" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://uanu2002.github.io/" />
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
+  
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/sass/main.css">
+
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  <script src=/js/lazysizes.min.js></script>
+
+  <link rel="alternate" type="application/json" href="/index.json" title="Uanu's blog" />
+  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="Uanu's blog" />
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+
+</head>
+
+
+
+<body ontouchstart="">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top ">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://uanu2002.github.io/">Uanu&#39;s blog</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+          <li><a href="/" title="Home">Home</a></li>
+          
+          <li><a href="/archive/" title="Archive">Archive</a></li>
+          
+          <li><a href="/about/" title="About">About</a></li>
+          
+          <li><a href="https://github.com/uanu2002/" title="Github">Github</a></li>
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+
+<header class="intro-header" style="background-image: url('/img/home-pg2.jpg')">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <div class="site-heading">
+        
+          <h1>Uanu&#39;s blog</h1>
+          
+          
+          
+          
+          <span class="subheading">勤奋的懒惰者~</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+  
+  <div class="container">
+    <div class="row">
+      
+      
+      
+      <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
+      col-xs-12 postlist-container">
+        
+
+
+   <div class="post-preview">
+  <a href="/posts/zerotier/">
+      <h2 class="post-title">「Tools」Zerotier</h2>
+      
+      <div class="post-content-preview">
+        
+        免费内网穿透工具Zerotier、
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/zotero/">
+      <h2 class="post-title">「Tools」Zotero</h2>
+      
+      <div class="post-content-preview">
+        
+        文献管理工具Zotero
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/import%E6%8A%A5%E9%94%99/">
+      <h2 class="post-title">「Trouble Shooting」某版本GLIBCXX缺失</h2>
+      
+      <div class="post-content-preview">
+        
+        解决模型训练过程中遇到的GLIBCXX缺失。
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/hello-world/">
+      <h2 class="post-title">Hello World</h2>
+      
+      <div class="post-content-preview">
+        
+        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask …
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+      <h2 class="post-title">hexo&#43;github博客搭建</h2>
+      
+      <div class="post-content-preview">
+        
+        基础+超详细
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">
+      <h2 class="post-title">hugo&#43;github博客搭建</h2>
+      
+      <div class="post-content-preview">
+        
+        如果我们没有服务器和域名，又想搭建个人博客或者简单的静态网页，这时该怎么办？这时Github Pages和Hugo就提供了解决方案。 Github Page
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/java%E5%AD%A6%E4%B9%A01/">
+      <h2 class="post-title">Java学习(1)--基础知识及语法</h2>
+      
+      <div class="post-content-preview">
+        
+        Java的基础知识和常用语法
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/java%E5%AD%A6%E4%B9%A02/">
+      <h2 class="post-title">Java学习(2)--面向对象</h2>
+      
+      <div class="post-content-preview">
+        
+        Java中的面向对象
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/java%E5%AD%A6%E4%B9%A03/">
+      <h2 class="post-title">Java学习(3)--高级结构</h2>
+      
+      <div class="post-content-preview">
+        
+        Java中的高级结构
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/posts/linux1/">
+      <h2 class="post-title">Linux(1)--shell语法</h2>
+      
+      <div class="post-content-preview">
+        
+        简介shell是我们通过命令行与操作系统沟通的语言。shell脚本可以直接在命令行中执行，同时方便复用。 因此，终端中的命令行可以看成是一个“
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by  Uanu  on Mon, Jan 1, 0001
+  </p>
+</div>
+<hr>
+
+
+
+<ul class="pager">
+  
+  <li class="previous">
+      <a href="/">&larr; Newer Posts</a>
+  </li>
+  
+  
+  <li class="next">
+      <a href="/page/3/">Older Posts &rarr;</a>
+  </li>
+  
+</ul>
+
+
+      </div>
+      
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
+      col-xs-12 sidebar-container">
+
+        
+        <section>
+  
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/ai/">AI</a>
+    
+    <a href="/tags/buaa-co/">BUAA CO</a>
+    
+    <a href="/tags/buaa-minor/">BUAA Minor</a>
+    
+    <a href="/tags/congnitive-science/">Congnitive Science</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/gitflow/">GitFlow</a>
+    
+    <a href="/tags/github/">github</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/hugo/">hugo</a>
+    
+    <a href="/tags/java/">Java</a>
+    
+    <a href="/tags/kmp/">kmp</a>
+    
+    <a href="/tags/latex/">Latex</a>
+    
+    <a href="/tags/linux/">Linux</a>
+    
+    <a href="/tags/model-compression/">Model Compression</a>
+    
+    <a href="/tags/neural-network/">Neural Network</a>
+    
+    <a href="/tags/oo/">OO</a>
+    
+    <a href="/tags/python/">python</a>
+    
+    <a href="/tags/ssh/">ssh</a>
+    
+    <a href="/tags/tools/">Tools</a>
+    
+    <a href="/tags/trick/">trick</a>
+    
+    <a href="/tags/trouble-shooting/">Trouble Shooting</a>
+    
+    <a href="/tags/ubuntu/">Ubuntu</a>
+    
+    <a href="/tags/vscode/">vscode</a>
+    
+    <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a>
+    
+    <a href="/tags/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">体系结构</a>
+    
+    <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">内网穿透</a>
+    
+    <a href="/tags/%E5%86%99%E4%BD%9C/">写作</a>
+    
+    <a href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">北航计算机组成</a>
+    
+    <a href="/tags/%E5%AD%90%E7%BE%A4/">子群</a>
+    
+    <a href="/tags/%E5%B1%80%E5%9F%9F%E7%BD%91/">局域网</a>
+    
+    <a href="/tags/%E5%B7%A5%E5%85%B7/">工具</a>
+    
+    <a href="/tags/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">常微分方程</a>
+    
+    <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
+    
+    <a href="/tags/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0/">抽象代数</a>
+    
+    <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1/">数字设计</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+    
+    <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    <a href="/tags/%E7%8E%AF/">环</a>
+    
+    <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+    
+    <a href="/tags/%E7%BE%A4/">群</a>
+    
+    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">计算机组成</a>
+    
+    <a href="/tags/%E8%AE%A4%E7%9F%A5%E7%A7%91%E5%AD%A6/">认知科学</a>
+    
+    <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>
+    
+    <a href="/tags/%E8%AF%AD%E6%B3%95/">语法</a>
+    
+    <a href="/tags/%E9%85%8D%E7%BD%AE/">配置</a>
+    
+    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    
+  </div>
+</section>
+        
+<section class="visible-md visible-lg">
+  <hr>
+  
+  <h5><a href=/about/>ABOUT ME</a></h5>
+  
+
+  
+  <div class="short-about">
+    
+    <img src="/img/4.png" />
+    
+    
+    <p>Never give up!</p>
+    
+    
+    <ul class="list-inline">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+  </div>
+</section>
+
+        
+        
+
+<hr>
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+  
+  <li><a href="" target="_blank"></a></li>
+  
+  <li><a href="" target="_blank"></a></li>
+  
+</ul>
+
+
+      </div>
+      
+
+    </div>
+  </div>
+
+  
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <ul class="list-inline text-center">
+
+<li>
+  <a href="https://github.com/uanu2002" target="_blank">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li>
+
+<li>
+  <a href="mailto:uanu2002@163.com">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+    </span>
+  </a>
+</li></ul>
+
+        <p class="copyright text-muted">
+          Copyright &copy; Uanu&#39;s blog 2023  
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src=/js/jquery.min.js></script>
+<script src=/js/bootstrap.min.js crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src=/js/simple-jekyll-search.min.js></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+
+</body>
+
+</html>

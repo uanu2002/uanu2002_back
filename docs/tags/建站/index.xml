@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>建站 on Uanu&#39;s blog</title>
+    <link>https://uanu2002.github.io/tags/%E5%BB%BA%E7%AB%99/</link>
+    <description>Recent content in 建站 on Uanu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://uanu2002.github.io/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hexo&#43;github博客搭建</title>
+      <link>https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hexo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>基础+超详细</description>
+    </item>
+    
+    <item>
+      <title>hugo&#43;github博客搭建</title>
+      <link>https://uanu2002.github.io/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/hugo&#43;github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <description>如果我们没有服务器和域名，又想搭建个人博客或者简单的静态网页，这时该怎么办？这时Github Pages和Hugo就提供了解决方案。 Github Page</description>
+    </item>
+    
+  </channel>
+</rss>
