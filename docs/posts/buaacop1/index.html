@@ -8,16 +8,16 @@
 
   
     
-  <title>「BUAA CO」P1 MIPS 指令 | Uanu&#39;s blog</title>
+  <title>「BUAA CO」P1 MIPS 汇编基础 | Uanu&#39;s blog</title>
   <meta name="author" content="Uanu">
   <meta name="description" content="MIPS 指令集与汇编语言：基础部分">
   <meta name="keywords" content="blog,developer,personal,ai,cs">
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="「BUAA CO」P1 MIPS 指令"/>
+<meta name="twitter:title" content="「BUAA CO」P1 MIPS 汇编基础"/>
 <meta name="twitter:description" content="MIPS 指令集与汇编语言：基础部分"/>
 
-  <meta property="og:title" content="「BUAA CO」P1 MIPS 指令" />
+  <meta property="og:title" content="「BUAA CO」P1 MIPS 汇编基础" />
 <meta property="og:description" content="MIPS 指令集与汇编语言：基础部分" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://uanu2002.github.io/posts/buaacop1/" /><meta property="article:section" content="posts" />
@@ -171,7 +171,7 @@
             <a class="tag" href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" title="北航计算机组成">北航计算机组成</a>
             
           </div>
-          <h1>「BUAA CO」P1 MIPS 指令</h1>
+          <h1>「BUAA CO」P1 MIPS 汇编基础</h1>
           <h2 class="subheading"></h2>
           <span class="meta">
             Posted by  Uanu 
@@ -196,7 +196,24 @@
               col-lg-8 col-lg-offset-2
               col-md-10 col-md-offset-1
               post-container">
-        <h2 id="课下">课下<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8b"></a></h2><h2 id="上机">上机<a class="anchorjs-link" href="#%e4%b8%8a%e6%9c%ba"></a></h2>
+        <p>题面、代码：<a href="https://github.com/uanu2002/BUAA-CO-2023/tree/main/P1" target="_blank">BUAA-CO-2023/P1 at main · uanu2002/BUAA-CO-2023 (github.com)</a></p>
+<h2 id="课下">课下<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8b"></a></h2><p>课下最好了解下MIPS指令集能直接实现哪些功能，这是最基本的工具。</p>
+<p>此外要掌握下不同数据类型、格式的输入输出方式。</p>
+<p>课下可能有递归（全排列等），感觉可以先自己尝试做下，然后再去学习栈的使用，这样可以体会到栈的思想和优势。</p>
+<p><strong>核心</strong>：要形成MIPS与C语言的对应关系和固定的书写格式！例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span>for(int i=0; i &lt; n; i++){
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>}
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span># 个人习惯对应MIPS代码
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>li $v0, 0
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>for:
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>	beq $t0, $s0, for_end
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>    addi $t0, $t0, 1
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    j for
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>for_end:
+</span></span></code></pre></div><p>然后上机就可以嘎嘎翻译了（如果没给C语言代码，可以先写一个C语言）</p>
+<h2 id="课上">课上<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8a"></a></h2><p>1h左右，还挺顺利，直接翻译就可以了。</p>
+
 
         <hr style="visibility: hidden;" />
         <ul class="pager">
@@ -208,6 +225,13 @@
             </a>
           </li>
           
+          
+          <li class="next">
+            <a href="/posts/buaacop2/" data-toggle="tooltip" data-placement="top" title="「BUAA CO」P2 MIPS 汇编进阶">
+              Next<br>
+              <span>「BUAA CO」P2 MIPS 汇编进阶</span>
+            </a>
+          </li>
           
         </ul>
         <hr style="visibility: hidden;" />

@@ -6,9 +6,18 @@
     <description>Recent content in 北航计算机组成 on Uanu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 30 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uanu2002.github.io/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 31 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uanu2002.github.io/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>「BUAA CO」P1 MIPS 指令</title>
+      <title>「BUAA CO」P2 MIPS 汇编进阶</title>
+      <link>https://uanu2002.github.io/posts/buaacop2/</link>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/buaacop2/</guid>
+      <description>MIPS 指令集与汇编语言：进阶部分</description>
+    </item>
+    
+    <item>
+      <title>「BUAA CO」P1 MIPS 汇编基础</title>
       <link>https://uanu2002.github.io/posts/buaacop1/</link>
       <pubDate>Thu, 30 Mar 2023 00:00:00 +0000</pubDate>
       
