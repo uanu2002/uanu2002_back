@@ -6,7 +6,16 @@
     <description>Recent content in BUAA CO on Uanu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 06 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uanu2002.github.io/tags/buaa-co/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://uanu2002.github.io/tags/buaa-co/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>「BUAA CO」P4 Logisim 单周期CPU</title>
+      <link>https://uanu2002.github.io/posts/buaaco4/</link>
+      <pubDate>Thu, 13 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://uanu2002.github.io/posts/buaaco4/</guid>
+      <description>Logisim 单周期CPU</description>
+    </item>
+    
     <item>
       <title>「BUAA CO」P3 Logisim 电路模拟</title>
       <link>https://uanu2002.github.io/posts/buaacop3/</link>
