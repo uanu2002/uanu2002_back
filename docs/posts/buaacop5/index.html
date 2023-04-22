@@ -8,21 +8,21 @@
 
   
     
-  <title>「BUAA CO」P4 Logisim 单周期CPU | Uanu&#39;s blog</title>
+  <title>「BUAA CO」P5 Logisim 流水线CPU | Uanu&#39;s blog</title>
   <meta name="author" content="Uanu">
-  <meta name="description" content="Logisim 单周期CPU">
+  <meta name="description" content="Logisim 流水线CPU">
   <meta name="keywords" content="blog,developer,personal,ai,cs">
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="「BUAA CO」P4 Logisim 单周期CPU"/>
-<meta name="twitter:description" content="Logisim 单周期CPU"/>
+<meta name="twitter:title" content="「BUAA CO」P5 Logisim 流水线CPU"/>
+<meta name="twitter:description" content="Logisim 流水线CPU"/>
 
-  <meta property="og:title" content="「BUAA CO」P4 Logisim 单周期CPU" />
-<meta property="og:description" content="Logisim 单周期CPU" />
+  <meta property="og:title" content="「BUAA CO」P5 Logisim 流水线CPU" />
+<meta property="og:description" content="Logisim 流水线CPU" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://uanu2002.github.io/posts/buaacop4/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-04-13T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-04-13T00:00:00+00:00" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/buaacop5/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-20T00:00:00+00:00" />
 
   <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
   
@@ -171,11 +171,11 @@
             <a class="tag" href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" title="北航计算机组成">北航计算机组成</a>
             
           </div>
-          <h1>「BUAA CO」P4 Logisim 单周期CPU</h1>
+          <h1>「BUAA CO」P5 Logisim 流水线CPU</h1>
           <h2 class="subheading"></h2>
           <span class="meta">
             Posted by  Uanu 
-            on Thu, Apr 13, 2023
+            on Thu, Apr 20, 2023
           </span>
         </div>
       </div>
@@ -196,148 +196,272 @@
               col-lg-8 col-lg-offset-2
               col-md-10 col-md-offset-1
               post-container">
-        <p>题面、代码、设计文档：<a href="https://github.com/uanu2002/BUAA-CO-2023/tree/main/P4" target="_blank">BUAA-CO-2023/P4 at main · uanu2002/BUAA-CO-2023 (github.com)</a></p>
-<h2 id="课下">课下<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8b"></a></h2><h3 id="注意点">注意点<a class="anchorjs-link" href="#%e6%b3%a8%e6%84%8f%e7%82%b9"></a></h3><ul>
-<li>注意指令的符号扩展和无符号扩展。</li>
-<li>搭电路时，对于复用度高的操作和接口，封装成组件和tunel。</li>
-<li>区别<code>$rs</code>和<code>rs</code>，前者是寄存器储存的值，后者是寄存器地址（编号）。</li>
-<li>需要进行选择的信号，多预留几位，方便作指令扩展。</li>
-<li>指令起始地址为<code>0x3000</code>，考虑如何同步/异步复位。</li>
-<li>利用设计文档多做归纳，相同类型指令的数据通路可以复用。</li>
-<li>谨防课下测试，弱测、强测都不全面，建议和同学多交流测试用例。（上机前我才发现我一直全用的无符号扩展，一直没被测出BUG）</li>
-</ul>
-<p>课下多尝试实现一些要求外的指令，最好每种类型都实现一遍。每加一条指令都要<strong>狠狠地测试</strong>，不然得上机Debug。</p>
-<p>针对评测机较弱和Debug困难的问题，我基于学长的评测机对Logisim对拍做了优化，实现了一个测试对拍工具<a href="https://github.com/uanu2002/BUAA-CO-CPU-Judge" target="_blank">uanu2002/BUAA-CO-CPU-Judge</a>。</p>
-<p>可以用Python随机生成多组MIPS代码，然后使用工具与Mars或同学CPU进行单步对拍（强度可能比官网评测机高））。</p>
-<h3 id="单周期cpu实现">单周期CPU实现<a class="anchorjs-link" href="#%e5%8d%95%e5%91%a8%e6%9c%9fcpu%e5%ae%9e%e7%8e%b0"></a></h3><p><strong>支持指令</strong>：</p>
+        <p>题面、代码、设计文档：<a href="https://github.com/uanu2002/BUAA-CO-2023/tree/main/P5" target="_blank">BUAA-CO-2023/P5 at main · uanu2002/BUAA-CO-2023</a></p>
+<h2 id="课下">课下<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8b"></a></h2><blockquote>
+<p>齐齐怪怪的BUG涌现🤒</p>
+</blockquote>
+<h3 id="前言">前言<a class="anchorjs-link" href="#%e5%89%8d%e8%a8%80"></a></h3><p>因为42系对冲突冒险没有要求，处理冲突冒险的代码可能存在问题（只过了弱测）。</p>
+<p>一些奇怪的BUG：</p>
 <ul>
-<li>Load型：<code>lw/lh/lhu/lb/lbu</code></li>
-<li>Save型：<code>sw/sh/sb</code></li>
-<li>Cal_r型：<code>addu/subu/and/or/sllv</code></li>
-<li>Cal_i型：<code>ori</code></li>
-<li>B_type型：<code>beq</code></li>
-<li>J_type型：<code>jal/jr</code></li>
-<li>Shamt型：<code>sll</code></li>
-<li>Other：<code>lui</code></li>
+<li>RESET信号：我不知道为什么同时设计了CLEAR和RESET信号，导致RESET信号无效（头秃，de了5h）。</li>
+<li>连线和标签：在设计外观的时候一定要标注接口名，可能外观的接口顺序和实际顺序不一样！</li>
+<li>比较器：如果指令没要求无符号比较的话，直接使用比较器即可（默认有符号比较<code>2's complete</code>），如果要去无符号，例如<code>0||Data1 &gt; 0||Data2</code>，可以使用比较器的<code>Unsigned</code>无符号比较。</li>
 </ul>
-<p>我CPU主要组件有PC、NPC、IM、SPLT、GRF、EXT、ALU、DM、CU、MR、MW。</p>
+<p>分布式译码OR集中式译码：如果后续没有进一步的CPU设计，那么集中式实现起来会更简单易懂。但如果后续要加大量指令并且考虑整体设计的话（来自6系舍友），分布式在添加指令方面更加方便，可以复用。作者采用的是<strong>分布式译码</strong>，仅供参考。</p>
+<h3 id="电路实现">电路实现<a class="anchorjs-link" href="#%e7%94%b5%e8%b7%af%e5%ae%9e%e7%8e%b0"></a></h3><blockquote>
+<p>CU：Control Unit</p>
+<p>SU：Stall Unit</p>
+<p>FU：Forward Unit</p>
+</blockquote>
+<h4 id="无冲突冒险">无冲突冒险<a class="anchorjs-link" href="#%e6%97%a0%e5%86%b2%e7%aa%81%e5%86%92%e9%99%a9"></a></h4><p>只需要在单周期的基础上在每一级插入流水寄存器即可。</p>
+<p>由于之前单周期组件太小以及分布式译码的原因，我对外观进行了重构。</p>
+<h4 id="总体架构">总体架构<a class="anchorjs-link" href="#%e6%80%bb%e4%bd%93%e6%9e%b6%e6%9e%84"></a></h4><p>采用分布式译码。</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414003650178.png" data-action="zoom" alt="image-20230414003650178"  class="lazyload">
+    <img data-src="/img/BUAACOP5/1.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="pc">PC<a class="anchorjs-link" href="#pc"></a></h4><p>寄存器保存当前指令。</p>
+<h4 id="grf">GRF<a class="anchorjs-link" href="#grf"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414003729262.png" data-action="zoom" alt="image-20230414003729262"  class="lazyload">
+    <img data-src="/img/BUAACOP5/2.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="npc">NPC<a class="anchorjs-link" href="#npc"></a></h4><p>计算下一个指令，多预留点位置。</p>
+<h4 id="pc">PC<a class="anchorjs-link" href="#pc"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414003907227.png" data-action="zoom" alt="image-20230414003907227"  class="lazyload">
+    <img data-src="/img/BUAACOP5/3.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="im">IM<a class="anchorjs-link" href="#im"></a></h4><p>指令储存，导入文件开头要加<code>v2.0 raw</code>。</p>
+<h4 id="npc">NPC<a class="anchorjs-link" href="#npc"></a></h4><p>同单周期，但需要注意PC+8</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414003945170.png" data-action="zoom" alt="image-20230414003945170"  class="lazyload">
+    <img data-src="/img/BUAACOP5/4.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="splt">SPLT<a class="anchorjs-link" href="#splt"></a></h4><p>方便处理不同类型指令。</p>
+<h4 id="im">IM<a class="anchorjs-link" href="#im"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004041703.png" data-action="zoom" alt="image-20230414004041703"  class="lazyload">
+    <img data-src="/img/BUAACOP5/5.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="grf">GRF<a class="anchorjs-link" href="#grf"></a></h4><p>直接用P3的即可，可以先做下测试保证没问题，听说P3测试很弱。</p>
+<h4 id="dm">DM<a class="anchorjs-link" href="#dm"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004059869.png" data-action="zoom" alt="image-20230414004059869"  class="lazyload">
+    <img data-src="/img/BUAACOP5/6.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="ext">EXT<a class="anchorjs-link" href="#ext"></a></h4><p>位扩展而已。</p>
+<h4 id="alu">ALU<a class="anchorjs-link" href="#alu"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004201214.png" data-action="zoom" alt="image-20230414004201214"  class="lazyload">
+    <img data-src="/img/BUAACOP5/7.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure>SPLT</p>
+<p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/8.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="alu">ALU<a class="anchorjs-link" href="#alu"></a></h4><p>多预留几位。</p>
+<h4 id="cu">CU<a class="anchorjs-link" href="#cu"></a></h4><p>同单周期，添加寄存器比较功能</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004216495.png" data-action="zoom" alt="image-20230414004216495"  class="lazyload">
+    <img data-src="/img/BUAACOP5/9.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="dm">DM<a class="anchorjs-link" href="#dm"></a></h4><p>数据存储，不用连ld，连了可能出错？。</p>
+<h4 id="ext">EXT<a class="anchorjs-link" href="#ext"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004241651.png" data-action="zoom" alt="image-20230414004241651"  class="lazyload">
+    <img data-src="/img/BUAACOP5/10.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="cu">CU<a class="anchorjs-link" href="#cu"></a></h4><p>分为指令识别和选择信号计算。</p>
-<p>指令识别可以直接用比较器，同一类指令可以先判断类型，简化后面选择信号计算。</p>
+<h4 id="mr">MR<a class="anchorjs-link" href="#mr"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004412061.png" data-action="zoom" alt="image-20230414004412061"  class="lazyload">
+    <img data-src="/img/BUAACOP5/11.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<p>对于多位的选择信号可以使用优先编码器，<strong>能大大简化</strong>计算过程。</p>
-<p>对于寄存器写入信号，可以只判断不用写入的指令。</p>
+<h4 id="dw">DW<a class="anchorjs-link" href="#dw"></a></h4><p>同单周期</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004551108.png" data-action="zoom" alt="image-20230414004551108"  class="lazyload">
+    <img data-src="/img/BUAACOP5/12.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="mr">MR<a class="anchorjs-link" href="#mr"></a></h4><p>用于处理不同位宽的读出<code>lw/lh/lb/lhu/lbu</code>。</p>
+<h4 id="x_x_reg">X_X_Reg<a class="anchorjs-link" href="#x_x_reg"></a></h4><p>流水寄存器，就是不同位宽的寄存器集合，注意外观和控制信号就行。</p>
+<h4 id="有冲突冒险">有冲突冒险<a class="anchorjs-link" href="#%e6%9c%89%e5%86%b2%e7%aa%81%e5%86%92%e9%99%a9"></a></h4><p>需要考虑数据冲突，采用AT法进行分析（即分析Tuse和Tnew，对A1、A2、A3转发或暂停），因此需要增加较多组件，包括指令解析、暂停控制和转发控制。</p>
+<h4 id="总体架构-1">总体架构<a class="anchorjs-link" href="#%e6%80%bb%e4%bd%93%e6%9e%b6%e6%9e%84-1"></a></h4><p>采用分布式译码，在无冲突冒险基础上增加D、E、M、W、SU和FU。</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004649341.png" data-action="zoom" alt="image-20230414004649341"  class="lazyload">
+    <img data-src="/img/BUAACOP5/21.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
-<h4 id="mw">MW<a class="anchorjs-link" href="#mw"></a></h4><p>用于处理不同位宽的写入<code>sw/sh/sb</code>。</p>
+<h4 id="grf-1">GRF<a class="anchorjs-link" href="#grf-1"></a></h4><p>完整转发需要添加内部转发W-&gt;D</p>
 <p><figure>
   <a class="paragraph-image">
-    <img data-src="/img/BUAACOP4/image-20230414004727676.png" data-action="zoom" alt="image-20230414004727676"  class="lazyload">
+    <img data-src="/img/BUAACOP5/22.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="pc-1">PC<a class="anchorjs-link" href="#pc-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/23.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="npc-1">NPC<a class="anchorjs-link" href="#npc-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/24.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="im-1">IM<a class="anchorjs-link" href="#im-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/25.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="dm-1">DM<a class="anchorjs-link" href="#dm-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/26.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="alu-1">ALU<a class="anchorjs-link" href="#alu-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/27.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="splt">SPLT<a class="anchorjs-link" href="#splt"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/28.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="cu-1">CU<a class="anchorjs-link" href="#cu-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/29.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="ext-1">EXT<a class="anchorjs-link" href="#ext-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/30.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="mr-1">MR<a class="anchorjs-link" href="#mr-1"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/31.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="mw">MW<a class="anchorjs-link" href="#mw"></a></h4><p>同单周期</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/32.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="tj">TJ<a class="anchorjs-link" href="#tj"></a></h4><p>将判断指令类型集成为组件</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/33.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="d">D<a class="anchorjs-link" href="#d"></a></h4><p>计算D级指令的源寄存器S1和S2，以及对应的Tuse1和Tuse2</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/34.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="e">E<a class="anchorjs-link" href="#e"></a></h4><p>计算E级指令的源寄存器S1和S2，目标寄存器Out和对应Tnew，以及E级转发数据</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/35.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="m">M<a class="anchorjs-link" href="#m"></a></h4><p>计算M级指令的源寄存器S2，目标寄存器Out和对应Tnew，以及M级转发数据</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/36.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="w">W<a class="anchorjs-link" href="#w"></a></h4><p>计算W级目标寄存器Out和对应Tnew，以及W级转发数据</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/37.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="su">SU<a class="anchorjs-link" href="#su"></a></h4><p>根据Tnew和Tuse进行暂停（Stall）控制</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/38.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="fu">FU<a class="anchorjs-link" href="#fu"></a></h4><p>根据Tnew和Tuse进行转发（Forward）控制</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/39.png" data-action="zoom" alt=""  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="xx_xx_reg">XX_XX_Reg<a class="anchorjs-link" href="#xx_xx_reg"></a></h4><p>同上流水寄存器，下图为F_D_Reg，需要增加Stall和Flush信号。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="/img/BUAACOP5/40.png" data-action="zoom" alt=""  class="lazyload">
   </a>
   
 </figure></p>
 <h2 id="课上">课上<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8a"></a></h2><blockquote>
-<p>~~讲真42系的CO真有点水了哇，~~三个指令都来自MIPS-C指令集。手速场，15min左右。</p>
+<p>Logisim完结散花🌸！手速场，在课下额外实现的范围内的话5min。</p>
 </blockquote>
-<p>上机前可以找往年6系题来做，都是人造指令，能实现的话基本上上机也没问题了。</p>
-<p>课上要求实现<strong>xori、jalr和lb</strong>指令，要求同MIPS-C文档，没遇到啥坑，课下如果做的全的话，上机很快能完成。</p>
-<p>做完后会有助教提问，会问异步复位的实现，或者结合设计文档问一些问题，不会为难。</p>
+<p>一共三道题：<strong>强测、bne、lhu</strong></p>
+<p>加指令逻辑基本上和单周期相同。</p>
+<p>课下多测试上机基本上可以直接过。</p>
+<blockquote>
+<p>听其他同学说，如果课下额外实现了sll会导致强测过不了。但我猜测可能是因为和nop冲突的原因，因为我sll和nop都实现了，如果是nop则没有写使能信号。</p>
+</blockquote>
 
 
         <hr style="visibility: hidden;" />
         <ul class="pager">
           
           <li class="previous">
-            <a href="/posts/buaacop3/" data-toggle="tooltip" data-placement="top" title="「BUAA CO」P3 Logisim 电路模拟">
+            <a href="/posts/buaacop4/" data-toggle="tooltip" data-placement="top" title="「BUAA CO」P4 Logisim 单周期CPU">
               Previous<br>
-              <span>「BUAA CO」P3 Logisim 电路模拟</span>
+              <span>「BUAA CO」P4 Logisim 单周期CPU</span>
             </a>
           </li>
           
-          
-          <li class="next">
-            <a href="/posts/buaacop5/" data-toggle="tooltip" data-placement="top" title="「BUAA CO」P5 Logisim 流水线CPU">
-              Next<br>
-              <span>「BUAA CO」P5 Logisim 流水线CPU</span>
-            </a>
-          </li>
           
         </ul>
         <hr style="visibility: hidden;" />
