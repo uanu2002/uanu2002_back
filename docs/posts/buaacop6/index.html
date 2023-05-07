@@ -2,24 +2,27 @@
 <html lang="zh-cn">
 
 <head>
-	<meta name="generator" content="Hugo 0.111.3">
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title></title>
+  
+    
+  <title>「BUAA CO」P6 Cache模拟 | Uanu&#39;s blog</title>
   <meta name="author" content="Uanu">
-  <meta name="description" content="Home Index Content">
+  <meta name="description" content="Cache and 虚拟内存">
   <meta name="keywords" content="blog,developer,personal,ai,cs">
 
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="勤奋的懒惰者~"/>
+<meta name="twitter:title" content="「BUAA CO」P6 Cache模拟"/>
+<meta name="twitter:description" content="Cache and 虚拟内存"/>
 
-  <meta property="og:title" content="" />
-<meta property="og:description" content="勤奋的懒惰者~" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://uanu2002.github.io/" />
+  <meta property="og:title" content="「BUAA CO」P6 Cache模拟" />
+<meta property="og:description" content="Cache and 虚拟内存" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://uanu2002.github.io/posts/buaacop6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-07T00:00:00+00:00" />
 
   <link rel="stylesheet" href="/css/bootstrap.min.css"  crossorigin="anonymous">
   
@@ -31,8 +34,6 @@
 
   <script src=/js/lazysizes.min.js></script>
 
-  <link rel="alternate" type="application/json" href="/index.json" title="Uanu's blog" />
-  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="Uanu's blog" />
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -45,7 +46,7 @@
 
 
 <body ontouchstart="">
-  <nav class="navbar navbar-default navbar-custom navbar-fixed-top ">
+  <nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
   <div class="container-fluid">
     
     <div class="navbar-header page-scroll">
@@ -149,21 +150,33 @@
   
 
 
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
 
-<header class="intro-header" style="background-image: url('/img/home-pg2.jpg')">
+<header class="intro-header style-text">
 
+  <div class="header-mask"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        <div class="site-heading">
-        
-          <h1>Uanu&#39;s blog</h1>
-          
-          
-          
-          
-          <span class="subheading">勤奋的懒惰者~</span>
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/buaa-co/" title="BUAA CO">BUAA CO</a>
+            
+            <a class="tag" href="/tags/%E5%8C%97%E8%88%AA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" title="北航计算机组成">北航计算机组成</a>
+            
+          </div>
+          <h1>「BUAA CO」P6 Cache模拟</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by  Uanu 
+            on Sun, May 7, 2023
+          </span>
         </div>
       </div>
     </div>
@@ -173,149 +186,69 @@
 
   
 
-  
+
+<article>
   <div class="container">
     <div class="row">
+
       
-      
-      
-      <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
-      col-xs-12 postlist-container">
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <p>题面、代码、设计文档：<a href="https://github.com/uanu2002/BUAA-CO-2023/tree/main/P4" target="_blank">BUAA-CO-2023/P6 at main · uanu2002/BUAA-CO-2023 (github.com)</a></p>
+<p>CO<strong>真完结</strong>撒花🌸🌸！！！</p>
+<h2 id="课下">课下<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8b"></a></h2><p>给一个用Python模拟的Cache（具体题面和代码见仓库）。</p>
+<p>一共四道题，第四题不算分。前三题比较简单，在原有代码上加一两行代码即可，然后写写思考题和实验报告。</p>
+<blockquote>
+<p>第四题摆啦，<del>反正不算分！</del></p>
+</blockquote>
+<h2 id="课上">课上<a class="anchorjs-link" href="#%e8%af%be%e4%b8%8a"></a></h2><blockquote>
+<p>一二十道关于Cache和虚拟内存的选择填空题，难度作者觉得较大，磨了80min。</p>
+</blockquote>
+<p>课上核心还是以Cache原理部分为主，但虚存部分也要复习，建议考前看看PPT和仓库里面的例题（考试好几道原题）。</p>
+<h2 id="瞎扯">瞎扯<a class="anchorjs-link" href="#%e7%9e%8e%e6%89%af"></a></h2><p>计组知识对于编程以及后续的操作系统都有着重要的作用！<strong>千万不能摆！</strong></p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/posts/buaacop5/" data-toggle="tooltip" data-placement="top" title="「BUAA CO」P5 Logisim 流水线CPU">
+              Previous<br>
+              <span>「BUAA CO」P5 Logisim 流水线CPU</span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
         
 
 
-   <div class="post-preview">
-  <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B01/">
-      <h2 class="post-title">抽象代数(1)--子群</h2>
+
+
+
+
+      </div>
+
       
-      <div class="post-content-preview">
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
         
-        子群的定义定义1 设G是一个群，H是G的一个非空子集合，如果关于G的乘法也能作成群，则称H是G的子群，记为H$\le$G.如果子群H真包含于G
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-   <div class="post-preview">
-  <a href="/posts/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B02/">
-      <h2 class="post-title">抽象代数(2)--环</h2>
-      
-      <div class="post-content-preview">
-        
-        环的定义定义1 设$R\ne\emptyset,+,\cdot$是$R$上定义的两个映射，如果 （1）$(R,+)$是加群（即交换群） （2）$(
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-   <div class="post-preview">
-  <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%841/">
-      <h2 class="post-title">数字设计和计算机体系结构(1)--二进制</h2>
-      
-      <div class="post-content-preview">
-        
-        基础知识数字系统使用离散值变量(discrete-valued variable)来表示信息。 一个有N个不同状态的离散值变量的信息量(amou
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-   <div class="post-preview">
-  <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%842/">
-      <h2 class="post-title">数字设计和计算机体系结构(2)--组合逻辑设计</h2>
-      
-      <div class="post-content-preview">
-        
-        基础知识电路：可以处理离散值变量的网络。 电路组成： 一个或者多个离散值输入端(input terminal) 一个或者多个离散值输出端(output terminal) 描述输入和输
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-   <div class="post-preview">
-  <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%843/">
-      <h2 class="post-title">数字设计和计算机体系结构(3)--时序逻辑设计</h2>
-      
-      <div class="post-content-preview">
-        
-        基础知识状态(state)：先前输入的信息。 状态变量(state variable)：包含用于解释电路未来行为所需要的有关过去的所有信息。 锁存
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-   <div class="post-preview">
-  <a href="/posts/%E6%95%B0%E5%AD%97%E8%AE%BE%E8%AE%A1%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%844/">
-      <h2 class="post-title">数字设计和计算机体系结构(4)--硬件描述语言</h2>
-      
-      <div class="post-content-preview">
-        
-        基础知识计算机辅助设计(Computer-Aided Design, CAD)工具：生成优化的门电路。 硬件描述语言(Hardware Description Language, HDL)：给出硬件的
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-   <div class="post-preview">
-  <a href="/posts/kmp%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/">
-      <h2 class="post-title">算法分析(1)--KMP</h2>
-      
-      <div class="post-content-preview">
-        
-        KMP算法简介KMP是三位大牛提出的一种字符串匹配算法。简单来说就是给定一个目标字符串，下称模式串（pattern string）；再给定一个
-         
-      </div>
-  </a>
-  <p class="post-meta">
-      Posted by  Uanu  on Mon, Jan 1, 0001
-  </p>
-</div>
-<hr>
-
-
-
-<ul class="pager">
-  
-  <li class="previous">
-      <a href="/page/3/">&larr; Newer Posts</a>
-  </li>
-  
-  
-</ul>
-
-
-      </div>
-      
-      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
-      col-xs-12 sidebar-container">
-
         
         <section>
   
+  
+  <hr class="hidden-sm hidden-xs">
   
   <h5>FEATURED TAGS</h5>
   <div class="tags">
@@ -416,44 +349,6 @@
     
   </div>
 </section>
-        
-<section class="visible-md visible-lg">
-  <hr>
-  
-  <h5><a href=/about/>ABOUT ME</a></h5>
-  
-
-  
-  <div class="short-about">
-    
-    <img src="/img/4.png" />
-    
-    
-    <p>Never give up!</p>
-    
-    
-    <ul class="list-inline">
-
-<li>
-  <a href="https://github.com/uanu2002" target="_blank">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-    </span>
-  </a>
-</li>
-
-<li>
-  <a href="mailto:uanu2002@163.com">
-    <span class="fa-stack fa-lg">
-      <i class="fa fa-circle fa-stack-2x"></i>
-      <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
-    </span>
-  </a>
-</li></ul>
-
-  </div>
-</section>
 
         
         
@@ -468,14 +363,12 @@
   
 </ul>
 
-
       </div>
-      
-
     </div>
   </div>
+</article>
 
-  
+
 
   
 <footer>
